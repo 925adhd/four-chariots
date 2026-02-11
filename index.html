@@ -427,173 +427,62 @@
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // ---------------------------
-    // REQUIRED: replace these
-    // ---------------------------
-    const SUPABASE_URL  = "https://txeemijqgqomfclezonf.supabase.co";
-
-    // Use the REAL anon key from Supabase Project Settings -> API (starts with eyJ...)
-    const SUPABASE_ANON = "PASTE_YOUR_SUPABASE_ANON_KEY_HERE";
-
-    // Edge function routes
-    const PRINTIFY_PRODUCTS_FN = `${SUPABASE_URL}/functions/v1/printify`;
-    const CREATE_CHECKOUT_FN   = `${SUPABASE_URL}/functions/v1/create_checkout`;
-
-    // IMPORTANT:
-    // Stripe needs a price per product. Map Printify product id -> Stripe price id.
-    // You can find Printify product id in the products payload returned by your function.
-    // Example: "26772248": "price_123..."
-    const PRICE_MAP = {
-      // "PRINTIFY_PRODUCT_ID": "price_..."
-      // "26772248": "price_1SzeEnL7gUbRzdPiJ7s7CWtJ"
-    };
-
-    function setStatus(msg, kind) {
-      const el = document.getElementById("status");
-      el.textContent = msg || "";
-      el.className = "status" + (kind ? (" " + kind) : "");
-    }
-
-    function money(cents) {
-      const n = Number(cents || 0) / 100;
-      return "$" + n.toFixed(2);
-    }
-
-    async function apiGet(url) {
-      const res = await fetch(url, {
-        headers: {
-          "Authorization": `Bearer ${SUPABASE_ANON}`,
-          "apikey": SUPABASE_ANON
-        }
-      });
-      const data = await res.json().catch(() => ({}));
-      if (!res.ok) throw new Error(data?.error || `HTTP ${res.status}`);
-      return data;
-    }
-
-    async function apiPost(url, body) {
-      const res = await fetch(url, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${SUPABASE_ANON}`,
-          "apikey": SUPABASE_ANON
-        },
-        body: JSON.stringify(body)
-      });
-      const data = await res.json().catch(() => ({}));
-      if (!res.ok) throw new Error(data?.error || data?.message || `HTTP ${res.status}`);
-      return data;
-    }
-
-    function buildCard(p) {
-      const img = (p.images && p.images[0]) ? p.images[0] : "";
-      const enabled = (p.variants || []).filter(v => v.is_enabled && v.is_available);
-
-      const lowest = enabled.length ? Math.min(...enabled.map(v => Number(v.price || 0))) : 0;
-
-      const stripePriceId = PRICE_MAP[String(p.id)] || "";
-
-      const card = document.createElement("article");
-      card.className = "product";
-
-      card.innerHTML = `
-        <div class="media">
-          <img src="${img}" alt="${(p.title || "Product")} mockup" loading="lazy" />
-        </div>
-
-        <div class="body">
-          <h3 class="name">${p.title || "Untitled product"}</h3>
-          <p class="desc">${p.description || ""}</p>
-
-          <div class="meta">
-            ${(p.tags || []).slice(0, 3).map(t => `<span>${t}</span>`).join("")}
-          </div>
-
-          <div class="controls">
-            <label>
-              <select class="variantSelect">
-                ${enabled.map(v => `<option value="${v.id}" data-price="${v.price}">${v.title}</option>`).join("")}
-              </select>
-            </label>
-
-            <label>
-              <input class="qty" type="number" min="1" max="10" value="1" />
-            </label>
-          </div>
-
-          <div class="status" style="margin-top:6px;">
-            ${stripePriceId ? "" : "Add Stripe price_id in PRICE_MAP for this product id: " + p.id}
-          </div>
-        </div>
-
-        <div class="bottom">
-          <div>
-            <div class="price">${enabled.length ? ("From " + money(lowest)) : "Unavailable"}</div>
-            <div class="fine">Shipping shown at Stripe checkout</div>
-          </div>
-          <button class="btn primary buyBtn" ${(!enabled.length || !stripePriceId) ? "disabled" : ""}>
-            Buy
-          </button>
-        </div>
-      `;
-
-      const select = card.querySelector(".variantSelect");
-      const qtyInput = card.querySelector(".qty");
-      const buyBtn = card.querySelector(".buyBtn");
-
-      buyBtn.addEventListener("click", async () => {
-        const variantId = Number(select.value);
-        const quantity = Math.max(1, Math.min(10, Number(qtyInput.value || 1)));
-
-        buyBtn.disabled = true;
-        const prev = buyBtn.textContent;
-        buyBtn.textContent = "Loading...";
-
-        try {
-          // NOTE:
-          // This assumes your create_checkout function accepts:
-          // { variant_id, quantity, stripe_price_id }
-          const out = await apiPost(CREATE_CHECKOUT_FN, {
-            variant_id: variantId,
-            quantity,
-            stripe_price_id: stripePriceId
-          });
-
-          if (!out.url) throw new Error("No checkout URL returned");
-          window.location.href = out.url;
-        } catch (e) {
-          console.error(e);
-          alert("Checkout failed. Open console for details.");
-          buyBtn.disabled = false;
-          buyBtn.textContent = prev;
-        }
-      });
-
-      return card;
-    }
+    const SUPABASE_URL = "https://txeemijqgqomfclezonf.supabase.co";
 
     async function loadProducts() {
-      const grid = document.getElementById("grid");
-      grid.innerHTML = "";
-
-      setStatus("Loading products...", "");
-
       try {
-        const data = await apiGet(PRINTIFY_PRODUCTS_FN);
-        const products = data.products || [];
+        const res = await fetch(`${SUPABASE_URL}/functions/v1/printify`);
+        const data = await res.json();
 
-        if (!products.length) {
-          setStatus("No products returned yet.", "error");
+        console.log("Printify products:", data.products);
+
+        if (!data.products || !data.products.length) {
+          console.warn("No products returned");
           return;
         }
 
-        products.forEach(p => grid.appendChild(buildCard(p)));
-        setStatus("Products loaded.", "ok");
-      } catch (e) {
-        console.error(e);
-        setStatus("Could not load products. Check your Supabase anon key and function.", "error");
+        const grid = document.querySelector(".grid");
+        grid.innerHTML = "";
+
+        data.products.forEach((p) => {
+          const img = p.images?.[0]?.src || "";
+          const enabled = p.variants.filter(v => v.is_enabled);
+          const lowestPrice = enabled.length
+            ? Math.min(...enabled.map(v => v.price))
+            : 0;
+
+          const priceStr = "$" + (lowestPrice / 100).toFixed(2);
+
+          const card = document.createElement("article");
+          card.className = "product";
+
+          card.innerHTML = `
+            <div class="media">
+              <img src="${img}" alt="${p.title}">
+            </div>
+            <div class="body">
+              <h3 class="name">${p.title}</h3>
+              <p class="desc">${p.description || ""}</p>
+            </div>
+            <div class="bottom">
+              <div>
+                <div class="price">${priceStr}</div>
+                <div class="fine">Stripe checkout</div>
+              </div>
+              <button class="btn primary" onclick="startCheckout()">Buy</button>
+            </div>
+          `;
+
+          grid.appendChild(card);
+        });
+
+      } catch(err) {
+        console.error("Could not load products:", err);
       }
+    }
+
+    function startCheckout() {
+      window.location.href = "#"; // we will wire Stripe here next
     }
 
     loadProducts();
