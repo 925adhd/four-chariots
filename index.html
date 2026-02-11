@@ -1,0 +1,622 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>FOUR CHARIOTS</title>
+  <meta name="description" content="Built to last. Made for daily discipline." />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='15' fill='%230b1a2a'/><text x='16' y='22' text-anchor='middle' font-size='18' font-weight='900' font-family='system-ui,sans-serif' fill='%23ffffff'>4C</text></svg>" />
+  <link rel="icon" type="image/png" sizes="192x192" href="images/logo.png" />
+  <link rel="apple-touch-icon" href="images/logo.png" />
+
+  <meta property="og:title" content="FOUR CHARIOTS" />
+  <meta property="og:description" content="Built to last. Made for daily discipline." />
+  <meta property="og:type" content="website" />
+
+  <style>
+    :root{
+      --bg:#ffffff;
+      --text:#0a0a0a;
+      --muted:#5f6368;
+      --line:#e6e6e6;
+      --soft:#f6f6f6;
+      --ink:#0b1a2a; /* deep blue-black */
+      --btn:var(--ink);
+      --btnText:#ffffff;
+      --btnHover:#142a43;
+      --max:1200px;
+      --radius:0px; /* hard edges on purpose */
+      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family:var(--font);
+      color:var(--text);
+      background:var(--bg);
+      line-height:1.35;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    a{ color:inherit; text-decoration:none; }
+    img{ max-width:100%; display:block; }
+
+    .wrap{
+      max-width:var(--max);
+      margin:0 auto;
+      padding: 18px 18px 70px;
+    }
+
+    /* Top bar */
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding: 14px 0;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      text-transform:uppercase;
+      letter-spacing:-0.02em;
+      font-weight:900;
+    }
+
+    .brand .wordmark{
+      display:flex;
+      flex-direction:column;
+      line-height:1;
+    }
+    .brand .name{
+      font-size:14px;
+      letter-spacing:0.10em;
+    }
+    .brand .tag{
+      margin-top:4px;
+      font-size:11px;
+      letter-spacing:0.14em;
+      color:var(--muted);
+      font-weight:700;
+    }
+
+    .mark{
+      height:100px;
+      width:auto;
+      display:block;
+    }
+
+    .nav{
+      display:flex;
+      gap:18px;
+      align-items:center;
+      font-size:13px;
+      color:var(--muted);
+    }
+    .nav a{
+      padding:8px 0;
+      border-bottom:2px solid transparent;
+    }
+    .nav a:hover{
+      color:var(--text);
+      border-bottom-color:var(--text);
+    }
+
+    .ctaRow{
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 12px 16px;
+      font-size:13px;
+      font-weight:800;
+      letter-spacing:0.06em;
+      text-transform:uppercase;
+      border:1px solid var(--text);
+      border-radius:var(--radius);
+      background:transparent;
+      color:var(--text);
+      transition: background .12s ease, color .12s ease, border-color .12s ease;
+      white-space:nowrap;
+    }
+    .btn:hover{
+      background:var(--text);
+      color:var(--btnText);
+    }
+
+    .btn.primary{
+      background:var(--btn);
+      color:var(--btnText);
+      border-color:var(--btn);
+    }
+    .btn.primary:hover{
+      background:var(--btnHover);
+      border-color:var(--btnHover);
+    }
+
+    .divider{ border-top:1px solid var(--line); }
+
+    /* Hero */
+    .hero{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 26px;
+      padding: 34px 0 26px;
+      align-items:end;
+    }
+    .kicker{
+      font-size:12px;
+      letter-spacing:0.18em;
+      text-transform:uppercase;
+      color:var(--muted);
+      margin:0 0 10px;
+    }
+    .headline{
+      margin:0;
+      font-size: clamp(34px, 4.2vw, 56px);
+      line-height:0.98;
+      letter-spacing:-0.04em;
+      text-transform:uppercase;
+      font-weight:950;
+      color:var(--ink);
+    }
+    .subhead{
+      margin:14px 0 0;
+      font-size:16px;
+      max-width:62ch;
+      color:var(--muted);
+    }
+
+    .heroCard{
+      border:1px solid var(--line);
+      padding: 18px;
+      background: var(--soft);
+    }
+    .heroCard .row{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      padding: 10px 0;
+      border-top:1px solid var(--line);
+      font-size:13px;
+    }
+    .heroCard .row:first-child{ border-top:none; padding-top:0; }
+    .heroCard .label{ color:var(--muted); }
+    .heroCard .value{
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:.06em;
+      color:var(--ink);
+      text-align:right;
+    }
+    .heroCard .note{
+      margin-top:12px;
+      font-size:12px;
+      color:var(--muted);
+      line-height:1.4;
+    }
+
+    /* Product grid */
+    .sectionTitle{
+      display:flex;
+      align-items:baseline;
+      justify-content:space-between;
+      gap:14px;
+      padding: 18px 0 10px;
+    }
+    .sectionTitle h2{
+      margin:0;
+      font-size:18px;
+      text-transform:uppercase;
+      letter-spacing:0.12em;
+      font-weight:950;
+      color:var(--ink);
+    }
+    .sectionTitle p{
+      margin:0;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 18px;
+      padding-top: 12px;
+    }
+
+    .product{
+      grid-column: span 6;
+      border:1px solid var(--line);
+      background: var(--bg);
+      display:flex;
+      flex-direction:column;
+      min-height: 520px;
+    }
+    .product .media{
+      aspect-ratio: 4/3;
+      background: #fafafa;
+      border-bottom:1px solid var(--line);
+      overflow:hidden;
+    }
+    .product .media img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .product .body{
+      padding: 16px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      min-height: 170px;
+    }
+
+    .product .name{
+      margin:0;
+      font-weight:950;
+      text-transform:uppercase;
+      letter-spacing:-0.02em;
+      font-size:16px;
+      line-height:1.05;
+      color:var(--ink);
+    }
+    .product .desc{
+      margin:0;
+      color:var(--muted);
+      font-size:13px;
+      max-width:62ch;
+    }
+
+    .product .meta{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      color:var(--muted);
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:0.10em;
+      margin-top:2px;
+    }
+
+    .product .bottom{
+      margin-top:auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      border-top:1px solid var(--line);
+      padding: 14px 16px;
+    }
+
+    .price{
+      font-weight:950;
+      letter-spacing:-0.02em;
+      color:var(--ink);
+    }
+    .fine{
+      font-size:12px;
+      color:var(--muted);
+      margin-top:2px;
+    }
+
+    /* Feature band */
+    .band{
+      margin-top: 24px;
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+      padding: 18px 0;
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 18px;
+    }
+    .bandItem{
+      grid-column: span 4;
+      padding: 6px 0;
+    }
+    .bandItem .t{
+      font-weight:950;
+      text-transform:uppercase;
+      letter-spacing:0.12em;
+      font-size:13px;
+      margin:0 0 6px;
+      color:var(--ink);
+    }
+    .bandItem .d{
+      margin:0;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.45;
+    }
+
+    footer{
+      margin-top: 34px;
+      padding-top: 18px;
+      border-top:1px solid var(--line);
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      align-items:center;
+      justify-content:space-between;
+      color:var(--muted);
+      font-size:13px;
+    }
+    footer .links{ display:flex; gap:14px; flex-wrap:wrap; }
+    footer .links a:hover{ color:var(--text); }
+
+    @media (max-width: 980px){
+      .hero{ grid-template-columns: 1fr; align-items:start; }
+      .product{ grid-column: span 12; }
+      .bandItem{ grid-column: span 12; }
+      .nav{ display:none; }
+      .brand .tag{ display:none; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <a class="brand" href="#">
+        <img class="mark" src="images/logo.png" alt="Four Chariots logo" />
+
+        <span class="wordmark">
+          <span class="name">FOUR CHARIOTS</span>
+          <span class="tag">BUILT TO LAST</span>
+        </span>
+      </a>
+
+      <nav class="nav" aria-label="Site navigation">
+        <a href="#shop">Shop</a>
+        <a href="#shipping">Shipping</a>
+        <a href="#support">Support</a>
+      </nav>
+
+      <div class="ctaRow">
+        <a class="btn" href="#shop">Shop</a>
+        <a class="btn primary" href="https://four-chariots.printify.me" target="_blank" rel="noopener">Checkout</a>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <section class="hero">
+      <div>
+        <p class="kicker">APPAREL • PRINTS • DAILY OBJECTS</p>
+        <h1 class="headline">DISCIPLINE, WITHOUT NOISE.</h1>
+        <p class="subhead">
+          FOUR CHARIOTS makes clean pieces for daily life. Wear it. See it. Hold it. Simple words that keep you steady.
+        </p>
+      </div>
+
+      <aside class="heroCard" id="shipping">
+        <div class="row">
+          <span class="label">Standard</span>
+          <span class="value">Built to last</span>
+        </div>
+        <div class="row">
+          <span class="label">Focus</span>
+          <span class="value">Order & restraint</span>
+        </div>
+        <div class="row">
+          <span class="label">Fulfillment</span>
+          <span class="value">Printed to order</span>
+        </div>
+        <div class="row">
+          <span class="label">Shipping</span>
+          <span class="value">Shown at checkout</span>
+        </div>
+        <div style="margin-top:14px;">
+          <a class="btn primary" href="#shop">Shop the drop</a>
+        </div>
+        <p class="note">
+          Launch lean: one tee, one print, one mug. Expand with proof, not noise.
+        </p>
+      </aside>
+    </section>
+
+    <div class="divider"></div>
+
+    <div class="sectionTitle" id="shop">
+      <h2>The Drop</h2>
+      <p>Wear it. See it. Hold it.</p>
+    </div>
+
+    <section class="grid" aria-label="Products">
+      <!-- PRODUCT 1: Tee -->
+      <article class="product">
+        <div class="media">
+          <img src="YOUR_PRODUCT_IMAGE_URL_1_HERE" alt="Four Chariots Heavy Cotton Tee mockup" />
+        </div>
+        <div class="body">
+          <h3 class="name">THE STANDARD • HEAVY COTTON TEE</h3>
+          <p class="desc">Clean type. Strong silhouette. A daily uniform piece that wears well and reads clear.</p>
+          <div class="meta">
+            <span>Gildan 5000</span>
+            <span>Unisex fit</span>
+            <span>Minimal front mark</span>
+          </div>
+        </div>
+        <div class="bottom">
+          <div>
+            <div class="price">$00</div>
+            <div class="fine">Sizes and shipping shown at checkout</div>
+          </div>
+          <a class="btn primary" href="YOUR_PRINTIFY_PRODUCT_URL_1_HERE" target="_blank" rel="noopener">Buy</a>
+        </div>
+      </article>
+
+      <!-- PRODUCT 2: Poster -->
+      <article class="product">
+        <div class="media">
+          <img src="YOUR_PRODUCT_IMAGE_URL_2_HERE" alt="Four Chariots Matte Vertical Poster mockup" />
+        </div>
+        <div class="body">
+          <h3 class="name">NOISE OFF • MATTE VERTICAL POSTER</h3>
+          <p class="desc">High contrast. Clean margins. Designed to live where decisions get made.</p>
+          <div class="meta">
+            <span>Multiple sizes</span>
+            <span>Matte finish</span>
+            <span>Minimal typography</span>
+          </div>
+        </div>
+        <div class="bottom">
+          <div>
+            <div class="price">$00</div>
+            <div class="fine">Price varies by size</div>
+          </div>
+          <a class="btn primary" href="YOUR_PRINTIFY_PRODUCT_URL_2_HERE" target="_blank" rel="noopener">Buy</a>
+        </div>
+      </article>
+
+      <!-- PRODUCT 3: Mug -->
+      <article class="product">
+        <div class="media">
+          <img src="YOUR_PRODUCT_IMAGE_URL_3_HERE" alt="Four Chariots Ceramic Mug mockup" />
+        </div>
+        <div class="body">
+          <h3 class="name">STEADY • CERAMIC MUG</h3>
+          <p class="desc">One word. One mark. A daily object that anchors the routine.</p>
+          <div class="meta">
+            <span>11oz / 15oz</span>
+            <span>Ceramic</span>
+            <span>Minimal print</span>
+          </div>
+        </div>
+        <div class="bottom">
+          <div>
+            <div class="price">$00</div>
+            <div class="fine">Shipping shown at checkout</div>
+          </div>
+          <a class="btn primary" href="YOUR_PRINTIFY_PRODUCT_URL_3_HERE" target="_blank" rel="noopener">Buy</a>
+        </div>
+      </article>
+
+      <!-- OPTIONAL: Stickers as add-on -->
+      <article class="product">
+        <div class="media">
+          <img src="YOUR_PRODUCT_IMAGE_URL_4_HERE" alt="Four Chariots Kiss-Cut Sticker mockup" />
+        </div>
+        <div class="body">
+          <h3 class="name">FOUR CHARIOTS MARK • STICKER</h3>
+          <p class="desc">Clean mark only. Laptop, journal, water bottle. Add-on item, not the hero.</p>
+          <div class="meta">
+            <span>Multiple sizes</span>
+            <span>Matte or gloss</span>
+            <span>Add-on</span>
+          </div>
+        </div>
+        <div class="bottom">
+          <div>
+            <div class="price">$00</div>
+            <div class="fine">Low-cost add-on</div>
+          </div>
+          <a class="btn primary" href="YOUR_PRINTify_PRODUCT_URL_4_HERE" target="_blank" rel="noopener">Buy</a>
+        </div>
+      </article>
+    </section>
+
+    <section class="band" aria-label="Highlights">
+      <div class="bandItem">
+        <p class="t">Clear signal</p>
+        <p class="d">Short phrases. Clean design. Nothing performative.</p>
+      </div>
+      <div class="bandItem">
+        <p class="t">Proven formats</p>
+        <p class="d">Bestseller blanks and print formats that hold up in real life.</p>
+      </div>
+      <div class="bandItem" id="support">
+        <p class="t">Support</p>
+        <p class="d">Questions? Add your email below. Print and shipping issues are handled by partners.</p>
+      </div>
+    </section>
+
+    <footer>
+      <div>© <span id="year"></span> FOUR CHARIOTS</div>
+      <div class="links">
+        <a href="mailto:you@example.com">Contact</a>
+        <a href="YOUR_INSTAGRAM_URL_HERE" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://four-chariots.printify.me" target="_blank" rel="noopener">Store</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // ── Supabase + Printify config ──────────────────────────────
+    // REPLACE these with your real values from Supabase Settings > API
+    const SUPABASE_URL   = "https://txeemijqgqomfclezonf.supabase.co";
+    const SUPABASE_ANON  = "sb_publishable_0EVIoewalOJkV1BbpoU5KA_K_XkTL9x";
+
+    async function loadProducts() {
+      try {
+        const res = await fetch(
+          `${SUPABASE_URL}/functions/v1/printify`,
+          {
+            headers: {
+              "Authorization": `Bearer ${SUPABASE_ANON}`,
+              "apikey": SUPABASE_ANON,
+            },
+          }
+        );
+
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const { products } = await res.json();
+        if (!products || !products.length) return;
+
+        const grid = document.querySelector(".grid");
+        grid.innerHTML = "";
+
+        products.forEach((p) => {
+          const img = p.images[0] || "";
+          const enabledVariants = p.variants.filter((v) => v.is_enabled);
+          const lowestPrice = enabledVariants.length
+            ? Math.min(...enabledVariants.map((v) => v.price))
+            : 0;
+          const priceStr = "$" + (lowestPrice / 100).toFixed(2);
+
+          const card = document.createElement("article");
+          card.className = "product";
+          card.innerHTML = `
+            <div class="media">
+              <img src="${img}" alt="${p.title} mockup" />
+            </div>
+            <div class="body">
+              <h3 class="name">${p.title}</h3>
+              <p class="desc">${p.description || ""}</p>
+              <div class="meta">
+                ${p.tags.slice(0, 3).map((t) => `<span>${t}</span>`).join("")}
+              </div>
+            </div>
+            <div class="bottom">
+              <div>
+                <div class="price">${enabledVariants.length > 1 ? "From " : ""}${priceStr}</div>
+                <div class="fine">Sizes and shipping shown at checkout</div>
+              </div>
+              <a class="btn primary" href="https://four-chariots.printify.me" target="_blank" rel="noopener">Buy</a>
+            </div>
+          `;
+          grid.appendChild(card);
+        });
+      } catch (err) {
+        console.error("Failed to load products from Printify:", err);
+        // Keeps the static placeholder cards as fallback
+      }
+    }
+
+    loadProducts();
+  </script>
+</body>
+</html>
