@@ -1,0 +1,451 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>About | FOUR CHARIOTS</title>
+  <meta name="description" content="The story behind FOUR CHARIOTS. Faith-driven apparel designed to move truth through daily life." />
+  <meta name="robots" content="noindex, nofollow" />
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='15' fill='%230b1a2a'/><text x='16' y='22' text-anchor='middle' font-size='18' font-weight='900' font-family='system-ui,sans-serif' fill='%23ffffff'>4C</text></svg>" />
+  <link rel="icon" type="image/png" sizes="192x192" href="images/logo.png" />
+  <link rel="apple-touch-icon" href="images/logo.png" />
+
+  <style>
+    :root{
+      --bg:#ffffff;
+      --text:#0a0a0a;
+      --muted:#5f6368;
+      --line:#e6e6e6;
+      --soft:#f6f6f6;
+      --ink:#0b1a2a;
+      --btn:var(--ink);
+      --btnText:#ffffff;
+      --btnHover:#142a43;
+      --max:1200px;
+      --radius:0px;
+      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+    *{ box-sizing:border-box; }
+    a, button{ cursor:pointer; }
+    html{ scroll-behavior:smooth; }
+    html,body{ height:100%; }
+    [id]{ scroll-margin-top:24px; }
+    body{
+      margin:0;
+      font-family:var(--font);
+      color:var(--text);
+      background:var(--bg);
+      line-height:1.35;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    a{ color:inherit; text-decoration:none; }
+    img{ max-width:100%; display:block; }
+
+    .wrap{
+      max-width:var(--max);
+      margin:0 auto;
+      padding: 18px 18px 70px;
+    }
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding: 14px 0;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      text-transform:uppercase;
+      letter-spacing:-0.02em;
+      font-weight:900;
+    }
+    .brand .wordmark{
+      display:flex;
+      flex-direction:column;
+      line-height:1;
+    }
+    .brand .name{
+      font-size:14px;
+      letter-spacing:0.10em;
+    }
+    .mark{
+      height:130px;
+      width:auto;
+      display:block;
+    }
+
+    .nav{
+      display:flex;
+      gap:18px;
+      align-items:center;
+      font-size:13px;
+      color:var(--muted);
+    }
+    .nav a{
+      padding:8px 0;
+      border-bottom:2px solid transparent;
+    }
+    .nav a:hover{
+      color:var(--text);
+      border-bottom-color:var(--text);
+    }
+    .ctaRow{
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 12px 16px;
+      font-size:13px;
+      font-weight:800;
+      letter-spacing:0.06em;
+      text-transform:uppercase;
+      border:1px solid var(--text);
+      border-radius:var(--radius);
+      background:transparent;
+      color:var(--text);
+      transition: background .2s ease, color .2s ease, border-color .2s ease, transform .2s ease;
+      white-space:nowrap;
+    }
+    .btn:hover{
+      background:var(--text);
+      color:var(--btnText);
+      transform:scale(1.04);
+    }
+    .btn.primary{
+      background:var(--btn);
+      color:var(--btnText);
+      border-color:var(--btn);
+    }
+    .btn.primary:hover{
+      background:var(--bg);
+      color:var(--ink);
+      border-color:var(--ink);
+      transform:scale(1.04);
+    }
+
+    .divider{ border-top:1px solid var(--line); }
+
+    /* page header */
+    .pageHero{
+      padding: 50px 0 40px;
+      max-width:720px;
+    }
+    .pageHero .kicker{
+      font-size:13px;
+      letter-spacing:0.20em;
+      text-transform:uppercase;
+      color:var(--muted);
+      margin:0 0 14px;
+    }
+    .pageHero h1{
+      margin:0;
+      font-size: clamp(32px, 4vw, 52px);
+      line-height:0.98;
+      letter-spacing:-0.04em;
+      text-transform:uppercase;
+      font-weight:950;
+      color:var(--ink);
+    }
+    .pageHero .intro{
+      margin:18px 0 0;
+      font-size:17px;
+      color:var(--muted);
+      line-height:1.6;
+      max-width:58ch;
+    }
+
+    /* content sections */
+    .aboutGrid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      padding: 10px 0 40px;
+      align-items:start;
+    }
+    .aboutSection{
+      padding: 30px 0;
+      border-top:1px solid var(--line);
+    }
+    .aboutSection h2{
+      margin:0 0 14px;
+      font-size:15px;
+      text-transform:uppercase;
+      letter-spacing:0.12em;
+      font-weight:950;
+      color:var(--ink);
+    }
+    .aboutSection p{
+      margin:0 0 14px;
+      color:var(--muted);
+      font-size:15px;
+      line-height:1.65;
+      max-width:58ch;
+    }
+    .aboutSection p:last-child{ margin-bottom:0; }
+
+    /* values grid */
+    .valuesGrid{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap:20px;
+      padding: 10px 0;
+    }
+    .valueCard{
+      border:1px solid var(--line);
+      padding:20px;
+      background:var(--soft);
+    }
+    .valueCard .dot{
+      width:32px;
+      height:32px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      border:1px solid var(--ink);
+      background:#fff;
+      color:var(--ink);
+      font-weight:900;
+      font-size:11px;
+      letter-spacing:0.12em;
+      border-radius:50%;
+      margin-bottom:12px;
+    }
+    .valueCard h3{
+      margin:0 0 8px;
+      font-size:13px;
+      text-transform:uppercase;
+      letter-spacing:0.08em;
+      font-weight:950;
+      color:var(--ink);
+    }
+    .valueCard p{
+      margin:0;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.5;
+    }
+
+    /* cta banner */
+    .ctaBanner{
+      margin-top:40px;
+      padding:30px;
+      border:1px solid var(--line);
+      background:var(--soft);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+    .ctaBanner h3{
+      margin:0;
+      font-size:16px;
+      text-transform:uppercase;
+      letter-spacing:0.08em;
+      font-weight:950;
+      color:var(--ink);
+    }
+    .ctaBanner p{
+      margin:4px 0 0;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    /* fade animation */
+    .fade-up{
+      opacity:0;
+      transform:translateY(24px);
+      transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1);
+    }
+    .fade-up.visible{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    footer{
+      margin-top: 34px;
+      padding-top: 18px;
+      border-top:1px solid var(--line);
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      align-items:center;
+      justify-content:space-between;
+      color:var(--muted);
+      font-size:13px;
+    }
+    footer .links{ display:flex; gap:14px; flex-wrap:wrap; }
+    footer .links a:hover{ color:var(--text); }
+
+    .menuBtn{
+      display:none;
+      background:none;
+      border:1px solid var(--line);
+      padding:8px 10px;
+      cursor:pointer;
+      font-size:18px;
+      line-height:1;
+      color:var(--text);
+    }
+
+    @media (max-width: 980px){
+      .aboutGrid{ grid-template-columns: 1fr; gap:0; }
+      .menuBtn{ display:block; }
+      .nav{
+        display:none;
+        position:absolute;
+        top:100%;
+        left:0;
+        right:0;
+        background:var(--bg);
+        border-bottom:1px solid var(--line);
+        flex-direction:column;
+        padding:14px 18px;
+        gap:0;
+        z-index:100;
+      }
+      .nav.open{ display:flex; }
+      .nav a{
+        padding:12px 0;
+        border-bottom:1px solid var(--line);
+        width:100%;
+      }
+      .nav a:last-child{ border-bottom:none; }
+      .ctaRow{ display:none; }
+      .topbar{ position:relative; }
+      .ctaBanner{ flex-direction:column; align-items:flex-start; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap" id="top">
+    <div class="topbar">
+      <a class="brand" href="index.html">
+        <img class="mark" src="images/logo.png" alt="Four Chariots logo" />
+        <span class="wordmark">
+          <span class="name">FOUR CHARIOTS</span>
+        </span>
+      </a>
+
+      <nav class="nav" aria-label="Site navigation">
+        <a href="drop.html">Shop</a>
+        <a href="about.html">About</a>
+        <a href="index.html#drop">The Drop</a>
+        <a href="index.html#support">Support</a>
+      </nav>
+
+      <button class="menuBtn" aria-label="Toggle menu" onclick="document.querySelector('.nav').classList.toggle('open')">&#9776;</button>
+
+      <div class="ctaRow">
+        <a class="btn" href="drop.html">Shop</a>
+        <a class="btn primary" href="drop.html">Checkout</a>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="pageHero fade-up">
+      <h1>STEADFAST<br>IN MOTION.</h1>
+      <p class="intro">
+        FOUR CHARIOTS is a faith-driven brand built on one idea: that the words you carry shape the way you move through the world. We make minimal pieces that let scripture and conviction speak quietly through daily life.
+      </p>
+    </div>
+
+    <div class="aboutGrid">
+      <section class="aboutSection fade-up" style="transition-delay:.1s">
+        <h2>The Origin</h2>
+        <p>
+          The name comes from Zechariah 6 — four chariots sent out to the four winds, carrying purpose in every direction. That image stuck. Not loud. Not flashy. Just steady movement with intention.
+        </p>
+        <p>
+          We started with a simple question: what if the things you wore every day could anchor you instead of distract you? Not more noise. Less. A single word. A quiet truth. Something to carry with you.
+        </p>
+      </section>
+
+      <section class="aboutSection fade-up" style="transition-delay:.2s">
+        <h2>The Approach</h2>
+        <p>
+          Every piece starts with a word. One that carries weight. We pair it with clean, minimal design so the message does the talking. No clutter. No overdesign. Just enough to make someone ask what it means.
+        </p>
+        <p>
+          Each item is printed to order. That means less waste, more intention, and a product made specifically for you. We release one drop per month. Once it's gone, it's gone.
+        </p>
+      </section>
+    </div>
+
+    <section class="aboutSection fade-up" style="transition-delay:.1s">
+      <h2>What We Stand On</h2>
+      <div class="valuesGrid">
+        <div class="valueCard">
+          <div class="dot">N</div>
+          <h3>Discipline</h3>
+          <p>Every decision, from design to delivery, is made with restraint. We say less so the message lands harder.</p>
+        </div>
+        <div class="valueCard">
+          <div class="dot">E</div>
+          <h3>Intention</h3>
+          <p>Nothing is accidental. Every word is chosen, every piece is purposeful. We don't make things just to make things.</p>
+        </div>
+        <div class="valueCard">
+          <div class="dot">S</div>
+          <h3>Movement</h3>
+          <p>Truth isn't meant to sit still. Every piece is a conversation starter designed to go where you go. Into work, worship, and the ordinary in between.</p>
+        </div>
+        <div class="valueCard">
+          <div class="dot">W</div>
+          <h3>Faith</h3>
+          <p>Everything we make is rooted in scripture. Not as decoration, but as foundation. The word moves because it's alive.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="ctaBanner fade-up" style="transition-delay:.1s">
+      <div>
+        <h3>Join the Movement</h3>
+        <p>One exclusive drop per month. Once it's gone, it's gone.</p>
+      </div>
+      <a class="btn primary" href="drop.html">Shop the drop</a>
+    </div>
+
+    <footer>
+      <div>© <span id="year"></span> FOUR CHARIOTS</div>
+      <div class="links">
+        <a href="mailto:you@example.com">Contact</a>
+        <a href="YOUR_INSTAGRAM_URL_HERE" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    document.querySelectorAll(".nav a").forEach(a => {
+      a.addEventListener("click", () => {
+        document.querySelector(".nav").classList.remove("open");
+      });
+    });
+
+    // staggered fade-in
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add("visible");
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll(".fade-up").forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
