@@ -1,0 +1,1094 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Product | FOUR CHARIOTS</title>
+  <meta name="description" content="Faith-driven apparel designed to move truth through daily life." />
+  <meta name="robots" content="noindex, nofollow" />
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='15' fill='%230b1a2a'/><text x='16' y='22' text-anchor='middle' font-size='18' font-weight='900' font-family='system-ui,sans-serif' fill='%23ffffff'>4C</text></svg>" />
+  <link rel="icon" type="image/png" sizes="192x192" href="images/logo.png" />
+  <link rel="apple-touch-icon" href="images/logo.png" />
+
+  <style>
+    :root{
+      --bg:#ffffff;
+      --text:#0a0a0a;
+      --muted:#5f6368;
+      --line:#e6e6e6;
+      --soft:#f6f6f6;
+      --ink:#0b1a2a;
+      --btn:var(--ink);
+      --btnText:#ffffff;
+      --btnHover:#142a43;
+      --max:1200px;
+      --radius:0px;
+      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+    *{ box-sizing:border-box; }
+    a, button{ cursor:pointer; }
+    html{ scroll-behavior:smooth; }
+    html,body{ height:100%; }
+    [id]{ scroll-margin-top:24px; }
+    body{
+      margin:0;
+      font-family:var(--font);
+      color:var(--text);
+      background:var(--bg);
+      line-height:1.35;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    a{ color:inherit; text-decoration:none; }
+    img{ max-width:100%; display:block; }
+
+    .wrap{
+      max-width:var(--max);
+      margin:0 auto;
+      padding: 18px 18px 70px;
+    }
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding: 14px 0;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      text-transform:uppercase;
+      letter-spacing:-0.02em;
+      font-weight:900;
+    }
+    .brand .wordmark{
+      display:flex;
+      flex-direction:column;
+      line-height:1;
+    }
+    .brand .name{
+      font-size:14px;
+      letter-spacing:0.10em;
+    }
+    .mark{
+      height:130px;
+      width:auto;
+      display:block;
+    }
+
+    .nav{
+      display:flex;
+      gap:18px;
+      align-items:center;
+      font-size:13px;
+      color:var(--muted);
+    }
+    .nav a{
+      padding:8px 0;
+      border-bottom:2px solid transparent;
+    }
+    .nav a:hover{
+      color:var(--text);
+      border-bottom-color:var(--text);
+    }
+    .ctaRow{
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 12px 16px;
+      font-size:13px;
+      font-weight:800;
+      letter-spacing:0.06em;
+      text-transform:uppercase;
+      border:1px solid var(--text);
+      border-radius:var(--radius);
+      background:transparent;
+      color:var(--text);
+      transition: background .2s ease, color .2s ease, border-color .2s ease, transform .2s ease;
+      white-space:nowrap;
+    }
+    .btn:hover{
+      background:var(--text);
+      color:var(--btnText);
+      transform:scale(1.04);
+    }
+    .btn.primary{
+      background:var(--btn);
+      color:var(--btnText);
+      border-color:var(--btn);
+    }
+    .btn.primary:hover{
+      background:var(--bg);
+      color:var(--ink);
+      border-color:var(--ink);
+      transform:scale(1.04);
+    }
+    .btn:disabled{
+      opacity:.6;
+      cursor:not-allowed;
+    }
+    .btn.primary:disabled:hover{
+      background:var(--btn);
+      color:var(--btnText);
+      transform:none;
+    }
+
+    .divider{ border-top:1px solid var(--line); }
+
+    /* breadcrumb */
+    .breadcrumb{
+      padding:16px 0 0;
+      font-size:12px;
+      color:var(--muted);
+      display:flex;
+      gap:6px;
+      align-items:center;
+    }
+    .breadcrumb a:hover{ color:var(--text); }
+    .breadcrumb .sep{ opacity:.5; }
+
+    /* product layout */
+    .pdp{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:40px;
+      padding:24px 0 40px;
+      align-items:start;
+    }
+
+    /* image gallery */
+    .gallery{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+    .mainImage{
+      aspect-ratio:1;
+      background:var(--soft);
+      border:1px solid var(--line);
+      overflow:hidden;
+      position:relative;
+    }
+    .mainImage img{
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      transition: opacity .3s ease;
+    }
+    .thumbStrip{
+      display:flex;
+      gap:8px;
+      overflow-x:auto;
+    }
+    .thumbStrip::-webkit-scrollbar{ height:4px; }
+    .thumbStrip::-webkit-scrollbar-thumb{ background:var(--line); border-radius:2px; }
+    .thumb{
+      width:72px;
+      height:72px;
+      flex-shrink:0;
+      border:2px solid transparent;
+      background:var(--soft);
+      overflow:hidden;
+      cursor:pointer;
+      transition: border-color .2s ease;
+    }
+    .thumb.active{
+      border-color:var(--ink);
+    }
+    .thumb img{
+      width:100%;
+      height:100%;
+      object-fit:contain;
+    }
+
+    /* product info */
+    .pdpInfo{
+      display:flex;
+      flex-direction:column;
+      gap:0;
+    }
+    .pdpTitle{
+      margin:0;
+      font-size: clamp(24px, 3vw, 36px);
+      line-height:1;
+      letter-spacing:-0.03em;
+      text-transform:uppercase;
+      font-weight:950;
+      color:var(--ink);
+    }
+    .pdpPrice{
+      margin:12px 0 0;
+      font-size:22px;
+      font-weight:900;
+      color:var(--ink);
+      letter-spacing:-0.02em;
+    }
+    .pdpDesc{
+      margin:16px 0 0;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.6;
+      max-width:52ch;
+    }
+
+    /* option selectors */
+    .optionGroup{
+      margin-top:20px;
+    }
+    .optionLabel{
+      font-size:12px;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:0.10em;
+      color:var(--ink);
+      margin-bottom:8px;
+    }
+    .optionLabel .chosen{
+      font-weight:500;
+      color:var(--muted);
+      text-transform:none;
+      letter-spacing:0;
+      margin-left:6px;
+    }
+
+    /* color swatches */
+    .colorSwatches{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+    }
+    .swatch{
+      width:36px;
+      height:36px;
+      border-radius:50%;
+      border:2px solid transparent;
+      cursor:pointer;
+      position:relative;
+      transition: border-color .2s ease, transform .15s ease;
+      padding:0;
+      background:none;
+    }
+    .swatch:hover{ transform:scale(1.1); }
+    .swatch.active{ border-color:var(--ink); }
+    .swatch .inner{
+      width:100%;
+      height:100%;
+      border-radius:50%;
+      border:1px solid var(--line);
+    }
+
+    /* size pills */
+    .sizePills{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+    }
+    .sizePill{
+      padding:8px 16px;
+      border:1px solid var(--line);
+      background:var(--bg);
+      font-size:13px;
+      font-weight:700;
+      letter-spacing:0.04em;
+      cursor:pointer;
+      transition: background .2s ease, border-color .2s ease, color .2s ease;
+    }
+    .sizePill:hover{
+      border-color:var(--text);
+    }
+    .sizePill.active{
+      background:var(--ink);
+      color:var(--btnText);
+      border-color:var(--ink);
+    }
+    .sizePill.disabled{
+      opacity:.35;
+      cursor:not-allowed;
+    }
+    .sizePill.disabled:hover{
+      border-color:var(--line);
+    }
+
+    /* quantity */
+    .qtyRow{
+      display:flex;
+      align-items:center;
+      gap:0;
+      margin-top:20px;
+    }
+    .qtyLabel{
+      font-size:12px;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:0.10em;
+      color:var(--ink);
+      margin-right:14px;
+    }
+    .qtyBtn{
+      width:36px;
+      height:36px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      border:1px solid var(--line);
+      background:var(--bg);
+      font-size:16px;
+      font-weight:700;
+      color:var(--text);
+      cursor:pointer;
+      transition: background .15s ease;
+      user-select:none;
+      padding:0;
+    }
+    .qtyBtn:hover{ background:var(--soft); }
+    .qtyVal{
+      width:44px;
+      height:36px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+      font-size:14px;
+      font-weight:700;
+      color:var(--ink);
+    }
+
+    /* add to cart */
+    .addToCart{
+      margin-top:20px;
+      width:100%;
+      padding:16px;
+      font-size:14px;
+    }
+
+    /* extra info */
+    .pdpMeta{
+      margin-top:20px;
+      padding-top:16px;
+      border-top:1px solid var(--line);
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+    .metaItem{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      font-size:12px;
+      color:var(--muted);
+    }
+    .metaItem svg{
+      width:16px;
+      height:16px;
+      flex-shrink:0;
+      color:var(--ink);
+    }
+
+    /* payment icons */
+    .paymentIcons{
+      margin-top:12px;
+      display:flex;
+      gap:8px;
+      align-items:center;
+    }
+    .payIcon{
+      padding:4px 10px;
+      border:1px solid var(--line);
+      border-radius:4px;
+      font-size:11px;
+      font-weight:700;
+      color:var(--muted);
+      background:var(--bg);
+      letter-spacing:0.02em;
+    }
+
+    /* loading */
+    .spinner{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      padding:120px 0;
+      grid-column:1/-1;
+    }
+    .spinner::after{
+      content:"";
+      width:36px;
+      height:36px;
+      border:3px solid var(--line);
+      border-top-color:var(--ink);
+      border-radius:50%;
+      animation:spin .7s linear infinite;
+    }
+    @keyframes spin{ to{ transform:rotate(360deg); } }
+
+    /* size guide */
+    .sizeGuideLink{
+      font-size:12px;
+      color:var(--muted);
+      text-decoration:underline;
+      cursor:pointer;
+      margin-left:auto;
+      background:none;
+      border:none;
+      padding:0;
+    }
+    .sizeGuideLink:hover{ color:var(--text); }
+
+    footer{
+      margin-top: 34px;
+      padding-top: 18px;
+      border-top:1px solid var(--line);
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      align-items:center;
+      justify-content:space-between;
+      color:var(--muted);
+      font-size:13px;
+    }
+    footer .links{ display:flex; gap:14px; flex-wrap:wrap; }
+    footer .links a:hover{ color:var(--text); }
+
+    .menuBtn{
+      display:none;
+      background:none;
+      border:1px solid var(--line);
+      padding:8px 10px;
+      cursor:pointer;
+      font-size:18px;
+      line-height:1;
+      color:var(--text);
+    }
+
+    /* fade animation */
+    .fade-up{
+      opacity:0;
+      transform:translateY(24px);
+      transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1);
+    }
+    .fade-up.visible{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    @media (max-width: 980px){
+      .pdp{ grid-template-columns: 1fr; gap:24px; }
+      .menuBtn{ display:block; }
+      .nav{
+        display:none;
+        position:absolute;
+        top:100%;
+        left:0;
+        right:0;
+        background:var(--bg);
+        border-bottom:1px solid var(--line);
+        flex-direction:column;
+        padding:14px 18px;
+        gap:0;
+        z-index:100;
+      }
+      .nav.open{ display:flex; }
+      .nav a{
+        padding:12px 0;
+        border-bottom:1px solid var(--line);
+        width:100%;
+      }
+      .nav a:last-child{ border-bottom:none; }
+      .ctaRow{ display:none; }
+      .topbar{ position:relative; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap" id="top">
+    <div class="topbar">
+      <a class="brand" href="index.html">
+        <img class="mark" src="images/logo.png" alt="Four Chariots logo" />
+        <span class="wordmark">
+          <span class="name">FOUR CHARIOTS</span>
+        </span>
+      </a>
+
+      <nav class="nav" aria-label="Site navigation">
+        <a href="drop.html">Shop</a>
+        <a href="about.html">About</a>
+        <a href="index.html#drop">The Drop</a>
+        <a href="index.html#support">Support</a>
+      </nav>
+
+      <button class="menuBtn" aria-label="Toggle menu" onclick="document.querySelector('.nav').classList.toggle('open')">&#9776;</button>
+
+      <div class="ctaRow">
+        <a class="btn" href="drop.html">Shop</a>
+        <a class="btn primary" href="drop.html">Checkout</a>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span class="sep">/</span>
+      <a href="drop.html">Shop</a>
+      <span class="sep">/</span>
+      <span id="breadcrumbTitle">Loading...</span>
+    </div>
+
+    <div id="pdpWrap">
+      <div class="spinner" id="pdpSpinner"></div>
+    </div>
+
+    <footer>
+      <div>&copy; <span id="year"></span> FOUR CHARIOTS</div>
+      <div class="links">
+        <a href="mailto:you@example.com">Contact</a>
+        <a href="YOUR_INSTAGRAM_URL_HERE" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    document.querySelectorAll(".nav a").forEach(a => {
+      a.addEventListener("click", () => {
+        document.querySelector(".nav").classList.remove("open");
+      });
+    });
+
+    const SUPABASE_URL  = "https://txeemijqgqomfclezonf.supabase.co";
+    const SUPABASE_ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR4ZWVtaWpxZ3FvbWZjbGV6b25mIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA3NjkzMjgsImV4cCI6MjA4NjM0NTMyOH0.boeu2dy3J-L09LRKQrRWPSvTPevynff5ZVwpeaT8oYM";
+
+    // State
+    let product = null;
+    let selectedColor = null;
+    let selectedSize = null;
+    let quantity = 1;
+    let currentImageIndex = 0;
+
+    // Get product ID from URL
+    const params = new URLSearchParams(window.location.search);
+    const productId = params.get("id");
+
+    if (!productId) {
+      document.getElementById("pdpWrap").innerHTML = '<p style="text-align:center;padding:60px 0;color:var(--muted);">No product specified. <a href="drop.html" style="text-decoration:underline;">Back to shop</a></p>';
+    } else {
+      loadProduct(productId);
+    }
+
+    async function loadProduct(id) {
+      try {
+        // Try single-product endpoint first
+        let res = await fetch(`${SUPABASE_URL}/functions/v1/printify?id=${encodeURIComponent(id)}`, {
+          headers: {
+            "Authorization": `Bearer ${SUPABASE_ANON}`,
+            "apikey": SUPABASE_ANON
+          }
+        });
+
+        let data = await res.json();
+
+        if (res.ok && data.product) {
+          product = data.product;
+        } else {
+          // Fallback: fetch full list and find by ID
+          console.log("Single product endpoint unavailable, falling back to list...");
+          res = await fetch(`${SUPABASE_URL}/functions/v1/printify`, {
+            headers: {
+              "Authorization": `Bearer ${SUPABASE_ANON}`,
+              "apikey": SUPABASE_ANON
+            }
+          });
+
+          data = await res.json();
+          if (!res.ok || !data.products) {
+            throw new Error("Could not load products");
+          }
+
+          const found = data.products.find(p => p.id === id);
+          if (!found) {
+            throw new Error("Product not found");
+          }
+
+          // List endpoint returns images as strings, normalize to object format
+          product = {
+            ...found,
+            images: (found.images || []).map(img =>
+              typeof img === "string" ? { src: img, variant_ids: [], is_default: false } : img
+            ),
+            options: found.options || [],
+          };
+        }
+
+        document.title = `${product.title} | FOUR CHARIOTS`;
+        document.getElementById("breadcrumbTitle").textContent = product.title;
+        renderProduct();
+      } catch (err) {
+        console.error("Failed to load product:", err);
+        document.getElementById("pdpWrap").innerHTML = '<p style="text-align:center;padding:60px 0;color:var(--muted);">Could not load product. <a href="drop.html" style="text-decoration:underline;">Back to shop</a></p>';
+      }
+    }
+
+    function escapeHtml(str) {
+      return String(str)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function stripHtml(html) {
+      const tmp = document.createElement("div");
+      tmp.innerHTML = html;
+      return (tmp.textContent || tmp.innerText || "").replace(/\s+/g, " ").trim();
+    }
+
+    function formatPrice(cents) {
+      return "$" + (Number(cents || 0) / 100).toFixed(2);
+    }
+
+    // Parse Printify variant options into color/size maps
+    function parseOptions() {
+      const colors = new Map();
+      const sizes = new Map();
+      const enabled = product.variants.filter(v => v.is_enabled);
+
+      // Printify options array tells us which option index is color vs size
+      const optionDefs = product.options || [];
+
+      enabled.forEach(v => {
+        const title = v.title || "";
+        // Printify variant titles are typically "Size / Color" or "Color / Size"
+        // We also have v.options which maps option type to value index
+
+        // Parse from title as fallback
+        const parts = title.split("/").map(s => s.trim());
+
+        if (parts.length >= 2) {
+          // Try to figure out which is color and which is size
+          // Common sizes: XS, S, M, L, XL, 2XL, 3XL, etc.
+          const sizePattern = /^(XXS|XS|S|M|L|XL|2XL|3XL|4XL|5XL|ONE SIZE|\d+)$/i;
+
+          let color, size;
+          if (sizePattern.test(parts[0])) {
+            size = parts[0];
+            color = parts.slice(1).join(" / ");
+          } else if (sizePattern.test(parts[parts.length - 1])) {
+            size = parts[parts.length - 1];
+            color = parts.slice(0, -1).join(" / ");
+          } else {
+            // Default: first part is color, second is size
+            color = parts[0];
+            size = parts[1];
+          }
+
+          if (color && !colors.has(color)) {
+            colors.set(color, []);
+          }
+          if (color) {
+            colors.get(color).push(v);
+          }
+
+          if (size && !sizes.has(size)) {
+            sizes.set(size, []);
+          }
+          if (size) {
+            sizes.get(size).push(v);
+          }
+        } else {
+          // Single value variant
+          const val = parts[0] || "Default";
+          if (!sizes.has(val)) sizes.set(val, []);
+          sizes.get(val).push(v);
+        }
+      });
+
+      return { colors, sizes };
+    }
+
+    // Approximate color name to hex for swatches
+    function colorNameToHex(name) {
+      const map = {
+        "black": "#1a1a1a",
+        "white": "#ffffff",
+        "navy": "#1b2a4a",
+        "red": "#c0392b",
+        "blue": "#2c5f8a",
+        "royal blue": "#2855a0",
+        "green": "#2d6a4f",
+        "forest green": "#2d5a3f",
+        "olive": "#6b7c4e",
+        "army": "#5a5c3c",
+        "grey": "#888888",
+        "gray": "#888888",
+        "dark grey": "#555555",
+        "dark gray": "#555555",
+        "light grey": "#bbbbbb",
+        "light gray": "#bbbbbb",
+        "heather gray": "#9a9a9a",
+        "heather grey": "#9a9a9a",
+        "charcoal": "#444444",
+        "dark heather": "#555555",
+        "maroon": "#6b2737",
+        "burgundy": "#722f37",
+        "pink": "#e8a0b4",
+        "orange": "#d4722a",
+        "yellow": "#e3c53a",
+        "gold": "#c5a32e",
+        "purple": "#6c3d7a",
+        "tan": "#c5b69e",
+        "sand": "#c2b280",
+        "brown": "#6b4226",
+        "cream": "#f5f0e1",
+        "natural": "#f0e8d8",
+        "khaki": "#bfae8e",
+        "berry": "#8e2955",
+        "coral": "#e86850",
+        "mint": "#7ec8a0",
+        "teal": "#2a7a7a",
+        "slate": "#607080",
+      };
+      const lower = (name || "").toLowerCase().trim();
+      for (const [key, hex] of Object.entries(map)) {
+        if (lower.includes(key)) return hex;
+      }
+      // Default gray for unknown
+      return "#aaaaaa";
+    }
+
+    function getFilteredImages() {
+      if (!product) return [];
+      const images = product.images || [];
+      if (!selectedColor || images.length === 0) return images;
+
+      // Find variant IDs for the selected color
+      const { colors } = parseOptions();
+      const colorVariants = colors.get(selectedColor) || [];
+      const variantIds = colorVariants.map(v => v.id);
+
+      if (variantIds.length === 0) return images;
+
+      // Filter images that match the selected color variants
+      const filtered = images.filter(img => {
+        if (!img.variant_ids || img.variant_ids.length === 0) return true;
+        return img.variant_ids.some(vid => variantIds.includes(vid));
+      });
+
+      return filtered.length > 0 ? filtered : images;
+    }
+
+    function renderProduct() {
+      const { colors, sizes } = parseOptions();
+      const enabled = product.variants.filter(v => v.is_enabled);
+      const lowestPrice = enabled.length ? Math.min(...enabled.map(v => Number(v.price || 0))) : 0;
+
+      // Set defaults
+      if (!selectedColor && colors.size > 0) {
+        selectedColor = colors.keys().next().value;
+      }
+      if (!selectedSize && sizes.size > 0) {
+        selectedSize = sizes.keys().next().value;
+      }
+
+      const images = getFilteredImages();
+      currentImageIndex = 0;
+
+      const wrap = document.getElementById("pdpWrap");
+      wrap.innerHTML = `
+        <div class="pdp">
+          <div class="gallery fade-up" id="gallery">
+            <div class="mainImage">
+              <img id="mainImg" src="${images[0]?.src || ''}" alt="${escapeHtml(product.title)}" />
+            </div>
+            <div class="thumbStrip" id="thumbStrip">
+              ${images.map((img, i) => `
+                <div class="thumb ${i === 0 ? 'active' : ''}" data-index="${i}">
+                  <img src="${escapeHtml(img.src)}" alt="View ${i + 1}" loading="lazy" />
+                </div>
+              `).join('')}
+            </div>
+          </div>
+
+          <div class="pdpInfo fade-up" style="transition-delay:.1s">
+            <h1 class="pdpTitle">${escapeHtml(product.title)}</h1>
+            <div class="pdpPrice" id="pdpPrice">${formatPrice(lowestPrice)}</div>
+            <p class="pdpDesc">${escapeHtml(stripHtml(product.description || ''))}</p>
+
+            ${colors.size > 1 ? `
+              <div class="optionGroup" id="colorGroup">
+                <div class="optionLabel">Color<span class="chosen" id="colorChosen">${escapeHtml(selectedColor || '')}</span></div>
+                <div class="colorSwatches" id="colorSwatches">
+                  ${Array.from(colors.keys()).map(c => `
+                    <button class="swatch ${c === selectedColor ? 'active' : ''}" data-color="${escapeHtml(c)}" title="${escapeHtml(c)}">
+                      <span class="inner" style="background:${colorNameToHex(c)}"></span>
+                    </button>
+                  `).join('')}
+                </div>
+              </div>
+            ` : ''}
+
+            ${sizes.size > 1 ? `
+              <div class="optionGroup" id="sizeGroup">
+                <div class="optionLabel" style="display:flex;align-items:center;">
+                  Size<span class="chosen" id="sizeChosen">${escapeHtml(selectedSize || '')}</span>
+                  <button class="sizeGuideLink" onclick="alert('Size guide coming soon.')">Size guide</button>
+                </div>
+                <div class="sizePills" id="sizePills">
+                  ${Array.from(sizes.keys()).map(s => {
+                    const available = isVariantAvailable(selectedColor, s);
+                    return `<button class="sizePill ${s === selectedSize ? 'active' : ''} ${!available ? 'disabled' : ''}" data-size="${escapeHtml(s)}" ${!available ? 'disabled' : ''}>${escapeHtml(s)}</button>`;
+                  }).join('')}
+                </div>
+              </div>
+            ` : ''}
+
+            <div class="qtyRow">
+              <span class="qtyLabel">Qty</span>
+              <button class="qtyBtn" id="qtyMinus" aria-label="Decrease quantity">&minus;</button>
+              <span class="qtyVal" id="qtyVal">1</span>
+              <button class="qtyBtn" id="qtyPlus" aria-label="Increase quantity">+</button>
+            </div>
+
+            <button class="btn primary addToCart" id="addToCartBtn">
+              Add to cart
+            </button>
+
+            <div class="pdpMeta">
+              <div class="metaItem">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 17H5a2 2 0 01-2-2V5a2 2 0 012-2h14a2 2 0 012 2v10a2 2 0 01-2 2h-4m-6 0l3 4 3-4"/></svg>
+                <span>Printed to order, just for you</span>
+              </div>
+              <div class="metaItem">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>Ships worldwide via Printify</span>
+              </div>
+              <div class="metaItem">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><path d="M1 10h22"/></svg>
+                <span>Secure checkout via Stripe</span>
+              </div>
+            </div>
+
+            <div class="paymentIcons">
+              <span class="payIcon">VISA</span>
+              <span class="payIcon">MC</span>
+              <span class="payIcon">AMEX</span>
+              <span class="payIcon">APPLE PAY</span>
+            </div>
+          </div>
+        </div>
+      `;
+
+      // Bind events
+      bindGalleryEvents(images);
+      bindColorEvents();
+      bindSizeEvents();
+      bindQuantityEvents();
+      bindAddToCart();
+
+      // Trigger fade-in
+      requestAnimationFrame(() => {
+        wrap.querySelectorAll(".fade-up").forEach(el => el.classList.add("visible"));
+      });
+    }
+
+    function isVariantAvailable(color, size) {
+      if (!product) return false;
+      const enabled = product.variants.filter(v => v.is_enabled);
+      return enabled.some(v => {
+        const title = v.title || "";
+        const hasColor = !color || title.toLowerCase().includes(color.toLowerCase());
+        const hasSize = !size || title.toLowerCase().includes(size.toLowerCase());
+        return hasColor && hasSize;
+      });
+    }
+
+    function findVariant(color, size) {
+      if (!product) return null;
+      const enabled = product.variants.filter(v => v.is_enabled);
+      return enabled.find(v => {
+        const title = (v.title || "").toLowerCase();
+        const matchColor = !color || title.includes(color.toLowerCase());
+        const matchSize = !size || title.includes(size.toLowerCase());
+        return matchColor && matchSize;
+      });
+    }
+
+    function updatePrice() {
+      const variant = findVariant(selectedColor, selectedSize);
+      const priceEl = document.getElementById("pdpPrice");
+      if (variant && priceEl) {
+        priceEl.textContent = formatPrice(variant.price);
+      }
+    }
+
+    function bindGalleryEvents(images) {
+      const thumbs = document.querySelectorAll(".thumb");
+      const mainImg = document.getElementById("mainImg");
+
+      thumbs.forEach(thumb => {
+        thumb.addEventListener("click", () => {
+          const idx = parseInt(thumb.dataset.index);
+          currentImageIndex = idx;
+          mainImg.src = images[idx].src;
+          thumbs.forEach(t => t.classList.remove("active"));
+          thumb.classList.add("active");
+        });
+      });
+    }
+
+    function bindColorEvents() {
+      const swatches = document.querySelectorAll(".swatch");
+      swatches.forEach(sw => {
+        sw.addEventListener("click", () => {
+          selectedColor = sw.dataset.color;
+          swatches.forEach(s => s.classList.remove("active"));
+          sw.classList.add("active");
+
+          const chosen = document.getElementById("colorChosen");
+          if (chosen) chosen.textContent = selectedColor;
+
+          // Update images for selected color
+          const images = getFilteredImages();
+          currentImageIndex = 0;
+          const mainImg = document.getElementById("mainImg");
+          if (mainImg && images[0]) mainImg.src = images[0].src;
+
+          // Rebuild thumb strip
+          const strip = document.getElementById("thumbStrip");
+          if (strip) {
+            strip.innerHTML = images.map((img, i) => `
+              <div class="thumb ${i === 0 ? 'active' : ''}" data-index="${i}">
+                <img src="${escapeHtml(img.src)}" alt="View ${i + 1}" loading="lazy" />
+              </div>
+            `).join('');
+            bindGalleryEvents(images);
+          }
+
+          // Update size availability
+          updateSizeAvailability();
+          updatePrice();
+        });
+      });
+    }
+
+    function updateSizeAvailability() {
+      const pills = document.querySelectorAll(".sizePill");
+      pills.forEach(pill => {
+        const size = pill.dataset.size;
+        const available = isVariantAvailable(selectedColor, size);
+        pill.classList.toggle("disabled", !available);
+        pill.disabled = !available;
+
+        if (!available && pill.classList.contains("active")) {
+          pill.classList.remove("active");
+          selectedSize = null;
+          // Pick first available
+          pills.forEach(p => {
+            if (!p.disabled && !selectedSize) {
+              selectedSize = p.dataset.size;
+              p.classList.add("active");
+            }
+          });
+          const chosen = document.getElementById("sizeChosen");
+          if (chosen) chosen.textContent = selectedSize || "";
+        }
+      });
+    }
+
+    function bindSizeEvents() {
+      const pills = document.querySelectorAll(".sizePill");
+      pills.forEach(pill => {
+        pill.addEventListener("click", () => {
+          if (pill.disabled) return;
+          selectedSize = pill.dataset.size;
+          pills.forEach(p => p.classList.remove("active"));
+          pill.classList.add("active");
+
+          const chosen = document.getElementById("sizeChosen");
+          if (chosen) chosen.textContent = selectedSize;
+
+          updatePrice();
+        });
+      });
+    }
+
+    function bindQuantityEvents() {
+      const minus = document.getElementById("qtyMinus");
+      const plus = document.getElementById("qtyPlus");
+      const val = document.getElementById("qtyVal");
+
+      minus.addEventListener("click", () => {
+        if (quantity > 1) {
+          quantity--;
+          val.textContent = quantity;
+        }
+      });
+
+      plus.addEventListener("click", () => {
+        if (quantity < 10) {
+          quantity++;
+          val.textContent = quantity;
+        }
+      });
+    }
+
+    function bindAddToCart() {
+      const btn = document.getElementById("addToCartBtn");
+      btn.addEventListener("click", async () => {
+        const variant = findVariant(selectedColor, selectedSize);
+        if (!variant) {
+          alert("Please select available options.");
+          return;
+        }
+
+        btn.disabled = true;
+        btn.textContent = "Opening checkout...";
+
+        try {
+          const res = await fetch(`${SUPABASE_URL}/functions/v1/create_checkout`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization": `Bearer ${SUPABASE_ANON}`,
+              "apikey": SUPABASE_ANON
+            },
+            body: JSON.stringify({
+              product_id: product.id,
+              variant_id: Number(variant.id),
+              quantity: quantity
+            })
+          });
+
+          const data = await res.json();
+
+          if (!res.ok || !data.url) {
+            console.error("Checkout error:", data);
+            alert("Checkout failed. Please try again.");
+            btn.disabled = false;
+            btn.textContent = "Add to cart";
+            return;
+          }
+
+          window.location.href = data.url;
+        } catch (err) {
+          console.error("Checkout error:", err);
+          alert("Checkout error. Please try again.");
+          btn.disabled = false;
+          btn.textContent = "Add to cart";
+        }
+      });
+    }
+  </script>
+</body>
+</html>
