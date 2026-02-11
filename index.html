@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>FOUR CHARIOTS</title>
   <meta name="description" content="Built to last. Made for daily discipline." />
+
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='15' fill='%230b1a2a'/><text x='16' y='22' text-anchor='middle' font-size='18' font-weight='900' font-family='system-ui,sans-serif' fill='%23ffffff'>4C</text></svg>" />
   <link rel="icon" type="image/png" sizes="192x192" href="images/logo.png" />
   <link rel="apple-touch-icon" href="images/logo.png" />
@@ -20,15 +21,14 @@
       --muted:#5f6368;
       --line:#e6e6e6;
       --soft:#f6f6f6;
-      --ink:#0b1a2a; /* deep blue-black */
+      --ink:#0b1a2a;
       --btn:var(--ink);
       --btnText:#ffffff;
       --btnHover:#142a43;
       --max:1200px;
-      --radius:0px; /* hard edges on purpose */
+      --radius:0px;
       --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
     }
-
     *{ box-sizing:border-box; }
     html,body{ height:100%; }
     body{
@@ -40,17 +40,13 @@
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
     }
-
     a{ color:inherit; text-decoration:none; }
     img{ max-width:100%; display:block; }
-
     .wrap{
       max-width:var(--max);
       margin:0 auto;
       padding: 18px 18px 70px;
     }
-
-    /* Top bar */
     .topbar{
       display:flex;
       align-items:center;
@@ -58,7 +54,6 @@
       gap:16px;
       padding: 14px 0;
     }
-
     .brand{
       display:flex;
       align-items:center;
@@ -67,7 +62,6 @@
       letter-spacing:-0.02em;
       font-weight:900;
     }
-
     .brand .wordmark{
       display:flex;
       flex-direction:column;
@@ -84,13 +78,11 @@
       color:var(--muted);
       font-weight:700;
     }
-
     .mark{
       height:100px;
       width:auto;
       display:block;
     }
-
     .nav{
       display:flex;
       gap:18px;
@@ -106,13 +98,11 @@
       color:var(--text);
       border-bottom-color:var(--text);
     }
-
     .ctaRow{
       display:flex;
       gap:10px;
       align-items:center;
     }
-
     .btn{
       display:inline-flex;
       align-items:center;
@@ -128,12 +118,12 @@
       color:var(--text);
       transition: background .12s ease, color .12s ease, border-color .12s ease;
       white-space:nowrap;
+      cursor:pointer;
     }
     .btn:hover{
       background:var(--text);
       color:var(--btnText);
     }
-
     .btn.primary{
       background:var(--btn);
       color:var(--btnText);
@@ -143,10 +133,12 @@
       background:var(--btnHover);
       border-color:var(--btnHover);
     }
-
+    .btn:disabled{
+      opacity:.6;
+      cursor:not-allowed;
+    }
     .divider{ border-top:1px solid var(--line); }
 
-    /* Hero */
     .hero{
       display:grid;
       grid-template-columns: 1.15fr .85fr;
@@ -176,7 +168,6 @@
       max-width:62ch;
       color:var(--muted);
     }
-
     .heroCard{
       border:1px solid var(--line);
       padding: 18px;
@@ -206,7 +197,6 @@
       line-height:1.4;
     }
 
-    /* Product grid */
     .sectionTitle{
       display:flex;
       align-items:baseline;
@@ -234,7 +224,6 @@
       gap: 18px;
       padding-top: 12px;
     }
-
     .product{
       grid-column: span 6;
       border:1px solid var(--line);
@@ -254,7 +243,6 @@
       height:100%;
       object-fit:cover;
     }
-
     .product .body{
       padding: 16px;
       display:flex;
@@ -262,7 +250,6 @@
       gap:10px;
       min-height: 170px;
     }
-
     .product .name{
       margin:0;
       font-weight:950;
@@ -278,7 +265,6 @@
       font-size:13px;
       max-width:62ch;
     }
-
     .product .meta{
       display:flex;
       gap:12px;
@@ -289,7 +275,6 @@
       letter-spacing:0.10em;
       margin-top:2px;
     }
-
     .product .bottom{
       margin-top:auto;
       display:flex;
@@ -299,7 +284,6 @@
       border-top:1px solid var(--line);
       padding: 14px 16px;
     }
-
     .price{
       font-weight:950;
       letter-spacing:-0.02em;
@@ -311,34 +295,23 @@
       margin-top:2px;
     }
 
-    /* Feature band */
-    .band{
-      margin-top: 24px;
-      border-top:1px solid var(--line);
-      border-bottom:1px solid var(--line);
-      padding: 18px 0;
-      display:grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 18px;
+    .controls{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      flex-wrap:wrap;
+      margin-top:8px;
     }
-    .bandItem{
-      grid-column: span 4;
-      padding: 6px 0;
-    }
-    .bandItem .t{
-      font-weight:950;
-      text-transform:uppercase;
-      letter-spacing:0.12em;
+    select, input[type="number"]{
+      border:1px solid var(--line);
+      background:#fff;
+      padding:10px 10px;
+      border-radius:0;
+      font:inherit;
       font-size:13px;
-      margin:0 0 6px;
-      color:var(--ink);
+      min-width: 170px;
     }
-    .bandItem .d{
-      margin:0;
-      color:var(--muted);
-      font-size:13px;
-      line-height:1.45;
-    }
+    input[type="number"]{ width: 90px; min-width: 90px; }
 
     footer{
       margin-top: 34px;
@@ -355,10 +328,17 @@
     footer .links{ display:flex; gap:14px; flex-wrap:wrap; }
     footer .links a:hover{ color:var(--text); }
 
+    .status{
+      margin-top:10px;
+      font-size:13px;
+      color:var(--muted);
+    }
+    .status.error{ color:#b00020; }
+    .status.ok{ color:#0b6b2f; }
+
     @media (max-width: 980px){
       .hero{ grid-template-columns: 1fr; align-items:start; }
       .product{ grid-column: span 12; }
-      .bandItem{ grid-column: span 12; }
       .nav{ display:none; }
       .brand .tag{ display:none; }
     }
@@ -370,7 +350,6 @@
     <div class="topbar">
       <a class="brand" href="#">
         <img class="mark" src="images/logo.png" alt="Four Chariots logo" />
-
         <span class="wordmark">
           <span class="name">FOUR CHARIOTS</span>
           <span class="tag">BUILT TO LAST</span>
@@ -385,7 +364,7 @@
 
       <div class="ctaRow">
         <a class="btn" href="#shop">Shop</a>
-        <a class="btn primary" href="https://four-chariots.printify.me" target="_blank" rel="noopener">Checkout</a>
+        <a class="btn primary" href="#shop">Checkout</a>
       </div>
     </div>
 
@@ -398,6 +377,7 @@
         <p class="subhead">
           FOUR CHARIOTS makes clean pieces for daily life. Wear it. See it. Hold it. Simple words that keep you steady.
         </p>
+        <p class="status" id="status"></p>
       </div>
 
       <aside class="heroCard" id="shipping">
@@ -421,7 +401,7 @@
           <a class="btn primary" href="#shop">Shop the drop</a>
         </div>
         <p class="note">
-          Launch lean: one tee, one print, one mug. Expand with proof, not noise.
+          Orders are paid on Stripe and fulfilled by Printify.
         </p>
       </aside>
     </section>
@@ -433,121 +413,13 @@
       <p>Wear it. See it. Hold it.</p>
     </div>
 
-    <section class="grid" aria-label="Products">
-      <!-- PRODUCT 1: Tee -->
-      <article class="product">
-        <div class="media">
-          <img src="YOUR_PRODUCT_IMAGE_URL_1_HERE" alt="Four Chariots Heavy Cotton Tee mockup" />
-        </div>
-        <div class="body">
-          <h3 class="name">THE STANDARD • HEAVY COTTON TEE</h3>
-          <p class="desc">Clean type. Strong silhouette. A daily uniform piece that wears well and reads clear.</p>
-          <div class="meta">
-            <span>Gildan 5000</span>
-            <span>Unisex fit</span>
-            <span>Minimal front mark</span>
-          </div>
-        </div>
-        <div class="bottom">
-          <div>
-            <div class="price">$00</div>
-            <div class="fine">Sizes and shipping shown at checkout</div>
-          </div>
-          <a class="btn primary" href="YOUR_PRINTIFY_PRODUCT_URL_1_HERE" target="_blank" rel="noopener">Buy</a>
-        </div>
-      </article>
+    <section class="grid" id="grid" aria-label="Products"></section>
 
-      <!-- PRODUCT 2: Poster -->
-      <article class="product">
-        <div class="media">
-          <img src="YOUR_PRODUCT_IMAGE_URL_2_HERE" alt="Four Chariots Matte Vertical Poster mockup" />
-        </div>
-        <div class="body">
-          <h3 class="name">NOISE OFF • MATTE VERTICAL POSTER</h3>
-          <p class="desc">High contrast. Clean margins. Designed to live where decisions get made.</p>
-          <div class="meta">
-            <span>Multiple sizes</span>
-            <span>Matte finish</span>
-            <span>Minimal typography</span>
-          </div>
-        </div>
-        <div class="bottom">
-          <div>
-            <div class="price">$00</div>
-            <div class="fine">Price varies by size</div>
-          </div>
-          <a class="btn primary" href="YOUR_PRINTIFY_PRODUCT_URL_2_HERE" target="_blank" rel="noopener">Buy</a>
-        </div>
-      </article>
-
-      <!-- PRODUCT 3: Mug -->
-      <article class="product">
-        <div class="media">
-          <img src="YOUR_PRODUCT_IMAGE_URL_3_HERE" alt="Four Chariots Ceramic Mug mockup" />
-        </div>
-        <div class="body">
-          <h3 class="name">STEADY • CERAMIC MUG</h3>
-          <p class="desc">One word. One mark. A daily object that anchors the routine.</p>
-          <div class="meta">
-            <span>11oz / 15oz</span>
-            <span>Ceramic</span>
-            <span>Minimal print</span>
-          </div>
-        </div>
-        <div class="bottom">
-          <div>
-            <div class="price">$00</div>
-            <div class="fine">Shipping shown at checkout</div>
-          </div>
-          <a class="btn primary" href="YOUR_PRINTIFY_PRODUCT_URL_3_HERE" target="_blank" rel="noopener">Buy</a>
-        </div>
-      </article>
-
-      <!-- OPTIONAL: Stickers as add-on -->
-      <article class="product">
-        <div class="media">
-          <img src="YOUR_PRODUCT_IMAGE_URL_4_HERE" alt="Four Chariots Kiss-Cut Sticker mockup" />
-        </div>
-        <div class="body">
-          <h3 class="name">FOUR CHARIOTS MARK • STICKER</h3>
-          <p class="desc">Clean mark only. Laptop, journal, water bottle. Add-on item, not the hero.</p>
-          <div class="meta">
-            <span>Multiple sizes</span>
-            <span>Matte or gloss</span>
-            <span>Add-on</span>
-          </div>
-        </div>
-        <div class="bottom">
-          <div>
-            <div class="price">$00</div>
-            <div class="fine">Low-cost add-on</div>
-          </div>
-          <a class="btn primary" href="YOUR_PRINTify_PRODUCT_URL_4_HERE" target="_blank" rel="noopener">Buy</a>
-        </div>
-      </article>
-    </section>
-
-    <section class="band" aria-label="Highlights">
-      <div class="bandItem">
-        <p class="t">Clear signal</p>
-        <p class="d">Short phrases. Clean design. Nothing performative.</p>
-      </div>
-      <div class="bandItem">
-        <p class="t">Proven formats</p>
-        <p class="d">Bestseller blanks and print formats that hold up in real life.</p>
-      </div>
-      <div class="bandItem" id="support">
-        <p class="t">Support</p>
-        <p class="d">Questions? Add your email below. Print and shipping issues are handled by partners.</p>
-      </div>
-    </section>
-
-    <footer>
+    <footer id="support">
       <div>© <span id="year"></span> FOUR CHARIOTS</div>
       <div class="links">
         <a href="mailto:you@example.com">Contact</a>
         <a href="YOUR_INSTAGRAM_URL_HERE" target="_blank" rel="noopener">Instagram</a>
-        <a href="https://four-chariots.printify.me" target="_blank" rel="noopener">Store</a>
       </div>
     </footer>
   </div>
@@ -555,64 +427,172 @@
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // ── Supabase + Printify config ──────────────────────────────
-    // REPLACE these with your real values from Supabase Settings > API
-    const SUPABASE_URL   = "https://txeemijqgqomfclezonf.supabase.co";
-    const SUPABASE_ANON  = "sb_publishable_0EVIoewalOJkV1BbpoU5KA_K_XkTL9x";
+    // ---------------------------
+    // REQUIRED: replace these
+    // ---------------------------
+    const SUPABASE_URL  = "https://txeemijqgqomfclezonf.supabase.co";
+
+    // Use the REAL anon key from Supabase Project Settings -> API (starts with eyJ...)
+    const SUPABASE_ANON = "PASTE_YOUR_SUPABASE_ANON_KEY_HERE";
+
+    // Edge function routes
+    const PRINTIFY_PRODUCTS_FN = `${SUPABASE_URL}/functions/v1/printify`;
+    const CREATE_CHECKOUT_FN   = `${SUPABASE_URL}/functions/v1/create_checkout`;
+
+    // IMPORTANT:
+    // Stripe needs a price per product. Map Printify product id -> Stripe price id.
+    // You can find Printify product id in the products payload returned by your function.
+    // Example: "26772248": "price_123..."
+    const PRICE_MAP = {
+      // "PRINTIFY_PRODUCT_ID": "price_..."
+      // "26772248": "price_1SzeEnL7gUbRzdPiJ7s7CWtJ"
+    };
+
+    function setStatus(msg, kind) {
+      const el = document.getElementById("status");
+      el.textContent = msg || "";
+      el.className = "status" + (kind ? (" " + kind) : "");
+    }
+
+    function money(cents) {
+      const n = Number(cents || 0) / 100;
+      return "$" + n.toFixed(2);
+    }
+
+    async function apiGet(url) {
+      const res = await fetch(url, {
+        headers: {
+          "Authorization": `Bearer ${SUPABASE_ANON}`,
+          "apikey": SUPABASE_ANON
+        }
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(data?.error || `HTTP ${res.status}`);
+      return data;
+    }
+
+    async function apiPost(url, body) {
+      const res = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${SUPABASE_ANON}`,
+          "apikey": SUPABASE_ANON
+        },
+        body: JSON.stringify(body)
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(data?.error || data?.message || `HTTP ${res.status}`);
+      return data;
+    }
+
+    function buildCard(p) {
+      const img = (p.images && p.images[0]) ? p.images[0] : "";
+      const enabled = (p.variants || []).filter(v => v.is_enabled && v.is_available);
+
+      const lowest = enabled.length ? Math.min(...enabled.map(v => Number(v.price || 0))) : 0;
+
+      const stripePriceId = PRICE_MAP[String(p.id)] || "";
+
+      const card = document.createElement("article");
+      card.className = "product";
+
+      card.innerHTML = `
+        <div class="media">
+          <img src="${img}" alt="${(p.title || "Product")} mockup" loading="lazy" />
+        </div>
+
+        <div class="body">
+          <h3 class="name">${p.title || "Untitled product"}</h3>
+          <p class="desc">${p.description || ""}</p>
+
+          <div class="meta">
+            ${(p.tags || []).slice(0, 3).map(t => `<span>${t}</span>`).join("")}
+          </div>
+
+          <div class="controls">
+            <label>
+              <select class="variantSelect">
+                ${enabled.map(v => `<option value="${v.id}" data-price="${v.price}">${v.title}</option>`).join("")}
+              </select>
+            </label>
+
+            <label>
+              <input class="qty" type="number" min="1" max="10" value="1" />
+            </label>
+          </div>
+
+          <div class="status" style="margin-top:6px;">
+            ${stripePriceId ? "" : "Add Stripe price_id in PRICE_MAP for this product id: " + p.id}
+          </div>
+        </div>
+
+        <div class="bottom">
+          <div>
+            <div class="price">${enabled.length ? ("From " + money(lowest)) : "Unavailable"}</div>
+            <div class="fine">Shipping shown at Stripe checkout</div>
+          </div>
+          <button class="btn primary buyBtn" ${(!enabled.length || !stripePriceId) ? "disabled" : ""}>
+            Buy
+          </button>
+        </div>
+      `;
+
+      const select = card.querySelector(".variantSelect");
+      const qtyInput = card.querySelector(".qty");
+      const buyBtn = card.querySelector(".buyBtn");
+
+      buyBtn.addEventListener("click", async () => {
+        const variantId = Number(select.value);
+        const quantity = Math.max(1, Math.min(10, Number(qtyInput.value || 1)));
+
+        buyBtn.disabled = true;
+        const prev = buyBtn.textContent;
+        buyBtn.textContent = "Loading...";
+
+        try {
+          // NOTE:
+          // This assumes your create_checkout function accepts:
+          // { variant_id, quantity, stripe_price_id }
+          const out = await apiPost(CREATE_CHECKOUT_FN, {
+            variant_id: variantId,
+            quantity,
+            stripe_price_id: stripePriceId
+          });
+
+          if (!out.url) throw new Error("No checkout URL returned");
+          window.location.href = out.url;
+        } catch (e) {
+          console.error(e);
+          alert("Checkout failed. Open console for details.");
+          buyBtn.disabled = false;
+          buyBtn.textContent = prev;
+        }
+      });
+
+      return card;
+    }
 
     async function loadProducts() {
+      const grid = document.getElementById("grid");
+      grid.innerHTML = "";
+
+      setStatus("Loading products...", "");
+
       try {
-        const res = await fetch(
-          `${SUPABASE_URL}/functions/v1/printify`,
-          {
-            headers: {
-              "Authorization": `Bearer ${SUPABASE_ANON}`,
-              "apikey": SUPABASE_ANON,
-            },
-          }
-        );
+        const data = await apiGet(PRINTIFY_PRODUCTS_FN);
+        const products = data.products || [];
 
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const { products } = await res.json();
-        if (!products || !products.length) return;
+        if (!products.length) {
+          setStatus("No products returned yet.", "error");
+          return;
+        }
 
-        const grid = document.querySelector(".grid");
-        grid.innerHTML = "";
-
-        products.forEach((p) => {
-          const img = p.images[0] || "";
-          const enabledVariants = p.variants.filter((v) => v.is_enabled);
-          const lowestPrice = enabledVariants.length
-            ? Math.min(...enabledVariants.map((v) => v.price))
-            : 0;
-          const priceStr = "$" + (lowestPrice / 100).toFixed(2);
-
-          const card = document.createElement("article");
-          card.className = "product";
-          card.innerHTML = `
-            <div class="media">
-              <img src="${img}" alt="${p.title} mockup" />
-            </div>
-            <div class="body">
-              <h3 class="name">${p.title}</h3>
-              <p class="desc">${p.description || ""}</p>
-              <div class="meta">
-                ${p.tags.slice(0, 3).map((t) => `<span>${t}</span>`).join("")}
-              </div>
-            </div>
-            <div class="bottom">
-              <div>
-                <div class="price">${enabledVariants.length > 1 ? "From " : ""}${priceStr}</div>
-                <div class="fine">Sizes and shipping shown at checkout</div>
-              </div>
-              <a class="btn primary" href="https://four-chariots.printify.me" target="_blank" rel="noopener">Buy</a>
-            </div>
-          `;
-          grid.appendChild(card);
-        });
-      } catch (err) {
-        console.error("Failed to load products from Printify:", err);
-        // Keeps the static placeholder cards as fallback
+        products.forEach(p => grid.appendChild(buildCard(p)));
+        setStatus("Products loaded.", "ok");
+      } catch (e) {
+        console.error(e);
+        setStatus("Could not load products. Check your Supabase anon key and function.", "error");
       }
     }
 
