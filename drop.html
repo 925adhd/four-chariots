@@ -442,11 +442,13 @@
         card.className = "product";
 
         card.innerHTML = `
-          <div class="media">
+          <a href="product.html?id=${encodeURIComponent(p.id)}" class="media">
             <img src="${img}" alt="${escapeHtml(p.title || "Product")}" loading="lazy">
-          </div>
+          </a>
           <div class="body">
-            <h3 class="name">${escapeHtml(p.title || "Untitled")}</h3>
+            <a href="product.html?id=${encodeURIComponent(p.id)}">
+              <h3 class="name">${escapeHtml(p.title || "Untitled")}</h3>
+            </a>
             <p class="desc">${escapeHtml(stripHtml(p.description || ""))}</p>
           </div>
           <div class="bottom">
@@ -454,16 +456,11 @@
               <div class="price">${formatUsdCents(lowest)}</div>
               <div class="fine">Stripe checkout</div>
             </div>
-            <button class="btn primary" ${defaultVariant ? "" : "disabled"}>
-              ${defaultVariant ? "Buy" : "Unavailable"}
-            </button>
+            <a class="btn primary" href="product.html?id=${encodeURIComponent(p.id)}">
+              ${defaultVariant ? "View" : "Unavailable"}
+            </a>
           </div>
         `;
-
-        const btn = card.querySelector("button");
-        if (defaultVariant) {
-          btn.addEventListener("click", () => startCheckout(p.id, defaultVariant.id));
-        }
 
         grid.appendChild(card);
       });
