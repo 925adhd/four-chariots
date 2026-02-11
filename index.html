@@ -427,14 +427,22 @@
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    const SUPABASE_URL = "https://txeemijqgqomfclezonf.supabase.co";
+    const SUPABASE_URL  = "https://txeemijqgqomfclezonf.supabase.co";
+    const SUPABASE_ANON = "sb_publishable_0EVIoewalOJkV1BbpoU5KA_K_XkTL9x";
 
     async function loadProducts() {
       try {
-        const res = await fetch(`${SUPABASE_URL}/functions/v1/printify`);
+        const res = await fetch(`${SUPABASE_URL}/functions/v1/printify`, {
+          method: "GET",
+          headers: {
+            "Authorization": `Bearer ${SUPABASE_ANON}`,
+            "apikey": SUPABASE_ANON,
+            "Content-Type": "application/json"
+          }
+        });
         const data = await res.json();
 
-        console.log("Printify products:", data.products);
+        console.log("PRINTIFY RESPONSE:", data);
 
         if (!data.products || !data.products.length) {
           console.warn("No products returned");
