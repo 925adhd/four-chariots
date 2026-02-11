@@ -406,7 +406,7 @@
     // Keep these constants defined ONCE. If you paste into console multiple times,
     // use `window.SUPABASE_URL = ...` instead.
     const SUPABASE_URL  = "https://txeemijqgqomfclezonf.supabase.co";
-    const SUPABASE_ANON = "sb_publishable_0EVIoewalOJkV1BbpoU5KA_K_XkTL9x";
+    const SUPABASE_ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR4ZWVtaWpxZ3FvbWZjbGV6b25mIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA3NjkzMjgsImV4cCI6MjA4NjM0NTMyOH0.boeu2dy3J-L09LRKQrRWPSvTPevynff5ZVwpeaT8oYM";
 
     const statusEl = document.getElementById("status");
     function setStatus(msg, kind) {
@@ -431,6 +431,7 @@
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+            "Authorization": `Bearer ${SUPABASE_ANON}`,
             "apikey": SUPABASE_ANON
           },
           body: JSON.stringify({
@@ -467,6 +468,7 @@
         const res = await fetch(`${SUPABASE_URL}/functions/v1/printify`, {
           method: "GET",
           headers: {
+            "Authorization": `Bearer ${SUPABASE_ANON}`,
             "apikey": SUPABASE_ANON
           }
         });
