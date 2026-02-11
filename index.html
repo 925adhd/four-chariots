@@ -4,14 +4,16 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>FOUR CHARIOTS</title>
-  <meta name="description" content="Built to last. Made for daily discipline." />
+
+  <meta name="description" content="Timeless faith for daily life. Minimal pieces with meaning." />
+  <meta name="robots" content="noindex, nofollow" />
 
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='15' fill='%230b1a2a'/><text x='16' y='22' text-anchor='middle' font-size='18' font-weight='900' font-family='system-ui,sans-serif' fill='%23ffffff'>4C</text></svg>" />
   <link rel="icon" type="image/png" sizes="192x192" href="images/logo.png" />
   <link rel="apple-touch-icon" href="images/logo.png" />
 
   <meta property="og:title" content="FOUR CHARIOTS" />
-  <meta property="og:description" content="Built to last. Made for daily discipline." />
+  <meta property="og:description" content="Timeless faith for daily life. Minimal pieces with meaning." />
   <meta property="og:type" content="website" />
 
   <style>
@@ -30,7 +32,10 @@
       --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
     }
     *{ box-sizing:border-box; }
+    a, button{ cursor:pointer; }
+    html{ scroll-behavior:smooth; }
     html,body{ height:100%; }
+    [id]{ scroll-margin-top:24px; }
     body{
       margin:0;
       font-family:var(--font);
@@ -42,6 +47,7 @@
     }
     a{ color:inherit; text-decoration:none; }
     img{ max-width:100%; display:block; }
+
     .wrap{
       max-width:var(--max);
       margin:0 auto;
@@ -71,18 +77,12 @@
       font-size:14px;
       letter-spacing:0.10em;
     }
-    .brand .tag{
-      margin-top:4px;
-      font-size:11px;
-      letter-spacing:0.14em;
-      color:var(--muted);
-      font-weight:700;
-    }
     .mark{
-      height:100px;
+      height:130px;
       width:auto;
       display:block;
     }
+
     .nav{
       display:flex;
       gap:18px;
@@ -103,6 +103,7 @@
       gap:10px;
       align-items:center;
     }
+
     .btn{
       display:inline-flex;
       align-items:center;
@@ -116,13 +117,13 @@
       border-radius:var(--radius);
       background:transparent;
       color:var(--text);
-      transition: background .12s ease, color .12s ease, border-color .12s ease;
+      transition: background .2s ease, color .2s ease, border-color .2s ease, transform .2s ease;
       white-space:nowrap;
-      cursor:pointer;
     }
     .btn:hover{
       background:var(--text);
       color:var(--btnText);
+      transform:scale(1.04);
     }
     .btn.primary{
       background:var(--btn);
@@ -130,81 +131,209 @@
       border-color:var(--btn);
     }
     .btn.primary:hover{
-      background:var(--btnHover);
-      border-color:var(--btnHover);
+      background:var(--bg);
+      color:var(--ink);
+      border-color:var(--ink);
+      transform:scale(1.04);
     }
     .btn:disabled{
       opacity:.6;
       cursor:not-allowed;
     }
+
     .divider{ border-top:1px solid var(--line); }
 
     .hero{
       display:grid;
       grid-template-columns: 1.15fr .85fr;
-      gap: 26px;
-      padding: 34px 0 26px;
-      align-items:end;
+      gap: 40px;
+      padding: 30px 0 40px;
+      align-items:center;
     }
     .kicker{
-      font-size:12px;
-      letter-spacing:0.18em;
+      font-size:14px;
+      letter-spacing:0.22em;
       text-transform:uppercase;
       color:var(--muted);
-      margin:0 0 10px;
+      margin:0 0 18px;
+      display:flex;
+      gap:10px;
+      align-items:center;
     }
+    .kicker span{
+      opacity:0;
+      transform:translateY(8px);
+      transition: opacity .5s cubic-bezier(.16,1,.3,1), transform .5s cubic-bezier(.16,1,.3,1);
+    }
+    .kicker.visible span{ opacity:1; transform:translateY(0); }
+    .kicker .sep{
+      width:4px; height:4px;
+      background:var(--muted);
+      border-radius:50%;
+      flex-shrink:0;
+    }
+
     .headline{
       margin:0;
-      font-size: clamp(34px, 4.2vw, 56px);
-      line-height:0.98;
-      letter-spacing:-0.04em;
+      font-size: clamp(42px, 5.5vw, 72px);
+      line-height:0.95;
+      letter-spacing:-0.045em;
       text-transform:uppercase;
       font-weight:950;
       color:var(--ink);
     }
-    .subhead{
-      margin:14px 0 0;
-      font-size:16px;
-      max-width:62ch;
-      color:var(--muted);
+    .headline .word{
+      display:inline-block;
+      overflow:hidden;
+      vertical-align:top;
     }
+    .headline .word span{
+      display:inline-block;
+      transform:translateY(105%);
+      transition: transform .65s cubic-bezier(.16,1,.3,1);
+    }
+    .headline.visible .word span{
+      transform:translateY(0);
+    }
+
+    .accentLine{
+      display:block;
+      width:0;
+      height:3px;
+      background:var(--ink);
+      margin:18px 0 0;
+      transition: width .8s cubic-bezier(.16,1,.3,1);
+      transition-delay:.5s;
+    }
+    .hero.animated .accentLine{
+      width:80px;
+    }
+
+    .subhead{
+      margin:20px 0 0;
+      font-size:18px;
+      max-width:52ch;
+      color:var(--muted);
+      line-height:1.5;
+    }
+
+    .fade-up{
+      opacity:0;
+      transform:translateY(24px);
+      transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1);
+    }
+    .fade-up.visible{
+      opacity:1;
+      transform:translateY(0);
+    }
+
     .heroCard{
       border:1px solid var(--line);
       padding: 18px;
       background: var(--soft);
     }
-    .heroCard .row{
-      display:flex;
-      justify-content:space-between;
-      gap:12px;
-      padding: 10px 0;
-      border-top:1px solid var(--line);
-      font-size:13px;
+
+    .missionCard{
+      background: #fbfbfb;
+      box-shadow: 0 10px 30px rgba(0,0,0,.06);
+      padding: 20px;
     }
-    .heroCard .row:first-child{ border-top:none; padding-top:0; }
-    .heroCard .label{ color:var(--muted); }
-    .heroCard .value{
-      font-weight:900;
-      text-transform:uppercase;
-      letter-spacing:.06em;
-      color:var(--ink);
-      text-align:right;
+    .missionTop{
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 14px;
     }
-    .heroCard .note{
-      margin-top:12px;
-      font-size:12px;
-      color:var(--muted);
-      line-height:1.4;
+    .missionTitle{
+      font-size: 13px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink);
+      font-weight: 950;
+    }
+    .missionSub{
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+      max-width: 52ch;
+    }
+    .missionSteps{
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .step{
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+    .dot{
+      width: 28px;
+      height: 28px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--ink);
+      background: #fff;
+      color: var(--ink);
+      font-weight: 900;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      border-radius: 50%;
+      flex-shrink:0;
+    }
+    .stepTitle{
+      font-weight: 950;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--ink);
+      font-size: 12px;
+      line-height: 1.1;
+    }
+    .stepDesc{
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.4;
+    }
+    .missionCtas{
+      margin-top: 14px;
+    }
+    .dropNote{
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.4;
+    }
+    .trustRow{
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .trustRow .sep{
+      opacity: .6;
     }
 
-    .sectionTitle{
+    /* NEW: single-drop reveal section */
+    .dropReveal{
+      padding: 34px 0 10px;
+    }
+    .dropHeader{
       display:flex;
       align-items:baseline;
       justify-content:space-between;
       gap:14px;
       padding: 18px 0 10px;
+      border-top:1px solid var(--line);
+      margin-top: 10px;
     }
-    .sectionTitle h2{
+    .dropHeader h2{
       margin:0;
       font-size:18px;
       text-transform:uppercase;
@@ -212,82 +341,73 @@
       font-weight:950;
       color:var(--ink);
     }
-    .sectionTitle p{
+    .dropHeader p{
       margin:0;
       color:var(--muted);
       font-size:13px;
+      max-width: 60ch;
     }
-
-    .grid{
-      display:grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 18px;
-      padding-top: 12px;
-    }
-    .product{
-      grid-column: span 6;
+    .dropCard{
+      margin-top: 14px;
       border:1px solid var(--line);
       background: var(--bg);
-      display:flex;
-      flex-direction:column;
-      min-height: 520px;
-    }
-    .product .media{
-      aspect-ratio: 4/3;
-      background: #fafafa;
-      border-bottom:1px solid var(--line);
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
       overflow:hidden;
     }
-    .product .media img{
+    .dropMedia{
+      aspect-ratio: 4/3;
+      background:#fafafa;
+      border-right:1px solid var(--line);
+      overflow:hidden;
+    }
+    .dropMedia img{
       width:100%;
       height:100%;
       object-fit:cover;
+      transform: scale(1.02);
     }
-    .product .body{
-      padding: 16px;
+    .dropBody{
+      padding: 18px;
       display:flex;
       flex-direction:column;
-      gap:10px;
-      min-height: 170px;
+      justify-content:center;
+      gap: 10px;
     }
-    .product .name{
+    .dropWord{
       margin:0;
       font-weight:950;
       text-transform:uppercase;
       letter-spacing:-0.02em;
-      font-size:16px;
+      font-size:22px;
       line-height:1.05;
       color:var(--ink);
     }
-    .product .desc{
+    .dropDesc{
       margin:0;
       color:var(--muted);
       font-size:13px;
-      max-width:62ch;
-      overflow:hidden;
-      display:-webkit-box;
-      -webkit-line-clamp:4;
-      -webkit-box-orient:vertical;
+      line-height:1.5;
+      max-width:52ch;
     }
-    .product .bottom{
-      margin-top:auto;
+    .dropActions{
       display:flex;
+      gap:10px;
       align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      border-top:1px solid var(--line);
-      padding: 14px 16px;
+      flex-wrap:wrap;
+      margin-top: 6px;
     }
-    .price{
-      font-weight:950;
-      letter-spacing:-0.02em;
-      color:var(--ink);
-    }
-    .fine{
-      font-size:12px;
+    .dropMeta{
+      margin-top: 8px;
       color:var(--muted);
-      margin-top:2px;
+      font-size:12px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
     }
+    .dropMeta .sep{ opacity:.6; }
 
     footer{
       margin-top: 34px;
@@ -304,92 +424,216 @@
     footer .links{ display:flex; gap:14px; flex-wrap:wrap; }
     footer .links a:hover{ color:var(--text); }
 
-    .status{
-      margin-top:10px;
-      font-size:13px;
-      color:var(--muted);
+    /* scroll progress bar */
+    #scrollProgress{
+      position:fixed;
+      top:0;
+      left:0;
+      height:2px;
+      width:0%;
+      background:var(--ink);
+      z-index:9999;
+      opacity:.9;
     }
-    .status.error{ color:#b00020; }
-    .status.ok{ color:#0b6b2f; }
+
+    /* active nav link */
+    .nav a.active{
+      color:var(--text);
+      border-bottom-color:var(--text);
+    }
+
+    .menuBtn{
+      display:none;
+      background:none;
+      border:1px solid var(--line);
+      padding:8px 10px;
+      cursor:pointer;
+      font-size:18px;
+      line-height:1;
+      color:var(--text);
+    }
 
     @media (max-width: 980px){
-      .hero{ grid-template-columns: 1fr; align-items:start; }
-      .product{ grid-column: span 12; }
-      .nav{ display:none; }
+      .hero{ grid-template-columns: 1fr; align-items:start; gap:24px; padding:16px 0 30px; }
       .brand .tag{ display:none; }
+      .menuBtn{ display:block; }
+      .nav{
+        display:none;
+        position:absolute;
+        top:100%;
+        left:0;
+        right:0;
+        background:var(--bg);
+        border-bottom:1px solid var(--line);
+        flex-direction:column;
+        padding:14px 18px;
+        gap:0;
+        z-index:100;
+      }
+      .nav.open{ display:flex; }
+      .nav a{
+        padding:12px 0;
+        border-bottom:1px solid var(--line);
+        width:100%;
+      }
+      .nav a:last-child{ border-bottom:none; }
+      .ctaRow{ display:none; }
+      .topbar{ position:relative; }
+
+      .dropCard{ grid-template-columns: 1fr; }
+      .dropMedia{ border-right:none; border-bottom:1px solid var(--line); }
     }
   </style>
 </head>
 
 <body>
-  <div class="wrap">
+  <div class="wrap" id="top">
     <div class="topbar">
-      <a class="brand" href="#">
+      <a class="brand" href="#top">
         <img class="mark" src="images/logo.png" alt="Four Chariots logo" />
         <span class="wordmark">
           <span class="name">FOUR CHARIOTS</span>
-          <span class="tag">BUILT TO LAST</span>
         </span>
       </a>
 
       <nav class="nav" aria-label="Site navigation">
-        <a href="#shop">Shop</a>
-        <a href="#shipping">Shipping</a>
+        <a href="drop.html">Shop</a>
+        <a href="about.html">About</a>
+        <a href="#drop">The Drop</a>
         <a href="#support">Support</a>
       </nav>
 
+      <button class="menuBtn" aria-label="Toggle menu" onclick="document.querySelector('.nav').classList.toggle('open')">&#9776;</button>
+
       <div class="ctaRow">
-        <a class="btn" href="#shop">Shop</a>
-        <a class="btn primary" href="#shop">Checkout</a>
+        <a class="btn" href="drop.html">Shop</a>
+        <a class="btn primary" href="drop.html">Checkout</a>
       </div>
     </div>
 
     <div class="divider"></div>
 
-    <section class="hero">
+    <section class="hero" id="heroSection">
       <div>
-        <p class="kicker">APPAREL • PRINTS • DAILY OBJECTS</p>
-        <h1 class="headline">DISCIPLINE, WITHOUT NOISE.</h1>
-        <p class="subhead">
-          FOUR CHARIOTS makes clean pieces for daily life. Wear it. See it. Hold it. Simple words that keep you steady.
+        <p class="kicker">
+          <span>APPAREL</span>
+          <span class="sep"></span>
+          <span>PRINTS</span>
+          <span class="sep"></span>
+          <span>GEAR</span>
         </p>
-        <p class="status" id="status"></p>
+
+        <h1 class="headline">
+          <span class="word"><span>DISCIPLINE,</span></span><br>
+          <span class="word"><span>WITHOUT</span></span>
+          <span class="word"><span>NOISE.</span></span>
+        </h1>
+
+        <span class="accentLine"></span>
+
+        <p class="subhead fade-up" style="transition-delay:.6s">
+          FOUR CHARIOTS makes clean pieces for daily life. Simple words that keep you steady and start conversations worth having.
+        </p>
+
+        <div class="fade-up" style="margin-top:16px; transition-delay:.72s">
+          <a class="btn primary" href="#drop">Shop the drop</a>
+          <a class="btn" href="drop.html" style="margin-left:10px;">Full shop</a>
+        </div>
       </div>
 
-      <aside class="heroCard" id="shipping">
-        <div class="row">
-          <span class="label">Standard</span>
-          <span class="value">Built to last</span>
+      <aside class="heroCard missionCard fade-up" id="shipping" style="transition-delay:.3s">
+        <div class="missionTop">
+          <div>
+            <div class="missionTitle">FOUR DIRECTIONS. ONE MESSAGE.</div>
+            <div class="missionSub">
+              Each piece carries a word meant to travel further than you do.
+            </div>
+          </div>
         </div>
-        <div class="row">
-          <span class="label">Focus</span>
-          <span class="value">Order & restraint</span>
+
+        <div class="missionSteps" role="list">
+          <div class="step" role="listitem">
+            <span class="dot">N</span>
+            <div class="stepText">
+              <div class="stepTitle">Wear it</div>
+              <div class="stepDesc">A single word that keeps you steady.</div>
+            </div>
+          </div>
+
+          <div class="step" role="listitem">
+            <span class="dot">E</span>
+            <div class="stepText">
+              <div class="stepTitle">Carry it</div>
+              <div class="stepDesc">Let it follow you into ordinary moments.</div>
+            </div>
+          </div>
+
+          <div class="step" role="listitem">
+            <span class="dot">S</span>
+            <div class="stepText">
+              <div class="stepTitle">Spread it</div>
+              <div class="stepDesc">A conversation starter. Not a billboard.</div>
+            </div>
+          </div>
+
+          <div class="step" role="listitem">
+            <span class="dot">W</span>
+            <div class="stepText">
+              <div class="stepTitle">Send it</div>
+              <div class="stepDesc">Four directions. One message.</div>
+            </div>
+          </div>
         </div>
-        <div class="row">
-          <span class="label">Fulfillment</span>
-          <span class="value">Printed to order</span>
+
+        <div class="missionCtas">
+          <a class="btn primary" href="#drop">Shop the drop</a>
+          <div class="dropNote">One exclusive drop per month. Once it's gone, it's gone.</div>
         </div>
-        <div class="row">
-          <span class="label">Shipping</span>
-          <span class="value">Shown at checkout</span>
+
+        <div class="trustRow">
+          <span>Secure Stripe checkout</span>
+          <span class="sep">•</span>
+          <span>Printed to order</span>
         </div>
-        <div style="margin-top:14px;">
-          <a class="btn primary" href="#shop">Shop the drop</a>
-        </div>
-        <p class="note">
-          Orders are paid on Stripe and fulfilled by Printify.
-        </p>
       </aside>
     </section>
 
-    <div class="divider"></div>
+    <!-- NEW: Single item reveal below the fold -->
+    <section class="dropReveal" id="drop">
+      <div class="dropHeader">
+        <h2>The Drop</h2>
+        <p>One piece. One word. Released monthly.</p>
+      </div>
 
-    <div class="sectionTitle" id="shop">
-      <h2>The Drop</h2>
-      <p>Wear it. See it. Hold it.</p>
-    </div>
+      <div class="dropCard fade-up" style="transition-delay:.05s">
+        <div class="dropMedia">
+          <!-- swap this image path to your actual drop image -->
+          <img src="images/drop.jpg" alt="This month's drop" />
+        </div>
 
-    <section class="grid" id="grid" aria-label="Products"></section>
+        <div class="dropBody">
+          <!-- swap these to your actual word + short blurb -->
+          <h3 class="dropWord">UNSHAKEN</h3>
+          <p class="dropDesc">
+            A quiet reminder you can carry into work, worship, and ordinary moments.
+            Minimal by design. Heavy in meaning.
+          </p>
+
+          <div class="dropActions">
+            <a class="btn primary" href="drop.html">Checkout</a>
+            <a class="btn" href="drop.html">View details</a>
+          </div>
+
+          <div class="dropMeta">
+            <span>Limited release</span>
+            <span class="sep">•</span>
+            <span>Printed to order</span>
+            <span class="sep">•</span>
+            <span>Secure Stripe checkout</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <footer id="support">
       <div>© <span id="year"></span> FOUR CHARIOTS</div>
@@ -403,152 +647,78 @@
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // Keep these constants defined ONCE. If you paste into console multiple times,
-    // use `window.SUPABASE_URL = ...` instead.
-    const SUPABASE_URL  = "https://txeemijqgqomfclezonf.supabase.co";
-    const SUPABASE_ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR4ZWVtaWpxZ3FvbWZjbGV6b25mIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA3NjkzMjgsImV4cCI6MjA4NjM0NTMyOH0.boeu2dy3J-L09LRKQrRWPSvTPevynff5ZVwpeaT8oYM";
+    document.querySelectorAll(".nav a").forEach(a => {
+      a.addEventListener("click", () => {
+        document.querySelector(".nav").classList.remove("open");
+      });
+    });
 
-    const statusEl = document.getElementById("status");
-    function setStatus(msg, kind) {
-      statusEl.textContent = msg || "";
-      statusEl.className = "status" + (kind ? " " + kind : "");
-    }
+    // staggered hero entrance
+    requestAnimationFrame(() => {
+      const hero = document.getElementById("heroSection");
 
-    function formatUsdCents(cents) {
-      const n = Number(cents || 0);
-      return "$" + (n / 100).toFixed(2);
-    }
-
-    async function startCheckout(productId, variantId) {
-      if (!productId || !variantId) {
-        alert("Missing product selection.");
-        return;
+      const kicker = document.querySelector(".kicker");
+      if (kicker) {
+        kicker.querySelectorAll("span").forEach((s, i) => {
+          s.style.transitionDelay = `${i * 0.08}s`;
+        });
+        kicker.classList.add("visible");
       }
 
-      setStatus("Opening checkout...", "");
-      try {
-        const res = await fetch(`${SUPABASE_URL}/functions/v1/create_checkout`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${SUPABASE_ANON}`,
-            "apikey": SUPABASE_ANON
-          },
-          body: JSON.stringify({
-            product_id: productId,
-            variant_id: Number(variantId),
-            quantity: 1
-          })
+      const headline = document.querySelector(".headline");
+      if (headline) {
+        headline.querySelectorAll(".word span").forEach((s, i) => {
+          s.style.transitionDelay = `${0.25 + i * 0.1}s`;
         });
-
-        const data = await res.json();
-
-        if (!res.ok) {
-          console.error("create_checkout error:", data);
-          setStatus("Checkout failed. See console.", "error");
-          return;
-        }
-
-        if (!data.url) {
-          console.error("create_checkout missing url:", data);
-          setStatus("Checkout failed (no URL). See console.", "error");
-          return;
-        }
-
-        window.location.href = data.url;
-      } catch (err) {
-        console.error("Checkout error:", err);
-        setStatus("Checkout error. See console.", "error");
+        headline.classList.add("visible");
       }
+
+      if (hero) hero.classList.add("animated");
+
+      document.querySelectorAll(".fade-up").forEach(el => {
+        el.classList.add("visible");
+      });
+    });
+
+    // scroll progress bar
+    const bar = document.createElement("div");
+    bar.id = "scrollProgress";
+    document.body.appendChild(bar);
+
+    function updateProgress() {
+      const doc = document.documentElement;
+      const scrollTop = doc.scrollTop || document.body.scrollTop;
+      const scrollHeight = (doc.scrollHeight || document.body.scrollHeight) - doc.clientHeight;
+      const p = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+      bar.style.width = p.toFixed(2) + "%";
     }
+    window.addEventListener("scroll", updateProgress, { passive: true });
+    updateProgress();
 
-    async function loadProducts() {
-      setStatus("Loading products...", "");
-      try {
-        const res = await fetch(`${SUPABASE_URL}/functions/v1/printify`, {
-          method: "GET",
-          headers: {
-            "Authorization": `Bearer ${SUPABASE_ANON}`,
-            "apikey": SUPABASE_ANON
-          }
-        });
+    // active nav highlighting
+    const navLinks = Array.from(document.querySelectorAll(".nav a"))
+      .map(a => ({ a, hash: a.getAttribute("href") }))
+      .filter(x => x.hash && x.hash.startsWith("#"));
 
-        const data = await res.json();
-        console.log("PRINTIFY RESPONSE:", data);
+    const sections = navLinks
+      .map(x => ({ ...x, el: document.querySelector(x.hash) }))
+      .filter(x => x.el);
 
-        if (!res.ok) {
-          console.error("printify function error:", data);
-          setStatus("Could not load products. See console.", "error");
-          return;
-        }
+    function setActiveLink() {
+      if (!sections.length) return;
+      const y = window.scrollY + 140;
 
-        const products = data.products || [];
-        if (!products.length) {
-          setStatus("No products found.", "error");
-          return;
-        }
-
-        const grid = document.getElementById("grid");
-        grid.innerHTML = "";
-
-        products.forEach((p) => {
-          const img = p?.images?.[0]?.src || "";
-          const enabled = (p?.variants || []).filter(v => v && v.is_enabled);
-
-          const lowest = enabled.length ? Math.min(...enabled.map(v => Number(v.price || 0))) : 0;
-          const defaultVariant = enabled[0];
-
-          const card = document.createElement("article");
-          card.className = "product";
-
-          card.innerHTML = `
-            <div class="media">
-              <img src="${img}" alt="${escapeHtml(p.title || "Product")}">
-            </div>
-            <div class="body">
-              <h3 class="name">${escapeHtml(p.title || "Untitled")}</h3>
-              <p class="desc">${escapeHtml(stripHtml(p.description || ""))}</p>
-            </div>
-            <div class="bottom">
-              <div>
-                <div class="price">${formatUsdCents(lowest)}</div>
-                <div class="fine">Stripe checkout</div>
-              </div>
-              <button class="btn primary" ${defaultVariant ? "" : "disabled"}>
-                ${defaultVariant ? "Buy" : "Unavailable"}
-              </button>
-            </div>
-          `;
-
-          const btn = card.querySelector("button");
-          if (defaultVariant) {
-            btn.addEventListener("click", () => startCheckout(p.id, defaultVariant.id));
-          }
-
-          grid.appendChild(card);
-        });
-
-        setStatus("Loaded.", "ok");
-      } catch (err) {
-        console.error("Could not load products:", err);
-        setStatus("Could not load products. See console.", "error");
+      let current = sections[0].a;
+      for (const s of sections) {
+        const top = s.el.getBoundingClientRect().top + window.scrollY;
+        if (top <= y) current = s.a;
       }
-    }
 
-    function stripHtml(html) {
-      return String(html).replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
+      navLinks.forEach(x => x.a.classList.remove("active"));
+      current.classList.add("active");
     }
-
-    function escapeHtml(str) {
-      return String(str)
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
-    }
-
-    loadProducts();
+    window.addEventListener("scroll", setActiveLink, { passive: true });
+    setActiveLink();
   </script>
 </body>
 </html>

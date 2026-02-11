@@ -1,0 +1,555 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>The Drop | FOUR CHARIOTS</title>
+  <meta name="description" content="One exclusive drop per month. Once it's gone, it's gone." />
+  <meta name="robots" content="noindex, nofollow" />
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='15' fill='%230b1a2a'/><text x='16' y='22' text-anchor='middle' font-size='18' font-weight='900' font-family='system-ui,sans-serif' fill='%23ffffff'>4C</text></svg>" />
+  <link rel="icon" type="image/png" sizes="192x192" href="images/logo.png" />
+  <link rel="apple-touch-icon" href="images/logo.png" />
+
+  <style>
+    :root{
+      --bg:#ffffff;
+      --text:#0a0a0a;
+      --muted:#5f6368;
+      --line:#e6e6e6;
+      --soft:#f6f6f6;
+      --ink:#0b1a2a;
+      --btn:var(--ink);
+      --btnText:#ffffff;
+      --btnHover:#142a43;
+      --max:1200px;
+      --radius:0px;
+      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+    *{ box-sizing:border-box; }
+    a, button{ cursor:pointer; }
+    html{ scroll-behavior:smooth; }
+    html,body{ height:100%; }
+    [id]{ scroll-margin-top:24px; }
+    body{
+      margin:0;
+      font-family:var(--font);
+      color:var(--text);
+      background:var(--bg);
+      line-height:1.35;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    a{ color:inherit; text-decoration:none; }
+    img{ max-width:100%; display:block; }
+    .wrap{
+      max-width:var(--max);
+      margin:0 auto;
+      padding: 18px 18px 70px;
+    }
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding: 14px 0;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      text-transform:uppercase;
+      letter-spacing:-0.02em;
+      font-weight:900;
+    }
+    .brand .wordmark{
+      display:flex;
+      flex-direction:column;
+      line-height:1;
+    }
+    .brand .name{
+      font-size:14px;
+      letter-spacing:0.10em;
+    }
+    .brand .tag{
+      margin-top:4px;
+      font-size:11px;
+      letter-spacing:0.04em;
+      color:var(--muted);
+      font-weight:500;
+      font-style:normal;
+      text-transform:none;
+    }
+    .mark{
+      height:130px;
+      width:auto;
+      display:block;
+    }
+    .nav{
+      display:flex;
+      gap:18px;
+      align-items:center;
+      font-size:13px;
+      color:var(--muted);
+    }
+    .nav a{
+      padding:8px 0;
+      border-bottom:2px solid transparent;
+    }
+    .nav a:hover{
+      color:var(--text);
+      border-bottom-color:var(--text);
+    }
+    .ctaRow{
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 12px 16px;
+      font-size:13px;
+      font-weight:800;
+      letter-spacing:0.06em;
+      text-transform:uppercase;
+      border:1px solid var(--text);
+      border-radius:var(--radius);
+      background:transparent;
+      color:var(--text);
+      transition: background .2s ease, color .2s ease, border-color .2s ease, transform .2s ease;
+      white-space:nowrap;
+    }
+    .btn:hover{
+      background:var(--text);
+      color:var(--btnText);
+      transform:scale(1.04);
+    }
+    .btn.primary{
+      background:var(--btn);
+      color:var(--btnText);
+      border-color:var(--btn);
+    }
+    .btn.primary:hover{
+      background:var(--bg);
+      color:var(--ink);
+      border-color:var(--ink);
+      transform:scale(1.04);
+    }
+    .btn:disabled{
+      opacity:.6;
+      cursor:not-allowed;
+    }
+    .divider{ border-top:1px solid var(--line); }
+
+    .pageTitle{
+      text-align:center;
+      padding: 40px 0 20px;
+    }
+    .pageTitle h1{
+      margin:0;
+      font-size: clamp(28px, 3.5vw, 44px);
+      text-transform:uppercase;
+      letter-spacing:0.10em;
+      font-weight:950;
+      color:var(--ink);
+    }
+    .pageTitle p{
+      margin:8px 0 0;
+      font-size:14px;
+      color:var(--muted);
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 18px;
+      padding-top: 12px;
+      max-width:800px;
+      margin:0 auto;
+    }
+    .product{
+      border:1px solid var(--line);
+      background: var(--bg);
+      display:flex;
+      flex-direction:column;
+      min-height: 520px;
+    }
+    .product .media{
+      aspect-ratio: 4/3;
+      background: #fafafa;
+      border-bottom:1px solid var(--line);
+      overflow:hidden;
+    }
+    .product .media img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+    .product .body{
+      padding: 16px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      min-height: 170px;
+    }
+    .product .name{
+      margin:0;
+      font-weight:950;
+      text-transform:uppercase;
+      letter-spacing:-0.02em;
+      font-size:16px;
+      line-height:1.05;
+      color:var(--ink);
+    }
+    .product .desc{
+      margin:0;
+      color:var(--muted);
+      font-size:13px;
+      max-width:62ch;
+      overflow:hidden;
+      display:-webkit-box;
+      -webkit-line-clamp:4;
+      -webkit-box-orient:vertical;
+    }
+    .product .bottom{
+      margin-top:auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      border-top:1px solid var(--line);
+      padding: 14px 16px;
+    }
+    .price{
+      font-weight:950;
+      letter-spacing:-0.02em;
+      color:var(--ink);
+    }
+    .fine{
+      font-size:12px;
+      color:var(--muted);
+      margin-top:2px;
+    }
+
+    footer{
+      margin-top: 34px;
+      padding-top: 18px;
+      border-top:1px solid var(--line);
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      align-items:center;
+      justify-content:space-between;
+      color:var(--muted);
+      font-size:13px;
+    }
+    footer .links{ display:flex; gap:14px; flex-wrap:wrap; }
+    footer .links a:hover{ color:var(--text); }
+
+    .spinner{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      padding:80px 0;
+      grid-column:1/-1;
+    }
+    .spinner::after{
+      content:"";
+      width:36px;
+      height:36px;
+      border:3px solid var(--line);
+      border-top-color:var(--ink);
+      border-radius:50%;
+      animation:spin .7s linear infinite;
+    }
+    @keyframes spin{ to{ transform:rotate(360deg); } }
+
+    .menuBtn{
+      display:none;
+      background:none;
+      border:1px solid var(--line);
+      padding:8px 10px;
+      cursor:pointer;
+      font-size:18px;
+      line-height:1;
+      color:var(--text);
+    }
+
+    @media (max-width: 980px){
+      .product{ grid-column: span 12; }
+      .brand .tag{ display:none; }
+      .menuBtn{ display:block; }
+      .nav{
+        display:none;
+        position:absolute;
+        top:100%;
+        left:0;
+        right:0;
+        background:var(--bg);
+        border-bottom:1px solid var(--line);
+        flex-direction:column;
+        padding:14px 18px;
+        gap:0;
+        z-index:100;
+      }
+      .nav.open{ display:flex; }
+      .nav a{
+        padding:12px 0;
+        border-bottom:1px solid var(--line);
+        width:100%;
+      }
+      .nav a:last-child{ border-bottom:none; }
+      .ctaRow{ display:none; }
+      .topbar{ position:relative; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <a class="brand" href="index.html">
+        <img class="mark" src="images/logo.png" alt="Four Chariots logo" />
+        <span class="wordmark">
+          <span class="name">FOUR CHARIOTS</span>
+        </span>
+      </a>
+
+      <nav class="nav" aria-label="Site navigation">
+        <a href="drop.html">Shop</a>
+        <a href="about.html">About</a>
+        <a href="index.html#drop">The Drop</a>
+        <a href="index.html#support">Support</a>
+      </nav>
+
+      <button class="menuBtn" aria-label="Toggle menu" onclick="document.querySelector('.nav').classList.toggle('open')">&#9776;</button>
+
+      <div class="ctaRow">
+        <a class="btn" href="drop.html">Shop</a>
+        <a class="btn primary" href="drop.html">Checkout</a>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="pageTitle">
+      <h1>The Drop</h1>
+      <p>One exclusive drop per month. Once it's gone, it's gone.</p>
+    </div>
+
+    <section class="grid" id="grid" aria-label="Products"></section>
+
+    <footer>
+      <div>© <span id="year"></span> FOUR CHARIOTS</div>
+      <div class="links">
+        <a href="mailto:you@example.com">Contact</a>
+        <a href="YOUR_INSTAGRAM_URL_HERE" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const SUPABASE_URL  = "https://txeemijqgqomfclezonf.supabase.co";
+    const SUPABASE_ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR4ZWVtaWpxZ3FvbWZjbGV6b25mIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA3NjkzMjgsImV4cCI6MjA4NjM0NTMyOH0.boeu2dy3J-L09LRKQrRWPSvTPevynff5ZVwpeaT8oYM";
+
+    function setStatus(msg, kind) {
+      if (kind === "error") console.error("[4C]", msg);
+      else console.log("[4C]", msg);
+    }
+
+    function formatUsdCents(cents) {
+      const n = Number(cents || 0);
+      return "$" + (n / 100).toFixed(2);
+    }
+
+    async function startCheckout(productId, variantId) {
+      if (!productId || !variantId) {
+        alert("Missing product selection.");
+        return;
+      }
+
+      setStatus("Opening checkout...", "");
+      try {
+        const res = await fetch(`${SUPABASE_URL}/functions/v1/create_checkout`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${SUPABASE_ANON}`,
+            "apikey": SUPABASE_ANON
+          },
+          body: JSON.stringify({
+            product_id: productId,
+            variant_id: Number(variantId),
+            quantity: 1
+          })
+        });
+
+        const data = await res.json();
+
+        if (!res.ok) {
+          console.error("create_checkout error:", data);
+          setStatus("Checkout failed. See console.", "error");
+          return;
+        }
+
+        if (!data.url) {
+          console.error("create_checkout missing url:", data);
+          setStatus("Checkout failed (no URL). See console.", "error");
+          return;
+        }
+
+        window.location.href = data.url;
+      } catch (err) {
+        console.error("Checkout error:", err);
+        setStatus("Checkout error. See console.", "error");
+      }
+    }
+
+    const CACHE_KEY = "fc_products";
+    const CACHE_TTL = 5 * 60 * 1000; // 5 min browser cache
+
+    function getCachedProducts() {
+      try {
+        const raw = sessionStorage.getItem(CACHE_KEY);
+        if (!raw) return null;
+        const { ts, products } = JSON.parse(raw);
+        if (Date.now() - ts > CACHE_TTL) return null;
+        return products;
+      } catch { return null; }
+    }
+
+    function setCachedProducts(products) {
+      try {
+        sessionStorage.setItem(CACHE_KEY, JSON.stringify({ ts: Date.now(), products }));
+      } catch {}
+    }
+
+    function renderProducts(products) {
+      const grid = document.getElementById("grid");
+      grid.innerHTML = "";
+
+      products.forEach((p) => {
+        const img = p?.images?.[0]?.src || "";
+        const enabled = (p?.variants || []).filter(v => v && v.is_enabled);
+        const lowest = enabled.length ? Math.min(...enabled.map(v => Number(v.price || 0))) : 0;
+        const defaultVariant = enabled[0];
+
+        const card = document.createElement("article");
+        card.className = "product";
+
+        card.innerHTML = `
+          <div class="media">
+            <img src="${img}" alt="${escapeHtml(p.title || "Product")}" loading="lazy">
+          </div>
+          <div class="body">
+            <h3 class="name">${escapeHtml(p.title || "Untitled")}</h3>
+            <p class="desc">${escapeHtml(stripHtml(p.description || ""))}</p>
+          </div>
+          <div class="bottom">
+            <div>
+              <div class="price">${formatUsdCents(lowest)}</div>
+              <div class="fine">Stripe checkout</div>
+            </div>
+            <button class="btn primary" ${defaultVariant ? "" : "disabled"}>
+              ${defaultVariant ? "Buy" : "Unavailable"}
+            </button>
+          </div>
+        `;
+
+        const btn = card.querySelector("button");
+        if (defaultVariant) {
+          btn.addEventListener("click", () => startCheckout(p.id, defaultVariant.id));
+        }
+
+        grid.appendChild(card);
+      });
+    }
+
+    async function loadProducts() {
+      const grid = document.getElementById("grid");
+
+      // Try browser cache first for instant render
+      const cached = getCachedProducts();
+      if (cached && cached.length) {
+        setStatus("Loaded from cache.", "ok");
+        renderProducts(cached);
+        // Refresh in background so next visit has fresh data
+        fetchProducts().then(fresh => {
+          if (fresh) setCachedProducts(fresh);
+        });
+        return;
+      }
+
+      grid.innerHTML = '<div class="spinner"></div>';
+      setStatus("Loading products...", "");
+
+      const products = await fetchProducts();
+      if (products) {
+        setCachedProducts(products);
+        renderProducts(products);
+        setStatus("Loaded.", "ok");
+      }
+    }
+
+    async function fetchProducts() {
+      try {
+        const res = await fetch(`${SUPABASE_URL}/functions/v1/printify`, {
+          method: "GET",
+          headers: {
+            "Authorization": `Bearer ${SUPABASE_ANON}`,
+            "apikey": SUPABASE_ANON
+          }
+        });
+
+        const data = await res.json();
+        console.log("PRINTIFY RESPONSE:", data);
+
+        if (!res.ok) {
+          console.error("printify function error:", data);
+          setStatus("Could not load products. See console.", "error");
+          return null;
+        }
+
+        const products = data.products || [];
+        if (!products.length) {
+          setStatus("No products found.", "error");
+          return null;
+        }
+
+        return products;
+      } catch (err) {
+        console.error("Could not load products:", err);
+        setStatus("Could not load products. See console.", "error");
+        return null;
+      }
+    }
+
+    function stripHtml(html) {
+      const tmp = document.createElement("div");
+      tmp.innerHTML = html;
+      return (tmp.textContent || tmp.innerText || "").replace(/\s+/g, " ").trim();
+    }
+
+    function escapeHtml(str) {
+      return String(str)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    document.querySelectorAll(".nav a").forEach(a => {
+      a.addEventListener("click", () => {
+        document.querySelector(".nav").classList.remove("open");
+      });
+    });
+
+    loadProducts();
+  </script>
+</body>
+</html>
