@@ -431,7 +431,6 @@
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            "Authorization": `Bearer ${SUPABASE_ANON}`,
             "apikey": SUPABASE_ANON
           },
           body: JSON.stringify({
@@ -468,7 +467,6 @@
         const res = await fetch(`${SUPABASE_URL}/functions/v1/printify`, {
           method: "GET",
           headers: {
-            "Authorization": `Bearer ${SUPABASE_ANON}`,
             "apikey": SUPABASE_ANON
           }
         });
