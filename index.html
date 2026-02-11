@@ -235,7 +235,7 @@
 
     .missionCard{
       background: #fbfbfb;
-      box-shadow: 0 10px 30px rgba(0,0,0,.06);
+      box-shadow: 0 4px 16px rgba(0,0,0,.04);
       padding: 20px;
     }
     .missionTop{
@@ -333,11 +333,18 @@
       border-top:1px solid var(--line);
       margin-top: 10px;
     }
+    .dropKicker{
+      font-size:11px;
+      letter-spacing:0.20em;
+      text-transform:uppercase;
+      color:var(--muted);
+      margin:0 0 6px;
+    }
     .dropHeader h2{
       margin:0;
-      font-size:18px;
+      font-size: clamp(22px, 2.5vw, 32px);
       text-transform:uppercase;
-      letter-spacing:0.12em;
+      letter-spacing:0.06em;
       font-weight:950;
       color:var(--ink);
     }
@@ -357,16 +364,47 @@
       overflow:hidden;
     }
     .dropMedia{
-      aspect-ratio: 4/3;
       background:#fafafa;
       border-right:1px solid var(--line);
       overflow:hidden;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      padding:14px;
     }
-    .dropMedia img{
+    .dropMainImg{
+      flex:1;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow:hidden;
+    }
+    .dropMainImg img{
+      max-width:100%;
+      max-height:380px;
+      object-fit:contain;
+      transition: opacity .3s ease;
+    }
+    .dropThumbs{
+      display:flex;
+      gap:8px;
+      justify-content:center;
+    }
+    .dropThumb{
+      width:60px;
+      height:60px;
+      border:2px solid transparent;
+      background:var(--soft);
+      overflow:hidden;
+      cursor:pointer;
+      transition: border-color .2s ease;
+      padding:4px;
+    }
+    .dropThumb.active{ border-color:var(--ink); }
+    .dropThumb img{
       width:100%;
       height:100%;
-      object-fit:cover;
-      transform: scale(1.02);
+      object-fit:contain;
     }
     .dropBody{
       padding: 18px;
@@ -379,16 +417,23 @@
       margin:0;
       font-weight:950;
       text-transform:uppercase;
-      letter-spacing:-0.02em;
-      font-size:22px;
-      line-height:1.05;
+      letter-spacing:-0.03em;
+      font-size: clamp(28px, 3.5vw, 42px);
+      line-height:1;
       color:var(--ink);
+    }
+    .dropPrice{
+      font-size:18px;
+      font-weight:900;
+      color:var(--ink);
+      letter-spacing:-0.02em;
+      margin:0;
     }
     .dropDesc{
       margin:0;
       color:var(--muted);
-      font-size:13px;
-      line-height:1.5;
+      font-size:14px;
+      line-height:1.55;
       max-width:52ch;
     }
     .dropActions{
@@ -482,6 +527,7 @@
 
       .dropCard{ grid-template-columns: 1fr; }
       .dropMedia{ border-right:none; border-bottom:1px solid var(--line); }
+      .dropMainImg img{ max-height:280px; }
     }
   </style>
 </head>
@@ -532,7 +578,7 @@
         <span class="accentLine"></span>
 
         <p class="subhead fade-up" style="transition-delay:.6s">
-          FOUR CHARIOTS makes clean pieces for daily life. Simple words that keep you steady and start conversations worth having.
+          Minimal faithwear for everyday movement. Simple words that keep you steady and start conversations worth having.
         </p>
 
         <div class="fade-up" style="margin-top:16px; transition-delay:.72s">
@@ -541,7 +587,7 @@
         </div>
       </div>
 
-      <aside class="heroCard missionCard fade-up" id="shipping" style="transition-delay:.3s">
+      <aside class="heroCard missionCard fade-up" id="shipping" style="transition-delay:.85s">
         <div class="missionTop">
           <div>
             <div class="missionTitle">FOUR DIRECTIONS. ONE MESSAGE.</div>
@@ -585,12 +631,7 @@
           </div>
         </div>
 
-        <div class="missionCtas">
-          <a class="btn primary" href="#drop">Shop the drop</a>
-          <div class="dropNote">One exclusive drop per month. Once it's gone, it's gone.</div>
-        </div>
-
-        <div class="trustRow">
+        <div class="trustRow" style="margin-top:14px;">
           <span>Secure Stripe checkout</span>
           <span class="sep">•</span>
           <span>Printed to order</span>
@@ -601,27 +642,63 @@
     <!-- NEW: Single item reveal below the fold -->
     <section class="dropReveal" id="drop">
       <div class="dropHeader">
-        <h2>The Drop</h2>
-        <p>One piece. One word. Released monthly.</p>
+        <div>
+          <p class="dropKicker">Drop 001</p>
+          <h2>The Drop</h2>
+        </div>
+        <p>One piece. One word. Once it's gone, it's gone.</p>
       </div>
 
       <div class="dropCard fade-up" style="transition-delay:.05s">
         <div class="dropMedia">
-          <!-- swap this image path to your actual drop image -->
-          <img src="images/drop.jpg" alt="This month's drop" />
+          <div class="dropMainImg">
+            <img id="dropHeroImg" src="images/unshakenblk.png" alt="UNSHAKEN Tee - Black" />
+          </div>
+          <div class="dropThumbs">
+            <div class="dropThumb active" data-src="images/unshakenblk.png" data-label="Black">
+              <img src="images/unshakenblk.png" alt="Black" />
+            </div>
+            <div class="dropThumb" data-src="images/unshakenwhite.png" data-label="White">
+              <img src="images/unshakenwhite.png" alt="White" />
+            </div>
+            <div class="dropThumb" data-src="images/unshakenred.png" data-label="Red">
+              <img src="images/unshakenred.png" alt="Red" />
+            </div>
+            <div class="dropThumb" data-src="images/unshakendap.png" data-label="Dapple">
+              <img src="images/unshakendap.png" alt="Dapple" />
+            </div>
+          </div>
         </div>
 
         <div class="dropBody">
-          <!-- swap these to your actual word + short blurb -->
           <h3 class="dropWord">UNSHAKEN</h3>
+          <p class="dropPrice">$25.00</p>
           <p class="dropDesc">
-            A quiet reminder you can carry into work, worship, and ordinary moments.
-            Minimal by design. Heavy in meaning.
+            One word. Worn daily. A quiet anchor for work, worship, and the ordinary in between. Four colorways. Printed to order, just for you.
           </p>
 
+          <div>
+            <div style="font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:0.10em;color:var(--ink);margin-bottom:8px;">
+              Color <span id="dropColorLabel" style="font-weight:500;color:var(--muted);text-transform:none;letter-spacing:0;margin-left:6px;">Black</span>
+            </div>
+            <div class="dropSwatches">
+              <button class="dropSwatch active" data-src="images/unshakenblk.png" data-label="Black" title="Black">
+                <span class="swatchInner" style="background-image:url('images/unshakenblk.png')"></span>
+              </button>
+              <button class="dropSwatch" data-src="images/unshakenwhite.png" data-label="White" title="White">
+                <span class="swatchInner" style="background-image:url('images/unshakenwhite.png')"></span>
+              </button>
+              <button class="dropSwatch" data-src="images/unshakenred.png" data-label="Red" title="Red">
+                <span class="swatchInner" style="background-image:url('images/unshakenred.png')"></span>
+              </button>
+              <button class="dropSwatch" data-src="images/unshakendap.png" data-label="Dapple" title="Dapple">
+                <span class="swatchInner" style="background-image:url('images/unshakendap.png')"></span>
+              </button>
+            </div>
+          </div>
+
           <div class="dropActions">
-            <a class="btn primary" href="drop.html">Checkout</a>
-            <a class="btn" href="drop.html">View details</a>
+            <a class="btn primary" href="drop.html">Shop this drop</a>
           </div>
 
           <div class="dropMeta">
@@ -719,6 +796,19 @@
     }
     window.addEventListener("scroll", setActiveLink, { passive: true });
     setActiveLink();
+
+    // drop thumbnail switching
+    document.querySelectorAll(".dropThumb").forEach(thumb => {
+      thumb.addEventListener("click", () => {
+        const heroImg = document.getElementById("dropHeroImg");
+        const label = document.getElementById("dropColorLabel");
+        heroImg.src = thumb.dataset.src;
+        heroImg.alt = "UNSHAKEN Tee - " + thumb.dataset.label;
+        if (label) label.textContent = thumb.dataset.label;
+        document.querySelectorAll(".dropThumb").forEach(t => t.classList.remove("active"));
+        thumb.classList.add("active");
+      });
+    });
   </script>
 </body>
 </html>
