@@ -264,16 +264,10 @@
       color:var(--muted);
       font-size:13px;
       max-width:62ch;
-    }
-    .product .meta{
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
-      color:var(--muted);
-      font-size:12px;
-      text-transform:uppercase;
-      letter-spacing:0.10em;
-      margin-top:2px;
+      overflow:hidden;
+      display:-webkit-box;
+      -webkit-line-clamp:4;
+      -webkit-box-orient:vertical;
     }
     .product .bottom{
       margin-top:auto;
@@ -294,24 +288,6 @@
       color:var(--muted);
       margin-top:2px;
     }
-
-    .controls{
-      display:flex;
-      gap:10px;
-      align-items:center;
-      flex-wrap:wrap;
-      margin-top:8px;
-    }
-    select, input[type="number"]{
-      border:1px solid var(--line);
-      background:#fff;
-      padding:10px 10px;
-      border-radius:0;
-      font:inherit;
-      font-size:13px;
-      min-width: 170px;
-    }
-    input[type="number"]{ width: 90px; min-width: 90px; }
 
     footer{
       margin-top: 34px;
@@ -427,70 +403,149 @@
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
+    // Keep these constants defined ONCE. If you paste into console multiple times,
+    // use `window.SUPABASE_URL = ...` instead.
     const SUPABASE_URL  = "https://txeemijqgqomfclezonf.supabase.co";
     const SUPABASE_ANON = "sb_publishable_0EVIoewalOJkV1BbpoU5KA_K_XkTL9x";
 
+    const statusEl = document.getElementById("status");
+    function setStatus(msg, kind) {
+      statusEl.textContent = msg || "";
+      statusEl.className = "status" + (kind ? " " + kind : "");
+    }
+
+    function formatUsdCents(cents) {
+      const n = Number(cents || 0);
+      return "$" + (n / 100).toFixed(2);
+    }
+
+    async function startCheckout(productId, variantId) {
+      if (!productId || !variantId) {
+        alert("Missing product selection.");
+        return;
+      }
+
+      setStatus("Opening checkout...", "");
+      try {
+        const res = await fetch(`${SUPABASE_URL}/functions/v1/create_checkout`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${SUPABASE_ANON}`,
+            "apikey": SUPABASE_ANON
+          },
+          body: JSON.stringify({
+            product_id: productId,
+            variant_id: Number(variantId),
+            quantity: 1
+          })
+        });
+
+        const data = await res.json();
+
+        if (!res.ok) {
+          console.error("create_checkout error:", data);
+          setStatus("Checkout failed. See console.", "error");
+          return;
+        }
+
+        if (!data.url) {
+          console.error("create_checkout missing url:", data);
+          setStatus("Checkout failed (no URL). See console.", "error");
+          return;
+        }
+
+        window.location.href = data.url;
+      } catch (err) {
+        console.error("Checkout error:", err);
+        setStatus("Checkout error. See console.", "error");
+      }
+    }
+
     async function loadProducts() {
+      setStatus("Loading products...", "");
       try {
         const res = await fetch(`${SUPABASE_URL}/functions/v1/printify`, {
           method: "GET",
           headers: {
             "Authorization": `Bearer ${SUPABASE_ANON}`,
-            "apikey": SUPABASE_ANON,
-            "Content-Type": "application/json"
+            "apikey": SUPABASE_ANON
           }
         });
-        const data = await res.json();
 
+        const data = await res.json();
         console.log("PRINTIFY RESPONSE:", data);
 
-        if (!data.products || !data.products.length) {
-          console.warn("No products returned");
+        if (!res.ok) {
+          console.error("printify function error:", data);
+          setStatus("Could not load products. See console.", "error");
           return;
         }
 
-        const grid = document.querySelector(".grid");
+        const products = data.products || [];
+        if (!products.length) {
+          setStatus("No products found.", "error");
+          return;
+        }
+
+        const grid = document.getElementById("grid");
         grid.innerHTML = "";
 
-        data.products.forEach((p) => {
-          const img = p.images?.[0]?.src || "";
-          const enabled = p.variants.filter(v => v.is_enabled);
-          const lowestPrice = enabled.length
-            ? Math.min(...enabled.map(v => v.price))
-            : 0;
+        products.forEach((p) => {
+          const img = p?.images?.[0]?.src || "";
+          const enabled = (p?.variants || []).filter(v => v && v.is_enabled);
 
-          const priceStr = "$" + (lowestPrice / 100).toFixed(2);
+          const lowest = enabled.length ? Math.min(...enabled.map(v => Number(v.price || 0))) : 0;
+          const defaultVariant = enabled[0];
 
           const card = document.createElement("article");
           card.className = "product";
 
           card.innerHTML = `
             <div class="media">
-              <img src="${img}" alt="${p.title}">
+              <img src="${img}" alt="${escapeHtml(p.title || "Product")}">
             </div>
             <div class="body">
-              <h3 class="name">${p.title}</h3>
-              <p class="desc">${p.description || ""}</p>
+              <h3 class="name">${escapeHtml(p.title || "Untitled")}</h3>
+              <p class="desc">${escapeHtml(stripHtml(p.description || ""))}</p>
             </div>
             <div class="bottom">
               <div>
-                <div class="price">${priceStr}</div>
+                <div class="price">${formatUsdCents(lowest)}</div>
                 <div class="fine">Stripe checkout</div>
               </div>
-              <button class="btn primary" onclick="startCheckout()">Buy</button>
+              <button class="btn primary" ${defaultVariant ? "" : "disabled"}>
+                ${defaultVariant ? "Buy" : "Unavailable"}
+              </button>
             </div>
           `;
+
+          const btn = card.querySelector("button");
+          if (defaultVariant) {
+            btn.addEventListener("click", () => startCheckout(p.id, defaultVariant.id));
+          }
 
           grid.appendChild(card);
         });
 
-      } catch(err) {
+        setStatus("Loaded.", "ok");
+      } catch (err) {
         console.error("Could not load products:", err);
+        setStatus("Could not load products. See console.", "error");
       }
     }
 
-    function startCheckout() {
-      window.location.href = "#"; // we will wire Stripe here next
+    function stripHtml(html) {
+      return String(html).replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
+    }
+
+    function escapeHtml(str) {
+      return String(str)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
     }
 
     loadProducts();
