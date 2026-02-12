@@ -98,6 +98,10 @@
       color:var(--text);
       border-bottom-color:var(--text);
     }
+    .nav a.navActive{
+      color:var(--text);
+      border-bottom-color:var(--text);
+    }
     .ctaRow{
       display:flex;
       gap:10px;
@@ -228,30 +232,31 @@
     }
 
     .heroCard{
-      border:1px solid var(--line);
+      border:1px solid rgba(11,26,42,.08);
       padding: 18px;
-      background: var(--soft);
+      background: transparent;
     }
 
     .missionCard{
-      background: #fbfbfb;
-      box-shadow: 0 4px 16px rgba(0,0,0,.04);
-      padding: 20px;
+      background: rgba(11,26,42,.025);
+      box-shadow: none;
+      border-color: rgba(11,26,42,.08);
+      padding: 18px;
     }
     .missionTop{
       padding-bottom: 12px;
-      border-bottom: 1px solid var(--line);
+      border-bottom: 1px solid rgba(11,26,42,.05);
       margin-bottom: 14px;
     }
     .missionTitle{
-      font-size: 13px;
-      letter-spacing: 0.14em;
+      font-size: 12px;
+      letter-spacing: 0.10em;
       text-transform: uppercase;
       color: var(--ink);
       font-weight: 950;
     }
     .missionSub{
-      margin-top: 8px;
+      margin-top: 6px;
       color: var(--muted);
       font-size: 13px;
       line-height: 1.45;
@@ -260,55 +265,42 @@
     .missionSteps{
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 10px;
     }
     .step{
       display: flex;
-      gap: 12px;
+      gap: 10px;
       align-items: flex-start;
     }
     .dot{
-      width: 28px;
-      height: 28px;
+      width: 20px;
+      height: 20px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      border: 1px solid var(--ink);
-      background: #fff;
-      color: var(--ink);
-      font-weight: 900;
-      font-size: 10px;
-      letter-spacing: 0.12em;
+      border: 1px solid rgba(11,26,42,.18);
+      background: transparent;
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 8px;
+      letter-spacing: 0.06em;
       border-radius: 50%;
       flex-shrink:0;
+      margin-top: 2px;
     }
     .stepTitle{
-      font-weight: 950;
+      font-weight: 900;
       text-transform: uppercase;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.04em;
       color: var(--ink);
       font-size: 12px;
       line-height: 1.1;
     }
     .stepDesc{
-      margin-top: 4px;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.4;
-    }
-    .trustRow{
-      margin-top: 14px;
-      padding-top: 12px;
-      border-top: 1px solid var(--line);
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      align-items: center;
+      margin-top: 3px;
       color: var(--muted);
       font-size: 12px;
-    }
-    .trustRow .sep{
-      opacity: .6;
+      line-height: 1.4;
     }
 
     /* NEW: single-drop reveal section */
@@ -438,16 +430,43 @@
     }
     .dropMeta .sep{ opacity:.6; }
 
-    /* NEW: membership teaser (quiet) */
+    .dropSwatches{
+      display:flex;
+      gap:8px;
+    }
+    .dropSwatch{
+      width:34px;
+      height:34px;
+      border-radius:50%;
+      border:2px solid transparent;
+      cursor:pointer;
+      padding:0;
+      background:none;
+      transition: border-color .2s ease, transform .15s ease;
+    }
+    .dropSwatch:hover{ transform:scale(1.1); }
+    .dropSwatch.active{ border-color:var(--ink); }
+    .swatchInner{
+      display:block;
+      width:100%;
+      height:100%;
+      border-radius:50%;
+      border:1px solid var(--line);
+      background-size:cover;
+      background-position:center;
+    }
+
+    /* Yearly membership teaser */
     .memberTeaser{
-      margin-top: 14px;
-      border: 1px solid var(--line);
-      background: #fbfbfb;
-      padding: 14px 16px;
+      margin-top: 34px;
+      border: 1px solid rgba(11,26,42,.10);
+      background: #f4f1ea;
+      border-radius: 12px;
+      padding: 28px 28px 24px;
       display:flex;
       align-items:flex-start;
       justify-content:space-between;
-      gap: 16px;
+      gap: 24px;
     }
     .memberLeft{
       display:flex;
@@ -456,51 +475,72 @@
       max-width: 72ch;
     }
     .memberKicker{
-      font-size: 12px;
-      letter-spacing: 0.18em;
+      font-size: 11px;
+      letter-spacing: 0.20em;
       text-transform: uppercase;
       color: var(--muted);
-      font-weight: 900;
+      font-weight: 800;
     }
     .memberTitle{
       margin:0;
-      font-size: 14px;
+      font-size: clamp(18px, 2.5vw, 24px);
       font-weight: 950;
-      letter-spacing: 0.06em;
+      letter-spacing: -0.02em;
       text-transform: uppercase;
       color: var(--ink);
-      line-height: 1.2;
+      line-height: 1.1;
     }
     .memberDesc{
-      margin:0;
-      font-size: 13px;
+      margin:4px 0 0;
+      font-size: 14px;
       color: var(--muted);
-      line-height: 1.5;
+      line-height: 1.55;
     }
-    .memberBullets{
-      margin: 6px 0 0;
-      padding-left: 16px;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.45;
+    .memberFeatures{
+      margin: 12px 0 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
     }
-    .memberBullets li{ margin: 4px 0; }
-    .memberRight{
-      display:flex;
-      align-items:center;
+    .memberFeatures li{
+      display: flex;
+      align-items: center;
       gap: 10px;
-      flex-shrink:0;
-    }
-    .btn.ghost{
-      background: transparent;
-      border-color: var(--line);
+      font-size: 13px;
       color: var(--text);
+      line-height: 1.3;
     }
-    .btn.ghost:hover{
-      background: var(--text);
-      color: var(--btnText);
-      border-color: var(--text);
-      transform:scale(1.04);
+    .memberFeatures li::before{
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--ink);
+      flex-shrink: 0;
+      opacity: .45;
+    }
+    .memberCta{
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      margin-top: 6px;
+      flex-shrink: 0;
+    }
+    .memberCta .btn.primary{
+      min-width: 180px;
+    }
+    .memberLink{
+      font-size: 12px;
+      color: var(--muted);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      transition: color .2s ease;
+    }
+    .memberLink:hover{
+      color: var(--ink);
     }
 
     footer{
@@ -580,14 +620,129 @@
 
       .memberTeaser{
         flex-direction: column;
-        align-items: flex-start;
+        align-items: stretch;
+        padding: 22px 20px 20px;
+        gap: 18px;
       }
-      .memberRight{
-        width:100%;
-      }
-      .memberRight .btn{
+      .memberCta{
         width: 100%;
+        align-items: stretch;
       }
+      .memberCta .btn.primary{
+        width: 100%;
+        display: flex;
+        min-width: unset;
+      }
+    }
+
+    /* ── Phone-specific refinements ── */
+    @media (max-width: 640px){
+      /* Global mobile polish */
+      .wrap{ padding: 14px 14px 50px; }
+
+      /* Header: smaller logo, tighter topbar */
+      .mark{ height: 80px; }
+      .topbar{ padding: 10px 0; }
+      .brand .name{ font-size: 12px; }
+
+      /* Hero spacing */
+      .hero{ padding: 10px 0 24px; gap: 20px; }
+
+      /* Category line: slightly larger for legibility, tighter spacing */
+      .kicker{
+        font-size: 11px;
+        letter-spacing: 0.16em;
+        margin-bottom: 12px;
+        gap: 7px;
+      }
+      .kicker .sep{ width: 3px; height: 3px; }
+
+      /* Headline responsive */
+      .headline{ font-size: clamp(32px, 9vw, 48px); letter-spacing: -0.04em; }
+      .accentLine{ margin-top: 12px; }
+      .subhead{ font-size: 15px; margin-top: 14px; line-height: 1.5; }
+
+      /* Buttons: full-width stacked on mobile */
+      .hero .fade-up .btn{
+        display: flex;
+        width: 100%;
+        margin-left: 0 !important;
+        padding: 14px 16px;
+        font-size: 13px;
+      }
+      .hero .fade-up{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      /* Four Directions card */
+      .missionCard{ padding: 14px; }
+      .missionTop{ padding-bottom: 8px; margin-bottom: 10px; }
+      .missionTitle{ font-size: 11px; }
+      .missionSub{ font-size: 11px; }
+      .missionSteps{ gap: 8px; }
+      .step{ gap: 8px; }
+      .dot{ width: 18px; height: 18px; font-size: 7px; }
+      .stepTitle{ font-size: 11px; }
+      .stepDesc{ font-size: 11px; }
+
+      /* DROP section */
+      .dropReveal{ padding: 24px 0 6px; }
+      .dropHeader{ padding: 14px 0 8px; margin-top: 6px; flex-direction: column; gap: 4px; }
+      .dropHeader h2{ font-size: 20px; }
+      .dropHeader p{ font-size: 12px; }
+      .dropCard{ margin-top: 10px; }
+      .dropMedia{ padding: 10px; gap: 8px; }
+      .dropMainImg img{ max-height: 240px; }
+      .dropThumbs{ gap: 6px; }
+      .dropThumb{ width: 50px; height: 50px; padding: 3px; }
+
+      /* Drop body */
+      .dropBody{ padding: 14px; gap: 8px; }
+      .dropWord{ font-size: clamp(24px, 7vw, 34px); }
+      .dropPrice{ font-size: 16px; }
+      .dropDesc{ font-size: 13px; line-height: 1.5; }
+      .dropActions{ margin-top: 4px; }
+      .dropActions .btn{ width: 100%; display: flex; padding: 14px 16px; }
+      .dropMeta{ font-size: 11px; gap: 8px; margin-top: 6px; }
+
+      /* Swatches */
+      .dropSwatches{ gap: 6px; }
+      .dropSwatch{ width: 30px; height: 30px; }
+      .swatchInner{ width: 100%; height: 100%; }
+
+      /* Never miss a drop */
+      .memberTeaser{ padding: 18px 16px 16px; gap: 14px; margin-top: 28px; border-radius: 10px; }
+      .memberKicker{ font-size: 10px; }
+      .memberTitle{ font-size: 18px; }
+      .memberDesc{ font-size: 13px; }
+      .memberFeatures{ gap: 6px; margin-top: 10px; }
+      .memberFeatures li{ font-size: 12px; gap: 8px; }
+      .memberCta .btn.primary{
+        padding: 14px 16px;
+        font-size: 13px;
+      }
+      .memberLink{ font-size: 11px; }
+
+      /* Footer */
+      footer{
+        margin-top: 24px;
+        padding-top: 14px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        font-size: 12px;
+      }
+    }
+    .cartBtn{ position:relative; }
+    .cartBadge{
+      position:absolute; top:-6px; right:-8px;
+      background:var(--bg); color:var(--ink);
+      font-size:10px; font-weight:900;
+      min-width:18px; height:18px; border-radius:9px;
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:0 5px; border:2px solid var(--ink);
     }
   </style>
 </head>
@@ -605,7 +760,7 @@
       <nav class="nav" aria-label="Site navigation">
         <a href="shop.html">Shop</a>
         <a href="about.html">About</a>
-        <a href="#drop">The Drop</a>
+        <a href="drop.html" class="navActive">The Drop</a>
         <a href="support.html">Support</a>
       </nav>
 
@@ -613,7 +768,7 @@
 
       <div class="ctaRow">
         <a class="btn" href="shop.html">Shop</a>
-        <a class="btn primary" href="shop.html">Checkout</a>
+        <a class="btn primary cartBtn" href="cart.html" id="cartBtn">Cart <span class="cartBadge" id="cartBadge" style="display:none;">0</span></a>
       </div>
     </div>
 
@@ -642,7 +797,7 @@
         </p>
 
         <div class="fade-up" style="margin-top:16px; transition-delay:.72s">
-          <a class="btn primary" href="#drop">Shop the drop</a>
+          <a class="btn primary" href="drop.html">Shop the drop</a>
           <a class="btn" href="shop.html" style="margin-left:10px;">Full shop</a>
         </div>
       </div>
@@ -650,7 +805,7 @@
       <aside class="heroCard missionCard fade-up" id="shipping" style="transition-delay:.85s">
         <div class="missionTop">
           <div>
-            <div class="missionTitle">FOUR DIRECTIONS. ONE MESSAGE.</div>
+            <div class="missionTitle">FOUR DIRECTIONS. ONE WORD.</div>
             <div class="missionSub">
               Each piece carries a word meant to travel further than you do.
             </div>
@@ -686,16 +841,11 @@
             <span class="dot">W</span>
             <div class="stepText">
               <div class="stepTitle">Send it</div>
-              <div class="stepDesc">Four directions. One message.</div>
+              <div class="stepDesc">Four directions. One word.</div>
             </div>
           </div>
         </div>
 
-        <div class="trustRow" style="margin-top:14px;">
-          <span>Secure Stripe checkout</span>
-          <span class="sep">•</span>
-          <span>Made to order</span>
-        </div>
       </aside>
     </section>
 
@@ -724,6 +874,12 @@
             <div class="dropThumb" data-src="images/unshakendap.png" data-label="Dapple">
               <img src="images/unshakendap.png" alt="Dapple" />
             </div>
+            <div class="dropThumb" data-src="images/scripturecloseup.png" data-label="Scripture Detail">
+              <img src="images/scripturecloseup.png" alt="Scripture close-up" />
+            </div>
+            <div class="dropThumb" data-src="images/closeuplogosleeve.png" data-label="Sleeve Detail">
+              <img src="images/closeuplogosleeve.png" alt="Logo sleeve close-up" />
+            </div>
           </div>
         </div>
 
@@ -743,22 +899,22 @@
             </div>
             <div class="dropSwatches">
               <button class="dropSwatch active" data-src="images/unshakenblk.png" data-label="Black" title="Black">
-                <span class="swatchInner" style="background-image:url('images/unshakenblk.png')"></span>
+                <span class="swatchInner" style="background-image:url('images/blackswatch.png')"></span>
               </button>
               <button class="dropSwatch" data-src="images/unshakenwhite.png" data-label="White" title="White">
-                <span class="swatchInner" style="background-image:url('images/unshakenwhite.png')"></span>
+                <span class="swatchInner" style="background-image:url('images/whiteswatch.png')"></span>
               </button>
               <button class="dropSwatch" data-src="images/unshakenred.png" data-label="Red" title="Red">
-                <span class="swatchInner" style="background-image:url('images/unshakenred.png')"></span>
+                <span class="swatchInner" style="background-image:url('images/redswatch.png')"></span>
               </button>
               <button class="dropSwatch" data-src="images/unshakendap.png" data-label="Dapple" title="Dapple">
-                <span class="swatchInner" style="background-image:url('images/unshakendap.png')"></span>
+                <span class="swatchInner" style="background-image:url('images/dappleswatch.png')"></span>
               </button>
             </div>
           </div>
 
           <div class="dropActions">
-            <a class="btn primary" href="shop.html">Shop this drop</a>
+            <a class="btn primary" href="drop.html">Shop this drop</a>
           </div>
 
           <div class="dropMeta">
@@ -771,22 +927,22 @@
         </div>
       </div>
 
-      <!-- NEW: quiet membership teaser lives right under the drop -->
-      <div class="memberTeaser fade-up" style="transition-delay:.08s" aria-label="Membership teaser">
+      <!-- Yearly membership teaser -->
+      <div class="memberTeaser fade-up" style="transition-delay:.08s" aria-label="Yearly membership">
         <div class="memberLeft">
-          <div class="memberKicker">Optional</div>
-          <p class="memberTitle">Never miss a drop</p>
+          <div class="memberKicker">Yearly Membership</div>
+          <p class="memberTitle">Never Miss a Drop</p>
           <p class="memberDesc">
-            Reserve your pieces for the year and get every release automatically. No waiting. No sell-outs.
+            Reserve your pieces for the year and get every release shipped automatically. No waiting. No sell-outs.
           </p>
-          <ul class="memberBullets">
+          <ul class="memberFeatures">
             <li>Guaranteed drop reserved for you</li>
             <li>Automatic shipping each release</li>
             <li>Member pricing and early access</li>
           </ul>
+          <a class="memberLink" href="membership.html">Learn more about membership</a>
         </div>
-        <div class="memberRight">
-          <a class="btn ghost" href="membership.html">Learn more</a>
+        <div class="memberCta">
           <a class="btn primary" href="membership.html">Get the year</a>
         </div>
       </div>
@@ -877,18 +1033,45 @@
     window.addEventListener("scroll", setActiveLink, { passive: true });
     setActiveLink();
 
-    // drop thumbnail switching
+    // drop thumbnail + swatch switching
+    const dropHeroImg = document.getElementById("dropHeroImg");
+    const dropLabel = document.getElementById("dropColorLabel");
+
     document.querySelectorAll(".dropThumb").forEach(thumb => {
       thumb.addEventListener("click", () => {
-        const heroImg = document.getElementById("dropHeroImg");
-        const label = document.getElementById("dropColorLabel");
-        heroImg.src = thumb.dataset.src;
-        heroImg.alt = "UNSHAKEN Tee - " + thumb.dataset.label;
-        if (label) label.textContent = thumb.dataset.label;
+        dropHeroImg.src = thumb.dataset.src;
+        dropHeroImg.alt = "UNSHAKEN Tee - " + thumb.dataset.label;
+        if (dropLabel) dropLabel.textContent = thumb.dataset.label;
         document.querySelectorAll(".dropThumb").forEach(t => t.classList.remove("active"));
         thumb.classList.add("active");
+        // Sync swatch
+        document.querySelectorAll(".dropSwatch").forEach(s => {
+          s.classList.toggle("active", s.dataset.label === thumb.dataset.label);
+        });
       });
     });
+
+    document.querySelectorAll(".dropSwatch").forEach(sw => {
+      sw.addEventListener("click", () => {
+        dropHeroImg.src = sw.dataset.src;
+        dropHeroImg.alt = "UNSHAKEN Tee - " + sw.dataset.label;
+        if (dropLabel) dropLabel.textContent = sw.dataset.label;
+        document.querySelectorAll(".dropSwatch").forEach(s => s.classList.remove("active"));
+        sw.classList.add("active");
+        // Sync thumbnail
+        document.querySelectorAll(".dropThumb").forEach(t => {
+          t.classList.toggle("active", t.dataset.label === sw.dataset.label);
+        });
+      });
+    });
+    /* Cart badge */
+    function getCart(){try{const r=localStorage.getItem("fc_cart");return r?JSON.parse(r):[];}catch{return[];}}
+    function getCartCount(){return getCart().reduce((s,i)=>s+i.quantity,0);}
+    (function updateCartBadge(){
+      const b=document.getElementById("cartBadge");if(!b)return;
+      const c=getCartCount();
+      if(c>0){b.textContent=c;b.style.display="inline-flex";}else{b.style.display="none";}
+    })();
   </script>
 </body>
 </html>
