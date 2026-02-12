@@ -181,8 +181,11 @@
       background: #fafafa;
       border-bottom:1px solid var(--line);
       overflow:hidden;
+      position:relative;
     }
     .product .media img{
+      position:absolute;
+      inset:0;
       width:100%;
       height:100%;
       object-fit:cover;
@@ -377,10 +380,13 @@
     .scSwatch:hover{ transform:scale(1.1); }
     .scSwatch.active{ border-color:var(--ink); }
     .scSwatch .inner{
+      display:block;
       width:100%;
       height:100%;
       border-radius:50%;
       border:1px solid var(--line);
+      background-size:cover;
+      background-position:center;
     }
     .scMeta{
       padding-top:14px;
@@ -474,6 +480,15 @@
       /* Footer */
       footer{ flex-direction:column; align-items:flex-start; gap:6px; margin-top:24px; }
     }
+    .cartBtn{ position:relative; }
+    .cartBadge{
+      position:absolute; top:-6px; right:-8px;
+      background:var(--bg); color:var(--ink);
+      font-size:10px; font-weight:900;
+      min-width:18px; height:18px; border-radius:9px;
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:0 5px; border:2px solid var(--ink);
+    }
   </style>
 </head>
 
@@ -490,7 +505,7 @@
       <nav class="nav" aria-label="Site navigation">
         <a href="shop.html">Shop</a>
         <a href="about.html">About</a>
-        <a href="index.html#drop">The Drop</a>
+        <a href="drop.html">The Drop</a>
         <a href="support.html">Support</a>
       </nav>
 
@@ -498,7 +513,7 @@
 
       <div class="ctaRow">
         <a class="btn" href="shop.html">Shop</a>
-        <a class="btn primary" href="shop.html">Checkout</a>
+        <a class="btn primary cartBtn" href="cart.html" id="cartBtn">Cart <span class="cartBadge" id="cartBadge" style="display:none;">0</span></a>
       </div>
     </div>
 
@@ -538,6 +553,12 @@
           <div class="scThumb" data-src="images/unshakendap.png" data-color="Dapple" data-hex="#555555">
             <img src="images/unshakendap.png" alt="Dapple" />
           </div>
+          <div class="scThumb" data-src="images/scripturecloseup.png" data-color="" data-hex="">
+            <img src="images/scripturecloseup.png" alt="Scripture close-up" />
+          </div>
+          <div class="scThumb" data-src="images/closeuplogosleeve.png" data-color="" data-hex="">
+            <img src="images/closeuplogosleeve.png" alt="Logo sleeve close-up" />
+          </div>
         </div>
       </div>
 
@@ -545,47 +566,38 @@
         <h2 class="scTitle">UNSHAKEN</h2>
         <div class="scPrice">$25.00</div>
         <p class="scDesc">
-          A quiet reminder you can carry into work, worship, and ordinary moments.
-          Minimal by design. Heavy in meaning. Available in four colorways.
+          One word. Worn daily. A quiet anchor for work, worship, and the ordinary in between. Four colorways, inspired by the four chariot horses.
+        </p>
+        <p class="scDesc" style="font-style:italic; opacity:.85;">
+          Each piece carries a connected scripture reference, placed subtly on the sleeve. A quiet reminder, not a loud statement.
         </p>
 
         <div>
           <div class="scLabel">Color <span class="val" id="scColorLabel">Black</span></div>
           <div class="scColors" style="margin-top:8px;">
             <button class="scSwatch active" data-color="Black" data-src="images/unshakenblk.png" title="Black">
-              <span class="inner" style="background:#1a1a1a"></span>
+              <span class="inner" style="background-image:url('images/blackswatch.png')"></span>
             </button>
             <button class="scSwatch" data-color="White" data-src="images/unshakenwhite.png" title="White">
-              <span class="inner" style="background:#f5f0e1"></span>
+              <span class="inner" style="background-image:url('images/whiteswatch.png')"></span>
             </button>
             <button class="scSwatch" data-color="Red" data-src="images/unshakenred.png" title="Red">
-              <span class="inner" style="background:#8b2232"></span>
+              <span class="inner" style="background-image:url('images/redswatch.png')"></span>
             </button>
             <button class="scSwatch" data-color="Dapple" data-src="images/unshakendap.png" title="Dapple">
-              <span class="inner" style="background:#555555"></span>
+              <span class="inner" style="background-image:url('images/dappleswatch.png')"></span>
             </button>
           </div>
         </div>
 
-        <a class="btn primary" href="shop.html" style="width:100%;margin-top:4px;">Shop now</a>
+        <a class="btn primary" href="drop.html" style="width:100%;margin-top:4px;">View</a>
 
-        <div class="scMeta">
-          <div class="scMetaItem">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
-            <span>Made to order, just for you</span>
-          </div>
-          <div class="scMetaItem">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><path d="M1 10h22"/></svg>
-            <span>Secure checkout via Stripe</span>
-          </div>
-        </div>
-
-        <div style="padding-top:14px; border-top:1px solid var(--line);">
-          <div style="font-size:11px; font-weight:900; text-transform:uppercase; letter-spacing:0.16em; color:var(--muted); margin-bottom:8px;">Connected Verse</div>
-          <p style="margin:0; font-size:13px; color:var(--muted); line-height:1.55;">
-            Every drop carries a scripture reference chosen to reflect the word on the front.
-            For Drop 001, "UNSHAKEN" connects to <strong style="color:var(--ink);">Psalm 16:8</strong>, embroidered quietly on the right sleeve.
-          </p>
+        <div class="scMeta" style="flex-direction:row; gap:10px; border-top:none; padding-top:0;">
+          <span style="font-size:12px; color:var(--muted);">Limited release</span>
+          <span style="opacity:.6;">·</span>
+          <span style="font-size:12px; color:var(--muted);">Made to order</span>
+          <span style="opacity:.6;">·</span>
+          <span style="font-size:12px; color:var(--muted);">Secure Stripe checkout</span>
         </div>
       </div>
     </div>
@@ -832,6 +844,14 @@
         });
       });
     });
+    /* Cart badge */
+    function getCart(){try{const r=localStorage.getItem("fc_cart");return r?JSON.parse(r):[];}catch{return[];}}
+    function getCartCount(){return getCart().reduce((s,i)=>s+i.quantity,0);}
+    (function updateCartBadge(){
+      const b=document.getElementById("cartBadge");if(!b)return;
+      const c=getCartCount();
+      if(c>0){b.textContent=c;b.style.display="inline-flex";}else{b.style.display="none";}
+    })();
   </script>
 </body>
 </html>

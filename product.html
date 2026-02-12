@@ -468,6 +468,15 @@
       line-height:1;
       color:var(--text);
     }
+    .cartBtn{ position:relative; }
+    .cartBadge{
+      position:absolute; top:-6px; right:-8px;
+      background:var(--bg); color:var(--ink);
+      font-size:10px; font-weight:900;
+      min-width:18px; height:18px; border-radius:9px;
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:0 5px; border:2px solid var(--ink);
+    }
 
     /* fade animation */
     .fade-up{
@@ -530,7 +539,7 @@
       <nav class="nav" aria-label="Site navigation">
         <a href="shop.html">Shop</a>
         <a href="about.html">About</a>
-        <a href="index.html#drop">The Drop</a>
+        <a href="drop.html">The Drop</a>
         <a href="support.html">Support</a>
       </nav>
 
@@ -538,7 +547,7 @@
 
       <div class="ctaRow">
         <a class="btn" href="shop.html">Shop</a>
-        <a class="btn primary" href="shop.html">Checkout</a>
+        <a class="btn primary cartBtn" href="cart.html" id="cartBtn">Cart <span class="cartBadge" id="cartBadge" style="display:none;">0</span></a>
       </div>
     </div>
 
@@ -593,6 +602,7 @@
     } else {
       loadProduct(productId);
     }
+    updateCartBadge();
 
     async function loadProduct(id) {
       try {
@@ -1051,50 +1061,67 @@
       });
     }
 
+    /* ── Cart API ── */
+    function getCart() {
+      try {
+        const raw = localStorage.getItem("fc_cart");
+        return raw ? JSON.parse(raw) : [];
+      } catch { return []; }
+    }
+    function saveCart(items) {
+      try { localStorage.setItem("fc_cart", JSON.stringify(items)); } catch {}
+    }
+    function addToCart(item) {
+      const cart = getCart();
+      const idx = cart.findIndex(i => i.productId === item.productId && i.variantId === item.variantId);
+      if (idx >= 0) {
+        cart[idx].quantity = Math.min(cart[idx].quantity + item.quantity, 10);
+      } else {
+        cart.push(item);
+      }
+      saveCart(cart);
+      return cart;
+    }
+    function getCartCount() {
+      return getCart().reduce((s, i) => s + i.quantity, 0);
+    }
+    function updateCartBadge() {
+      const badge = document.getElementById("cartBadge");
+      if (!badge) return;
+      const count = getCartCount();
+      if (count > 0) { badge.textContent = count; badge.style.display = "inline-flex"; }
+      else { badge.style.display = "none"; }
+    }
+
     function bindAddToCart() {
       const btn = document.getElementById("addToCartBtn");
-      btn.addEventListener("click", async () => {
+      btn.addEventListener("click", () => {
         const variant = findVariant(selectedColor, selectedSize);
         if (!variant) {
           alert("Please select available options.");
           return;
         }
 
+        const images = getFilteredImages();
+        const cartItem = {
+          productId: product.id,
+          variantId: Number(variant.id),
+          title: product.title || "Product",
+          color: selectedColor || "",
+          size: selectedSize || "",
+          price: Number(variant.price || 0),
+          imageUrl: images[0]?.src || product.images?.[0]?.src || "",
+          quantity: quantity
+        };
+
         btn.disabled = true;
-        btn.textContent = "Opening checkout...";
+        btn.textContent = "Added!";
+        addToCart(cartItem);
+        updateCartBadge();
 
-        try {
-          const res = await fetch(`${SUPABASE_URL}/functions/v1/create_checkout`, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              "Authorization": `Bearer ${SUPABASE_ANON}`,
-              "apikey": SUPABASE_ANON
-            },
-            body: JSON.stringify({
-              product_id: product.id,
-              variant_id: Number(variant.id),
-              quantity: quantity
-            })
-          });
-
-          const data = await res.json();
-
-          if (!res.ok || !data.url) {
-            console.error("Checkout error:", data);
-            alert("Checkout failed. Please try again.");
-            btn.disabled = false;
-            btn.textContent = "Add to cart";
-            return;
-          }
-
-          window.location.href = data.url;
-        } catch (err) {
-          console.error("Checkout error:", err);
-          alert("Checkout error. Please try again.");
-          btn.disabled = false;
-          btn.textContent = "Add to cart";
-        }
+        setTimeout(() => {
+          window.location.href = "cart.html";
+        }, 500);
       });
     }
   </script>

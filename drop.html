@@ -161,78 +161,6 @@
       color:var(--muted);
     }
 
-    .grid{
-      display:grid;
-      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-      gap: 18px;
-      padding-top: 12px;
-      max-width:800px;
-      margin:0 auto;
-    }
-    .product{
-      border:1px solid var(--line);
-      background: var(--bg);
-      display:flex;
-      flex-direction:column;
-      min-height: 520px;
-    }
-    .product .media{
-      aspect-ratio: 4/3;
-      background: #fafafa;
-      border-bottom:1px solid var(--line);
-      overflow:hidden;
-    }
-    .product .media img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-    }
-    .product .body{
-      padding: 16px;
-      display:flex;
-      flex-direction:column;
-      gap:10px;
-      min-height: 170px;
-    }
-    .product .name{
-      margin:0;
-      font-weight:950;
-      text-transform:uppercase;
-      letter-spacing:-0.02em;
-      font-size:16px;
-      line-height:1.05;
-      color:var(--ink);
-    }
-    .product .desc{
-      margin:0;
-      color:var(--muted);
-      font-size:13px;
-      max-width:62ch;
-      overflow:hidden;
-      display:-webkit-box;
-      -webkit-line-clamp:4;
-      -webkit-box-orient:vertical;
-    }
-    .product .bottom{
-      margin-top:auto;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      border-top:1px solid var(--line);
-      padding: 14px 16px;
-    }
-    .price{
-      font-weight:950;
-      letter-spacing:-0.02em;
-      color:var(--ink);
-    }
-    .fine{
-      font-size:12px;
-      color:var(--muted);
-      margin-top:2px;
-    }
-
     footer{
       margin-top: 34px;
       padding-top: 18px;
@@ -247,24 +175,6 @@
     }
     footer .links{ display:flex; gap:14px; flex-wrap:wrap; }
     footer .links a:hover{ color:var(--text); }
-
-    .spinner{
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      padding:80px 0;
-      grid-column:1/-1;
-    }
-    .spinner::after{
-      content:"";
-      width:36px;
-      height:36px;
-      border:3px solid var(--line);
-      border-top-color:var(--ink);
-      border-radius:50%;
-      animation:spin .7s linear infinite;
-    }
-    @keyframes spin{ to{ transform:rotate(360deg); } }
 
     /* UNSHAKEN showcase */
     .showcase{
@@ -360,6 +270,30 @@
       letter-spacing:0;
       margin-left:6px;
     }
+    .sizeBtns{
+      display:flex;
+      gap:6px;
+      flex-wrap:wrap;
+      margin-top:8px;
+    }
+    .sizeBtn{
+      padding:8px 14px;
+      font-size:12px;
+      font-weight:700;
+      font-family:var(--font);
+      letter-spacing:0.04em;
+      border:1px solid var(--line);
+      background:transparent;
+      color:var(--text);
+      cursor:pointer;
+      transition: border-color .2s ease, background .2s ease;
+    }
+    .sizeBtn:hover{ border-color:var(--ink); }
+    .sizeBtn.active{
+      background:var(--ink);
+      color:var(--bg);
+      border-color:var(--ink);
+    }
     .scColors{
       display:flex;
       gap:8px;
@@ -377,10 +311,13 @@
     .scSwatch:hover{ transform:scale(1.1); }
     .scSwatch.active{ border-color:var(--ink); }
     .scSwatch .inner{
+      display:block;
       width:100%;
       height:100%;
       border-radius:50%;
       border:1px solid var(--line);
+      background-size:cover;
+      background-position:center;
     }
     .scMeta{
       padding-top:14px;
@@ -446,19 +383,6 @@
       .pageTitle{ padding: 28px 0 14px; }
       .pageTitle h1{ font-size: clamp(24px, 7vw, 36px); }
 
-      /* Product grid — single column on mobile */
-      .grid{
-        grid-template-columns: 1fr;
-        gap: 14px;
-        max-width: 100%;
-      }
-      .product{ min-height: auto; }
-      .product .media{ aspect-ratio: 4/3; }
-      .product .body{ min-height: auto; padding: 14px; gap: 8px; }
-      .product .name{ font-size: 15px; }
-      .product .desc{ font-size: 12px; -webkit-line-clamp: 3; }
-      .product .bottom{ padding: 12px 14px; }
-
       /* Showcase — stack vertically */
       .showcase{ grid-template-columns: 1fr; }
       .scGallery{ border-right:none; border-bottom:1px solid var(--line); padding:14px; }
@@ -474,6 +398,15 @@
       /* Footer */
       footer{ flex-direction:column; align-items:flex-start; gap:6px; margin-top:24px; }
     }
+    .cartBtn{ position:relative; }
+    .cartBadge{
+      position:absolute; top:-6px; right:-8px;
+      background:var(--bg); color:var(--ink);
+      font-size:10px; font-weight:900;
+      min-width:18px; height:18px; border-radius:9px;
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:0 5px; border:2px solid var(--ink);
+    }
   </style>
 </head>
 
@@ -488,9 +421,9 @@
       </a>
 
       <nav class="nav" aria-label="Site navigation">
-        <a href="drop.html">Shop</a>
+        <a href="shop.html">Shop</a>
         <a href="about.html">About</a>
-        <a href="index.html#drop">The Drop</a>
+        <a href="drop.html">The Drop</a>
         <a href="support.html">Support</a>
       </nav>
 
@@ -498,25 +431,15 @@
 
       <div class="ctaRow">
         <a class="btn" href="drop.html">Shop</a>
-        <a class="btn primary" href="drop.html">Checkout</a>
+        <a class="btn primary cartBtn" href="cart.html" id="cartBtn">Cart <span class="cartBadge" id="cartBadge" style="display:none;">0</span></a>
       </div>
     </div>
 
     <div class="divider"></div>
 
     <div class="pageTitle">
-      <h1>Shop</h1>
-      <p>Faith-driven gear. Made to order, just for you.</p>
-    </div>
-
-    <!-- Printify product grid (all items) -->
-    <section class="grid" id="grid" aria-label="Products"></section>
-
-    <!-- Current Drop divider -->
-    <div style="text-align:center; padding:48px 0 20px;">
-      <div style="font-size:11px; font-weight:900; text-transform:uppercase; letter-spacing:0.16em; color:var(--muted); margin-bottom:8px;">Current Drop</div>
-      <h2 style="margin:0; font-size:clamp(24px,3vw,36px); font-weight:950; text-transform:uppercase; letter-spacing:0.10em; color:var(--ink);">Drop 001</h2>
-      <p style="margin:8px 0 0; font-size:14px; color:var(--muted);">One exclusive drop per month. Once it's gone, it's gone.</p>
+      <h1>Drop 001</h1>
+      <p>One piece. One word. Once it's gone, it's gone.</p>
     </div>
 
     <!-- UNSHAKEN showcase -->
@@ -538,6 +461,12 @@
           <div class="scThumb" data-src="images/unshakendap.png" data-color="Dapple" data-hex="#555555">
             <img src="images/unshakendap.png" alt="Dapple" />
           </div>
+          <div class="scThumb" data-src="images/scripturecloseup.png" data-color="" data-hex="">
+            <img src="images/scripturecloseup.png" alt="Scripture close-up" />
+          </div>
+          <div class="scThumb" data-src="images/closeuplogosleeve.png" data-color="" data-hex="">
+            <img src="images/closeuplogosleeve.png" alt="Logo sleeve close-up" />
+          </div>
         </div>
       </div>
 
@@ -553,21 +482,33 @@
           <div class="scLabel">Color <span class="val" id="scColorLabel">Black</span></div>
           <div class="scColors" style="margin-top:8px;">
             <button class="scSwatch active" data-color="Black" data-src="images/unshakenblk.png" title="Black">
-              <span class="inner" style="background:#1a1a1a"></span>
+              <span class="inner" style="background-image:url('images/blackswatch.png')"></span>
             </button>
             <button class="scSwatch" data-color="White" data-src="images/unshakenwhite.png" title="White">
-              <span class="inner" style="background:#f5f0e1"></span>
+              <span class="inner" style="background-image:url('images/whiteswatch.png')"></span>
             </button>
             <button class="scSwatch" data-color="Red" data-src="images/unshakenred.png" title="Red">
-              <span class="inner" style="background:#8b2232"></span>
+              <span class="inner" style="background-image:url('images/redswatch.png')"></span>
             </button>
             <button class="scSwatch" data-color="Dapple" data-src="images/unshakendap.png" title="Dapple">
-              <span class="inner" style="background:#555555"></span>
+              <span class="inner" style="background-image:url('images/dappleswatch.png')"></span>
             </button>
           </div>
         </div>
 
-        <a class="btn primary" href="drop.html" style="width:100%;margin-top:4px;">Shop now</a>
+        <div>
+          <div class="scLabel">Size <span class="val" id="scSizeLabel"></span></div>
+          <div class="sizeBtns">
+            <button class="sizeBtn" data-size="S">S</button>
+            <button class="sizeBtn" data-size="M">M</button>
+            <button class="sizeBtn" data-size="L">L</button>
+            <button class="sizeBtn" data-size="XL">XL</button>
+            <button class="sizeBtn" data-size="2XL">2XL</button>
+            <button class="sizeBtn" data-size="3XL">3XL</button>
+          </div>
+        </div>
+
+        <button class="btn primary" id="addToCartBtn" style="width:100%;margin-top:4px;">Add to cart</button>
 
         <div class="scMeta">
           <div class="scMetaItem">
@@ -602,204 +543,11 @@
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    const SUPABASE_URL  = "https://txeemijqgqomfclezonf.supabase.co";
-    const SUPABASE_ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR4ZWVtaWpxZ3FvbWZjbGV6b25mIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA3NjkzMjgsImV4cCI6MjA4NjM0NTMyOH0.boeu2dy3J-L09LRKQrRWPSvTPevynff5ZVwpeaT8oYM";
-
-    function setStatus(msg, kind) {
-      if (kind === "error") console.error("[4C]", msg);
-      else console.log("[4C]", msg);
-    }
-
-    function formatUsdCents(cents) {
-      const n = Number(cents || 0);
-      return "$" + (n / 100).toFixed(2);
-    }
-
-    async function startCheckout(productId, variantId) {
-      if (!productId || !variantId) {
-        alert("Missing product selection.");
-        return;
-      }
-
-      setStatus("Opening checkout...", "");
-      try {
-        const res = await fetch(`${SUPABASE_URL}/functions/v1/create_checkout`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${SUPABASE_ANON}`,
-            "apikey": SUPABASE_ANON
-          },
-          body: JSON.stringify({
-            product_id: productId,
-            variant_id: Number(variantId),
-            quantity: 1
-          })
-        });
-
-        const data = await res.json();
-
-        if (!res.ok) {
-          console.error("create_checkout error:", data);
-          setStatus("Checkout failed. See console.", "error");
-          return;
-        }
-
-        if (!data.url) {
-          console.error("create_checkout missing url:", data);
-          setStatus("Checkout failed (no URL). See console.", "error");
-          return;
-        }
-
-        window.location.href = data.url;
-      } catch (err) {
-        console.error("Checkout error:", err);
-        setStatus("Checkout error. See console.", "error");
-      }
-    }
-
-    const CACHE_KEY = "fc_products";
-    const CACHE_TTL = 5 * 60 * 1000; // 5 min browser cache
-
-    function getCachedProducts() {
-      try {
-        const raw = sessionStorage.getItem(CACHE_KEY);
-        if (!raw) return null;
-        const { ts, products } = JSON.parse(raw);
-        if (Date.now() - ts > CACHE_TTL) return null;
-        return products;
-      } catch { return null; }
-    }
-
-    function setCachedProducts(products) {
-      try {
-        sessionStorage.setItem(CACHE_KEY, JSON.stringify({ ts: Date.now(), products }));
-      } catch {}
-    }
-
-    // Products to hide from the shop grid (by title, case-insensitive)
-    const HIDDEN_PRODUCTS = ["olive heart"];
-
-    function renderProducts(products) {
-      const grid = document.getElementById("grid");
-      grid.innerHTML = "";
-
-      products.filter(p => !HIDDEN_PRODUCTS.some(h => (p.title || "").toLowerCase().includes(h.toLowerCase()))).forEach((p) => {
-        const img = p?.images?.[0]?.src || "";
-        const enabled = (p?.variants || []).filter(v => v && v.is_enabled);
-        const lowest = enabled.length ? Math.min(...enabled.map(v => Number(v.price || 0))) : 0;
-        const defaultVariant = enabled[0];
-
-        const card = document.createElement("article");
-        card.className = "product";
-
-        card.innerHTML = `
-          <a href="product.html?id=${encodeURIComponent(p.id)}" class="media">
-            <img src="${img}" alt="${escapeHtml(p.title || "Product")}" loading="lazy">
-          </a>
-          <div class="body">
-            <a href="product.html?id=${encodeURIComponent(p.id)}">
-              <h3 class="name">${escapeHtml(p.title || "Untitled")}</h3>
-            </a>
-            <p class="desc">${escapeHtml(stripHtml(p.description || ""))}</p>
-          </div>
-          <div class="bottom">
-            <div>
-              <div class="price">${formatUsdCents(lowest)}</div>
-              <div class="fine">Stripe checkout</div>
-            </div>
-            <a class="btn primary" href="product.html?id=${encodeURIComponent(p.id)}">
-              ${defaultVariant ? "View" : "Unavailable"}
-            </a>
-          </div>
-        `;
-
-        grid.appendChild(card);
-      });
-    }
-
-    async function loadProducts() {
-      const grid = document.getElementById("grid");
-
-      // Try browser cache first for instant render
-      const cached = getCachedProducts();
-      if (cached && cached.length) {
-        setStatus("Loaded from cache.", "ok");
-        renderProducts(cached);
-        // Refresh in background so next visit has fresh data
-        fetchProducts().then(fresh => {
-          if (fresh) setCachedProducts(fresh);
-        });
-        return;
-      }
-
-      grid.innerHTML = '<div class="spinner"></div>';
-      setStatus("Loading products...", "");
-
-      const products = await fetchProducts();
-      if (products) {
-        setCachedProducts(products);
-        renderProducts(products);
-        setStatus("Loaded.", "ok");
-      }
-    }
-
-    async function fetchProducts() {
-      try {
-        const res = await fetch(`${SUPABASE_URL}/functions/v1/printify`, {
-          method: "GET",
-          headers: {
-            "Authorization": `Bearer ${SUPABASE_ANON}`,
-            "apikey": SUPABASE_ANON
-          }
-        });
-
-        const data = await res.json();
-        console.log("PRINTIFY RESPONSE:", data);
-
-        if (!res.ok) {
-          console.error("printify function error:", data);
-          setStatus("Could not load products. See console.", "error");
-          return null;
-        }
-
-        const products = data.products || [];
-        if (!products.length) {
-          setStatus("No products found.", "error");
-          return null;
-        }
-
-        return products;
-      } catch (err) {
-        console.error("Could not load products:", err);
-        setStatus("Could not load products. See console.", "error");
-        return null;
-      }
-    }
-
-    function stripHtml(html) {
-      const tmp = document.createElement("div");
-      tmp.innerHTML = html;
-      return (tmp.textContent || tmp.innerText || "").replace(/\s+/g, " ").trim();
-    }
-
-    function escapeHtml(str) {
-      return String(str)
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
-    }
-
     document.querySelectorAll(".nav a").forEach(a => {
       a.addEventListener("click", () => {
         document.querySelector(".nav").classList.remove("open");
       });
     });
-
-    // Load all Printify products into the grid
-    loadProducts();
 
     // Showcase thumbnail + swatch switching
     const scHero = document.getElementById("scHeroImg");
@@ -831,6 +579,63 @@
           t.classList.toggle("active", t.dataset.color === sw.dataset.color);
         });
       });
+    });
+    /* Cart API */
+    function getCart(){try{const r=localStorage.getItem("fc_cart");return r?JSON.parse(r):[];}catch{return[];}}
+    function saveCart(items){try{localStorage.setItem("fc_cart",JSON.stringify(items));}catch{}}
+    function addToCart(item){
+      const cart=getCart();
+      const idx=cart.findIndex(i=>i.productId===item.productId&&i.variantId===item.variantId);
+      if(idx>=0){cart[idx].quantity=Math.min(cart[idx].quantity+item.quantity,10);}
+      else{cart.push(item);}
+      saveCart(cart);
+      return cart;
+    }
+    function getCartCount(){return getCart().reduce((s,i)=>s+i.quantity,0);}
+    function updateCartBadge(){
+      const b=document.getElementById("cartBadge");if(!b)return;
+      const c=getCartCount();
+      if(c>0){b.textContent=c;b.style.display="inline-flex";}else{b.style.display="none";}
+    }
+    updateCartBadge();
+
+    /* Size selector */
+    let selectedSize = "";
+    const sizeLabel = document.getElementById("scSizeLabel");
+    document.querySelectorAll(".sizeBtn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        selectedSize = btn.dataset.size;
+        if(sizeLabel) sizeLabel.textContent = selectedSize;
+        document.querySelectorAll(".sizeBtn").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+      });
+    });
+
+    /* Add to cart */
+    const addBtn = document.getElementById("addToCartBtn");
+    addBtn.addEventListener("click", () => {
+      const activeSwatch = document.querySelector(".scSwatch.active");
+      const color = activeSwatch ? activeSwatch.dataset.color : "Black";
+      if(!selectedSize){
+        alert("Please select a size.");
+        return;
+      }
+      const imgSrc = activeSwatch ? activeSwatch.dataset.src : "images/unshakenblk.png";
+      const cartItem = {
+        productId: "unshaken-drop-001",
+        variantId: color + "-" + selectedSize,
+        title: "UNSHAKEN Tee",
+        color: color,
+        size: selectedSize,
+        price: 2500,
+        imageUrl: imgSrc,
+        quantity: 1
+      };
+      addBtn.disabled = true;
+      addBtn.textContent = "Added!";
+      addToCart(cartItem);
+      updateCartBadge();
+      setTimeout(() => { window.location.href = "cart.html"; }, 500);
     });
   </script>
 </body>
