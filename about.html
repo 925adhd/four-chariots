@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>About | FOUR CHARIOTS</title>
-  <meta name="description" content="The story behind FOUR CHARIOTS. Faith-driven apparel designed to move truth through daily life." />
+  <meta name="description" content="The story behind FOUR CHARIOTS. Faith-driven gear designed to move truth through daily life." />
   <meta name="robots" content="noindex, nofollow" />
 
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='15' fill='%230b1a2a'/><text x='16' y='22' text-anchor='middle' font-size='18' font-weight='900' font-family='system-ui,sans-serif' fill='%23ffffff'>4C</text></svg>" />
@@ -39,6 +39,7 @@
       line-height:1.35;
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
+      overflow-x: hidden;
     }
     a{ color:inherit; text-decoration:none; }
     img{ max-width:100%; display:block; }
@@ -134,10 +135,9 @@
 
     .divider{ border-top:1px solid var(--line); }
 
-    /* page header */
     .pageHero{
-      padding: 50px 0 40px;
-      max-width:720px;
+      padding: 54px 0 44px;
+      max-width: 780px;
     }
     .pageHero .kicker{
       font-size:13px;
@@ -160,7 +160,7 @@
       font-size:17px;
       color:var(--muted);
       line-height:1.6;
-      max-width:58ch;
+      max-width:60ch;
     }
 
     /* content sections */
@@ -188,9 +188,81 @@
       color:var(--muted);
       font-size:15px;
       line-height:1.65;
-      max-width:58ch;
+      max-width:60ch;
     }
     .aboutSection p:last-child{ margin-bottom:0; }
+
+    /* Four colorways block */
+    .fourColors{
+      border: 1px solid var(--line);
+      background: #fbfbfb;
+      padding: 20px;
+      margin-top: 18px;
+    }
+    .fourColorsHeader{
+      margin-bottom: 16px;
+    }
+    .fourColorsHeader .label{
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 900;
+      margin: 0 0 10px;
+    }
+    .fourColorsHeader .foundation{
+      margin: 0;
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.55;
+      max-width: 64ch;
+    }
+    .colorRow{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px 18px;
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+    }
+    .colorItem{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+    }
+    .chip{
+      width: 12px;
+      height: 12px;
+      border: 1px solid rgba(0,0,0,.18);
+      flex-shrink:0;
+      margin-top: 4px;
+      background: #fff;
+    }
+    .chip.ink{ background: #0b1a2a; border-color: rgba(11,26,42,.22); }
+    .chip.cream{ background: #f4f1ea; border-color: rgba(0,0,0,.12); }
+    .chip.red{ background: #7a1e1e; border-color: rgba(122,30,30,.25); }
+    .chip.dapple{
+      background:
+        radial-gradient(circle at 30% 30%, rgba(0,0,0,.22) 0 2px, transparent 3px),
+        radial-gradient(circle at 60% 55%, rgba(0,0,0,.18) 0 2px, transparent 3px),
+        radial-gradient(circle at 45% 75%, rgba(0,0,0,.14) 0 2px, transparent 3px),
+        linear-gradient(#efefef, #f8f8f8);
+      border-color: rgba(0,0,0,.14);
+    }
+    .colorName{
+      margin:0;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      line-height: 1.1;
+    }
+    .colorDesc{
+      margin: 3px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
 
     /* values grid */
     .valuesGrid{
@@ -259,6 +331,30 @@
       color:var(--muted);
       font-size:13px;
     }
+    .nlForm{
+      display:flex;
+      gap:8px;
+      width:100%;
+      max-width:420px;
+    }
+    .nlForm input{
+      flex:1;
+      padding:12px 14px;
+      font-size:13px;
+      font-family:var(--font);
+      border:1px solid var(--line);
+      background:#fff;
+      color:var(--text);
+      outline:none;
+      border-radius:var(--radius);
+    }
+    .nlForm input:focus{ border-color:var(--ink); }
+    .nlForm input::placeholder{ color:#aaa; }
+    .nlMsg{
+      margin:8px 0 0;
+      font-size:12px;
+      color:var(--muted);
+    }
 
     /* fade animation */
     .fade-up{
@@ -323,6 +419,8 @@
       .ctaRow{ display:none; }
       .topbar{ position:relative; }
       .ctaBanner{ flex-direction:column; align-items:flex-start; }
+      .colorRow{ grid-template-columns: 1fr; }
+      .pageHero{ padding: 44px 0 36px; }
     }
   </style>
 </head>
@@ -341,7 +439,7 @@
         <a href="drop.html">Shop</a>
         <a href="about.html">About</a>
         <a href="index.html#drop">The Drop</a>
-        <a href="index.html#support">Support</a>
+        <a href="support.html">Support</a>
       </nav>
 
       <button class="menuBtn" aria-label="Toggle menu" onclick="document.querySelector('.nav').classList.toggle('open')">&#9776;</button>
@@ -365,14 +463,55 @@
       <section class="aboutSection fade-up" style="transition-delay:.1s">
         <h2>The Origin</h2>
         <p>
-          The name comes from Zechariah 6 — four chariots sent out to the four winds, carrying purpose in every direction. That image stuck. Not loud. Not flashy. Just steady movement with intention.
+          FOUR CHARIOTS didn't start with a business plan. It started with a prayer, a Bible, and a request for direction while seeking inspiration for a faith-based mission.
         </p>
         <p>
-          We started with a simple question: what if the things you wore every day could anchor you instead of distract you? Not more noise. Less. A single word. A quiet truth. Something to carry with you.
+          From there, the focus became simple: words that point back to truth. Not noise for attention, but something steady to carry into everyday life.
         </p>
-        <p>
-          This started because I needed it myself. Not another brand to build, but something to wear that reminded me to stay steady when everything else was moving fast.
-        </p>
+
+        <!-- NEW: Four colors, quietly tied to the chariot horses -->
+        <div class="fourColors" aria-label="Four colorways meaning">
+          <div class="fourColorsHeader">
+            <div class="label">Four Colorways</div>
+            <p class="foundation">
+              Inspired by Zechariah 6, where the four chariots are called the four spirits of heaven sent out before the Lord of all the earth. Each moves with purpose, each drawn by horses of a different color. The four colorways echo that vision.
+            </p>
+          </div>
+
+          <div class="colorRow">
+            <div class="colorItem">
+              <span class="chip red" aria-hidden="true"></span>
+              <div>
+                <p class="colorName">Red</p>
+                <p class="colorDesc">Judgment and resolve. Movement that carries weight.</p>
+              </div>
+            </div>
+
+            <div class="colorItem">
+              <span class="chip ink" aria-hidden="true"></span>
+              <div>
+                <p class="colorName">Black</p>
+                <p class="colorDesc">Endurance in hidden seasons. Strength that holds without noise.</p>
+              </div>
+            </div>
+
+            <div class="colorItem">
+              <span class="chip cream" aria-hidden="true"></span>
+              <div>
+                <p class="colorName">White</p>
+                <p class="colorDesc">Righteousness and clarity. Set apart, steady and sure.</p>
+              </div>
+            </div>
+
+            <div class="colorItem">
+              <span class="chip dapple" aria-hidden="true"></span>
+              <div>
+                <p class="colorName">Dapple</p>
+                <p class="colorDesc">Faith shaped by contrast. Perseverance through every season.</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
       <section class="aboutSection fade-up" style="transition-delay:.2s">
@@ -381,7 +520,10 @@
           Every piece starts with a word. One that carries weight. We pair it with clean, minimal design so the message does the talking. No clutter. No overdesign. Just enough to make someone ask what it means.
         </p>
         <p>
-          Each item is printed to order. That means less waste, more intention, and a product made specifically for you. We release one drop per month. Once it's gone, it's gone.
+          Each item is made to order. That means less waste, more intention, and a product made specifically for you. We release one drop per month. Once it's gone, it's gone.
+        </p>
+        <p>
+          Each drop also carries a connected scripture reference, placed quietly on the sleeve. A word you wear that speaks of Jesus, wherever you go.
         </p>
       </section>
     </div>
@@ -407,17 +549,21 @@
         <div class="valueCard">
           <div class="dot">W</div>
           <h3>Faith</h3>
-          <p>Everything we make is rooted in scripture. Not as decoration, but as foundation. The word moves because it's alive.</p>
+          <p>Everything we make is rooted in scripture. Not as decoration, but as foundation.</p>
         </div>
       </div>
     </section>
 
-    <div class="ctaBanner fade-up" style="transition-delay:.1s">
+    <div class="ctaBanner fade-up" style="transition-delay:.1s; flex-direction:column; align-items:flex-start;">
       <div>
-        <h3>Join the Movement</h3>
-        <p>One exclusive drop per month. Once it's gone, it's gone.</p>
+        <h3>Stay in the Loop</h3>
+        <p>Sign up for updates on the latest drops so you never miss one.</p>
       </div>
-      <a class="btn primary" href="drop.html">Shop the drop</a>
+      <form class="nlForm" onsubmit="return handleNL(event)">
+        <input type="email" id="nlEmail" placeholder="Your email" required />
+        <button class="btn primary" type="submit">Subscribe</button>
+      </form>
+      <p class="nlMsg" id="nlMsg"></p>
     </div>
 
     <footer>
@@ -449,6 +595,16 @@
     }, { threshold: 0.1 });
 
     document.querySelectorAll(".fade-up").forEach(el => observer.observe(el));
+
+    function handleNL(e) {
+      e.preventDefault();
+      const email = document.getElementById("nlEmail");
+      const msg = document.getElementById("nlMsg");
+      msg.textContent = "You’re in. We’ll let you know when the next drop lands.";
+      msg.style.color = "var(--ink)";
+      email.value = "";
+      return false;
+    }
   </script>
 </body>
 </html>

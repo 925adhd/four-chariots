@@ -296,15 +296,6 @@
       font-size: 13px;
       line-height: 1.4;
     }
-    .missionCtas{
-      margin-top: 14px;
-    }
-    .dropNote{
-      margin-top: 10px;
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.4;
-    }
     .trustRow{
       margin-top: 14px;
       padding-top: 12px;
@@ -332,13 +323,6 @@
       padding: 18px 0 10px;
       border-top:1px solid var(--line);
       margin-top: 10px;
-    }
-    .dropKicker{
-      font-size:11px;
-      letter-spacing:0.20em;
-      text-transform:uppercase;
-      color:var(--muted);
-      margin:0 0 6px;
     }
     .dropHeader h2{
       margin:0;
@@ -454,6 +438,71 @@
     }
     .dropMeta .sep{ opacity:.6; }
 
+    /* NEW: membership teaser (quiet) */
+    .memberTeaser{
+      margin-top: 14px;
+      border: 1px solid var(--line);
+      background: #fbfbfb;
+      padding: 14px 16px;
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap: 16px;
+    }
+    .memberLeft{
+      display:flex;
+      flex-direction:column;
+      gap: 6px;
+      max-width: 72ch;
+    }
+    .memberKicker{
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 900;
+    }
+    .memberTitle{
+      margin:0;
+      font-size: 14px;
+      font-weight: 950;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink);
+      line-height: 1.2;
+    }
+    .memberDesc{
+      margin:0;
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .memberBullets{
+      margin: 6px 0 0;
+      padding-left: 16px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+    .memberBullets li{ margin: 4px 0; }
+    .memberRight{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      flex-shrink:0;
+    }
+    .btn.ghost{
+      background: transparent;
+      border-color: var(--line);
+      color: var(--text);
+    }
+    .btn.ghost:hover{
+      background: var(--text);
+      color: var(--btnText);
+      border-color: var(--text);
+      transform:scale(1.04);
+    }
+
     footer{
       margin-top: 34px;
       padding-top: 18px;
@@ -528,6 +577,17 @@
       .dropCard{ grid-template-columns: 1fr; }
       .dropMedia{ border-right:none; border-bottom:1px solid var(--line); }
       .dropMainImg img{ max-height:280px; }
+
+      .memberTeaser{
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .memberRight{
+        width:100%;
+      }
+      .memberRight .btn{
+        width: 100%;
+      }
     }
   </style>
 </head>
@@ -546,7 +606,7 @@
         <a href="drop.html">Shop</a>
         <a href="about.html">About</a>
         <a href="#drop">The Drop</a>
-        <a href="#support">Support</a>
+        <a href="support.html">Support</a>
       </nav>
 
       <button class="menuBtn" aria-label="Toggle menu" onclick="document.querySelector('.nav').classList.toggle('open')">&#9776;</button>
@@ -634,18 +694,15 @@
         <div class="trustRow" style="margin-top:14px;">
           <span>Secure Stripe checkout</span>
           <span class="sep">•</span>
-          <span>Printed to order</span>
+          <span>Made to order</span>
         </div>
       </aside>
     </section>
 
-    <!-- NEW: Single item reveal below the fold -->
+    <!-- Single item reveal below the fold -->
     <section class="dropReveal" id="drop">
       <div class="dropHeader">
-        <div>
-          <p class="dropKicker">Drop 001</p>
-          <h2>The Drop</h2>
-        </div>
+        <h2>Drop 001</h2>
         <p>One piece. One word. Once it's gone, it's gone.</p>
       </div>
 
@@ -674,7 +731,10 @@
           <h3 class="dropWord">UNSHAKEN</h3>
           <p class="dropPrice">$25.00</p>
           <p class="dropDesc">
-            One word. Worn daily. A quiet anchor for work, worship, and the ordinary in between. Four colorways. Printed to order, just for you.
+            One word. Worn daily. A quiet anchor for work, worship, and the ordinary in between. Four colorways, inspired by the four chariot horses.
+          </p>
+          <p class="dropDesc" style="font-style:italic; opacity:.85;">
+            Each piece carries a connected scripture reference, placed subtly on the sleeve. A quiet reminder, not a loud statement.
           </p>
 
           <div>
@@ -704,10 +764,30 @@
           <div class="dropMeta">
             <span>Limited release</span>
             <span class="sep">•</span>
-            <span>Printed to order</span>
+            <span>Made to order</span>
             <span class="sep">•</span>
             <span>Secure Stripe checkout</span>
           </div>
+        </div>
+      </div>
+
+      <!-- NEW: quiet membership teaser lives right under the drop -->
+      <div class="memberTeaser fade-up" style="transition-delay:.08s" aria-label="Membership teaser">
+        <div class="memberLeft">
+          <div class="memberKicker">Optional</div>
+          <p class="memberTitle">Never miss a drop</p>
+          <p class="memberDesc">
+            Reserve your pieces for the year and get every release automatically. No waiting. No sell-outs.
+          </p>
+          <ul class="memberBullets">
+            <li>Guaranteed drop reserved for you</li>
+            <li>Automatic shipping each release</li>
+            <li>Member pricing and early access</li>
+          </ul>
+        </div>
+        <div class="memberRight">
+          <a class="btn ghost" href="membership.html">Learn more</a>
+          <a class="btn primary" href="membership.html">Get the year</a>
         </div>
       </div>
     </section>

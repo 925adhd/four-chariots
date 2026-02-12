@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>The Drop | FOUR CHARIOTS</title>
-  <meta name="description" content="One exclusive drop per month. Once it's gone, it's gone." />
+  <title>Shop | FOUR CHARIOTS</title>
+  <meta name="description" content="Faith-driven gear. Made to order, just for you." />
   <meta name="robots" content="noindex, nofollow" />
 
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='15' fill='%230b1a2a'/><text x='16' y='22' text-anchor='middle' font-size='18' font-weight='900' font-family='system-ui,sans-serif' fill='%23ffffff'>4C</text></svg>" />
@@ -461,7 +461,7 @@
         <a href="drop.html">Shop</a>
         <a href="about.html">About</a>
         <a href="index.html#drop">The Drop</a>
-        <a href="index.html#support">Support</a>
+        <a href="support.html">Support</a>
       </nav>
 
       <button class="menuBtn" aria-label="Toggle menu" onclick="document.querySelector('.nav').classList.toggle('open')">&#9776;</button>
@@ -475,11 +475,21 @@
     <div class="divider"></div>
 
     <div class="pageTitle">
-      <h1>The Drop</h1>
-      <p>One exclusive drop per month. Once it's gone, it's gone.</p>
+      <h1>Shop</h1>
+      <p>Faith-driven gear. Made to order, just for you.</p>
     </div>
 
-    <!-- UNSHAKEN showcase (static for now) -->
+    <!-- Printify product grid (all items) -->
+    <section class="grid" id="grid" aria-label="Products"></section>
+
+    <!-- Current Drop divider -->
+    <div style="text-align:center; padding:48px 0 20px;">
+      <div style="font-size:11px; font-weight:900; text-transform:uppercase; letter-spacing:0.16em; color:var(--muted); margin-bottom:8px;">Current Drop</div>
+      <h2 style="margin:0; font-size:clamp(24px,3vw,36px); font-weight:950; text-transform:uppercase; letter-spacing:0.10em; color:var(--ink);">Drop 001</h2>
+      <p style="margin:8px 0 0; font-size:14px; color:var(--muted);">One exclusive drop per month. Once it's gone, it's gone.</p>
+    </div>
+
+    <!-- UNSHAKEN showcase -->
     <div class="showcase">
       <div class="scGallery">
         <div class="scMainImg">
@@ -531,19 +541,24 @@
 
         <div class="scMeta">
           <div class="scMetaItem">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 17H5a2 2 0 01-2-2V5a2 2 0 012-2h14a2 2 0 012 2v10a2 2 0 01-2 2h-4m-6 0l3 4 3-4"/></svg>
-            <span>Printed to order, just for you</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+            <span>Made to order, just for you</span>
           </div>
           <div class="scMetaItem">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><path d="M1 10h22"/></svg>
             <span>Secure checkout via Stripe</span>
           </div>
         </div>
+
+        <div style="padding-top:14px; border-top:1px solid var(--line);">
+          <div style="font-size:11px; font-weight:900; text-transform:uppercase; letter-spacing:0.16em; color:var(--muted); margin-bottom:8px;">Connected Verse</div>
+          <p style="margin:0; font-size:13px; color:var(--muted); line-height:1.55;">
+            Every drop carries a scripture reference chosen to reflect the word on the front.
+            For Drop 001, "UNSHAKEN" connects to <strong style="color:var(--ink);">Psalm 16:8</strong>, embroidered quietly on the right sleeve.
+          </p>
+        </div>
       </div>
     </div>
-
-    <!-- Printify product grid (hidden for now, kept for future use) -->
-    <section class="grid" id="grid" aria-label="Products" style="display:none;"></section>
 
     <footer>
       <div>© <span id="year"></span> FOUR CHARIOTS</div>
@@ -632,11 +647,14 @@
       } catch {}
     }
 
+    // Products to hide from the shop grid (by title, case-insensitive)
+    const HIDDEN_PRODUCTS = ["olive heart"];
+
     function renderProducts(products) {
       const grid = document.getElementById("grid");
       grid.innerHTML = "";
 
-      products.forEach((p) => {
+      products.filter(p => !HIDDEN_PRODUCTS.some(h => (p.title || "").toLowerCase().includes(h.toLowerCase()))).forEach((p) => {
         const img = p?.images?.[0]?.src || "";
         const enabled = (p?.variants || []).filter(v => v && v.is_enabled);
         const lowest = enabled.length ? Math.min(...enabled.map(v => Number(v.price || 0))) : 0;
@@ -750,8 +768,8 @@
       });
     });
 
-    // Printify grid kept but hidden — uncomment loadProducts() to re-enable
-    // loadProducts();
+    // Load all Printify products into the grid
+    loadProducts();
 
     // Showcase thumbnail + swatch switching
     const scHero = document.getElementById("scHeroImg");
