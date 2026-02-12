@@ -482,6 +482,12 @@
 
     @media (max-width: 980px){
       .pdp{ grid-template-columns: 1fr; gap:24px; }
+      .mainImage{ aspect-ratio: auto; max-height:420px; }
+      .mainImage img{ max-height:420px; object-fit:contain; }
+      .thumb{ width:60px; height:60px; }
+      .pdpTitle{ font-size: clamp(22px, 6vw, 32px); }
+      .pdpPrice{ font-size:20px; }
+      .pdpDesc{ font-size:13px; }
       .menuBtn{ display:block; }
       .nav{
         display:none;
@@ -505,6 +511,8 @@
       .nav a:last-child{ border-bottom:none; }
       .ctaRow{ display:none; }
       .topbar{ position:relative; }
+      .brand .tag{ display:none; }
+      .paymentIcons{ flex-wrap:wrap; }
     }
   </style>
 </head>
@@ -520,7 +528,7 @@
       </a>
 
       <nav class="nav" aria-label="Site navigation">
-        <a href="drop.html">Shop</a>
+        <a href="shop.html">Shop</a>
         <a href="about.html">About</a>
         <a href="index.html#drop">The Drop</a>
         <a href="support.html">Support</a>
@@ -529,8 +537,8 @@
       <button class="menuBtn" aria-label="Toggle menu" onclick="document.querySelector('.nav').classList.toggle('open')">&#9776;</button>
 
       <div class="ctaRow">
-        <a class="btn" href="drop.html">Shop</a>
-        <a class="btn primary" href="drop.html">Checkout</a>
+        <a class="btn" href="shop.html">Shop</a>
+        <a class="btn primary" href="shop.html">Checkout</a>
       </div>
     </div>
 
@@ -539,7 +547,7 @@
     <div class="breadcrumb">
       <a href="index.html">Home</a>
       <span class="sep">/</span>
-      <a href="drop.html">Shop</a>
+      <a href="shop.html">Shop</a>
       <span class="sep">/</span>
       <span id="breadcrumbTitle">Loading...</span>
     </div>
@@ -581,7 +589,7 @@
     const productId = params.get("id");
 
     if (!productId) {
-      document.getElementById("pdpWrap").innerHTML = '<p style="text-align:center;padding:60px 0;color:var(--muted);">No product specified. <a href="drop.html" style="text-decoration:underline;">Back to shop</a></p>';
+      document.getElementById("pdpWrap").innerHTML = '<p style="text-align:center;padding:60px 0;color:var(--muted);">No product specified. <a href="shop.html" style="text-decoration:underline;">Back to shop</a></p>';
     } else {
       loadProduct(productId);
     }
@@ -635,7 +643,7 @@
         renderProduct();
       } catch (err) {
         console.error("Failed to load product:", err);
-        document.getElementById("pdpWrap").innerHTML = '<p style="text-align:center;padding:60px 0;color:var(--muted);">Could not load product. <a href="drop.html" style="text-decoration:underline;">Back to shop</a></p>';
+        document.getElementById("pdpWrap").innerHTML = '<p style="text-align:center;padding:60px 0;color:var(--muted);">Could not load product. <a href="shop.html" style="text-decoration:underline;">Back to shop</a></p>';
       }
     }
 
