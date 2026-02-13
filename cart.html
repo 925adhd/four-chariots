@@ -505,7 +505,7 @@
 
     function removeFromCart(productId, variantId) {
       const cart = getCart().filter(
-        i => !(i.productId === productId && i.variantId === variantId)
+        i => !(String(i.productId) === String(productId) && String(i.variantId) === String(variantId))
       );
       saveCart(cart);
       return cart;
@@ -513,7 +513,7 @@
 
     function updateCartQty(productId, variantId, qty) {
       const cart = getCart();
-      const item = cart.find(i => i.productId === productId && i.variantId === variantId);
+      const item = cart.find(i => String(i.productId) === String(productId) && String(i.variantId) === String(variantId));
       if (!item) return cart;
       if (qty <= 0) return removeFromCart(productId, variantId);
       item.quantity = Math.min(qty, 10);
@@ -628,7 +628,7 @@
     function bindCartControls() {
       document.querySelectorAll(".cartItem").forEach(row => {
         const pid = row.dataset.pid;
-        const vid = Number(row.dataset.vid);
+        const vid = row.dataset.vid;
 
         row.querySelector(".qtyMinus").addEventListener("click", () => {
           const current = parseInt(row.querySelector(".qtyVal").textContent);
