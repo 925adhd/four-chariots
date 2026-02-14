@@ -129,6 +129,25 @@
     }
     .btn:disabled{ opacity:.6; cursor:not-allowed; }
 
+    .memberBanner{
+      background:var(--ink);
+      color:#fff;
+      text-align:center;
+      padding:10px 16px;
+      font-size:12px;
+      font-weight:700;
+      letter-spacing:0.06em;
+      text-transform:uppercase;
+    }
+    .memberBanner a{
+      color:#fff;
+      text-decoration:underline;
+      text-underline-offset:3px;
+      margin-left:6px;
+      font-weight:900;
+    }
+    .memberBanner a:hover{ opacity:.8; }
+
     .menuBtn{
       display:none;
       background:none;
@@ -209,7 +228,7 @@
       padding: 10px 0 12px;
       border-top:1px solid var(--line);
       border-bottom:1px solid var(--line);
-      margin: 10px 0 12px;
+      margin: 10px 0 10px;
     }
     .price{
       font-size: 28px;
@@ -224,6 +243,52 @@
       font-size:12px;
       line-height:1.4;
       text-align:right;
+    }
+
+    .valueLine{
+      margin: 0 0 14px;
+      color: var(--ink);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.85;
+    }
+
+    .contrast{
+      border:1px solid var(--line);
+      background:#fff;
+      padding: 12px 12px;
+      margin: 10px 0 14px;
+    }
+    .contrastRow{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      justify-content:space-between;
+      padding: 8px 0;
+      border-top:1px solid var(--line);
+    }
+    .contrastRow:first-child{
+      border-top:none;
+      padding-top:0;
+    }
+    .contrastLabel{
+      font-size:11px;
+      font-weight:950;
+      letter-spacing:0.12em;
+      text-transform:uppercase;
+      color:var(--muted);
+      white-space:nowrap;
+      min-width:110px;
+    }
+    .contrastText{
+      margin:0;
+      color:var(--text);
+      font-size:12px;
+      line-height:1.45;
+      text-align:right;
+      max-width:40ch;
     }
 
     .bullets{
@@ -245,7 +310,18 @@
       border:1px solid var(--line);
       padding: 14px;
       background: #fff;
+      display:flex;
+      gap:14px;
+      align-items:flex-start;
     }
+    .mini img.miniIcon{
+      width:96px;
+      height:96px;
+      object-fit:contain;
+      flex-shrink:0;
+      opacity:.85;
+    }
+    .miniText{ flex:1; }
     .mini h3{
       margin:0;
       font-size: 12px;
@@ -338,7 +414,15 @@
       .ctaRow{ display:none; }
       .topbar{ position:relative; }
       .hero{ grid-template-columns: 1fr; }
-      .grid{ grid-template-columns: 1fr; }
+      .grid{ grid-template-columns: 1fr; gap: 10px; }
+      .mini{ padding: 12px; }
+      .contrastLabel{ min-width:95px; }
+      .card .btn{
+        width:100%;
+        margin-left:0 !important;
+        margin-top:10px;
+        display:flex;
+      }
     }
   </style>
 </head>
@@ -374,27 +458,40 @@
       <div>
         <p class="kicker">Membership</p>
         <h1 class="headline">Never miss a drop.</h1>
+        <p class="subhead" style="font-size:14px;">A small circle. Renewed quietly each year.</p>
         <p class="subhead">
-          Reserve your pieces for the year and receive every release automatically.
-          No waiting. No sell-outs. Quiet discipline, all year long.
+          The private circle. Reserved inventory. Zero sell-outs.
+          Members receive each release automatically, with the option to skip after preview.
         </p>
 
         <div class="grid">
-          <div class="mini">
-            <h3>Reserved inventory</h3>
-            <p>Your drop is secured before the public release.</p>
+          <div class="mini" style="background:#f0efe9; border-color:rgba(11,26,42,.18);">
+            <img class="miniIcon" src="images/inventory.png" alt="" />
+            <div class="miniText">
+              <h3>Reserved Inventory</h3>
+              <p>Members enter first. A reserved allocation opens before the public release.</p>
+            </div>
           </div>
           <div class="mini">
-            <h3>Automatic shipping</h3>
-            <p>Each release ships to you without checkout stress.</p>
+            <img class="miniIcon" src="images/shipping.png" alt="" />
+            <div class="miniText">
+              <h3>Automatic Shipping</h3>
+              <p>Each release ships automatically. No checkout. Always free shipping.</p>
+            </div>
           </div>
           <div class="mini">
-            <h3>Member pricing</h3>
-            <p>Lower per-piece cost than buying each drop individually.</p>
+            <img class="miniIcon" src="images/skip.png" alt="" />
+            <div class="miniText">
+              <h3>Skip Any Drop</h3>
+              <p>Preview first, then skip that month if it's not for you. <em>Your membership still covers 12 drops total.</em></p>
+            </div>
           </div>
           <div class="mini">
-            <h3>Early access</h3>
-            <p>See the next drop first and lock in your size.</p>
+            <img class="miniIcon" src="images/vote.png" alt="" />
+            <div class="miniText">
+              <h3>Member Voting</h3>
+              <p>Members help choose future word drops through private polls.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -403,25 +500,43 @@
         <p class="cardTitle">The Year</p>
 
         <div class="priceRow">
-          <p class="price">$240</p>
+          <p class="price">$700</p>
           <p class="priceNote">
-            Billed yearly<br>
-            Includes 12 drops
+            Paid upfront<br>
+            Includes 12 drops &bull; Free shipping included
           </p>
         </div>
 
-        <a class="btn primary" href="#" id="memberCheckoutBtn">Get the year</a>
+        <p class="valueLine">About $58 per drop</p>
+
+        <div class="contrast" aria-label="Membership vs public drop">
+          <div class="contrastRow">
+            <div class="contrastLabel">&#10060; Public</div>
+            <p class="contrastText">Wait for the launch. Hope your size is still there.</p>
+          </div>
+          <div class="contrastRow">
+            <div class="contrastLabel">&#9989; Members</div>
+            <p class="contrastText">Members enter first. Access opens before the public release.</p>
+          </div>
+        </div>
+
+        <a class="btn primary" href="#" id="memberCheckoutBtn">Enter the Circle</a>
         <a class="btn" href="shop.html" style="margin-left:10px;">Shop single drop</a>
 
         <ul class="bullets">
-          <li>12 drops (one per month)</li>
-          <li>Guaranteed reserved piece each drop</li>
-          <li>Automatic shipment every release</li>
-          <li>Member pricing and early access</li>
+          <li>12 private drops (one per month)</li>
+          <li>Reserved inventory before public release</li>
+          <li>Automatic shipment, no checkout required</li>
+          <li>Preview first, skip if needed</li>
+          <li>Members vote on future word drops</li>
+          <li>Free shipping included on every order</li>
         </ul>
 
         <p style="margin:12px 0 0; color:var(--muted); font-size:12px; line-height:1.45;">
           You can cancel renewal anytime before next year. This purchase covers the current year of drops.
+        </p>
+        <p style="margin:8px 0 0; color:var(--muted); font-size:12px; line-height:1.45;">
+          See it first. Skip if it’s not for you. Your size stays locked.
         </p>
       </aside>
     </section>
@@ -468,7 +583,23 @@
       <details>
         <summary>Do I need to create an account?</summary>
         <p>
-          Not required. You’ll receive email confirmations, and you can manage preferences through support if needed.
+          Not required. You'll receive email confirmations, and you can manage preferences through support if needed.
+        </p>
+      </details>
+
+      <details>
+        <summary>Can I skip a drop?</summary>
+        <p>
+          Yes. Members receive a sneak peek before each release and can choose to skip that month before shipment.
+          Your membership still includes 12 total drops for the year. Skipping simply means you won't receive that month's design.
+          Skipped drops are not replaced or added to a future month.
+        </p>
+      </details>
+
+      <details>
+        <summary>Do members influence future designs?</summary>
+        <p>
+          Yes. Members vote on upcoming word drops through private polls.
         </p>
       </details>
     </section>
@@ -485,12 +616,12 @@
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // Keep Printify hidden: no Printify calls here.
     // Wire this button to your Stripe flow later (same approach as your drop checkout).
     document.getElementById("memberCheckoutBtn").addEventListener("click", (e) => {
       e.preventDefault();
       alert("Membership checkout is not wired yet. Connect this to your Stripe membership product when ready.");
     });
+
     /* Cart badge */
     function getCart(){try{const r=localStorage.getItem("fc_cart");return r?JSON.parse(r):[];}catch{return[];}}
     function getCartCount(){return getCart().reduce((s,i)=>s+i.quantity,0);}

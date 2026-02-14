@@ -382,6 +382,25 @@
     footer .links{ display:flex; gap:14px; flex-wrap:wrap; }
     footer .links a:hover{ color:var(--text); }
 
+    .memberBanner{
+      background:var(--ink);
+      color:#fff;
+      text-align:center;
+      padding:10px 16px;
+      font-size:12px;
+      font-weight:700;
+      letter-spacing:0.06em;
+      text-transform:uppercase;
+    }
+    .memberBanner a{
+      color:#fff;
+      text-decoration:underline;
+      text-underline-offset:3px;
+      margin-left:6px;
+      font-weight:900;
+    }
+    .memberBanner a:hover{ opacity:.8; }
+
     .menuBtn{
       display:none;
       background:none;
@@ -394,6 +413,9 @@
     }
 
     @media (max-width: 980px){
+      .wrap{ padding: 14px 14px 50px; }
+      .mark{ height:90px; }
+      .brand .tag{ display:none; }
       .aboutGrid{ grid-template-columns: 1fr; gap:0; }
       .menuBtn{ display:block; }
       .nav{
@@ -461,6 +483,10 @@
 
     <div class="divider"></div>
 
+    <div class="memberBanner">
+      Free shipping on all orders &mdash; members only.<a href="membership.html">Join now</a>
+    </div>
+
     <div class="pageHero fade-up">
       <h1>STEADFAST<br>IN MOTION.</h1>
       <p class="intro">
@@ -526,13 +552,16 @@
       <section class="aboutSection fade-up" style="transition-delay:.2s">
         <h2>The Approach</h2>
         <p>
-          Every piece starts with a word. One that carries weight. We pair it with clean, minimal design so the message does the talking. No clutter. No overdesign. Just enough to make someone ask what it means.
+          Every piece begins with a word. One that points back to truth. The design stays minimal so the message can travel farther than the garment itself. Not loud. Not forced. Just enough to make someone ask what it means.
         </p>
         <p>
-          Each item is made to order. That means less waste, more intention, and a product made specifically for you. We release one drop per month. Once it's gone, it's gone.
+          These pieces are meant to start conversations. A quiet way to carry faith into everyday spaces, where a single word can open the door to something deeper.
         </p>
         <p>
-          Each drop also carries a connected scripture reference, placed quietly on the sleeve. A word you wear that speaks of Jesus, wherever you go.
+          Each item is made to order, reducing waste and keeping every release intentional. We move in monthly drops. When a release closes, it moves quietly into the archive.
+        </p>
+        <p>
+          Every drop includes a connected scripture reference, placed subtly on the sleeve. A reminder worn close, speaking of Jesus wherever you go.
         </p>
       </section>
     </div>

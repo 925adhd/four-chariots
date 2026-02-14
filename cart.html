@@ -139,6 +139,45 @@
 
     .divider{ border-top:1px solid var(--line); }
 
+    .memberBanner{
+      background:var(--ink);
+      color:#fff;
+      text-align:center;
+      padding:10px 16px;
+      font-size:12px;
+      font-weight:700;
+      letter-spacing:0.06em;
+      text-transform:uppercase;
+    }
+    .memberBanner a{
+      color:#fff;
+      text-decoration:underline;
+      text-underline-offset:3px;
+      margin-left:6px;
+      font-weight:900;
+    }
+    .memberBanner a:hover{ opacity:.8; }
+    .shippingPromo{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding:14px;
+      border:1px dashed var(--ink);
+      background:#f8fafc;
+      margin-top:14px;
+      font-size:12px;
+      color:var(--ink);
+      font-weight:700;
+      letter-spacing:0.04em;
+      text-transform:uppercase;
+    }
+    .shippingPromo svg{ width:20px; height:20px; flex-shrink:0; }
+    .shippingPromo a{
+      text-decoration:underline;
+      text-underline-offset:3px;
+      font-weight:900;
+    }
+
     .menuBtn{
       display:none;
       border:none;
@@ -468,6 +507,10 @@
 
     <div class="divider"></div>
 
+    <div class="memberBanner">
+      Free shipping on all orders &mdash; members only.<a href="membership.html">Join now</a>
+    </div>
+
     <div class="pageHero fade-up">
       <h1>YOUR CART</h1>
     </div>
@@ -610,6 +653,10 @@
             </div>
             <button class="btn primary checkoutBtn" id="checkoutBtn">Proceed to Checkout</button>
             <p class="checkoutNote">Secure checkout via Stripe</p>
+            <div class="shippingPromo">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 18H3a1 1 0 01-1-1V7a1 1 0 011-1h10v11m0-11h3l3 4v7a1 1 0 01-1 1h-2"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>
+              <span>Want free shipping? <a href="membership.html">Become a member</a> and ship free on every order.</span>
+            </div>
           </div>
         `;
 

@@ -587,8 +587,29 @@
       color:var(--text);
     }
 
+    .memberBanner{
+      background:var(--ink);
+      color:#fff;
+      text-align:center;
+      padding:10px 16px;
+      font-size:12px;
+      font-weight:700;
+      letter-spacing:0.06em;
+      text-transform:uppercase;
+      margin-top:0;
+    }
+    .memberBanner a{
+      color:#fff;
+      text-decoration:underline;
+      text-underline-offset:3px;
+      margin-left:6px;
+      font-weight:900;
+    }
+    .memberBanner a:hover{ opacity:.8; }
+
     @media (max-width: 980px){
       .hero{ grid-template-columns: 1fr; align-items:start; gap:24px; padding:16px 0 30px; }
+      .dropReveal > .missionCard{ margin-top: 18px; }
       .brand .tag{ display:none; }
       .menuBtn{ display:block; }
       .nav{
@@ -774,15 +795,11 @@
 
     <div class="divider"></div>
 
+    
+
     <section class="hero" id="heroSection">
       <div>
-        <p class="kicker">
-          <span>APPAREL</span>
-          <span class="sep"></span>
-          <span>PRINTS</span>
-          <span class="sep"></span>
-          <span>GEAR</span>
-        </p>
+        <!-- APPAREL • PRINTS • GEAR -->
 
         <h1 class="headline">
           <span class="word"><span>DISCIPLINE,</span></span><br>
@@ -853,7 +870,7 @@
     <section class="dropReveal" id="drop">
       <div class="dropHeader">
         <h2>Drop 001</h2>
-        <p>One piece. One word. Once it's gone, it's gone.</p>
+        <p>Limited to 66 pieces. One release. When it closes, it moves quietly into the archive.</p>
       </div>
 
       <div class="dropCard fade-up" style="transition-delay:.05s">
@@ -885,42 +902,18 @@
 
         <div class="dropBody">
           <h3 class="dropWord">UNSHAKEN</h3>
-          <p class="dropPrice">$25.00</p>
-          <p class="dropDesc">
-            One word. Worn daily. A quiet anchor for work, worship, and the ordinary in between. Four colorways, inspired by the four chariot horses.
-          </p>
-          <p class="dropDesc" style="font-style:italic; opacity:.85;">
-            Each piece carries a connected scripture reference, placed subtly on the sleeve. A quiet reminder, not a loud statement.
-          </p>
+          <p class="dropPrice">$70.00</p>
+          <p class="dropDesc">One word. One release. When it's gone, it's gone.</p>
+          <p class="dropDesc" style="color:var(--muted);margin-top:4px;font-size:12px;">Sold out drops remain in the archive as a record of the journey.</p>
 
-          <div>
-            <div style="font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:0.10em;color:var(--ink);margin-bottom:8px;">
-              Color <span id="dropColorLabel" style="font-weight:500;color:var(--muted);text-transform:none;letter-spacing:0;margin-left:6px;">Black</span>
-            </div>
-            <div class="dropSwatches">
-              <button class="dropSwatch active" data-src="images/unshakenblk.png" data-label="Black" title="Black">
-                <span class="swatchInner" style="background-image:url('images/blackswatch.png')"></span>
-              </button>
-              <button class="dropSwatch" data-src="images/unshakenwhite.png" data-label="White" title="White">
-                <span class="swatchInner" style="background-image:url('images/whiteswatch.png')"></span>
-              </button>
-              <button class="dropSwatch" data-src="images/unshakenred.png" data-label="Red" title="Red">
-                <span class="swatchInner" style="background-image:url('images/redswatch.png')"></span>
-              </button>
-              <button class="dropSwatch" data-src="images/unshakendap.png" data-label="Dapple" title="Dapple">
-                <span class="swatchInner" style="background-image:url('images/dappleswatch.png')"></span>
-              </button>
-            </div>
-          </div>
+          <p class="dropDesc" style="opacity:.85;color:var(--muted);margin-top:6px;">Includes connected scripture detail.</p>
 
           <div class="dropActions">
             <a class="btn primary" href="drop.html">Shop this drop</a>
           </div>
 
           <div class="dropMeta">
-            <span>Limited release</span>
-            <span class="sep">•</span>
-            <span>Made to order</span>
+            <span>Limited to 66 pieces</span>
             <span class="sep">•</span>
             <span>Secure Stripe checkout</span>
           </div>
@@ -931,19 +924,19 @@
       <div class="memberTeaser fade-up" style="transition-delay:.08s" aria-label="Yearly membership">
         <div class="memberLeft">
           <div class="memberKicker">Yearly Membership</div>
-          <p class="memberTitle">Never Miss a Drop</p>
+          <p class="memberTitle">The Inner Circle</p>
           <p class="memberDesc">
-            Reserve your pieces for the year and get every release shipped automatically. No waiting. No sell-outs.
+            Reserved access to each release, shipped automatically. Quiet, intentional, and limited to a small circle each year.
           </p>
           <ul class="memberFeatures">
-            <li>Guaranteed drop reserved for you</li>
-            <li>Automatic shipping each release</li>
-            <li>Member pricing and early access</li>
+            <li>Members enter before the public release</li>
+            <li>Automatic shipping every drop</li>
+            <li>Preview first, skip if needed</li>
           </ul>
           <a class="memberLink" href="membership.html">Learn more about membership</a>
         </div>
         <div class="memberCta">
-          <a class="btn primary" href="membership.html">Get the year</a>
+          <a class="btn primary" href="membership.html">Join the Circle</a>
         </div>
       </div>
     </section>
