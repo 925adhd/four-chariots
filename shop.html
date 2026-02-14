@@ -144,9 +144,9 @@
     .divider{ border-top:1px solid var(--line); }
 
     .coreGrid{
-      max-width:100%;
+      max-width:960px;
       display:flex;
-      gap:18px;
+      gap:14px;
       padding-top:12px;
       margin:0 auto;
     }
@@ -157,8 +157,19 @@
       background:var(--bg);
       display:flex;
       flex-direction:column;
-      min-height:520px;
+      min-height:auto;
     }
+    .coreGrid .product .media{
+      aspect-ratio:1;
+      font-size:11px !important;
+    }
+    .coreGrid .product .body{ padding:8px 10px; gap:2px; min-height:auto; }
+    .coreGrid .product .name{ font-size:13px; }
+    .coreGrid .product .desc{ font-size:11px; }
+    .coreGrid .product .bottom{ padding:10px 12px; }
+    .coreGrid .product .bottom .price{ font-size:13px; }
+    .coreGrid .product .bottom .fine{ font-size:10px; }
+    .coreGrid .product .bottom .btn{ font-size:11px; padding:8px 12px; }
 
     .pageTitle{
       text-align:center;
@@ -402,80 +413,96 @@
     <div class="divider"></div>
 
     <div class="memberBanner">
-      Free shipping on all orders &mdash; members only.<a href="membership.html">Join now</a>
+      Free shipping on every drop &mdash; members only.<a href="membership.html">Join now</a>
     </div>
 
     <!-- Core Collection header -->
     <div style="text-align:center; padding:48px 0 20px;">
       <div style="font-size:11px; font-weight:900; text-transform:uppercase; letter-spacing:0.16em; color:var(--muted); margin-bottom:8px;">Core Collection</div>
       <h2 style="margin:0; font-size:clamp(24px,3vw,36px); font-weight:950; text-transform:uppercase; letter-spacing:0.10em; color:var(--ink);">The Four</h2>
-      <p style="margin:8px 0 0; font-size:14px; color:var(--muted);">Always available. Built for everyday wear.</p>
+      <p style="margin:8px 0 0; font-size:14px; color:var(--muted);">Foundations that remain. Drops come and go, but The Four stay.</p>
     </div>
 
-    <!-- Gear grid — 4 placeholder shirts -->
-    <section class="coreGrid" aria-label="Gear">
+    <!-- Core grid — all 4 compact -->
+    <section class="coreGrid" aria-label="Core Collection">
 
-      <!-- Shirt 1 -->
       <article class="product">
-        <div class="media" style="display:flex;align-items:center;justify-content:center;background:var(--soft);color:var(--muted);font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;">Coming Soon</div>
+        <a class="media" href="forgiven.html">
+          <img src="images/core/forgiven/forgivenred.png" alt="FORGIVEN Tee" loading="lazy" />
+        </a>
         <div class="body">
-          <h3 class="name">UNASHAMED</h3>
-          <p class="desc">Romans 1:16</p>
-        </div>
-        <div class="bottom">
-          <div>
-            <div class="price">$60.00</div>
-            <div class="fine">Coming soon</div>
-          </div>
-          <button class="btn primary" disabled>View</button>
-        </div>
-      </article>
-
-      <!-- Shirt 2 -->
-      <article class="product">
-        <div class="media" style="display:flex;align-items:center;justify-content:center;background:var(--soft);color:var(--muted);font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;">Coming Soon</div>
-        <div class="body">
-          <h3 class="name">CHOSEN</h3>
-          <p class="desc">1 Peter 2:9</p>
-        </div>
-        <div class="bottom">
-          <div>
-            <div class="price">$60.00</div>
-            <div class="fine">Coming soon</div>
-          </div>
-          <button class="btn primary" disabled>View</button>
-        </div>
-      </article>
-
-      <!-- Shirt 3 -->
-      <article class="product">
-        <div class="media" style="display:flex;align-items:center;justify-content:center;background:var(--soft);color:var(--muted);font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;">Coming Soon</div>
-        <div class="body">
-          <h3 class="name">FORGIVEN</h3>
+          <a href="forgiven.html">
+            <h3 class="name">FORGIVEN</h3>
+          </a>
           <p class="desc">Ephesians 1:7</p>
+          <p class="desc" style="display:flex;align-items:center;gap:5px;margin:2px 0 0;font-size:9px;color:var(--muted);"><svg width="10" height="10" viewBox="0 0 10 10" style="flex-shrink:0;"><circle cx="5" cy="5" r="4.5" fill="none" stroke="rgba(0,0,0,.12)" stroke-width=".5"/><path d="M5 0.5A4.5 4.5 0 0 1 9.5 5H5Z" fill="#1a1a1a"/><path d="M9.5 5A4.5 4.5 0 0 1 5 9.5V5Z" fill="#8b2232"/><path d="M5 9.5A4.5 4.5 0 0 1 0.5 5H5Z" fill="#555"/><path d="M0.5 5A4.5 4.5 0 0 1 5 0.5V5Z" fill="#f5f0e1"/></svg> 4 colorways available</p>
         </div>
         <div class="bottom">
           <div>
             <div class="price">$60.00</div>
-            <div class="fine">Coming soon</div>
+            <div class="fine">Available now</div>
           </div>
-          <button class="btn primary" disabled>View</button>
+          <a class="btn primary" href="forgiven.html">View Details</a>
         </div>
       </article>
 
-      <!-- Shirt 4 -->
       <article class="product">
-        <div class="media" style="display:flex;align-items:center;justify-content:center;background:var(--soft);color:var(--muted);font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;">Coming Soon</div>
+        <a class="media" href="unashamed.html">
+          <img src="images/core/unashamed/unashamedblk.png" alt="UNASHAMED Tee" loading="lazy" />
+        </a>
         <div class="body">
-          <h3 class="name">GUIDED</h3>
-          <p class="desc">Psalm 23:3</p>
+          <a href="unashamed.html">
+            <h3 class="name">UNASHAMED</h3>
+          </a>
+          <p class="desc">Romans 1:16</p>
+          <p class="desc" style="display:flex;align-items:center;gap:5px;margin:2px 0 0;font-size:9px;color:var(--muted);"><svg width="10" height="10" viewBox="0 0 10 10" style="flex-shrink:0;"><circle cx="5" cy="5" r="4.5" fill="none" stroke="rgba(0,0,0,.12)" stroke-width=".5"/><path d="M5 0.5A4.5 4.5 0 0 1 9.5 5H5Z" fill="#1a1a1a"/><path d="M9.5 5A4.5 4.5 0 0 1 5 9.5V5Z" fill="#8b2232"/><path d="M5 9.5A4.5 4.5 0 0 1 0.5 5H5Z" fill="#555"/><path d="M0.5 5A4.5 4.5 0 0 1 5 0.5V5Z" fill="#f5f0e1"/></svg> 4 colorways available</p>
         </div>
         <div class="bottom">
           <div>
             <div class="price">$60.00</div>
-            <div class="fine">Coming soon</div>
+            <div class="fine">Available now</div>
           </div>
-          <button class="btn primary" disabled>View</button>
+          <a class="btn primary" href="unashamed.html">View Details</a>
+        </div>
+      </article>
+
+      <article class="product">
+        <a class="media" href="chosen.html">
+          <img src="images/core/chosen/chosenwhite.png" alt="CHOSEN Tee" loading="lazy" />
+        </a>
+        <div class="body">
+          <a href="chosen.html">
+            <h3 class="name">CHOSEN</h3>
+          </a>
+          <p class="desc">John 15:16</p>
+          <p class="desc" style="display:flex;align-items:center;gap:5px;margin:2px 0 0;font-size:9px;color:var(--muted);"><svg width="10" height="10" viewBox="0 0 10 10" style="flex-shrink:0;"><circle cx="5" cy="5" r="4.5" fill="none" stroke="rgba(0,0,0,.12)" stroke-width=".5"/><path d="M5 0.5A4.5 4.5 0 0 1 9.5 5H5Z" fill="#1a1a1a"/><path d="M9.5 5A4.5 4.5 0 0 1 5 9.5V5Z" fill="#8b2232"/><path d="M5 9.5A4.5 4.5 0 0 1 0.5 5H5Z" fill="#555"/><path d="M0.5 5A4.5 4.5 0 0 1 5 0.5V5Z" fill="#f5f0e1"/></svg> 4 colorways available</p>
+        </div>
+        <div class="bottom">
+          <div>
+            <div class="price">$60.00</div>
+            <div class="fine">Available now</div>
+          </div>
+          <a class="btn primary" href="chosen.html">View Details</a>
+        </div>
+      </article>
+
+      <article class="product">
+        <a class="media" href="grateful.html">
+          <img src="images/core/grateful/gratefuldap.png" alt="GRATEFUL Tee" loading="lazy" />
+        </a>
+        <div class="body">
+          <a href="grateful.html">
+            <h3 class="name">GRATEFUL</h3>
+          </a>
+          <p class="desc">1 Thessalonians 5:18</p>
+          <p class="desc" style="display:flex;align-items:center;gap:5px;margin:2px 0 0;font-size:9px;color:var(--muted);"><svg width="10" height="10" viewBox="0 0 10 10" style="flex-shrink:0;"><circle cx="5" cy="5" r="4.5" fill="none" stroke="rgba(0,0,0,.12)" stroke-width=".5"/><path d="M5 0.5A4.5 4.5 0 0 1 9.5 5H5Z" fill="#1a1a1a"/><path d="M9.5 5A4.5 4.5 0 0 1 5 9.5V5Z" fill="#8b2232"/><path d="M5 9.5A4.5 4.5 0 0 1 0.5 5H5Z" fill="#555"/><path d="M0.5 5A4.5 4.5 0 0 1 5 0.5V5Z" fill="#f5f0e1"/></svg> 4 colorways available</p>
+        </div>
+        <div class="bottom">
+          <div>
+            <div class="price">$60.00</div>
+            <div class="fine">Available now</div>
+          </div>
+          <a class="btn primary" href="grateful.html">View Details</a>
         </div>
       </article>
 
@@ -486,35 +513,31 @@
       <div style="font-size:11px; font-weight:900; text-transform:uppercase; letter-spacing:0.16em; color:var(--muted); margin-bottom:8px;">Current Drop</div>
       <h2 style="margin:0; font-size:clamp(24px,3vw,36px); font-weight:950; text-transform:uppercase; letter-spacing:0.10em; color:var(--ink);">Drop 001</h2>
       <p style="margin:8px 0 0; font-size:14px; color:var(--muted);">Limited to 66 pieces. One release. When it closes, it moves quietly into the archive.</p>
+      <p style="margin:6px 0 0; font-size:12px; color:var(--muted);">Members receive early access before public release.</p>
     </div>
 
-    <section class="grid" style="max-width:420px;">
-      <article class="product">
-        <a class="media" href="drop.html">
-          <img src="images/unshakenblk.png" alt="UNSHAKEN Tee" loading="lazy" />
-        </a>
-        <div class="body">
-          <a href="drop.html">
-            <h3 class="name">UNSHAKEN Tee &mdash; Drop 001</h3>
-          </a>
-          <p class="desc">One word. Worn daily. A quiet anchor for work, worship, and the ordinary in between. Four colorways, inspired by the four chariot horses.</p>
-        </div>
-        <div class="bottom">
-          <div>
-            <div class="price">$70.00</div>
-            <div class="fine">Limited release</div>
-          </div>
-          <a class="btn primary" href="drop.html">View</a>
-        </div>
-      </article>
-    </section>
+    <div style="max-width:480px; margin:0 auto; text-align:center;">
+      <a href="drop.html" style="display:block; padding:24px 0;">
+        <img src="images/drops/unshaken/unshakenblk.png" alt="UNSHAKEN Tee" loading="lazy" style="max-height:380px; margin:0 auto; object-fit:contain;" />
+      </a>
+      <a href="drop.html" style="display:block;">
+        <h3 style="margin:0; font-weight:950; text-transform:uppercase; letter-spacing:-0.02em; font-size:18px; color:var(--ink);">UNSHAKEN Tee &mdash; Drop 001</h3>
+      </a>
+      <p style="margin:8px 0 0; color:var(--muted); font-size:13px; max-width:42ch; margin-left:auto; margin-right:auto;">One word. Worn daily. A quiet anchor for work, worship, and the ordinary in between. Four colorways, inspired by the four chariot horses.</p>
+      <div style="margin-top:14px; display:flex; align-items:center; justify-content:center; gap:16px;">
+        <span style="font-weight:950; letter-spacing:-0.02em; color:var(--ink); font-size:18px;">$70.00</span>
+        <a class="btn primary" href="drop.html">View Details</a>
+      </div>
+      <div style="margin-top:6px; font-size:12px; color:var(--muted);">Limited release</div>
+    </div>
 
     <p style="text-align:center; margin:26px auto 0; max-width:520px; font-size:13px; color:var(--muted);">
       Missed a drop? Sold out drops remain in the archive. Begin with The Core while you wait for the next release.
     </p>
 
     <!-- Gear sub-header -->
-    <div class="pageTitle" style="padding:48px 0 20px;">
+    <div style="border-top:1px solid var(--line); margin:48px auto 0; max-width:800px;"></div>
+    <div class="pageTitle" style="padding:36px 0 20px;">
       <h1>Gear</h1>
       <p>Faith-driven gear. Made to order, just for you.</p>
     </div>
@@ -525,7 +548,7 @@
       <!-- MUG -->
       <article class="product">
         <a class="media" href="mug.html">
-          <img src="images/mockups/four-chariots-horse-emblem-mug-glossy-ceramic-coffee-mug-11oz-15oz.jpg" alt="FOUR CHARIOTS Horse Emblem Mug" loading="lazy" />
+          <img src="images/gear/four-chariots-horse-emblem-mug-glossy-ceramic-coffee-mug-11oz-15oz.jpg" alt="FOUR CHARIOTS Horse Emblem Mug" loading="lazy" />
         </a>
         <div class="body">
           <a href="mug.html">
@@ -538,14 +561,14 @@
             <div class="price">$15.00</div>
             <div class="fine">Stripe checkout</div>
           </div>
-          <a class="btn primary" href="mug.html">View</a>
+          <a class="btn primary" href="mug.html">View Details</a>
         </div>
       </article>
 
       <!-- DECAL -->
       <article class="product">
         <a class="media" href="sticker.html">
-          <img src="images/mockups/stickerdecal.jpg" alt="FOUR CHARIOTS Foundation Seal Sticker" loading="lazy" />
+          <img src="images/gear/stickerdecal.jpg" alt="FOUR CHARIOTS Foundation Seal Sticker" loading="lazy" />
         </a>
         <div class="body">
           <a href="sticker.html">
@@ -558,7 +581,7 @@
             <div class="price">$2.00</div>
             <div class="fine">Stripe checkout</div>
           </div>
-          <a class="btn primary" href="sticker.html">View</a>
+          <a class="btn primary" href="sticker.html">View Details</a>
         </div>
       </article>
 
