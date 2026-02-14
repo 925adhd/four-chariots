@@ -143,6 +143,23 @@
     }
     .divider{ border-top:1px solid var(--line); }
 
+    .coreGrid{
+      max-width:100%;
+      display:flex;
+      gap:18px;
+      padding-top:12px;
+      margin:0 auto;
+    }
+    .coreGrid .product{
+      flex:1 1 0;
+      min-width:0;
+      border:1px solid var(--line);
+      background:var(--bg);
+      display:flex;
+      flex-direction:column;
+      min-height:520px;
+    }
+
     .pageTitle{
       text-align:center;
       padding: 40px 0 20px;
@@ -251,163 +268,6 @@
     footer .links{ display:flex; gap:14px; flex-wrap:wrap; }
     footer .links a:hover{ color:var(--text); }
 
-    .spinner{
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      padding:80px 0;
-      grid-column:1/-1;
-    }
-    .spinner::after{
-      content:"";
-      width:36px;
-      height:36px;
-      border:3px solid var(--line);
-      border-top-color:var(--ink);
-      border-radius:50%;
-      animation:spin .7s linear infinite;
-    }
-    @keyframes spin{ to{ transform:rotate(360deg); } }
-
-    /* UNSHAKEN showcase */
-    .showcase{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:0;
-      border:1px solid var(--line);
-      background:var(--bg);
-      overflow:hidden;
-      max-width:900px;
-      margin:12px auto 0;
-    }
-    .scGallery{
-      background:#fafafa;
-      border-right:1px solid var(--line);
-      display:flex;
-      flex-direction:column;
-      gap:10px;
-      padding:18px;
-    }
-    .scMainImg{
-      flex:1;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-    }
-    .scMainImg img{
-      max-width:100%;
-      max-height:400px;
-      object-fit:contain;
-      transition: opacity .3s ease;
-    }
-    .scThumbs{
-      display:flex;
-      gap:8px;
-      justify-content:center;
-    }
-    .scThumb{
-      width:64px;
-      height:64px;
-      border:2px solid transparent;
-      background:var(--soft);
-      overflow:hidden;
-      cursor:pointer;
-      transition: border-color .2s ease;
-      padding:4px;
-    }
-    .scThumb.active{ border-color:var(--ink); }
-    .scThumb img{
-      width:100%;
-      height:100%;
-      object-fit:contain;
-    }
-    .scInfo{
-      padding:24px;
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      gap:12px;
-    }
-    .scTitle{
-      margin:0;
-      font-size: clamp(24px, 3vw, 36px);
-      line-height:1;
-      letter-spacing:-0.03em;
-      text-transform:uppercase;
-      font-weight:950;
-      color:var(--ink);
-    }
-    .scPrice{
-      font-size:20px;
-      font-weight:900;
-      color:var(--ink);
-      letter-spacing:-0.02em;
-    }
-    .scDesc{
-      color:var(--muted);
-      font-size:14px;
-      line-height:1.6;
-      max-width:48ch;
-    }
-    .scLabel{
-      font-size:12px;
-      font-weight:800;
-      text-transform:uppercase;
-      letter-spacing:0.10em;
-      color:var(--ink);
-    }
-    .scLabel .val{
-      font-weight:500;
-      color:var(--muted);
-      text-transform:none;
-      letter-spacing:0;
-      margin-left:6px;
-    }
-    .scColors{
-      display:flex;
-      gap:8px;
-    }
-    .scSwatch{
-      width:34px;
-      height:34px;
-      border-radius:50%;
-      border:2px solid transparent;
-      cursor:pointer;
-      padding:0;
-      background:none;
-      transition: border-color .2s ease, transform .15s ease;
-    }
-    .scSwatch:hover{ transform:scale(1.1); }
-    .scSwatch.active{ border-color:var(--ink); }
-    .scSwatch .inner{
-      display:block;
-      width:100%;
-      height:100%;
-      border-radius:50%;
-      border:1px solid var(--line);
-      background-size:cover;
-      background-position:center;
-    }
-    .scMeta{
-      padding-top:14px;
-      border-top:1px solid var(--line);
-      display:flex;
-      flex-direction:column;
-      gap:8px;
-    }
-    .scMetaItem{
-      display:flex;
-      align-items:center;
-      gap:8px;
-      font-size:12px;
-      color:var(--muted);
-    }
-    .scMetaItem svg{
-      width:16px;
-      height:16px;
-      flex-shrink:0;
-      color:var(--ink);
-    }
 
     .menuBtn{
       display:none;
@@ -419,6 +279,25 @@
       line-height:1;
       color:var(--text);
     }
+
+    .memberBanner{
+      background:var(--ink);
+      color:#fff;
+      text-align:center;
+      padding:10px 16px;
+      font-size:12px;
+      font-weight:700;
+      letter-spacing:0.06em;
+      text-transform:uppercase;
+    }
+    .memberBanner a{
+      color:#fff;
+      text-decoration:underline;
+      text-underline-offset:3px;
+      margin-left:6px;
+      font-weight:900;
+    }
+    .memberBanner a:hover{ opacity:.8; }
 
     @media (max-width: 980px){
       .wrap{ padding: 14px 14px 50px; }
@@ -465,17 +344,20 @@
       .product .desc{ font-size: 12px; -webkit-line-clamp: 3; }
       .product .bottom{ padding: 12px 14px; }
 
-      /* Showcase — stack vertically */
-      .showcase{ grid-template-columns: 1fr; }
-      .scGallery{ border-right:none; border-bottom:1px solid var(--line); padding:14px; }
-      .scMainImg img{ max-height:280px; }
-      .scThumbs{ gap:6px; }
-      .scThumb{ width:52px; height:52px; }
-      .scInfo{ padding:18px; gap:10px; }
-      .scTitle{ font-size: clamp(22px, 6vw, 32px); }
-      .scPrice{ font-size:18px; }
-      .scDesc{ font-size:13px; }
-      .scMeta{ gap:6px; }
+      /* Core grid — horizontal swipe on mobile */
+      .coreGrid{
+        display:flex;
+        overflow-x:auto;
+        scroll-snap-type:x mandatory;
+        -webkit-overflow-scrolling:touch;
+        gap:14px;
+        padding-bottom:8px;
+      }
+      .coreGrid .product{
+        flex:0 0 75vw;
+        max-width:300px;
+        scroll-snap-align:start;
+      }
 
       /* Footer */
       footer{ flex-direction:column; align-items:flex-start; gap:6px; margin-top:24px; }
@@ -519,87 +401,173 @@
 
     <div class="divider"></div>
 
-    <div class="pageTitle">
-      <h1>Shop</h1>
-      <p>Faith-driven gear. Made to order, just for you.</p>
+    <div class="memberBanner">
+      Free shipping on all orders &mdash; members only.<a href="membership.html">Join now</a>
     </div>
 
-    <!-- Printify product grid (all items) -->
-    <section class="grid" id="grid" aria-label="Products"></section>
+    <!-- Core Collection header -->
+    <div style="text-align:center; padding:48px 0 20px;">
+      <div style="font-size:11px; font-weight:900; text-transform:uppercase; letter-spacing:0.16em; color:var(--muted); margin-bottom:8px;">Core Collection</div>
+      <h2 style="margin:0; font-size:clamp(24px,3vw,36px); font-weight:950; text-transform:uppercase; letter-spacing:0.10em; color:var(--ink);">The Four</h2>
+      <p style="margin:8px 0 0; font-size:14px; color:var(--muted);">Always available. Built for everyday wear.</p>
+    </div>
 
-    <!-- Current Drop divider -->
+    <!-- Gear grid — 4 placeholder shirts -->
+    <section class="coreGrid" aria-label="Gear">
+
+      <!-- Shirt 1 -->
+      <article class="product">
+        <div class="media" style="display:flex;align-items:center;justify-content:center;background:var(--soft);color:var(--muted);font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;">Coming Soon</div>
+        <div class="body">
+          <h3 class="name">UNASHAMED</h3>
+          <p class="desc">Romans 1:16</p>
+        </div>
+        <div class="bottom">
+          <div>
+            <div class="price">$60.00</div>
+            <div class="fine">Coming soon</div>
+          </div>
+          <button class="btn primary" disabled>View</button>
+        </div>
+      </article>
+
+      <!-- Shirt 2 -->
+      <article class="product">
+        <div class="media" style="display:flex;align-items:center;justify-content:center;background:var(--soft);color:var(--muted);font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;">Coming Soon</div>
+        <div class="body">
+          <h3 class="name">CHOSEN</h3>
+          <p class="desc">1 Peter 2:9</p>
+        </div>
+        <div class="bottom">
+          <div>
+            <div class="price">$60.00</div>
+            <div class="fine">Coming soon</div>
+          </div>
+          <button class="btn primary" disabled>View</button>
+        </div>
+      </article>
+
+      <!-- Shirt 3 -->
+      <article class="product">
+        <div class="media" style="display:flex;align-items:center;justify-content:center;background:var(--soft);color:var(--muted);font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;">Coming Soon</div>
+        <div class="body">
+          <h3 class="name">FORGIVEN</h3>
+          <p class="desc">Ephesians 1:7</p>
+        </div>
+        <div class="bottom">
+          <div>
+            <div class="price">$60.00</div>
+            <div class="fine">Coming soon</div>
+          </div>
+          <button class="btn primary" disabled>View</button>
+        </div>
+      </article>
+
+      <!-- Shirt 4 -->
+      <article class="product">
+        <div class="media" style="display:flex;align-items:center;justify-content:center;background:var(--soft);color:var(--muted);font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;">Coming Soon</div>
+        <div class="body">
+          <h3 class="name">GUIDED</h3>
+          <p class="desc">Psalm 23:3</p>
+        </div>
+        <div class="bottom">
+          <div>
+            <div class="price">$60.00</div>
+            <div class="fine">Coming soon</div>
+          </div>
+          <button class="btn primary" disabled>View</button>
+        </div>
+      </article>
+
+    </section>
+
+    <!-- Current Drop -->
     <div style="text-align:center; padding:48px 0 20px;">
       <div style="font-size:11px; font-weight:900; text-transform:uppercase; letter-spacing:0.16em; color:var(--muted); margin-bottom:8px;">Current Drop</div>
       <h2 style="margin:0; font-size:clamp(24px,3vw,36px); font-weight:950; text-transform:uppercase; letter-spacing:0.10em; color:var(--ink);">Drop 001</h2>
-      <p style="margin:8px 0 0; font-size:14px; color:var(--muted);">One exclusive drop per month. Once it's gone, it's gone.</p>
+      <p style="margin:8px 0 0; font-size:14px; color:var(--muted);">Limited to 66 pieces. One release. When it closes, it moves quietly into the archive.</p>
     </div>
 
-    <!-- UNSHAKEN showcase -->
-    <div class="showcase">
-      <div class="scGallery">
-        <div class="scMainImg">
-          <img id="scHeroImg" src="images/unshakenblk.png" alt="UNSHAKEN Tee - Black" />
+    <section class="grid" style="max-width:420px;">
+      <article class="product">
+        <a class="media" href="drop.html">
+          <img src="images/unshakenblk.png" alt="UNSHAKEN Tee" loading="lazy" />
+        </a>
+        <div class="body">
+          <a href="drop.html">
+            <h3 class="name">UNSHAKEN Tee &mdash; Drop 001</h3>
+          </a>
+          <p class="desc">One word. Worn daily. A quiet anchor for work, worship, and the ordinary in between. Four colorways, inspired by the four chariot horses.</p>
         </div>
-        <div class="scThumbs">
-          <div class="scThumb active" data-src="images/unshakenblk.png" data-color="Black" data-hex="#1a1a1a">
-            <img src="images/unshakenblk.png" alt="Black" />
+        <div class="bottom">
+          <div>
+            <div class="price">$70.00</div>
+            <div class="fine">Limited release</div>
           </div>
-          <div class="scThumb" data-src="images/unshakenwhite.png" data-color="White" data-hex="#f5f0e1">
-            <img src="images/unshakenwhite.png" alt="White" />
-          </div>
-          <div class="scThumb" data-src="images/unshakenred.png" data-color="Red" data-hex="#8b2232">
-            <img src="images/unshakenred.png" alt="Red" />
-          </div>
-          <div class="scThumb" data-src="images/unshakendap.png" data-color="Dapple" data-hex="#555555">
-            <img src="images/unshakendap.png" alt="Dapple" />
-          </div>
-          <div class="scThumb" data-src="images/scripturecloseup.png" data-color="" data-hex="">
-            <img src="images/scripturecloseup.png" alt="Scripture close-up" />
-          </div>
-          <div class="scThumb" data-src="images/closeuplogosleeve.png" data-color="" data-hex="">
-            <img src="images/closeuplogosleeve.png" alt="Logo sleeve close-up" />
-          </div>
+          <a class="btn primary" href="drop.html">View</a>
         </div>
-      </div>
+      </article>
+    </section>
 
-      <div class="scInfo">
-        <h2 class="scTitle">UNSHAKEN</h2>
-        <div class="scPrice">$25.00</div>
-        <p class="scDesc">
-          One word. Worn daily. A quiet anchor for work, worship, and the ordinary in between. Four colorways, inspired by the four chariot horses.
-        </p>
-        <p class="scDesc" style="font-style:italic; opacity:.85;">
-          Each piece carries a connected scripture reference, placed subtly on the sleeve. A quiet reminder, not a loud statement.
-        </p>
+    <p style="text-align:center; margin:26px auto 0; max-width:520px; font-size:13px; color:var(--muted);">
+      Missed a drop? Sold out drops remain in the archive. Begin with The Core while you wait for the next release.
+    </p>
 
-        <div>
-          <div class="scLabel">Color <span class="val" id="scColorLabel">Black</span></div>
-          <div class="scColors" style="margin-top:8px;">
-            <button class="scSwatch active" data-color="Black" data-src="images/unshakenblk.png" title="Black">
-              <span class="inner" style="background-image:url('images/blackswatch.png')"></span>
-            </button>
-            <button class="scSwatch" data-color="White" data-src="images/unshakenwhite.png" title="White">
-              <span class="inner" style="background-image:url('images/whiteswatch.png')"></span>
-            </button>
-            <button class="scSwatch" data-color="Red" data-src="images/unshakenred.png" title="Red">
-              <span class="inner" style="background-image:url('images/redswatch.png')"></span>
-            </button>
-            <button class="scSwatch" data-color="Dapple" data-src="images/unshakendap.png" title="Dapple">
-              <span class="inner" style="background-image:url('images/dappleswatch.png')"></span>
-            </button>
+    <!-- Gear sub-header -->
+    <div class="pageTitle" style="padding:48px 0 20px;">
+      <h1>Gear</h1>
+      <p>Faith-driven gear. Made to order, just for you.</p>
+    </div>
+
+    <!-- Product grid (local) -->
+    <section class="grid" id="grid" aria-label="Products">
+
+      <!-- MUG -->
+      <article class="product">
+        <a class="media" href="mug.html">
+          <img src="images/mockups/four-chariots-horse-emblem-mug-glossy-ceramic-coffee-mug-11oz-15oz.jpg" alt="FOUR CHARIOTS Horse Emblem Mug" loading="lazy" />
+        </a>
+        <div class="body">
+          <a href="mug.html">
+            <h3 class="name">FOUR CHARIOTS Horse Emblem Mug &mdash; Glossy Ceramic Coffee Mug (11oz / 15oz)</h3>
+          </a>
+          <p class="desc">A simple ceramic mug featuring the FOUR CHARIOTS horse emblem. Glossy white ceramic gives the design strong contrast while keeping the look clean and minimal. Durable printing holds up through daily use, whether it's morning coffee, tea, or something warm at the end of the day.</p>
+        </div>
+        <div class="bottom">
+          <div>
+            <div class="price">$15.00</div>
+            <div class="fine">Stripe checkout</div>
           </div>
+          <a class="btn primary" href="mug.html">View</a>
         </div>
+      </article>
 
-        <a class="btn primary" href="drop.html" style="width:100%;margin-top:4px;">View</a>
-
-        <div class="scMeta" style="flex-direction:row; gap:10px; border-top:none; padding-top:0;">
-          <span style="font-size:12px; color:var(--muted);">Limited release</span>
-          <span style="opacity:.6;">·</span>
-          <span style="font-size:12px; color:var(--muted);">Made to order</span>
-          <span style="opacity:.6;">·</span>
-          <span style="font-size:12px; color:var(--muted);">Secure Stripe checkout</span>
+      <!-- DECAL -->
+      <article class="product">
+        <a class="media" href="sticker.html">
+          <img src="images/mockups/stickerdecal.jpg" alt="FOUR CHARIOTS Foundation Seal Sticker" loading="lazy" />
+        </a>
+        <div class="body">
+          <a href="sticker.html">
+            <h3 class="name">FOUR CHARIOTS Foundation Seal Sticker &mdash; Glossy Vinyl Decal</h3>
+          </a>
+          <p class="desc">A simple vinyl sticker featuring the FOUR CHARIOTS foundation seal. Clean lines and strong contrast give the symbol a steady presence wherever it's placed, from laptops and journals to water bottles and workspaces. Printed on durable glossy vinyl, it applies smoothly and holds up through everyday use.</p>
         </div>
-      </div>
+        <div class="bottom">
+          <div>
+            <div class="price">$2.00</div>
+            <div class="fine">Stripe checkout</div>
+          </div>
+          <a class="btn primary" href="sticker.html">View</a>
+        </div>
+      </article>
+
+    </section>
+
+    <!-- Archive placeholder (empty until sold out drops exist) -->
+    <div style="text-align:center; padding:48px 0 12px;">
+      <div style="font-size:11px; font-weight:900; text-transform:uppercase; letter-spacing:0.16em; color:var(--muted); margin-bottom:8px;">Archive</div>
+      <h2 style="margin:0; font-size:clamp(24px,3vw,36px); font-weight:950; text-transform:uppercase; letter-spacing:0.10em; color:var(--ink);">Previous Drops</h2>
     </div>
 
     <footer>
@@ -614,237 +582,7 @@
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    const SUPABASE_URL  = "https://txeemijqgqomfclezonf.supabase.co";
-    const SUPABASE_ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR4ZWVtaWpxZ3FvbWZjbGV6b25mIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA3NjkzMjgsImV4cCI6MjA4NjM0NTMyOH0.boeu2dy3J-L09LRKQrRWPSvTPevynff5ZVwpeaT8oYM";
-
-    function setStatus(msg, kind) {
-      if (kind === "error") console.error("[4C]", msg);
-      else console.log("[4C]", msg);
-    }
-
-    function formatUsdCents(cents) {
-      const n = Number(cents || 0);
-      return "$" + (n / 100).toFixed(2);
-    }
-
-    async function startCheckout(productId, variantId) {
-      if (!productId || !variantId) {
-        alert("Missing product selection.");
-        return;
-      }
-
-      setStatus("Opening checkout...", "");
-      try {
-        const res = await fetch(`${SUPABASE_URL}/functions/v1/create_checkout`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${SUPABASE_ANON}`,
-            "apikey": SUPABASE_ANON
-          },
-          body: JSON.stringify({
-            product_id: productId,
-            variant_id: Number(variantId),
-            quantity: 1
-          })
-        });
-
-        const data = await res.json();
-
-        if (!res.ok) {
-          console.error("create_checkout error:", data);
-          setStatus("Checkout failed. See console.", "error");
-          return;
-        }
-
-        if (!data.url) {
-          console.error("create_checkout missing url:", data);
-          setStatus("Checkout failed (no URL). See console.", "error");
-          return;
-        }
-
-        window.location.href = data.url;
-      } catch (err) {
-        console.error("Checkout error:", err);
-        setStatus("Checkout error. See console.", "error");
-      }
-    }
-
-    const CACHE_KEY = "fc_products";
-    const CACHE_TTL = 5 * 60 * 1000; // 5 min browser cache
-
-    function getCachedProducts() {
-      try {
-        const raw = sessionStorage.getItem(CACHE_KEY);
-        if (!raw) return null;
-        const { ts, products } = JSON.parse(raw);
-        if (Date.now() - ts > CACHE_TTL) return null;
-        return products;
-      } catch { return null; }
-    }
-
-    function setCachedProducts(products) {
-      try {
-        sessionStorage.setItem(CACHE_KEY, JSON.stringify({ ts: Date.now(), products }));
-      } catch {}
-    }
-
-    // Products to hide from the shop grid (by title, case-insensitive)
-    const HIDDEN_PRODUCTS = ["olive heart"];
-
-    function renderProducts(products) {
-      const grid = document.getElementById("grid");
-      grid.innerHTML = "";
-
-      products.filter(p => !HIDDEN_PRODUCTS.some(h => (p.title || "").toLowerCase().includes(h.toLowerCase()))).forEach((p) => {
-        const img = p?.images?.[0]?.src || "";
-        const enabled = (p?.variants || []).filter(v => v && v.is_enabled);
-        const lowest = enabled.length ? Math.min(...enabled.map(v => Number(v.price || 0))) : 0;
-        const defaultVariant = enabled[0];
-
-        const card = document.createElement("article");
-        card.className = "product";
-
-        card.innerHTML = `
-          <a href="product.html?id=${encodeURIComponent(p.id)}" class="media">
-            <img src="${img}" alt="${escapeHtml(p.title || "Product")}" loading="lazy">
-          </a>
-          <div class="body">
-            <a href="product.html?id=${encodeURIComponent(p.id)}">
-              <h3 class="name">${escapeHtml(p.title || "Untitled")}</h3>
-            </a>
-            <p class="desc">${escapeHtml(stripHtml(p.description || ""))}</p>
-          </div>
-          <div class="bottom">
-            <div>
-              <div class="price">${formatUsdCents(lowest)}</div>
-              <div class="fine">Stripe checkout</div>
-            </div>
-            <a class="btn primary" href="product.html?id=${encodeURIComponent(p.id)}">
-              ${defaultVariant ? "View" : "Unavailable"}
-            </a>
-          </div>
-        `;
-
-        grid.appendChild(card);
-      });
-    }
-
-    async function loadProducts() {
-      const grid = document.getElementById("grid");
-
-      // Try browser cache first for instant render
-      const cached = getCachedProducts();
-      if (cached && cached.length) {
-        setStatus("Loaded from cache.", "ok");
-        renderProducts(cached);
-        // Refresh in background so next visit has fresh data
-        fetchProducts().then(fresh => {
-          if (fresh) setCachedProducts(fresh);
-        });
-        return;
-      }
-
-      grid.innerHTML = '<div class="spinner"></div>';
-      setStatus("Loading products...", "");
-
-      const products = await fetchProducts();
-      if (products) {
-        setCachedProducts(products);
-        renderProducts(products);
-        setStatus("Loaded.", "ok");
-      }
-    }
-
-    async function fetchProducts() {
-      try {
-        const res = await fetch(`${SUPABASE_URL}/functions/v1/printify`, {
-          method: "GET",
-          headers: {
-            "Authorization": `Bearer ${SUPABASE_ANON}`,
-            "apikey": SUPABASE_ANON
-          }
-        });
-
-        const data = await res.json();
-        console.log("PRINTIFY RESPONSE:", data);
-
-        if (!res.ok) {
-          console.error("printify function error:", data);
-          setStatus("Could not load products. See console.", "error");
-          return null;
-        }
-
-        const products = data.products || [];
-        if (!products.length) {
-          setStatus("No products found.", "error");
-          return null;
-        }
-
-        return products;
-      } catch (err) {
-        console.error("Could not load products:", err);
-        setStatus("Could not load products. See console.", "error");
-        return null;
-      }
-    }
-
-    function stripHtml(html) {
-      const tmp = document.createElement("div");
-      tmp.innerHTML = html;
-      return (tmp.textContent || tmp.innerText || "").replace(/\s+/g, " ").trim();
-    }
-
-    function escapeHtml(str) {
-      return String(str)
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
-    }
-
-    document.querySelectorAll(".nav a").forEach(a => {
-      a.addEventListener("click", () => {
-        document.querySelector(".nav").classList.remove("open");
-      });
-    });
-
-    // Load all Printify products into the grid
-    loadProducts();
-
-    // Showcase thumbnail + swatch switching
-    const scHero = document.getElementById("scHeroImg");
-    const scLabel = document.getElementById("scColorLabel");
-
-    document.querySelectorAll(".scThumb").forEach(thumb => {
-      thumb.addEventListener("click", () => {
-        scHero.src = thumb.dataset.src;
-        scHero.alt = "UNSHAKEN Tee - " + thumb.dataset.color;
-        if (scLabel) scLabel.textContent = thumb.dataset.color;
-        document.querySelectorAll(".scThumb").forEach(t => t.classList.remove("active"));
-        thumb.classList.add("active");
-        // Sync swatch
-        document.querySelectorAll(".scSwatch").forEach(s => {
-          s.classList.toggle("active", s.dataset.color === thumb.dataset.color);
-        });
-      });
-    });
-
-    document.querySelectorAll(".scSwatch").forEach(sw => {
-      sw.addEventListener("click", () => {
-        scHero.src = sw.dataset.src;
-        scHero.alt = "UNSHAKEN Tee - " + sw.dataset.color;
-        if (scLabel) scLabel.textContent = sw.dataset.color;
-        document.querySelectorAll(".scSwatch").forEach(s => s.classList.remove("active"));
-        sw.classList.add("active");
-        // Sync thumbnail
-        document.querySelectorAll(".scThumb").forEach(t => {
-          t.classList.toggle("active", t.dataset.color === sw.dataset.color);
-        });
-      });
-    });
-    /* Cart badge */
+    /* ── Cart badge ── */
     function getCart(){try{const r=localStorage.getItem("fc_cart");return r?JSON.parse(r):[];}catch{return[];}}
     function getCartCount(){return getCart().reduce((s,i)=>s+i.quantity,0);}
     (function updateCartBadge(){
@@ -852,6 +590,12 @@
       const c=getCartCount();
       if(c>0){b.textContent=c;b.style.display="inline-flex";}else{b.style.display="none";}
     })();
+
+    /* ── Nav toggle ── */
+    document.querySelectorAll(".nav a").forEach(a=>{
+      a.addEventListener("click",()=>{document.querySelector(".nav").classList.remove("open");});
+    });
+
   </script>
 </body>
 </html>
