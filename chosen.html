@@ -424,11 +424,16 @@
       .pageTitle h1{ font-size: clamp(24px, 7vw, 36px); }
 
       .showcase{ grid-template-columns: 1fr; }
-      .scGallery{ border-right:none; border-bottom:1px solid var(--line); padding:14px; }
+      .scGallery{ border-right:none; border-bottom:1px solid var(--line); padding:14px; align-items:center; }
+      .scMainImg{ justify-content:center; }
       .scMainImg img{ max-height:280px; }
-      .scThumbs{ gap:6px; }
-      .scThumb{ width:52px; height:52px; }
-      .scInfo{ padding:18px; gap:10px; }
+      .scThumbs{ gap:6px; flex-wrap:wrap; justify-content:center; }
+      .scThumb{ width:48px; height:48px; }
+      .scInfo{ padding:18px; gap:10px; align-items:center; text-align:center; }
+      .sizeBtns{ justify-content:center; }
+      .scSwatches{ justify-content:center; }
+      .scMeta{ justify-content:center; }
+      .scMetaItem{ justify-content:center; }
       .scTitle{ font-size: clamp(22px, 6vw, 32px); }
       .scPrice{ font-size:18px; }
       .scDesc{ font-size:13px; }

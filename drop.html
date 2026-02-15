@@ -192,18 +192,20 @@
       border-right:1px solid var(--line);
       display:flex;
       flex-direction:column;
-      gap:10px;
-      padding:18px;
+      align-items:center;
+      justify-content:center;
+      gap:4px;
+      padding:0 14px 6px;
     }
     .scMainImg{
-      flex:1;
       display:flex;
       align-items:center;
       justify-content:center;
+      padding:0 3%;
     }
     .scMainImg img{
-      max-width:100%;
-      max-height:400px;
+      max-width:90%;
+      max-height:520px;
       object-fit:contain;
       transition: opacity .3s ease;
     }
@@ -427,11 +429,16 @@
 
       /* Showcase — stack vertically */
       .showcase{ grid-template-columns: 1fr; }
-      .scGallery{ border-right:none; border-bottom:1px solid var(--line); padding:14px; }
+      .scGallery{ border-right:none; border-bottom:1px solid var(--line); padding:14px; align-items:center; }
+      .scMainImg{ justify-content:center; }
       .scMainImg img{ max-height:280px; }
-      .scThumbs{ gap:6px; }
-      .scThumb{ width:52px; height:52px; }
-      .scInfo{ padding:18px; gap:10px; }
+      .scThumbs{ gap:6px; flex-wrap:wrap; justify-content:center; }
+      .scThumb{ width:48px; height:48px; }
+      .scInfo{ padding:18px; gap:10px; align-items:center; text-align:center; }
+      .sizeBtns{ justify-content:center; }
+      .scSwatches{ justify-content:center; }
+      .scMeta{ justify-content:center; }
+      .scMetaItem{ justify-content:center; }
       .scTitle{ font-size: clamp(22px, 6vw, 32px); }
       .scPrice{ font-size:18px; }
       .scDesc{ font-size:13px; }
@@ -578,6 +585,9 @@
           </div>
           <div class="scThumb" data-src="images/drops/unshaken/unshakencloseup.png" data-color="" data-hex="">
             <img src="images/drops/unshaken/unshakencloseup.png" alt="Chest embroidery close-up" />
+          </div>
+          <div class="scThumb" data-src="images/drops/unshaken/droptag.png" data-color="" data-hex="">
+            <img src="images/drops/unshaken/droptag.png" alt="Drop tag" />
           </div>
           <div class="scThumb" data-src="images/closeupsleeve.png" data-color="" data-hex="">
             <img src="images/closeupsleeve.png" alt="Logo sleeve close-up" />
