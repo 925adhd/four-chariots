@@ -285,6 +285,12 @@
       letter-spacing:0;
       margin-left:6px;
     }
+    .sizeError{
+      font-size:12px;
+      color:#8b2020;
+      margin-top:6px;
+      display:none;
+    }
     .sizeBtns{
       display:flex;
       gap:6px;
@@ -411,6 +417,7 @@
       }
       .nav a:last-child{ border-bottom:none; }
       .ctaRow{ display:none; }
+      .mobileCart{ display:flex !important; }
       .topbar{ position:relative; }
 
       .pageTitle{ padding: 28px 0 14px; }
@@ -430,6 +437,22 @@
       footer{ flex-direction:column; align-items:flex-start; gap:6px; margin-top:24px; }
     }
     .cartBtn{ position:relative; }
+    .mobileCart{
+      display:none;
+      position:relative;
+      background:none;
+      border:1px solid var(--line);
+      padding:8px 10px;
+      font-family:var(--font);
+      font-size:12px;
+      font-weight:700;
+      letter-spacing:0.06em;
+      cursor:pointer;
+      color:var(--ink);
+      text-decoration:none;
+      align-items:center;
+      gap:4px;
+    }
     .cartBadge{
       position:absolute; top:-6px; right:-8px;
       background:var(--bg); color:var(--ink);
@@ -459,6 +482,8 @@
       </nav>
 
       <button class="menuBtn" aria-label="Toggle menu" onclick="document.querySelector('.nav').classList.toggle('open')">&#9776;</button>
+
+      <a class="mobileCart cartBtn" href="cart.html">Cart <span class="cartBadge" id="cartBadgeMobile" style="display:none;">0</span></a>
 
       <div class="ctaRow">
         <a class="btn" href="shop.html">Shop</a>
@@ -508,7 +533,7 @@
         <h2 class="scTitle">CHOSEN</h2>
         <div class="scPrice">$90.00</div>
 
-        <p class="product-material-note">HEAVYWEIGHT 100 PERCENT PREMIUM COTTON</p>
+        <p class="product-material-note">HEAVYWEIGHT 100 PERCENT PREMIUM USA COTTON</p>
         <hr class="product-divider">
 
         <p class="scDesc product-description">
@@ -544,6 +569,7 @@
             <button class="sizeBtn" data-size="2XL">2XL</button>
             <button class="sizeBtn" data-size="3XL">3XL</button>
           </div>
+          <div class="sizeError" id="sizeError">Please select a size</div>
           <p class="scripture-hint">John 15:16 — connected scripture detail</p>
         </div>
 
@@ -635,19 +661,22 @@
     }
     function getCartCount(){return getCart().reduce((s,i)=>s+i.quantity,0);}
     function updateCartBadge(){
-      const b=document.getElementById("cartBadge");if(!b)return;
       const c=getCartCount();
-      if(c>0){b.textContent=c;b.style.display="inline-flex";}else{b.style.display="none";}
+      document.querySelectorAll("#cartBadge, #cartBadgeMobile").forEach(b => {
+        if(c>0){b.textContent=c;b.style.display="inline-flex";}else{b.style.display="none";}
+      });
     }
     updateCartBadge();
 
     /* Size selector */
     let selectedSize = "";
     const sizeLabel = document.getElementById("scSizeLabel");
+    const sizeError = document.getElementById("sizeError");
     document.querySelectorAll(".sizeBtn").forEach(btn => {
       btn.addEventListener("click", () => {
         selectedSize = btn.dataset.size;
         if(sizeLabel) sizeLabel.textContent = selectedSize;
+        if(sizeError) sizeError.style.display = "none";
         document.querySelectorAll(".sizeBtn").forEach(b => b.classList.remove("active"));
         btn.classList.add("active");
       });
@@ -659,7 +688,7 @@
       const activeSwatch = document.querySelector(".scSwatch.active");
       const color = activeSwatch ? activeSwatch.dataset.color : "Black";
       if(!selectedSize){
-        alert("Please select a size.");
+        if(sizeError) sizeError.style.display = "block";
         return;
       }
       const imgSrc = activeSwatch ? activeSwatch.dataset.src : "images/core/chosen/cosenblk.png";

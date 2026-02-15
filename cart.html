@@ -191,6 +191,22 @@
 
     /* Cart badge */
     .cartBtn{ position:relative; }
+    .mobileCart{
+      display:none;
+      position:relative;
+      background:none;
+      border:1px solid var(--line);
+      padding:8px 10px;
+      font-family:var(--font);
+      font-size:12px;
+      font-weight:700;
+      letter-spacing:0.06em;
+      cursor:pointer;
+      color:var(--ink);
+      text-decoration:none;
+      align-items:center;
+      gap:4px;
+    }
     .cartBadge{
       position:absolute;
       top:-6px;
@@ -365,6 +381,13 @@
       padding:16px;
       font-size:14px;
     }
+    .checkoutError{
+      font-size:12px;
+      color:#8b2020;
+      margin-top:8px;
+      display:none;
+      text-align:center;
+    }
     .checkoutNote{
       margin:10px 0 0;
       font-size:11px;
@@ -449,6 +472,7 @@
       }
       .nav a:last-child{ border-bottom:none; }
       .ctaRow{ display:none; }
+      .mobileCart{ display:flex !important; }
       .topbar{ position:relative; }
       .pageHero{ padding: 34px 0 18px; }
     }
@@ -498,6 +522,8 @@
       </nav>
 
       <button class="menuBtn" aria-label="Toggle menu" onclick="document.querySelector('.nav').classList.toggle('open')">&#9776;</button>
+
+      <a class="mobileCart cartBtn" href="cart.html">Cart <span class="cartBadge" id="cartBadgeMobile" style="display:none;">0</span></a>
 
       <div class="ctaRow">
         <a class="btn" href="shop.html">Shop</a>
@@ -587,15 +613,15 @@
 
     /* ── Badge ── */
     function updateCartBadge() {
-      const badge = document.getElementById("cartBadge");
-      if (!badge) return;
       const count = getCartCount();
-      if (count > 0) {
-        badge.textContent = count;
-        badge.style.display = "inline-flex";
-      } else {
-        badge.style.display = "none";
-      }
+      document.querySelectorAll("#cartBadge, #cartBadgeMobile").forEach(badge => {
+        if (count > 0) {
+          badge.textContent = count;
+          badge.style.display = "inline-flex";
+        } else {
+          badge.style.display = "none";
+        }
+      });
     }
 
     /* ── Render ── */
@@ -652,6 +678,7 @@
               <span id="total">${formatPrice(getCartTotal())}</span>
             </div>
             <button class="btn primary checkoutBtn" id="checkoutBtn">Proceed to Checkout</button>
+            <div class="checkoutError" id="checkoutError"></div>
             <p class="checkoutNote">Secure checkout via Stripe</p>
             <div class="shippingPromo">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 18H3a1 1 0 01-1-1V7a1 1 0 011-1h10v11m0-11h3l3 4v7a1 1 0 01-1 1h-2"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>
@@ -731,8 +758,9 @@
 
           const data = await res.json();
 
+          const errEl = document.getElementById("checkoutError");
           if (!res.ok || !data.url) {
-            alert("Checkout failed. Please try again.");
+            if(errEl){ errEl.textContent = "Checkout failed. Please try again."; errEl.style.display = "block"; }
             btn.disabled = false;
             btn.textContent = "Proceed to Checkout";
             return;
@@ -742,7 +770,8 @@
           window.location.href = data.url;
         } catch (err) {
           console.error("Checkout error:", err);
-          alert("Checkout error. Please try again.");
+          const errEl = document.getElementById("checkoutError");
+          if(errEl){ errEl.textContent = "Checkout error. Please try again."; errEl.style.display = "block"; }
           btn.disabled = false;
           btn.textContent = "Proceed to Checkout";
         }
