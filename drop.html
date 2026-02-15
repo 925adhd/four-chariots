@@ -579,7 +579,7 @@
         <h2 class="scTitle">UNSHAKEN</h2>
         <div class="scPrice" id="dropPrice">$150.00</div>
         <div class="archivedLabel" id="archivedLabel">ARCHIVED</div>
-        <div class="stockStatus" id="stockStatus">12 of 66 claimed</div>
+        <div class="stockStatus" id="stockStatus"><span style="color:#8b7a56">12 / 66</span> claimed</div>
 
         <p class="product-material-note">HEAVYWEIGHT 100 PERCENT PREMIUM COTTON</p>
         <hr class="product-divider">
@@ -776,12 +776,12 @@
       } else if (remaining < 10) {
         // LOW REMAINING
         showcase.classList.remove("archived");
-        statusEl.textContent = remaining + " pieces remain";
+        statusEl.innerHTML = '<span style="color:#8b7a56">' + remaining + '</span> pieces remain';
         statusEl.classList.add("low");
       } else {
         // ACTIVE
         showcase.classList.remove("archived");
-        statusEl.textContent = claimed + " / " + total + " claimed";
+        statusEl.innerHTML = '<span style="color:#8b7a56">' + claimed + ' / ' + total + '</span> claimed';
         statusEl.classList.remove("low");
       }
     }
