@@ -450,17 +450,12 @@
       display:none;
       position:relative;
       background:none;
-      border:1px solid var(--line);
-      padding:8px 10px;
-      font-family:var(--font);
-      font-size:12px;
-      font-weight:700;
-      letter-spacing:0.06em;
+      border:none;
+      padding:6px;
       cursor:pointer;
       color:var(--ink);
       text-decoration:none;
       align-items:center;
-      gap:4px;
     }
     .cartBadge{
       position:absolute; top:-6px; right:-8px;
@@ -490,9 +485,8 @@
         <a href="support.html">Support</a>
       </nav>
 
+      <a class="mobileCart cartBtn" href="cart.html" aria-label="Cart"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg><span class="cartBadge" id="cartBadgeMobile" style="display:none;">0</span></a>
       <button class="menuBtn" aria-label="Toggle menu" onclick="document.querySelector('.nav').classList.toggle('open')">&#9776;</button>
-
-      <a class="mobileCart cartBtn" href="cart.html">Cart <span class="cartBadge" id="cartBadgeMobile" style="display:none;">0</span></a>
 
       <div class="ctaRow">
         <a class="btn" href="shop.html">Shop</a>
