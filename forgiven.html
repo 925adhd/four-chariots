@@ -507,7 +507,6 @@
         <div class="scMainImg">
           <img id="scHeroImg" src="images/core/forgiven/forgivenblk.png" alt="FORGIVEN Tee - Black" />
         </div>
-        <p id="closeupCaption" style="display:none;text-align:center;font-size:11px;color:var(--muted);margin:2px 0 0;letter-spacing:0.04em;">High quality embroidery with precision stitching</p>
         <div class="scThumbs">
           <div class="scThumb active" data-src="images/core/forgiven/forgivenblk.png" data-color="Black" data-hex="#1a1a1a">
             <img src="images/core/forgiven/forgivenblk.png" alt="Black" />
@@ -515,11 +514,11 @@
           <div class="scThumb" data-src="images/core/forgiven/forgivencloseup.png" data-color="" data-hex="">
             <img src="images/core/forgiven/forgivencloseup.png" alt="Chest embroidery close-up" />
           </div>
+          <div class="scThumb" data-src="images/closeupsleeve.png" data-color="" data-hex="">
+            <img src="images/closeupsleeve.png" alt="Sleeve detail" />
+          </div>
           <div class="scThumb" data-src="images/core/forgiven/scripturecloseup.png" data-color="" data-hex="">
             <img src="images/core/forgiven/scripturecloseup.png" alt="Embroidery stitch detail" />
-          </div>
-          <div class="scThumb" data-src="images/closeuplogosleeve.png" data-color="" data-hex="">
-            <img src="images/closeuplogosleeve.png" alt="Sleeve detail" />
           </div>
           <div class="scThumb" data-src="images/core/forgiven/forgivenwhite.png" data-color="White" data-hex="#f5f0e1">
             <img src="images/core/forgiven/forgivenwhite.png" alt="White" />
@@ -625,14 +624,12 @@
     // Showcase thumbnail + swatch switching
     const scHero = document.getElementById("scHeroImg");
     const scLabel = document.getElementById("scColorLabel");
-    const closeupCaption = document.getElementById("closeupCaption");
 
     document.querySelectorAll(".scThumb").forEach(thumb => {
       thumb.addEventListener("click", () => {
         scHero.src = thumb.dataset.src;
         scHero.alt = "FORGIVEN Tee - " + thumb.dataset.color;
         if (scLabel) scLabel.textContent = thumb.dataset.color;
-        if(closeupCaption) closeupCaption.style.display = thumb.dataset.src.includes("closeup") ? "block" : "none";
         document.querySelectorAll(".scThumb").forEach(t => t.classList.remove("active"));
         thumb.classList.add("active");
         document.querySelectorAll(".scSwatch").forEach(s => {
@@ -646,7 +643,6 @@
         scHero.src = sw.dataset.src;
         scHero.alt = "FORGIVEN Tee - " + sw.dataset.color;
         if (scLabel) scLabel.textContent = sw.dataset.color;
-        if(closeupCaption) closeupCaption.style.display = "none";
         document.querySelectorAll(".scSwatch").forEach(s => s.classList.remove("active"));
         sw.classList.add("active");
         document.querySelectorAll(".scThumb").forEach(t => {
