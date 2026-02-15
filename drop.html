@@ -433,6 +433,71 @@
       /* Footer */
       footer{ flex-direction:column; align-items:flex-start; gap:6px; margin-top:24px; }
     }
+    /* ── Product state styles ── */
+    .stockStatus{
+      font-size:11px;
+      color:var(--muted);
+      letter-spacing:0.02em;
+      margin-top:2px;
+    }
+    .stockStatus.low{
+      color:#7a7062;
+    }
+
+    /* Archived overlay on gallery */
+    .showcase.archived .scGallery{
+      position:relative;
+    }
+    .showcase.archived .scGallery::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:rgba(255,255,255,.30);
+      pointer-events:none;
+    }
+    .showcase.archived .scPrice{
+      display:none;
+    }
+    .archivedLabel{
+      font-size:20px;
+      font-weight:900;
+      color:var(--muted);
+      letter-spacing:0.10em;
+      text-transform:uppercase;
+      display:none;
+    }
+    .showcase.archived .archivedLabel{
+      display:block;
+    }
+    .releaseClosed{
+      font-size:11px;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:0.10em;
+      color:var(--muted);
+      display:none;
+      margin-bottom:4px;
+    }
+    .showcase.archived .releaseClosed{
+      display:block;
+    }
+    .showcase.archived .btn.primary{
+      background:transparent;
+      color:var(--muted);
+      border-color:var(--line);
+      pointer-events:none;
+      cursor:default;
+      letter-spacing:0.10em;
+    }
+    .showcase.archived .btn.primary:hover{
+      transform:none;
+    }
+    .showcase.archived .scSwatch,
+    .showcase.archived .sizeBtn{
+      opacity:.4;
+      pointer-events:none;
+    }
+
     .cartBtn{ position:relative; }
     .cartBadge{
       position:absolute; top:-6px; right:-8px;
@@ -479,6 +544,7 @@
     <div class="pageTitle">
       <h1>Drop 001</h1>
       <p>Limited to 66 pieces. One release. When it closes, it moves quietly into the archive.</p>
+      <p>Each piece includes a sewn interior label individually numbered 1 of 66, marking its place within the release.</p>
     </div>
 
     <!-- UNSHAKEN showcase -->
@@ -511,7 +577,9 @@
 
       <div class="scInfo">
         <h2 class="scTitle">UNSHAKEN</h2>
-        <div class="scPrice">$70.00</div>
+        <div class="scPrice" id="dropPrice">$150.00</div>
+        <div class="archivedLabel" id="archivedLabel">ARCHIVED</div>
+        <div class="stockStatus" id="stockStatus">12 of 66 claimed</div>
 
         <p class="product-material-note">HEAVYWEIGHT 100 PERCENT PREMIUM COTTON</p>
         <hr class="product-divider">
@@ -519,6 +587,7 @@
         <p class="scDesc product-description">
           A quiet reminder you can carry into work, worship, and ordinary moments.
           Minimal by design. Heavy in meaning. Precision embroidery. Available in four colorways.
+          Inside the garment, a discreet numbered label identifies its position within the Drop 001 collection.
         </p>
 
         <div>
@@ -552,6 +621,7 @@
           <p class="scripture-hint">Psalm 16:8 — connected scripture detail</p>
         </div>
 
+        <div class="releaseClosed" id="releaseClosed">Release Closed</div>
         <button class="btn primary" id="addToCartBtn" style="width:100%;margin-top:4px;">Add to cart</button>
 
         <div class="scMeta">
@@ -565,7 +635,7 @@
           </div>
           <div class="scMetaItem">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 18H3a1 1 0 01-1-1V7a1 1 0 011-1h10v11m0-11h3l3 4v7a1 1 0 01-1 1h-2"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>
-            <span>Free drop shipping for <a href="membership.html" style="text-decoration:underline;text-underline-offset:3px;font-weight:700;">members</a></span>
+            <span>Free shipping for <a href="membership.html" style="text-decoration:underline;text-underline-offset:3px;font-weight:700;">members</a></span>
           </div>
         </div>
 
@@ -675,7 +745,7 @@
         title: "UNSHAKEN Tee",
         color: color,
         size: selectedSize,
-        price: 7000,
+        price: 15000,
         imageUrl: imgSrc,
         quantity: 1
       };
@@ -685,6 +755,38 @@
       updateCartBadge();
       setTimeout(() => { window.location.href = "cart.html"; }, 500);
     });
+
+    /* ── Drop product state system ── */
+    // Placeholder stock value — replace with live inventory when ready
+    const DROP_TOTAL = 66;
+    const DROP_REMAINING = 54; // placeholder: change this to test states
+
+    function applyDropState(remaining, total) {
+      const showcase = document.querySelector(".showcase");
+      const statusEl = document.getElementById("stockStatus");
+      const addCartBtn = document.getElementById("addToCartBtn");
+      const claimed = total - remaining;
+
+      if (remaining <= 0) {
+        // ARCHIVED
+        showcase.classList.add("archived");
+        statusEl.style.display = "none";
+        addCartBtn.disabled = true;
+        addCartBtn.textContent = "Archived";
+      } else if (remaining < 10) {
+        // LOW REMAINING
+        showcase.classList.remove("archived");
+        statusEl.textContent = remaining + " pieces remain";
+        statusEl.classList.add("low");
+      } else {
+        // ACTIVE
+        showcase.classList.remove("archived");
+        statusEl.textContent = claimed + " / " + total + " claimed";
+        statusEl.classList.remove("low");
+      }
+    }
+
+    applyDropState(DROP_REMAINING, DROP_TOTAL);
   </script>
 </body>
 </html>
