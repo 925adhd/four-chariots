@@ -22,7 +22,7 @@
       --btn:var(--ink);
       --btnText:#ffffff;
       --btnHover:#142a43;
-      --max:1200px;
+      --max:1320px;
       --radius:0px;
       --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
     }
@@ -153,8 +153,8 @@
     .coreGrid .product{
       flex:1 1 0;
       min-width:0;
-      border:1px solid var(--line);
-      background:var(--bg);
+      border:1px solid rgba(0,0,0,0.03);
+      background:transparent;
       display:flex;
       flex-direction:column;
       min-height:auto;
@@ -198,16 +198,20 @@
       margin:0 auto;
     }
     .product{
-      border:1px solid var(--line);
-      background: var(--bg);
+      border:none;
+      background:transparent;
       display:flex;
       flex-direction:column;
       min-height: 520px;
+      transition: transform 0.25s ease;
+    }
+    .product:hover{
+      transform: translateY(-4px);
     }
     .product .media{
       aspect-ratio: 4/3;
       background: #fafafa;
-      border-bottom:1px solid var(--line);
+      border-bottom:none;
       overflow:hidden;
       position:relative;
     }
@@ -217,6 +221,16 @@
       width:100%;
       height:100%;
       object-fit:cover;
+      transition: opacity 0.4s ease;
+    }
+    .product .media img.preview-model{
+      opacity:0;
+    }
+    .product .media:hover img.preview-model{
+      opacity:1;
+    }
+    .product .media:hover img:first-child{
+      opacity:0;
     }
     .product .body{
       padding: 16px;
@@ -250,8 +264,13 @@
       align-items:center;
       justify-content:space-between;
       gap:12px;
-      border-top:1px solid var(--line);
+      border-top:none;
       padding: 14px 16px;
+    }
+    .product .bottom .btn{
+      font-size:0.8rem;
+      letter-spacing:0.08em;
+      padding:10px 16px;
     }
     .price{
       font-weight:950;
@@ -262,6 +281,79 @@
       font-size:12px;
       color:var(--muted);
       margin-top:2px;
+    }
+    .current-drop-container { max-width:480px; margin:0 auto; text-align:center; }
+    .current-drop-container .drop-img-wrap {
+      position:relative;
+      display:inline-block;
+    }
+    .current-drop-container .drop-img-wrap img {
+      max-width:460px;
+      max-height:380px;
+      margin:0 auto;
+      object-fit:contain;
+      transition: opacity 0.4s ease;
+    }
+    .current-drop-container .drop-img-wrap img.preview-model{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      opacity:0;
+    }
+    .current-drop-container .drop-img-wrap:hover img.preview-model{
+      opacity:1;
+    }
+    .current-drop-container .drop-img-wrap:hover img:first-child{
+      opacity:0;
+    }
+    .drop-actions {
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:16px;
+      margin-top:14px;
+    }
+    .current-drop-description {
+      margin:8px 0 0;
+      color:var(--muted);
+      font-size:13px;
+      max-width:42ch;
+      margin-left:auto;
+      margin-right:auto;
+    }
+    .current-drop-release { font-size:0.8rem; opacity:0.6; margin-top:6px; color:var(--muted); }
+    .current-drop-archive {
+      max-width:420px;
+      margin:24px auto 0;
+      text-align:center;
+      font-size:13px;
+      color:var(--muted);
+    }
+
+    /* Gear: disable hover image swap */
+    .grid .product .media img.preview-model{ display:none; }
+
+    /* Gear section editorial refinements */
+    .grid .product .name {
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: none;
+      line-height: 1.35;
+    }
+    .grid .product .media img {
+      margin-bottom: 14px;
+      max-height: 240px;
+      object-fit: contain;
+    }
+    .grid .product .bottom .btn {
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      padding: 10px 18px;
+    }
+    .grid .product .desc {
+      max-width: 340px;
     }
 
     footer{
@@ -430,10 +522,11 @@
     </div>
 
     <!-- Core Collection header -->
-    <div style="text-align:center; padding:48px 0 20px;">
+    <div style="text-align:center; padding:48px 0 28px;">
       <div style="font-size:11px; font-weight:900; text-transform:uppercase; letter-spacing:0.16em; color:var(--muted); margin-bottom:8px;">Core Collection</div>
       <h2 style="margin:0; font-size:clamp(24px,3vw,36px); font-weight:950; text-transform:uppercase; letter-spacing:0.10em; color:var(--ink);">The Four</h2>
       <p style="margin:8px 0 0; font-size:14px; color:var(--muted);">Foundations that remain. Drops come and go, but The Four stay.</p>
+      <p style="margin:6px 0 0; font-size:13px; color:var(--muted);">Heavyweight core pieces built to anchor every drop.</p>
     </div>
 
     <!-- Core grid — all 4 compact -->
@@ -442,18 +535,20 @@
       <article class="product">
         <a class="media" href="forgiven.html">
           <img src="images/core/forgiven/forgivenred.png" alt="FORGIVEN Tee" loading="lazy" />
+          <img class="preview-model" src="images/core/forgiven/model.png" alt="FORGIVEN Tee on model" loading="lazy" />
         </a>
         <div class="body">
           <a href="forgiven.html">
             <h3 class="name">FORGIVEN</h3>
           </a>
-          <p class="desc">Psalm 130:4</p>
+          <p style="margin:4px 0 0; font-size:11px; color:var(--muted);">Heavyweight embroidery • Signature sleeve patch</p>
+          <p style="margin:6px 0 0; font-size:9px; color:var(--muted);">Psalm 130:4</p>
           <p class="desc" style="display:flex;align-items:center;gap:5px;margin:2px 0 0;font-size:9px;color:var(--muted);"><svg width="10" height="10" viewBox="0 0 10 10" style="flex-shrink:0;"><circle cx="5" cy="5" r="4.5" fill="none" stroke="rgba(0,0,0,.12)" stroke-width=".5"/><path d="M5 0.5A4.5 4.5 0 0 1 9.5 5H5Z" fill="#1a1a1a"/><path d="M9.5 5A4.5 4.5 0 0 1 5 9.5V5Z" fill="#8b2232"/><path d="M5 9.5A4.5 4.5 0 0 1 0.5 5H5Z" fill="#555"/><path d="M0.5 5A4.5 4.5 0 0 1 5 0.5V5Z" fill="#f5f0e1"/></svg> 4 colorways available</p>
         </div>
         <div class="bottom">
           <div>
-            <div class="price">$90.00</div>
-            <div class="fine">Available now</div>
+            <div class="price">$80.00</div>
+            <div class="fine">Core Collection • Permanent Line</div>
           </div>
           <a class="btn primary" href="forgiven.html">View Details</a>
         </div>
@@ -462,18 +557,20 @@
       <article class="product">
         <a class="media" href="unashamed.html">
           <img src="images/core/unashamed/unashamedblk.png" alt="UNASHAMED Tee" loading="lazy" />
+          <img class="preview-model" src="images/core/unashamed/model.png" alt="UNASHAMED Tee on model" loading="lazy" />
         </a>
         <div class="body">
           <a href="unashamed.html">
             <h3 class="name">UNASHAMED</h3>
           </a>
-          <p class="desc">Romans 1:16</p>
+          <p style="margin:4px 0 0; font-size:11px; color:var(--muted);">Heavyweight embroidery • Signature sleeve patch</p>
+          <p style="margin:6px 0 0; font-size:9px; color:var(--muted);">Romans 1:16</p>
           <p class="desc" style="display:flex;align-items:center;gap:5px;margin:2px 0 0;font-size:9px;color:var(--muted);"><svg width="10" height="10" viewBox="0 0 10 10" style="flex-shrink:0;"><circle cx="5" cy="5" r="4.5" fill="none" stroke="rgba(0,0,0,.12)" stroke-width=".5"/><path d="M5 0.5A4.5 4.5 0 0 1 9.5 5H5Z" fill="#1a1a1a"/><path d="M9.5 5A4.5 4.5 0 0 1 5 9.5V5Z" fill="#8b2232"/><path d="M5 9.5A4.5 4.5 0 0 1 0.5 5H5Z" fill="#555"/><path d="M0.5 5A4.5 4.5 0 0 1 5 0.5V5Z" fill="#f5f0e1"/></svg> 4 colorways available</p>
         </div>
         <div class="bottom">
           <div>
-            <div class="price">$90.00</div>
-            <div class="fine">Available now</div>
+            <div class="price">$80.00</div>
+            <div class="fine">Core Collection • Permanent Line</div>
           </div>
           <a class="btn primary" href="unashamed.html">View Details</a>
         </div>
@@ -482,18 +579,20 @@
       <article class="product">
         <a class="media" href="chosen.html">
           <img src="images/core/chosen/chosenwhite.png" alt="CHOSEN Tee" loading="lazy" />
+          <img class="preview-model" src="images/core/chosen/model.png" alt="CHOSEN Tee on model" loading="lazy" />
         </a>
         <div class="body">
           <a href="chosen.html">
             <h3 class="name">CHOSEN</h3>
           </a>
-          <p class="desc">John 15:16</p>
+          <p style="margin:4px 0 0; font-size:11px; color:var(--muted);">Heavyweight embroidery • Signature sleeve patch</p>
+          <p style="margin:6px 0 0; font-size:9px; color:var(--muted);">John 15:16</p>
           <p class="desc" style="display:flex;align-items:center;gap:5px;margin:2px 0 0;font-size:9px;color:var(--muted);"><svg width="10" height="10" viewBox="0 0 10 10" style="flex-shrink:0;"><circle cx="5" cy="5" r="4.5" fill="none" stroke="rgba(0,0,0,.12)" stroke-width=".5"/><path d="M5 0.5A4.5 4.5 0 0 1 9.5 5H5Z" fill="#1a1a1a"/><path d="M9.5 5A4.5 4.5 0 0 1 5 9.5V5Z" fill="#8b2232"/><path d="M5 9.5A4.5 4.5 0 0 1 0.5 5H5Z" fill="#555"/><path d="M0.5 5A4.5 4.5 0 0 1 5 0.5V5Z" fill="#f5f0e1"/></svg> 4 colorways available</p>
         </div>
         <div class="bottom">
           <div>
-            <div class="price">$90.00</div>
-            <div class="fine">Available now</div>
+            <div class="price">$80.00</div>
+            <div class="fine">Core Collection • Permanent Line</div>
           </div>
           <a class="btn primary" href="chosen.html">View Details</a>
         </div>
@@ -502,18 +601,20 @@
       <article class="product">
         <a class="media" href="grateful.html">
           <img src="images/core/grateful/gratefuldap.png" alt="GRATEFUL Tee" loading="lazy" />
+          <img class="preview-model" src="images/core/grateful/model.png" alt="GRATEFUL Tee on model" loading="lazy" />
         </a>
         <div class="body">
           <a href="grateful.html">
             <h3 class="name">GRATEFUL</h3>
           </a>
-          <p class="desc">1 Thessalonians 5:18</p>
+          <p style="margin:4px 0 0; font-size:11px; color:var(--muted);">Heavyweight embroidery • Signature sleeve patch</p>
+          <p style="margin:6px 0 0; font-size:9px; color:var(--muted);">1 Thessalonians 5:18</p>
           <p class="desc" style="display:flex;align-items:center;gap:5px;margin:2px 0 0;font-size:9px;color:var(--muted);"><svg width="10" height="10" viewBox="0 0 10 10" style="flex-shrink:0;"><circle cx="5" cy="5" r="4.5" fill="none" stroke="rgba(0,0,0,.12)" stroke-width=".5"/><path d="M5 0.5A4.5 4.5 0 0 1 9.5 5H5Z" fill="#1a1a1a"/><path d="M9.5 5A4.5 4.5 0 0 1 5 9.5V5Z" fill="#8b2232"/><path d="M5 9.5A4.5 4.5 0 0 1 0.5 5H5Z" fill="#555"/><path d="M0.5 5A4.5 4.5 0 0 1 5 0.5V5Z" fill="#f5f0e1"/></svg> 4 colorways available</p>
         </div>
         <div class="bottom">
           <div>
-            <div class="price">$90.00</div>
-            <div class="fine">Available now</div>
+            <div class="price">$80.00</div>
+            <div class="fine">Core Collection • Permanent Line</div>
           </div>
           <a class="btn primary" href="grateful.html">View Details</a>
         </div>
@@ -522,34 +623,35 @@
     </section>
 
     <!-- Current Drop -->
-    <div style="text-align:center; padding:48px 0 20px;">
+    <div style="text-align:center; padding:48px 0 28px;">
       <div style="font-size:11px; font-weight:900; text-transform:uppercase; letter-spacing:0.16em; color:var(--muted); margin-bottom:8px;">Current Drop</div>
       <h2 style="margin:0; font-size:clamp(24px,3vw,36px); font-weight:950; text-transform:uppercase; letter-spacing:0.10em; color:var(--ink);">Drop 001</h2>
-      <p style="margin:8px 0 0; font-size:14px; color:var(--muted);">Limited to 66 pieces. One release. When it closes, it moves quietly into the archive.</p>
+      <p style="margin:8px 0 0; font-size:14px; color:var(--muted);">Limited release · Individually numbered · New scripture edition</p>
       <p style="margin:6px 0 0; font-size:12px; color:var(--muted);">Members receive early access before public release.</p>
     </div>
 
-    <div style="max-width:480px; margin:0 auto; text-align:center;">
-      <a href="drop.html" style="display:block; padding:24px 0;">
-        <img src="images/drops/unshaken/unshakenblk.png" alt="UNSHAKEN Tee" loading="lazy" style="max-height:380px; margin:0 auto; object-fit:contain;" />
+    <div class="current-drop-container">
+      <a href="drop.html" class="drop-img-wrap" style="display:block; padding:24px 0;">
+        <img src="images/drops/unshaken/unshakenblk.png" alt="UNSHAKEN Tee" loading="lazy" />
+        <img class="preview-model" src="images/drops/unshaken/model.png" alt="UNSHAKEN Tee on model" loading="lazy" />
       </a>
       <a href="drop.html" style="display:block;">
         <h3 style="margin:0; font-weight:950; text-transform:uppercase; letter-spacing:-0.02em; font-size:18px; color:var(--ink);">UNSHAKEN Tee &mdash; Drop 001</h3>
       </a>
-      <p style="margin:8px 0 0; color:var(--muted); font-size:13px; max-width:42ch; margin-left:auto; margin-right:auto;">One word. Worn daily. A quiet anchor for work, worship, and the ordinary in between. Four colorways, inspired by the four chariot horses.</p>
-      <div style="margin-top:14px; display:flex; align-items:center; justify-content:center; gap:16px;">
-        <span style="font-weight:950; letter-spacing:-0.02em; color:var(--ink); font-size:18px;">$150.00</span>
+      <p class="current-drop-description">One word. One release. Individually numbered.</p>
+      <div class="drop-actions">
+        <span style="font-weight:950; letter-spacing:-0.02em; color:var(--ink); font-size:18px;">$135.00</span>
         <a class="btn primary" href="drop.html">View Details</a>
       </div>
-      <div style="margin-top:6px; font-size:12px; color:var(--muted);">Limited release</div>
+      <div class="current-drop-release">Limited release</div>
     </div>
 
-    <p style="text-align:center; margin:26px auto 0; max-width:520px; font-size:13px; color:var(--muted);">
+    <p class="current-drop-archive">
       Missed a drop? Sold out drops remain in the archive. Begin with The Core while you wait for the next release.
     </p>
 
     <!-- Gear sub-header -->
-    <div style="border-top:1px solid var(--line); margin:48px auto 0; max-width:800px;"></div>
+    <div style="border-top:1px solid rgba(0,0,0,0.05); margin:40px auto; max-width:420px;"></div>
     <div class="pageTitle" style="padding:36px 0 20px;">
       <h1>Gear</h1>
       <p>Faith-driven gear. Made to order, just for you.</p>
@@ -561,7 +663,8 @@
       <!-- MUG -->
       <article class="product">
         <a class="media" href="mug.html">
-          <img src="images/gear/four-chariots-horse-emblem-mug-glossy-ceramic-coffee-mug-11oz-15oz.jpg" alt="FOUR CHARIOTS Horse Emblem Mug" loading="lazy" />
+          <img src="images/gear/mugpreview.png" alt="FOUR CHARIOTS Horse Emblem Mug" loading="lazy" />
+          <img class="preview-model" src="images/gear/four-chariots-horse-emblem-mug-glossy-ceramic-coffee-mug-11oz-15oz.jpg" alt="FOUR CHARIOTS Horse Emblem Mug alternate view" loading="lazy" />
         </a>
         <div class="body">
           <a href="mug.html">
@@ -581,7 +684,8 @@
       <!-- DECAL -->
       <article class="product">
         <a class="media" href="sticker.html">
-          <img src="images/gear/stickerdecal.jpg" alt="FOUR CHARIOTS Foundation Seal Sticker" loading="lazy" />
+          <img src="images/gear/stickerpreview.png" alt="FOUR CHARIOTS Foundation Seal Sticker" loading="lazy" />
+          <img class="preview-model" src="images/gear/laptopdecal.jpg" alt="FOUR CHARIOTS Foundation Seal Sticker on laptop" loading="lazy" />
         </a>
         <div class="body">
           <a href="sticker.html">

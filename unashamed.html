@@ -22,7 +22,7 @@
       --btn:var(--ink);
       --btnText:#ffffff;
       --btnHover:#142a43;
-      --max:1200px;
+      --max:1320px;
       --radius:0px;
       --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
     }
@@ -190,8 +190,9 @@
       background:#fafafa;
       border-right:1px solid var(--line);
       display:flex;
-      flex-direction:column;
-      gap:10px;
+      flex-direction:row;
+      align-items:center;
+      gap:12px;
       padding:18px;
     }
     .scMainImg{
@@ -199,17 +200,23 @@
       display:flex;
       align-items:center;
       justify-content:center;
+      min-width:0;
     }
     .scMainImg img{
       max-width:100%;
-      max-height:400px;
+      max-height:450px;
       object-fit:contain;
       transition: opacity .3s ease;
     }
     .scThumbs{
       display:flex;
+      flex-direction:column;
+      order:-1;
+      flex-shrink:0;
+      max-height:450px;
+      overflow-y:auto;
       gap:8px;
-      justify-content:center;
+      justify-content:flex-start;
     }
     .scThumb{
       width:64px;
@@ -424,11 +431,12 @@
       .pageTitle h1{ font-size: clamp(24px, 7vw, 36px); }
 
       .showcase{ grid-template-columns: 1fr; }
-      .scGallery{ border-right:none; border-bottom:1px solid var(--line); padding:14px; align-items:center; }
+      .scGallery{ flex-direction:column; border-right:none; border-bottom:1px solid var(--line); padding:14px; align-items:center; }
       .scMainImg{ justify-content:center; }
       .scMainImg img{ max-height:280px; }
-      .scThumbs{ gap:6px; flex-wrap:wrap; justify-content:center; }
+      .scThumbs{ flex-direction:row; order:0; max-height:none; overflow-y:visible; gap:6px; flex-wrap:wrap; justify-content:center; }
       .scThumb{ width:48px; height:48px; }
+      .scThumb.model-thumb{ order:-1; }
       .scInfo{ padding:18px; gap:10px; align-items:center; text-align:center; }
       .sizeBtns{ justify-content:center; }
       .scSwatches{ justify-content:center; }
@@ -510,6 +518,9 @@
           <div class="scThumb active" data-src="images/core/unashamed/unashamedblk.png" data-color="Black" data-hex="#1a1a1a">
             <img src="images/core/unashamed/unashamedblk.png" alt="Black" />
           </div>
+          <div class="scThumb model-thumb" data-src="images/core/unashamed/model.png" data-color="" data-hex="">
+            <img src="images/core/unashamed/model.png" alt="Model" />
+          </div>
           <div class="scThumb" data-src="images/core/unashamed/unashamedcloseup.png" data-color="" data-hex="">
             <img src="images/core/unashamed/unashamedcloseup.png" alt="Chest embroidery close-up" />
           </div>
@@ -533,7 +544,7 @@
 
       <div class="scInfo">
         <h2 class="scTitle">UNASHAMED</h2>
-        <div class="scPrice">$90.00</div>
+        <div class="scPrice">$80.00</div>
 
         <p class="product-material-note">HEAVYWEIGHT 100 PERCENT PREMIUM USA COTTON</p>
         <hr class="product-divider">
@@ -542,6 +553,8 @@
           A single word carried into the ordinary. Designed to be worn, not explained.
           Minimal by design. Heavy in meaning. Precision embroidery. Available in four colorways.
         </p>
+
+        <p class="scripture-hint">Romans 1:16 — connected scripture detail</p>
 
         <div>
           <div class="scLabel">Color <span class="val" id="scColorLabel">Black</span></div>
@@ -572,7 +585,6 @@
             <button class="sizeBtn" data-size="3XL">3XL</button>
           </div>
           <div class="sizeError" id="sizeError">Please select a size</div>
-          <p class="scripture-hint">Romans 1:16 — connected scripture detail</p>
         </div>
 
         <button class="btn primary" id="addToCartBtn" style="width:100%;margin-top:4px;">Add to cart</button>
@@ -620,9 +632,19 @@
       });
     });
 
-    // Showcase thumbnail + swatch switching
+    // On mobile, show model image first
     const scHero = document.getElementById("scHeroImg");
     const scLabel = document.getElementById("scColorLabel");
+    if (window.innerWidth <= 980) {
+      const modelThumb = document.querySelector(".model-thumb");
+      if (modelThumb) {
+        scHero.src = modelThumb.dataset.src;
+        document.querySelectorAll(".scThumb").forEach(t => t.classList.remove("active"));
+        modelThumb.classList.add("active");
+      }
+    }
+
+    // Showcase thumbnail + swatch switching
 
     document.querySelectorAll(".scThumb").forEach(thumb => {
       thumb.addEventListener("click", () => {
