@@ -332,6 +332,17 @@
       font-size:13px;
       color:var(--muted);
     }
+    .inline-link{
+      color:inherit;
+      text-decoration:underline;
+      text-underline-offset:3px;
+      text-decoration-color:rgba(0,0,0,.25);
+      transition: color .2s ease, text-decoration-color .2s ease;
+    }
+    .inline-link:hover{
+      color:var(--ink);
+      text-decoration-color:var(--ink);
+    }
 
     /* Gear: disable hover image swap */
     .grid .product .media img.preview-model{ display:none; }
@@ -455,14 +466,29 @@
         display:flex;
         overflow-x:auto;
         scroll-snap-type:x mandatory;
+        scroll-behavior:smooth;
         -webkit-overflow-scrolling:touch;
+        scrollbar-width:none;
         gap:14px;
         padding-bottom:8px;
       }
+      .coreGrid::-webkit-scrollbar{ display:none; }
       .coreGrid .product{
         flex:0 0 75vw;
         max-width:300px;
-        scroll-snap-align:start;
+        scroll-snap-align:center;
+        scroll-snap-stop:always;
+      }
+
+      /* Drop image centering */
+      .current-drop-container .drop-img-wrap{
+        display:flex;
+        justify-content:center;
+        padding:16px 0;
+      }
+      .current-drop-container .drop-img-wrap img{
+        max-width:100%;
+        max-height:300px;
       }
 
       /* Footer */
@@ -524,7 +550,7 @@
     </div>
 
     <!-- Core Collection header -->
-    <div style="text-align:center; padding:48px 0 28px;">
+    <div id="core" style="text-align:center; padding:48px 0 28px;">
       <div style="font-size:11px; font-weight:900; text-transform:uppercase; letter-spacing:0.16em; color:var(--muted); margin-bottom:8px;">Core Collection</div>
       <h2 style="margin:0; font-size:clamp(24px,3vw,36px); font-weight:950; text-transform:uppercase; letter-spacing:0.10em; color:var(--ink);">The Four</h2>
       <p style="margin:8px 0 0; font-size:14px; color:var(--muted);">Foundations that remain. Drops come and go, but The Four stay.</p>
@@ -649,7 +675,7 @@
     </div>
 
     <p class="current-drop-archive">
-      Missed a drop? Sold out drops remain in the archive. Begin with The Core while you wait for the next release.
+      Missed a drop? Sold out drops remain in the <a href="#archive" class="inline-link">archive</a>. Begin with <a href="#core" class="inline-link">The Core</a> while you wait for the next release.
     </p>
 
     <!-- Gear sub-header -->
@@ -707,7 +733,7 @@
     </section>
 
     <!-- Archive placeholder (empty until sold out drops exist) -->
-    <div style="text-align:center; padding:48px 0 12px;">
+    <div id="archive" style="text-align:center; padding:48px 0 12px;">
       <div style="font-size:11px; font-weight:900; text-transform:uppercase; letter-spacing:0.16em; color:var(--muted); margin-bottom:8px;">Archive</div>
       <h2 style="margin:0; font-size:clamp(24px,3vw,36px); font-weight:950; text-transform:uppercase; letter-spacing:0.10em; color:var(--ink);">Previous Drops</h2>
     </div>
