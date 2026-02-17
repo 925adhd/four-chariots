@@ -397,6 +397,19 @@
       color:var(--muted);
       text-align:center;
     }
+    .foundationMsg{
+      font-size:12px;
+      color:var(--muted);
+      text-align:center;
+      margin:12px 0 0;
+      line-height:1.5;
+    }
+    .itemPriceOld{
+      font-size:12px;
+      color:var(--muted);
+      text-decoration:line-through;
+      margin-right:6px;
+    }
 
     /* Empty state */
     .emptyCart{
@@ -600,6 +613,28 @@
       return getCart().reduce((s, i) => s + i.price * i.quantity, 0);
     }
 
+    /* ── Foundation Set logic ── */
+    function getCoreItemCount(cart) {
+      return cart.filter(i => String(i.productId).includes("core")).reduce((s, i) => s + i.quantity, 0);
+    }
+
+    function isFoundationSet(cart) {
+      return getCoreItemCount(cart) >= 4;
+    }
+
+    function getCartTotalWithDiscount(cart) {
+      const foundationActive = isFoundationSet(cart);
+      return cart.reduce((s, i) => {
+        const isCore = String(i.productId).includes("core");
+        const multiplier = (foundationActive && isCore) ? 0.9 : 1;
+        return s + Math.round(i.price * multiplier) * i.quantity;
+      }, 0);
+    }
+
+    function getFoundationSavings(cart) {
+      return getCartTotal() - getCartTotalWithDiscount(cart);
+    }
+
     function formatPrice(cents) {
       return "$" + (Number(cents || 0) / 100).toFixed(2);
     }
@@ -640,9 +675,18 @@
           </div>
         `;
       } else {
+        const coreCount = getCoreItemCount(cart);
+        const foundationActive = isFoundationSet(cart);
+        const discountedTotal = getCartTotalWithDiscount(cart);
+        const savings = getFoundationSavings(cart);
+
         el.innerHTML = `
           <div class="cartList fade-up" id="cartList">
-            ${cart.map(item => `
+            ${cart.map(item => {
+              const isCore = String(item.productId).includes("core");
+              const discountedPrice = (foundationActive && isCore) ? Math.round(item.price * 0.9) : item.price;
+              const showStrike = foundationActive && isCore;
+              return `
               <div class="cartItem" data-pid="${escapeHtml(item.productId)}" data-vid="${item.variantId}">
                 <div class="itemImage">
                   <img src="${escapeHtml(item.imageUrl)}" alt="${escapeHtml(item.title)}" loading="lazy" />
@@ -653,7 +697,7 @@
                     ${item.color ? escapeHtml(item.color) : ""}${item.color && item.size ? " &middot; " : ""}${item.size ? escapeHtml(item.size) : ""}
                   </div>
                   ${String(item.productId).includes("drop") ? '<div class="itemLimited">Individually numbered release · Limited to 66</div>' : String(item.productId).includes("core") ? '<div class="itemLimited">Core Collection</div>' : ""}
-                  <div class="itemPrice">${formatPrice(item.price)}</div>
+                  <div class="itemPrice">${showStrike ? '<span class="itemPriceOld">' + formatPrice(item.price) + '</span>' : ''}${formatPrice(discountedPrice)}</div>
                 </div>
                 <div class="itemActions">
                   <div class="qtyControl">
@@ -664,21 +708,25 @@
                   <button class="removeBtn">Remove</button>
                 </div>
               </div>
-            `).join("")}
+            `;}).join("")}
           </div>
+
+          ${coreCount === 3 ? '<p class="foundationMsg">Three Core pieces selected. Add a fourth Core piece to get 10% off all Core items.</p>' : ''}
+          ${foundationActive ? '<p class="foundationMsg">Foundation Set complete · 10% Core pricing active</p>' : ''}
 
           <div class="cartSummary fade-up" style="transition-delay:.08s">
             <div class="summaryRow">
               <span>Subtotal</span>
-              <span id="subtotal">${formatPrice(getCartTotal())}</span>
+              <span id="subtotal">${formatPrice(discountedTotal)}</span>
             </div>
+            ${foundationActive ? '<div class="summaryRow"><span>Foundation Set discount</span><span>−' + formatPrice(savings) + '</span></div>' : ''}
             <div class="summaryRow">
               <span>Shipping</span>
               <span>Calculated at checkout</span>
             </div>
             <div class="summaryRow total">
               <span>Total</span>
-              <span id="total">${formatPrice(getCartTotal())}</span>
+              <span id="total">${formatPrice(discountedTotal)}</span>
             </div>
             <button class="btn primary checkoutBtn" id="checkoutBtn">Proceed to Checkout</button>
             <div class="checkoutError" id="checkoutError"></div>
