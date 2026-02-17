@@ -445,6 +445,37 @@
       .colorRow{ grid-template-columns: 1fr; }
       .pageHero{ padding: 44px 0 36px; }
     }
+
+    /* ── Mobile-only: tighter hero + collapsible sections ── */
+    @media (max-width: 640px){
+      .pageHero{ padding: 30px 0 20px; }
+      .pageHero h1{ font-size: clamp(28px, 8vw, 40px); }
+      .intro-creed{
+        font-size: 16px;
+        font-weight: 700;
+        color: var(--ink);
+        margin: 14px 0 0;
+        line-height: 1.45;
+      }
+      .intro-support{
+        font-size: 14px;
+        margin: 8px 0 0;
+      }
+      .intro-full{ display: none; }
+
+      .aboutSection{ padding: 22px 0; }
+      .aboutSection h2{ margin-bottom: 10px; }
+      .aboutSection p{ font-size: 14px; margin-bottom: 14px; }
+      .approach-block{ margin-bottom: 26px; }
+    }
+
+    /* Desktop: show everything, hide toggles */
+    @media (min-width: 641px){
+      .intro-full{ display: block; }
+      .intro-creed{ display: none; }
+      .intro-support{ display: none; }
+
+    }
     .cartBtn{ position:relative; }
     .mobileCart{
       display:none;
@@ -465,6 +496,12 @@
       display:inline-flex; align-items:center; justify-content:center;
       padding:0 5px; border:2px solid var(--ink);
     }
+    .approach-block{
+      margin-bottom: 24px;
+      padding-left: 14px;
+      border-left: 1px solid rgba(0,0,0,0.08);
+    }
+    .approach-block:last-child{ margin-bottom: 0; }
   </style>
 </head>
 
@@ -498,8 +535,10 @@
 
     <div class="pageHero fade-up">
       <h1>STEADFAST<br>IN MOTION.</h1>
-      <p class="intro">
-        FOUR CHARIOTS is a faith-driven brand built on one idea: that the words you carry shape the way you move through the world. We make minimal pieces that let scripture and conviction speak quietly through daily life.
+      <p class="intro intro-creed">Four Chariots is built on one idea: movement with purpose.</p>
+      <p class="intro intro-support">Minimal pieces. Clear direction. Every drop carries meaning.</p>
+      <p class="intro intro-full">
+        We make minimal pieces that let scripture and conviction speak quietly through daily life. The words you carry shape the way you move through the world.
       </p>
     </div>
 
@@ -560,18 +599,28 @@
 
       <section class="aboutSection fade-up" style="transition-delay:.2s">
         <h2>The Approach</h2>
-        <p>
-          Every piece begins with a word. One that points back to truth. The design stays minimal so the message can travel farther than the garment itself. Not loud. Not forced. Just enough to make someone ask what it means.
-        </p>
-        <p>
-          These pieces are meant to start conversations. A quiet way to carry faith into everyday spaces, where a single word can open the door to something deeper.
-        </p>
-        <p>
-          Each item is made to order, reducing waste and keeping every release intentional. We move in monthly drops. When a release closes, it moves quietly into the archive.
-        </p>
-        <p>
-          Every drop includes a connected scripture reference, placed subtly on the sleeve. A reminder worn close, speaking of Jesus wherever you go.
-        </p>
+        <div class="approach-block">
+          <p>
+            Every piece begins with a single word. One clear message pointing back to truth.<br>
+            The design stays minimal so meaning carries further than the garment itself.
+          </p>
+        </div>
+        <div class="approach-block">
+          <p>
+            Made to start quiet conversations. Faith brought into everyday spaces, where one word can open the door to something deeper.
+          </p>
+        </div>
+        <div class="approach-block">
+          <p>
+            Made to order. Intentional releases. Monthly drops that move quietly into the archive.
+          </p>
+        </div>
+        <div class="approach-block">
+          <p>
+            A connected scripture reference sits subtly on the sleeve.<br>
+            Worn close as a reminder wherever you go.
+          </p>
+        </div>
       </section>
     </div>
 
