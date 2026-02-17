@@ -116,21 +116,23 @@
       transition: background .2s ease, color .2s ease, border-color .2s ease, transform .2s ease;
       white-space:nowrap;
     }
-    .btn:hover{
-      background:var(--text);
-      color:var(--btnText);
-      transform:scale(1.04);
+    @media (hover: hover){
+      .btn:hover{
+        background:var(--text);
+        color:var(--btnText);
+        transform:scale(1.04);
+      }
+      .btn.primary:hover{
+        background:var(--bg);
+        color:var(--ink);
+        border-color:var(--ink);
+        transform:scale(1.04);
+      }
     }
     .btn.primary{
       background:var(--btn);
       color:var(--btnText);
       border-color:var(--btn);
-    }
-    .btn.primary:hover{
-      background:var(--bg);
-      color:var(--ink);
-      border-color:var(--ink);
-      transform:scale(1.04);
     }
 
     .divider{ border-top:1px solid var(--line); }
@@ -150,10 +152,10 @@
       margin:0;
       font-size: clamp(32px, 4vw, 52px);
       line-height:0.98;
-      letter-spacing:-0.04em;
+      letter-spacing:-0.03em;
       text-transform:uppercase;
       font-weight:950;
-      color:var(--ink);
+      color:#000;
     }
     .pageHero .intro{
       margin:18px 0 0;
