@@ -124,21 +124,23 @@
       transition: background .2s ease, color .2s ease, border-color .2s ease, transform .2s ease;
       white-space:nowrap;
     }
-    .btn:hover{
-      background:var(--text);
-      color:var(--btnText);
-      transform:scale(1.04);
+    @media (hover: hover){
+      .btn:hover{
+        background:var(--text);
+        color:var(--btnText);
+        transform:scale(1.04);
+      }
+      .btn.primary:hover{
+        background:var(--bg);
+        color:var(--ink);
+        border-color:var(--ink);
+        transform:scale(1.04);
+      }
     }
     .btn.primary{
       background:var(--btn);
       color:var(--btnText);
       border-color:var(--btn);
-    }
-    .btn.primary:hover{
-      background:var(--bg);
-      color:var(--ink);
-      border-color:var(--ink);
-      transform:scale(1.04);
     }
     .btn:disabled{
       opacity:.6;
@@ -640,7 +642,7 @@
 
       .dropCard{ grid-template-columns: 1fr; }
       .dropMedia{ border-right:none; border-bottom:1px solid var(--line); }
-      .dropMainImg img{ max-height:280px; width:100%; object-fit:cover; object-position:center 20%; }
+      .dropMainImg img{ max-height:280px; width:100%; object-fit:contain; }
 
       .memberTeaser{
         flex-direction: column;
@@ -718,9 +720,24 @@
       .dropHeader p{ font-size: 12px; }
       .dropCard{ margin-top: 10px; }
       .dropMedia{ padding: 10px; gap: 8px; }
-      .dropMainImg img{ max-height: 240px; }
-      .dropThumbs{ gap: 6px; }
-      .dropThumb{ width: 50px; height: 50px; padding: 3px; }
+      .dropMainImg img{ max-height: 240px; object-fit: contain; }
+      .dropThumbs{
+        gap: 6px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        justify-content: flex-start;
+        padding-bottom: 4px;
+      }
+      .dropThumbs::-webkit-scrollbar{ display: none; }
+      .dropThumb{
+        width: 50px;
+        height: 50px;
+        padding: 3px;
+        flex-shrink: 0;
+        scroll-snap-align: start;
+      }
       .dropThumb.model-thumb{ order:-1; }
 
       /* Drop body */
