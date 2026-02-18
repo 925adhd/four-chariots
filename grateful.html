@@ -41,6 +41,8 @@
       text-rendering: optimizeLegibility;
     }
     a{ color:inherit; text-decoration:none; }
+    a, button{ -webkit-tap-highlight-color:transparent; transition: opacity .15s ease, transform .08s ease; }
+    a:active, button:active{ opacity:.7; transform:scale(0.98); }
     img{ max-width:100%; display:block; }
     .wrap{
       max-width:var(--max);
@@ -180,7 +182,7 @@
 
     .showcase{
       display:grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1.07fr 0.93fr;
       gap:0;
       border:1px solid var(--line);
       background:var(--bg);
@@ -194,8 +196,8 @@
       display:flex;
       flex-direction:row;
       align-items:center;
-      gap:12px;
-      padding:18px;
+      gap:8px;
+      padding:18px 10px 18px 18px;
     }
     .scMainImg{
       flex:1;
@@ -221,8 +223,8 @@
       justify-content:flex-start;
     }
     .scThumb{
-      width:64px;
-      height:64px;
+      width:70px;
+      height:70px;
       border:2px solid transparent;
       background:var(--soft);
       overflow:hidden;
@@ -240,7 +242,7 @@
       padding:24px;
       display:flex;
       flex-direction:column;
-      justify-content:center;
+      justify-content:flex-start;
       gap:12px;
     }
     .scTitle{
@@ -495,6 +497,94 @@
       display:inline-flex; align-items:center; justify-content:center;
       padding:0 5px; border:2px solid var(--ink);
     }
+
+    /* ───────── CRAFT SCROLL (core — understated) ───────── */
+
+    .craftScroll{
+      margin-top:32px;
+      border-top:1px solid var(--line);
+    }
+
+    .craftBlock{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      text-align:center;
+      gap:20px;
+      padding:37px 0;
+      border-bottom:1px solid var(--line);
+    }
+
+    .craftBlock img{
+      width:100%;
+      max-width:520px;
+      height:auto;
+      object-fit:cover;
+      border:1px solid rgba(0,0,0,0.05);
+    }
+
+    .craftText{
+      max-width:48ch;
+    }
+
+    .craftText h3{
+      margin:0 0 8px;
+      font-size:14px;
+      letter-spacing:0.10em;
+      text-transform:uppercase;
+      color:var(--ink);
+      font-weight:800;
+    }
+
+    .craftText p{
+      margin:0;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.7;
+      max-width:42ch;
+      margin-left:auto;
+      margin-right:auto;
+    }
+
+    .craftBlock:last-child img{
+      max-width:360px;
+    }
+
+    @media (max-width:980px){
+      .craftBlock{
+        gap:4px;
+        padding:20px 0;
+      }
+      .craftBlock:last-child img{
+        max-width:85%;
+      }
+    }
+
+    /* Subtle reveal */
+    .reveal.will-reveal{
+      opacity:0;
+      transform: translateY(12px);
+      transition: opacity .55s ease, transform .55s ease;
+      will-change: opacity, transform;
+    }
+    .reveal.is-visible{
+      opacity:1;
+      transform: translateY(0);
+    }
+    .craftBlock.reveal{
+      opacity:0;
+      transform:translateY(10px);
+      transition: opacity .5s ease, transform .5s ease;
+      will-change: opacity, transform;
+    }
+    .craftBlock.reveal.is-visible{
+      opacity:1;
+      transform:translateY(0);
+    }
+    @media (prefers-reduced-motion: reduce){
+      .reveal.will-reveal{ opacity:1; transform:none; transition:none; }
+      .craftBlock.reveal{ opacity:1; transform:none; transition:none; }
+    }
   </style>
 </head>
 
@@ -579,8 +669,9 @@
         <hr class="product-divider">
 
         <p class="scDesc product-description">
-          A single word carried into the ordinary. Designed to be worn with intention. A word that speaks before you do.
-          Minimal by design. Heavy in meaning. Precision embroidery. Available in four colorways.
+          A single word, carried into the everyday.<br>
+          Designed to be worn with intention.<br>
+          Precision embroidery. Everyday durability.
         </p>
 
         <p class="scripture-hint">1 Thessalonians 5:18 — connected scripture detail</p>
@@ -642,6 +733,43 @@
         </div>
       </div>
     </div>
+
+    <div style="max-width:900px; margin:0 auto;"><hr style="border:none; border-top:1px solid rgba(0,0,0,0.08); margin:0;"></div>
+
+    <!-- CRAFT SCROLL (understated — core collection) -->
+    <section class="craftScroll">
+
+      <div class="craftBlock">
+        <img src="images/core/grateful/greatefulcloseup.png" alt="Embroidery close-up">
+        <div class="craftText">
+          <h3>CLEAN EMBROIDERY</h3>
+          <p>
+            Stitched with care, not excess. Dense enough to hold its shape through everyday wear and repeated washing.
+          </p>
+        </div>
+      </div>
+
+      <div class="craftBlock">
+        <img src="images/core/grateful/scripturecloseup.png" alt="Sleeve scripture detail">
+        <div class="craftText">
+          <h3>SCRIPTURE ON THE SLEEVE</h3>
+          <p>
+            1 Thessalonians 5:18 rests along the right sleeve. A quiet detail that carries weight without needing to explain itself.
+          </p>
+        </div>
+      </div>
+
+      <div class="craftBlock">
+        <img src="images/closeupsleeve.png" alt="Embroidered patch detail">
+        <div class="craftText">
+          <h3>DETAILS THAT HOLD</h3>
+          <p>
+            Heavyweight cotton. Embroidered patch. Built for daily wear and made to last beyond the season.
+          </p>
+        </div>
+      </div>
+
+    </section>
 
     <footer>
       <div>&copy; <span id="year"></span> FOUR CHARIOTS</div>
@@ -766,6 +894,44 @@
       updateCartBadge();
       setTimeout(() => { window.location.href = "cart.html"; }, 500);
     });
+
+    /* Opt-in reveal — content visible by default, animation is progressive enhancement */
+    (function(){
+      var els = document.querySelectorAll(".reveal");
+      if (!("IntersectionObserver" in window)) {
+        els.forEach(function(el){ el.classList.add("is-visible"); });
+        return;
+      }
+      els.forEach(function(el){ el.classList.add("will-reveal"); });
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if(entry.isIntersecting){
+            entry.target.classList.add("is-visible");
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.18, rootMargin: "0px 0px -10% 0px" });
+      els.forEach(function(el){ io.observe(el); });
+    })();
+
+    // Reveal craft sections on scroll
+    (function(){
+      var craftEls = document.querySelectorAll('.craftBlock');
+      craftEls.forEach(function(el){ el.classList.add('reveal'); });
+      if (!("IntersectionObserver" in window)) {
+        craftEls.forEach(function(el){ el.classList.add('is-visible'); });
+        return;
+      }
+      var cio = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if(entry.isIntersecting){
+            entry.target.classList.add('is-visible');
+            cio.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15, rootMargin: "0px 0px -8% 0px" });
+      craftEls.forEach(function(el){ cio.observe(el); });
+    })();
   </script>
 </body>
 </html>
