@@ -73,7 +73,7 @@
       letter-spacing:0.10em;
     }
     .mark{
-      height:130px;
+      height:117px;
       width:auto;
       display:block;
     }
@@ -331,7 +331,6 @@
 
     @media (max-width: 980px){
       .wrap{ padding: 14px 14px 50px; }
-      .mark{ height:90px; }
       .brand .tag{ display:none; }
       .menuBtn{ display:block; }
       .nav{
@@ -341,23 +340,48 @@
         left:0;
         right:0;
         background:var(--bg);
-        border-bottom:1px solid var(--line);
+        border-bottom:none;
         flex-direction:column;
-        padding:14px 18px;
+        padding:0;
         gap:0;
         z-index:100;
+        left:-18px;
+        right:-18px;
       }
       .nav.open{ display:flex; }
       .nav a{
-        padding:12px 0;
+        padding:12px 18px;
         border-bottom:1px solid var(--line);
         width:100%;
       }
       .nav a:last-child{ border-bottom:none; }
+      .nav a.navActive,
+      .nav a:hover{
+        border-bottom-color:var(--line);
+      }
+      .nav a.navActive{
+        color:var(--text);
+        font-weight:600;
+      }
+      .navOverlay{
+        display:none;
+        position:fixed;
+        top:0;left:0;right:0;bottom:0;
+        background:rgba(0,0,0,.35);
+        z-index:99;
+      }
+      .navOverlay.open{ display:block; }
       .ctaRow{ display:none; }
       .mobileCart{ display:flex !important; }
       .topbar{ position:relative; }
       .contactCard{ padding:20px; }
+    }
+    @media (max-width: 640px){
+      .mark{ height: 72px; }
+      .topbar{ padding: 10px 0; }
+      .nav{ left:-14px; right:-14px; }
+      .nav a{ padding:12px 14px; }
+      .brand .name{ font-size: 12px; }
     }
     .cartBtn{ position:relative; }
     .mobileCart{
@@ -394,13 +418,16 @@
 
       <nav class="nav" aria-label="Site navigation">
         <a href="shop.html">Shop</a>
-        <a href="about.html">About</a>
         <a href="drop.html">The Drop</a>
+        <a href="membership.html">Membership</a>
+        <a href="about.html">About</a>
         <a href="support.html">Support</a>
       </nav>
 
+      <div class="navOverlay" id="navOverlay"></div>
+
       <a class="mobileCart cartBtn" href="cart.html" aria-label="Cart"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg><span class="cartBadge" id="cartBadgeMobile" style="display:none;">0</span></a>
-      <button class="menuBtn" aria-label="Toggle menu" onclick="document.querySelector('.nav').classList.toggle('open')">&#9776;</button>
+      <button class="menuBtn" aria-label="Toggle menu" onclick="document.querySelector('.nav').classList.toggle('open');document.getElementById('navOverlay').classList.toggle('open')">&#9776;</button>
 
       <div class="ctaRow">
         <a class="btn" href="shop.html">Shop</a>
@@ -424,7 +451,7 @@
         <details>
           <summary>How do I place an order?</summary>
           <div class="answer">
-            Browse the current drop on our <a href="shop.html">shop page</a>, select your color and size, and check out securely through Stripe. You'll receive a confirmation email once your order is placed.
+            Browse available pieces through the <a href="shop.html">Shop</a> or current <a href="drop.html">Drop</a> pages, select your color and size, and check out securely through Stripe. You'll receive a confirmation email once your order is placed.
           </div>
         </details>
         <details>
@@ -455,7 +482,7 @@
         <details>
           <summary>Where do you ship?</summary>
           <div class="answer">
-            We ship worldwide. Orders are fulfilled through our production partner, Printify, with print facilities across the US, Europe, and beyond. Your order ships from the facility closest to you.
+            We ship worldwide. Each piece is crafted per order through our trusted production partners to maintain consistency across every release. Your order ships from the facility closest to you.
           </div>
         </details>
         <details>
@@ -515,6 +542,12 @@
           </div>
         </details>
         <details>
+          <summary>Are all pieces limited drops?</summary>
+          <div class="answer">
+            No. The Core Collection remains available year-round. Drops are limited monthly releases that move into the archive once they end. Core pieces can be ordered anytime.
+          </div>
+        </details>
+        <details>
           <summary>Can I buy past drops?</summary>
           <div class="answer">
             Once a drop is gone, it's gone. That's by design. Each piece is tied to a moment. If you missed one, the next drop is never far away.
@@ -530,13 +563,15 @@
         <details>
           <summary>What is the membership?</summary>
           <div class="answer">
-            The membership reserves every drop for you for the entire year. No waiting, no sell-outs. Your pieces ship automatically each release with member pricing and early access. <a href="membership.html">Learn more here</a>.
+            The membership reserves your seat for 12 guaranteed drops inside the reserved circle. No waiting, no sell-outs. Your pieces ship automatically each release with member-first access. <a href="membership.html">Learn more here</a>.
           </div>
         </details>
         <details>
           <summary>Can I cancel my membership?</summary>
           <div class="answer">
-            Yes. Reach out to us and we'll walk you through the process. Any drops already produced or shipped are non-refundable, but future drops can be cancelled.
+            No. Membership secures a reserved seat for 12 drops and cannot be canceled or prorated once the circle begins. All 12 drops ship automatically.
+            <br><br>
+            If a particular word isn't for you, many members choose to gift their piece forward. Each design is individually numbered and carries meaning whether you wear it or pass it on.
           </div>
         </details>
       </div>
@@ -556,6 +591,12 @@
           <summary>How should I care for my piece?</summary>
           <div class="answer">
             Machine wash cold, inside out. Tumble dry low or hang dry. Avoid ironing directly on the print. Following these steps keeps the design sharp and the fabric lasting longer.
+          </div>
+        </details>
+        <details>
+          <summary>Why are Four Chariots pieces priced differently?</summary>
+          <div class="answer">
+            Every piece is built to last. We use heavyweight cotton, precision embroidery, and individually numbered drops. Combined with intentional limited releases and made-to-order production, each item carries a level of craft and exclusivity that sets it apart from standard retail.
           </div>
         </details>
         <details>
@@ -598,7 +639,12 @@
     document.querySelectorAll(".nav a").forEach(a => {
       a.addEventListener("click", () => {
         document.querySelector(".nav").classList.remove("open");
+        document.getElementById("navOverlay").classList.remove("open");
       });
+    });
+    document.getElementById("navOverlay").addEventListener("click", () => {
+      document.querySelector(".nav").classList.remove("open");
+      document.getElementById("navOverlay").classList.remove("open");
     });
 
     // staggered fade-in
