@@ -240,9 +240,9 @@
     }
 
     .missionCard{
-      background: rgba(11,26,42,.025);
+      background: rgba(11,26,42,.015);
       box-shadow: none;
-      border-color: rgba(11,26,42,.08);
+      border-color: rgba(11,26,42,.05);
       padding: 18px;
     }
     .missionTop{
@@ -457,9 +457,9 @@
       background-position:center;
     }
 
-    /* Yearly membership teaser */
+    /* Membership teaser */
     .memberTeaser{
-      margin-top: 34px;
+      margin-top: 52px;
       border: 1px solid rgba(11,26,42,.10);
       background: #f4f1ea;
       border-radius: 12px;
@@ -623,26 +623,45 @@
         left:0;
         right:0;
         background:var(--bg);
-        border-bottom:1px solid var(--line);
+        border-bottom:none;
         flex-direction:column;
-        padding:14px 18px;
+        padding:0;
         gap:0;
         z-index:100;
+        left:-18px;
+        right:-18px;
       }
       .nav.open{ display:flex; }
       .nav a{
-        padding:12px 0;
+        padding:12px 18px;
         border-bottom:1px solid var(--line);
         width:100%;
       }
       .nav a:last-child{ border-bottom:none; }
+      .nav a.navActive,
+      .nav a:hover{
+        border-bottom-color:var(--line);
+      }
+      .nav a.navActive{
+        color:var(--text);
+        font-weight:600;
+      }
+      .navOverlay{
+        display:none;
+        position:fixed;
+        top:0;left:0;right:0;bottom:0;
+        background:rgba(0,0,0,.35);
+        z-index:99;
+      }
+      .navOverlay.open{ display:block; }
       .ctaRow{ display:none; }
       .mobileCart{ display:flex !important; }
       .topbar{ position:relative; }
 
       .dropCard{ grid-template-columns: 1fr; }
       .dropMedia{ border-right:none; border-bottom:1px solid var(--line); }
-      .dropMainImg img{ max-height:280px; width:100%; object-fit:contain; }
+      .dropMainImg img{ width:100%; height:100%; object-fit:cover; }
+      .dropThumb.model-thumb{ order:-1; }
 
       .memberTeaser{
         flex-direction: column;
@@ -669,6 +688,8 @@
       /* Header: smaller logo, tighter topbar */
       .mark{ height: 72px; }
       .topbar{ padding: 10px 0; }
+      .nav{ left:-14px; right:-14px; }
+      .nav a{ padding:12px 14px; }
       .brand .name{ font-size: 12px; }
 
       /* Hero spacing */
@@ -720,23 +741,18 @@
       .dropHeader p{ font-size: 12px; }
       .dropCard{ margin-top: 10px; }
       .dropMedia{ padding: 10px; gap: 8px; }
-      .dropMainImg img{ max-height: 240px; object-fit: contain; }
+      .dropMainImg img{ width:100%; height:100%; object-fit:cover; }
       .dropThumbs{
         gap: 6px;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-        justify-content: flex-start;
+        flex-wrap: wrap;
+        justify-content: center;
         padding-bottom: 4px;
       }
-      .dropThumbs::-webkit-scrollbar{ display: none; }
       .dropThumb{
         width: 50px;
         height: 50px;
         padding: 3px;
         flex-shrink: 0;
-        scroll-snap-align: start;
       }
       .dropThumb.model-thumb{ order:-1; }
 
@@ -755,7 +771,7 @@
       .swatchInner{ width: 100%; height: 100%; }
 
       /* Never miss a drop */
-      .memberTeaser{ padding: 18px 16px 16px; gap: 14px; margin-top: 28px; border-radius: 10px; }
+      .memberTeaser{ padding: 18px 16px 16px; gap: 14px; margin-top: 40px; border-radius: 10px; }
       .memberKicker{ font-size: 10px; }
       .memberTitle{ font-size: 18px; }
       .memberDesc{ font-size: 13px; }
@@ -812,13 +828,16 @@
 
       <nav class="nav" aria-label="Site navigation">
         <a href="shop.html">Shop</a>
-        <a href="about.html">About</a>
         <a href="drop.html" class="navActive">The Drop</a>
+        <a href="membership.html">Membership</a>
+        <a href="about.html">About</a>
         <a href="support.html">Support</a>
       </nav>
 
+      <div class="navOverlay" id="navOverlay"></div>
+
       <a class="mobileCart cartBtn" href="cart.html" aria-label="Cart"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg><span class="cartBadge" id="cartBadgeMobile" style="display:none;">0</span></a>
-      <button class="menuBtn" aria-label="Toggle menu" onclick="document.querySelector('.nav').classList.toggle('open')">&#9776;</button>
+      <button class="menuBtn" aria-label="Toggle menu" onclick="document.querySelector('.nav').classList.toggle('open');document.getElementById('navOverlay').classList.toggle('open')">&#9776;</button>
 
       <div class="ctaRow">
         <a class="btn" href="shop.html">Shop</a>
@@ -978,10 +997,10 @@
         </div>
       </aside>
 
-      <!-- Yearly membership teaser -->
-      <div class="memberTeaser fade-up" style="transition-delay:.08s" aria-label="Yearly membership">
+      <!-- Membership teaser -->
+      <div class="memberTeaser fade-up" style="transition-delay:.08s" aria-label="Reserved membership">
         <div class="memberLeft">
-          <div class="memberKicker">Yearly Membership</div>
+          <div class="memberKicker">Reserved Membership</div>
           <p class="memberTitle">Never Miss a Drop</p>
           <p class="memberDesc">
             A small, reserved group. Reserved inventory. Zero sell-outs. Members receive each release automatically, with the option to skip after preview.
@@ -1014,7 +1033,12 @@
     document.querySelectorAll(".nav a").forEach(a => {
       a.addEventListener("click", () => {
         document.querySelector(".nav").classList.remove("open");
+        document.getElementById("navOverlay").classList.remove("open");
       });
+    });
+    document.getElementById("navOverlay").addEventListener("click", () => {
+      document.querySelector(".nav").classList.remove("open");
+      document.getElementById("navOverlay").classList.remove("open");
     });
 
     // staggered hero entrance

@@ -81,7 +81,7 @@
       text-transform:none;
     }
     .mark{
-      height:130px;
+      height:117px;
       width:auto;
       display:block;
     }
@@ -417,7 +417,6 @@
 
     @media (max-width: 980px){
       .wrap{ padding: 14px 14px 50px; }
-      .mark{ height:90px; }
       .brand .tag{ display:none; }
       .menuBtn{ display:block; }
       .nav{
@@ -427,19 +426,37 @@
         left:0;
         right:0;
         background:var(--bg);
-        border-bottom:1px solid var(--line);
+        border-bottom:none;
         flex-direction:column;
-        padding:14px 18px;
+        padding:0;
         gap:0;
         z-index:100;
+        left:-18px;
+        right:-18px;
       }
       .nav.open{ display:flex; }
       .nav a{
-        padding:12px 0;
+        padding:12px 18px;
         border-bottom:1px solid var(--line);
         width:100%;
       }
       .nav a:last-child{ border-bottom:none; }
+      .nav a.navActive,
+      .nav a:hover{
+        border-bottom-color:var(--line);
+      }
+      .nav a.navActive{
+        color:var(--text);
+        font-weight:600;
+      }
+      .navOverlay{
+        display:none;
+        position:fixed;
+        top:0;left:0;right:0;bottom:0;
+        background:rgba(0,0,0,.35);
+        z-index:99;
+      }
+      .navOverlay.open{ display:block; }
       .ctaRow{ display:none; }
       .mobileCart{ display:flex !important; }
       .topbar{ position:relative; }
@@ -494,6 +511,13 @@
       /* Footer */
       footer{ flex-direction:column; align-items:flex-start; gap:6px; margin-top:24px; }
     }
+    @media (max-width: 640px){
+      .mark{ height: 72px; }
+      .topbar{ padding: 10px 0; }
+      .nav{ left:-14px; right:-14px; }
+      .nav a{ padding:12px 14px; }
+      .brand .name{ font-size: 12px; }
+    }
     .cartBtn{ position:relative; }
     .mobileCart{
       display:none;
@@ -529,13 +553,16 @@
 
       <nav class="nav" aria-label="Site navigation">
         <a href="shop.html">Shop</a>
-        <a href="about.html">About</a>
         <a href="drop.html">The Drop</a>
+        <a href="membership.html">Membership</a>
+        <a href="about.html">About</a>
         <a href="support.html">Support</a>
       </nav>
 
+      <div class="navOverlay" id="navOverlay"></div>
+
       <a class="mobileCart cartBtn" href="cart.html" aria-label="Cart"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg><span class="cartBadge" id="cartBadgeMobile" style="display:none;">0</span></a>
-      <button class="menuBtn" aria-label="Toggle menu" onclick="document.querySelector('.nav').classList.toggle('open')">&#9776;</button>
+      <button class="menuBtn" aria-label="Toggle menu" onclick="document.querySelector('.nav').classList.toggle('open');document.getElementById('navOverlay').classList.toggle('open')">&#9776;</button>
 
       <div class="ctaRow">
         <a class="btn" href="shop.html">Shop</a>
@@ -550,7 +577,7 @@
     </div>
 
     <!-- Core Collection header -->
-    <div id="core" style="text-align:center; padding:48px 0 28px;">
+    <div id="core" style="text-align:center; padding:56px 0 28px;">
       <div style="font-size:11px; font-weight:900; text-transform:uppercase; letter-spacing:0.16em; color:var(--muted); margin-bottom:8px;">Core Collection</div>
       <h2 style="margin:0; font-size:clamp(24px,3vw,36px); font-weight:950; text-transform:uppercase; letter-spacing:0.10em; color:var(--ink);">The Four</h2>
       <p style="margin:8px 0 0; font-size:14px; color:var(--muted);">Foundations that remain. Drops come and go, but The Four stay.</p>
@@ -651,10 +678,10 @@
     </section>
 
     <!-- Current Drop -->
-    <div style="text-align:center; padding:48px 0 28px;">
+    <div style="text-align:center; padding:80px 0 28px;">
       <div style="font-size:11px; font-weight:900; text-transform:uppercase; letter-spacing:0.16em; color:var(--muted); margin-bottom:8px;">Current Drop</div>
       <h2 style="margin:0; font-size:clamp(24px,3vw,36px); font-weight:950; text-transform:uppercase; letter-spacing:0.10em; color:var(--ink);">Drop 001</h2>
-      <p style="margin:8px 0 0; font-size:14px; color:var(--muted);">Limited release · Individually numbered · New scripture edition</p>
+      <p style="margin:8px 0 0; font-size:14px; color:var(--muted); opacity:.7;">Limited release · Individually numbered · New scripture edition</p>
       <p style="margin:6px 0 0; font-size:12px; color:var(--muted);">Members receive early access before public release.</p>
     </div>
 
@@ -679,7 +706,7 @@
     </p>
 
     <!-- Gear sub-header -->
-    <div style="border-top:1px solid rgba(0,0,0,0.05); margin:40px auto; max-width:420px;"></div>
+    <div style="border-top:1px solid rgba(0,0,0,0.05); margin:72px auto; max-width:420px;"></div>
     <div class="pageTitle" style="padding:36px 0 20px;">
       <h1>Gear</h1>
       <p>Faith-driven gear. Made to order, just for you.</p>
@@ -762,7 +789,14 @@
 
     /* ── Nav toggle ── */
     document.querySelectorAll(".nav a").forEach(a=>{
-      a.addEventListener("click",()=>{document.querySelector(".nav").classList.remove("open");});
+      a.addEventListener("click",()=>{
+        document.querySelector(".nav").classList.remove("open");
+        document.getElementById("navOverlay").classList.remove("open");
+      });
+    });
+    document.getElementById("navOverlay").addEventListener("click",()=>{
+      document.querySelector(".nav").classList.remove("open");
+      document.getElementById("navOverlay").classList.remove("open");
     });
 
   </script>
