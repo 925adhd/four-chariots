@@ -41,6 +41,8 @@
       text-rendering: optimizeLegibility;
     }
     a{ color:inherit; text-decoration:none; }
+    a, button{ -webkit-tap-highlight-color:transparent; transition: opacity .15s ease, transform .08s ease; }
+    a:active, button:active{ opacity:.7; transform:scale(0.98); }
     img{ max-width:100%; display:block; }
     .wrap{
       max-width:var(--max);
@@ -543,7 +545,7 @@
       .scMainImg img{ max-height:280px; }
       .scThumbs{ flex-direction:row; order:0; max-height:none; overflow-y:visible; gap:6px; flex-wrap:wrap; justify-content:center; margin-bottom:12px; }
       .scThumb{ width:48px; height:48px; }
-      .scThumb.model-thumb{ order:-1; }
+      .scThumb.model-thumb{ order:1; }
       .scInfo{ padding:18px; gap:10px; align-items:center; text-align:center; }
       .sizeBtns{ justify-content:center; }
       .scSwatches{ justify-content:center; }
@@ -849,17 +851,9 @@
       document.getElementById("navOverlay").classList.remove("open");
     });
 
-    // On mobile, show model image first
+    // On mobile, show technical/product image first (default hero stays)
     const scHero = document.getElementById("scHeroImg");
     const scLabel = document.getElementById("scColorLabel");
-    if (window.innerWidth <= 980) {
-      const modelThumb = document.querySelector(".model-thumb");
-      if (modelThumb) {
-        scHero.src = modelThumb.dataset.src;
-        document.querySelectorAll(".scThumb").forEach(t => t.classList.remove("active"));
-        modelThumb.classList.add("active");
-      }
-    }
 
     // Showcase thumbnail + swatch switching
 
