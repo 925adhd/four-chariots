@@ -1019,32 +1019,97 @@
     const scHero = document.getElementById("scHeroImg");
     const scLabel = document.getElementById("scColorLabel");
 
+    // Model image map per color
+    const modelMap = {
+      Black:  "images/drops/unshaken/model.png",
+      White:  "images/drops/unshaken/modelwhite.png",
+      Red:    "images/drops/unshaken/modelred.png",
+      Dapple: "images/drops/unshaken/modeldap.png"
+    };
+    const modelThumb = document.querySelector(".scThumb.model-thumb");
+
     // Showcase thumbnail + swatch switching
+    const canHover = window.matchMedia("(hover: hover)").matches;
+
+
+    // Track the locked (selected) thumbnail
+    let lockedThumb = document.querySelector('.scThumb.active') || null;
+
+    function previewScThumb(thumb) {
+      // Only preview, do not update lockedThumb
+      scHero.src = thumb.dataset.src;
+      scHero.alt = "UNSHAKEN Tee - " + (thumb.dataset.color || "Model");
+      // Sync swatch
+      document.querySelectorAll(".scSwatch").forEach(s => {
+        s.classList.toggle("active", s.dataset.color === thumb.dataset.color);
+      });
+      // Update model thumbnail to match this color
+      if (thumb !== modelThumb && thumb.dataset.color && modelMap[thumb.dataset.color] && modelThumb) {
+        modelThumb.dataset.src = modelMap[thumb.dataset.color];
+        modelThumb.querySelector("img").src = modelMap[thumb.dataset.color];
+      }
+      // Do not update .active class on thumbs
+    }
+
+    function lockScThumb(thumb) {
+      lockedThumb = thumb;
+      scHero.src = thumb.dataset.src;
+      scHero.alt = "UNSHAKEN Tee - " + (thumb.dataset.color || "Model");
+      document.querySelectorAll(".scThumb").forEach(t => t.classList.remove("active"));
+      thumb.classList.add("active");
+      // Sync swatch
+      document.querySelectorAll(".scSwatch").forEach(s => {
+        s.classList.toggle("active", s.dataset.color === thumb.dataset.color);
+      });
+      // Update model thumbnail to match this color
+      if (thumb !== modelThumb && thumb.dataset.color && modelMap[thumb.dataset.color] && modelThumb) {
+        modelThumb.dataset.src = modelMap[thumb.dataset.color];
+        modelThumb.querySelector("img").src = modelMap[thumb.dataset.color];
+      }
+    }
 
     document.querySelectorAll(".scThumb").forEach(thumb => {
-      thumb.addEventListener("click", () => {
-        scHero.src = thumb.dataset.src;
-        scHero.alt = "UNSHAKEN Tee - " + thumb.dataset.color;
-        if (scLabel) scLabel.textContent = thumb.dataset.color;
-        document.querySelectorAll(".scThumb").forEach(t => t.classList.remove("active"));
-        thumb.classList.add("active");
-        // Sync swatch
-        document.querySelectorAll(".scSwatch").forEach(s => {
-          s.classList.toggle("active", s.dataset.color === thumb.dataset.color);
+      if (canHover) {
+        thumb.addEventListener("mouseenter", () => previewScThumb(thumb));
+        thumb.addEventListener("mouseleave", () => {
+          // Restore locked thumb on mouse leave
+          if (lockedThumb) previewScThumb(lockedThumb);
         });
-      });
+      }
+      thumb.addEventListener("click", () => lockScThumb(thumb));
     });
 
     document.querySelectorAll(".scSwatch").forEach(sw => {
       sw.addEventListener("click", () => {
-        scHero.src = sw.dataset.src;
-        scHero.alt = "UNSHAKEN Tee - " + sw.dataset.color;
-        if (scLabel) scLabel.textContent = sw.dataset.color;
+        const color = sw.dataset.color;
+
+        // Update color label + active swatch
+        if (scLabel) scLabel.textContent = color;
         document.querySelectorAll(".scSwatch").forEach(s => s.classList.remove("active"));
         sw.classList.add("active");
-        // Sync thumbnail
+
+        // Update the model thumbnail to this color's model photo
+        if (modelThumb && modelMap[color]) {
+          modelThumb.dataset.src = modelMap[color];
+          modelThumb.querySelector("img").src = modelMap[color];
+        }
+
+        // If the user is currently viewing a flat mockup (not model), swap to the matching flat mockup
+        const viewingModel = modelThumb && modelThumb.classList.contains("active");
+        if (viewingModel) {
+          // User is on the model — update main image to the new color's model
+          scHero.src = modelMap[color];
+          scHero.alt = "UNSHAKEN Tee - " + color + " Model";
+        } else {
+          // User is on a flat mockup — swap to this color's flat mockup
+          scHero.src = sw.dataset.src;
+          scHero.alt = "UNSHAKEN Tee - " + color;
+        }
+
+        // Sync flat-mockup thumbnail active state (skip model thumb)
         document.querySelectorAll(".scThumb").forEach(t => {
-          t.classList.toggle("active", t.dataset.color === sw.dataset.color);
+          if (t === modelThumb) return;
+          t.classList.toggle("active", t.dataset.color === color);
         });
       });
     });
