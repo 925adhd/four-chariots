@@ -1124,19 +1124,25 @@
     }
 
     // drop thumbnail + swatch switching
+    const canHover = window.matchMedia("(hover: hover)").matches;
+
+    function switchDropThumb(thumb) {
+      dropHeroImg.src = thumb.dataset.src;
+      dropHeroImg.alt = "UNSHAKEN Tee - " + thumb.dataset.label;
+      if (dropLabel) dropLabel.textContent = thumb.dataset.label;
+      document.querySelectorAll(".dropThumb").forEach(t => t.classList.remove("active"));
+      thumb.classList.add("active");
+      // Sync swatch
+      document.querySelectorAll(".dropSwatch").forEach(s => {
+        s.classList.toggle("active", s.dataset.label === thumb.dataset.label);
+      });
+    }
 
     document.querySelectorAll(".dropThumb").forEach(thumb => {
-      thumb.addEventListener("click", () => {
-        dropHeroImg.src = thumb.dataset.src;
-        dropHeroImg.alt = "UNSHAKEN Tee - " + thumb.dataset.label;
-        if (dropLabel) dropLabel.textContent = thumb.dataset.label;
-        document.querySelectorAll(".dropThumb").forEach(t => t.classList.remove("active"));
-        thumb.classList.add("active");
-        // Sync swatch
-        document.querySelectorAll(".dropSwatch").forEach(s => {
-          s.classList.toggle("active", s.dataset.label === thumb.dataset.label);
-        });
-      });
+      if (canHover) {
+        thumb.addEventListener("mouseenter", () => switchDropThumb(thumb));
+      }
+      thumb.addEventListener("click", () => switchDropThumb(thumb));
     });
 
     document.querySelectorAll(".dropSwatch").forEach(sw => {
