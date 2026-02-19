@@ -649,15 +649,6 @@
           <div class="scThumb model-thumb" data-src="images/core/forgiven/model.png" data-color="" data-hex="">
             <img src="images/core/forgiven/model.png" alt="Model" />
           </div>
-          <div class="scThumb" data-src="images/core/forgiven/forgivencloseup.png" data-color="" data-hex="">
-            <img src="images/core/forgiven/forgivencloseup.png" alt="Chest embroidery close-up" />
-          </div>
-          <div class="scThumb" data-src="images/closeupsleeve.png" data-color="" data-hex="">
-            <img src="images/closeupsleeve.png" alt="Sleeve detail" />
-          </div>
-          <div class="scThumb" data-src="images/core/forgiven/scripturecloseup.png" data-color="" data-hex="">
-            <img src="images/core/forgiven/scripturecloseup.png" alt="Embroidery stitch detail" />
-          </div>
           <div class="scThumb" data-src="images/core/forgiven/forgivenwhite.png" data-color="White" data-hex="#f5f0e1">
             <img src="images/core/forgiven/forgivenwhite.png" alt="White" />
           </div>
@@ -816,18 +807,24 @@
     }
 
     // Showcase thumbnail + swatch switching
+    const canHover = window.matchMedia("(hover: hover)").matches;
+
+    function switchScThumb(thumb) {
+      scHero.src = thumb.dataset.src;
+      scHero.alt = "FORGIVEN Tee - " + thumb.dataset.color;
+      if (scLabel) scLabel.textContent = thumb.dataset.color;
+      document.querySelectorAll(".scThumb").forEach(t => t.classList.remove("active"));
+      thumb.classList.add("active");
+      document.querySelectorAll(".scSwatch").forEach(s => {
+        s.classList.toggle("active", s.dataset.color === thumb.dataset.color);
+      });
+    }
 
     document.querySelectorAll(".scThumb").forEach(thumb => {
-      thumb.addEventListener("click", () => {
-        scHero.src = thumb.dataset.src;
-        scHero.alt = "FORGIVEN Tee - " + thumb.dataset.color;
-        if (scLabel) scLabel.textContent = thumb.dataset.color;
-        document.querySelectorAll(".scThumb").forEach(t => t.classList.remove("active"));
-        thumb.classList.add("active");
-        document.querySelectorAll(".scSwatch").forEach(s => {
-          s.classList.toggle("active", s.dataset.color === thumb.dataset.color);
-        });
-      });
+      if (canHover) {
+        thumb.addEventListener("mouseenter", () => switchScThumb(thumb));
+      }
+      thumb.addEventListener("click", () => switchScThumb(thumb));
     });
 
     document.querySelectorAll(".scSwatch").forEach(sw => {
