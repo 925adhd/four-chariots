@@ -684,7 +684,7 @@
     }
 
     .craftText h3{
-      margin:0 0 10px;
+      margin:0 0 14px;
       font-size:18px;
       letter-spacing:0.12em;
       text-transform:uppercase;
@@ -696,6 +696,11 @@
       color:var(--muted);
       line-height:1.8;
       max-width:44ch;
+    }
+
+    .craftBlock:first-child img{
+      max-height:420px;
+      object-fit:contain;
     }
 
     .craftBlock.reverse{
@@ -711,6 +716,15 @@
         grid-template-columns:1fr;
         gap:18px;
         padding:36px 0;
+      }
+      .craftText h3{
+        margin-bottom:10px;
+      }
+      .craftText p{
+        line-height:1.65;
+      }
+      .craftBlock:first-child img{
+        max-height:340px;
       }
       .craftBlock:last-child img{
         max-width:85%;
@@ -883,7 +897,13 @@
           </div>
         </div>
 
-        <div class="connected-verse" style="padding-top:14px; border-top:1px solid var(--line);">
+        <div class="credibility-strip" style="display:flex; gap:16px; flex-wrap:wrap; padding:12px 0; margin-top:10px; border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+          <span style="font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); display:flex; align-items:center; gap:6px;"><span style="width:4px;height:4px;background:var(--ink);border-radius:50%;opacity:.4;"></span>Limited to 66 pieces</span>
+          <span style="font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); display:flex; align-items:center; gap:6px;"><span style="width:4px;height:4px;background:var(--ink);border-radius:50%;opacity:.4;"></span>Heavyweight cotton + precision embroidery</span>
+          <span style="font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); display:flex; align-items:center; gap:6px;"><span style="width:4px;height:4px;background:var(--ink);border-radius:50%;opacity:.4;"></span>Individually numbered exterior label</span>
+        </div>
+
+        <div class="connected-verse" style="padding-top:14px; border-top:none;">
           <div style="font-size:11px; font-weight:900; text-transform:uppercase; letter-spacing:0.16em; color:var(--muted); margin-bottom:8px;">Connected Verse</div>
           <p style="margin:0; font-size:13px; color:var(--muted); line-height:1.55;">
             Every drop carries a scripture reference chosen to reflect the word on the front.
@@ -898,7 +918,7 @@
 
       <!-- Craft Intro -->
       <div class="craftBlock">
-        <img src="images/drops/unshaken/unshakencloseup.png" alt="Precision embroidery detail">
+        <img src="images/drops/unshaken/unshakencloseup.png" alt="Precision embroidery detail" style="width:100%;height:100%;object-fit:cover;">
         <div class="craftText">
           <h3>PRECISION EMBROIDERY</h3>
           <p>
@@ -919,6 +939,9 @@
           </p>
         </div>
       </div>
+
+      <!-- Bridge line -->
+      <p style="text-align:center; margin:0; padding:20px 0; font-size:13px; color:var(--muted); font-style:italic; letter-spacing:0.02em; border-bottom:1px solid var(--line);">Every piece carries a mark that it was part of this moment.</p>
 
       <!-- Exterior Numbered Label -->
       <div class="craftBlock">
@@ -946,7 +969,7 @@
 
       <!-- Lifestyle Model -->
       <div class="craftBlock">
-        <img src="images/drops/unshaken/model.png" alt="UNSHAKEN lifestyle">
+        <img src="images/drops/unshaken/everydaymodel.png" alt="UNSHAKEN lifestyle">
         <div class="craftText">
           <h3>DESIGNED FOR ORDINARY MOMENTS</h3>
           <p>
