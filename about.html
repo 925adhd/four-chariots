@@ -42,6 +42,8 @@
       overflow-x: hidden;
     }
     a{ color:inherit; text-decoration:none; }
+    a, button{ -webkit-tap-highlight-color:transparent; transition: opacity .15s ease, transform .08s ease; }
+    a:active, button:active{ opacity:.7; transform:scale(0.98); }
     img{ max-width:100%; display:block; }
 
     .wrap{
@@ -527,6 +529,83 @@
     }
     .approach-block:last-child{ margin-bottom: 0; }
     .approach-block p{ opacity:.8; }
+
+    /* Four Directions philosophy card */
+    .directionsCard{
+      max-width: 580px;
+      border: 1px solid rgba(11,26,42,.08);
+      background: rgba(11,26,42,.015);
+      padding: 18px;
+      margin: 10px 0 36px;
+    }
+    .directionsTop{
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(11,26,42,.05);
+      margin-bottom: 14px;
+    }
+    .directionsTitle{
+      font-size: 12px;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: var(--ink);
+      font-weight: 950;
+    }
+    .directionsSub{
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+      max-width: 52ch;
+    }
+    .directionsSteps{
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .directionsCard .dot{
+      width: 20px;
+      height: 20px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(11,26,42,.18);
+      background: transparent;
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 8px;
+      letter-spacing: 0.06em;
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .directionsCard .stepTitle{
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--ink);
+      font-size: 12px;
+      line-height: 1.1;
+    }
+    .directionsCard .stepDesc{
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.4;
+    }
+    @media (max-width: 640px){
+      .directionsCard{
+        max-width: 100%;
+        padding: 14px;
+        margin: 6px 0 28px;
+      }
+      .directionsTop{ padding-bottom: 8px; margin-bottom: 10px; }
+      .directionsTitle{ font-size: 11px; }
+      .directionsSub{ font-size: 11px; }
+      .directionsSteps{ gap: 8px; }
+      .directionsCard .dot{ width: 18px; height: 18px; font-size: 7px; }
+      .directionsCard .stepTitle{ font-size: 11px; }
+      .directionsCard .stepDesc{ font-size: 11px; }
+    }
   </style>
 </head>
 
@@ -574,7 +653,7 @@
       <section class="aboutSection fade-up" style="transition-delay:.1s">
         <h2>The Origin</h2>
         <p>
-          FOUR CHARIOTS didn't start with a business plan. It started with a prayer, a Bible, and a request for direction while seeking inspiration for a faith-based mission.
+          FOUR CHARIOTS didn't start with a business plan. It started with a prayer, a Bible, and a request for direction while seeking inspiration for a faith-based mission. Built during a quiet season where clarity mattered more than noise.
         </p>
         <p>
           From there, the focus became simple: words that point back to truth. Not noise for attention, but something steady to carry into everyday life.
@@ -630,7 +709,8 @@
         <div class="approach-block">
           <p>
             Every piece begins with a single word. One clear message pointing back to truth.<br>
-            The design stays minimal so meaning carries further than the garment itself.
+            The design stays minimal so meaning carries further than the garment itself.<br>
+            Each word is stitched, not printed. Made to endure daily wear.
           </p>
         </div>
         <div class="approach-block">
@@ -658,22 +738,22 @@
         <div class="valueCard">
           <div class="dot">N</div>
           <h3>Discipline</h3>
-          <p>Every decision, from design to delivery, is made with restraint. We say less so the message lands harder.</p>
+          <p>Every decision, from design to delivery, is made with restraint. We say less so the message lands harder. Worn steady.</p>
         </div>
         <div class="valueCard">
           <div class="dot">E</div>
           <h3>Intention</h3>
-          <p>Nothing is accidental. Every word is chosen, every piece is purposeful. We don't make things just to make things.</p>
+          <p>Nothing is accidental. Every word is chosen, every piece is purposeful. Carry it into ordinary moments.</p>
         </div>
         <div class="valueCard">
           <div class="dot">S</div>
           <h3>Movement</h3>
-          <p>Truth isn't meant to sit still. Every piece is a conversation starter designed to go where you go. Into work, worship, and the ordinary in between.</p>
+          <p>Truth isn't meant to sit still. Every piece is a conversation starter, not a billboard. It goes where you go — into work, worship, and the ordinary in between.</p>
         </div>
         <div class="valueCard">
           <div class="dot">W</div>
           <h3>Faith</h3>
-          <p>Everything we make is rooted in scripture. Not as decoration, but as foundation.</p>
+          <p>Everything we make is rooted in scripture. Not as decoration, but as foundation. Four directions. One word. Sent further than you go.</p>
         </div>
       </div>
     </section>
@@ -681,7 +761,7 @@
     <div class="ctaBanner fade-up" style="transition-delay:.1s; flex-direction:column; align-items:flex-start;">
       <div>
         <h3>Stay in the Loop</h3>
-        <p>Sign up for updates on the latest drops so you don't miss one.<br>Receive 5% off your first order as a welcome.</p>
+        <p>Be notified when each new word moves into release. Limited drops, early notice, and a small welcome gift on your first order.</p>
       </div>
       <form class="nlForm" onsubmit="return handleNL(event)">
         <input type="email" id="nlEmail" placeholder="Your email" required />

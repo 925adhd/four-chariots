@@ -41,6 +41,8 @@
       text-rendering: optimizeLegibility;
     }
     a{ color:inherit; text-decoration:none; }
+    a, button{ -webkit-tap-highlight-color:transparent; transition: opacity .15s ease, transform .08s ease; }
+    a:active, button:active{ opacity:.7; transform:scale(0.98); }
     img{ max-width:100%; display:block; }
     .wrap{
       max-width:var(--max);
@@ -205,10 +207,6 @@
       display:flex;
       flex-direction:column;
       min-height: 520px;
-      transition: transform 0.25s ease;
-    }
-    .product:hover{
-      transform: translateY(-4px);
     }
     .product .media{
       aspect-ratio: 4/3;
@@ -344,8 +342,16 @@
       text-decoration-color:var(--ink);
     }
 
-    /* Gear: disable hover image swap */
-    .grid .product .media img.preview-model{ display:none; }
+    /* Gear: hover image swap */
+    .grid .product .media img.preview-model{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      max-height:none;
+      margin-bottom:0;
+      object-fit:cover;
+    }
 
     /* Gear section editorial refinements */
     .grid .product .name {
@@ -719,7 +725,7 @@
       <article class="product">
         <a class="media" href="mug.html">
           <img src="images/gear/mugpreview.png" alt="FOUR CHARIOTS Horse Emblem Mug" loading="lazy" />
-          <img class="preview-model" src="images/gear/four-chariots-horse-emblem-mug-glossy-ceramic-coffee-mug-11oz-15oz.jpg" alt="FOUR CHARIOTS Horse Emblem Mug alternate view" loading="lazy" />
+          <img class="preview-model" src="images/gear/four-chariots-horse-emblem-mug-glossy-ceramic-coffee-mug-11oz-15oz (1).jpg" alt="FOUR CHARIOTS Horse Emblem Mug alternate view" loading="lazy" />
         </a>
         <div class="body">
           <a href="mug.html">
