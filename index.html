@@ -132,6 +132,13 @@
         color:var(--btnText);
         transform:scale(1.04);
       }
+      .btn.quiet:hover{
+        background:transparent;
+        color:var(--text);
+        border-color:var(--text);
+        box-shadow:inset 0 0 0 1px var(--text);
+        transform:scale(1.02);
+      }
       .btn.primary:hover{
         background:var(--bg);
         color:var(--ink);
@@ -872,7 +879,7 @@
 
         <div class="fade-up" style="margin-top:16px; transition-delay:.72s">
           <a class="btn primary" href="drop.html">View The Drop</a>
-          <a class="btn" href="shop.html" style="margin-left:10px;">Full shop</a>
+          <a class="btn quiet" href="shop.html" style="margin-left:10px; border-color:var(--line); color:var(--muted); font-weight:600; font-size:12px;">Core Collection</a>
         </div>
       </div>
 
