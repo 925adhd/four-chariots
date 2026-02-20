@@ -155,7 +155,7 @@
       display:grid;
       grid-template-columns: 1.15fr .85fr;
       gap: 40px;
-      padding: 30px 0 40px;
+      padding: 30px 0 50px;
       align-items:center;
     }
     .kicker{
@@ -220,7 +220,7 @@
     .subhead{
       margin:20px 0 0;
       font-size:18px;
-      max-width:52ch;
+      max-width:62ch;
       color:var(--muted);
       line-height:1.5;
     }
@@ -309,7 +309,7 @@
 
     /* NEW: single-drop reveal section */
     .dropReveal{
-      padding: 34px 0 10px;
+      padding: 50px 0 10px;
     }
     .dropHeader{
       display:flex;
@@ -614,6 +614,7 @@
     @media (max-width: 980px){
       .hero{ grid-template-columns: 1fr; align-items:start; gap:24px; padding:16px 0 30px; }
       .hero > .missionCard{ display:none !important; }
+      .heroImg{ display:none !important; }
       .missionCardMobile{ display:block; margin-top:24px; }
       .dropReveal > .missionCard{ margin-top: 18px; }
       .brand .tag{ display:none; }
@@ -663,7 +664,6 @@
       .dropCard{ grid-template-columns: 1fr; }
       .dropMedia{ border-right:none; border-bottom:1px solid var(--line); }
       .dropMainImg img{ width:100%; height:100%; object-fit:cover; }
-      .dropThumb.model-thumb{ order:-1; }
 
       .memberTeaser{
         flex-direction: column;
@@ -756,7 +756,6 @@
         padding: 3px;
         flex-shrink: 0;
       }
-      .dropThumb.model-thumb{ order:-1; }
 
       /* Drop body */
       .dropBody{ padding: 14px; gap: 8px; }
@@ -866,18 +865,24 @@
         <p class="subhead fade-up" style="transition-delay:.6s">
           Minimal faithwear for everyday movement. Simple words that keep you steady and start conversations worth having.
         </p>
+        <p class="fade-up" style="transition-delay:.66s; margin:8px 0 0; font-size:14px; color:var(--muted); opacity:.9;">Worn daily. Not loud. Built to last.</p>
 
         <div class="fade-up" style="margin-top:16px; transition-delay:.72s">
-          <a class="btn primary" href="drop.html">View Drop 001</a>
+          <a class="btn primary" href="drop.html">View The Drop</a>
           <a class="btn" href="shop.html" style="margin-left:10px;">Full shop</a>
         </div>
       </div>
 
-      <aside class="heroCard missionCard fade-up" id="shipping" style="transition-delay:.85s">
+      <div class="heroImg fade-up" style="transition-delay:.85s; padding-right:24px;">
+        <img src="images/core/unashamed/model2.png" alt="UNSHAKEN Tee" style="width:100%; height:auto; object-fit:cover; border-radius:2px;" />
+      </div>
+
+      <aside class="heroCard missionCard fade-up" id="shipping" style="transition-delay:.85s; display:none;">
         <div class="missionTop">
           <div>
             <div class="missionTitle">FOUR DIRECTIONS. ONE WORD.</div>
             <div class="missionSub">
+              Precision embroidery. Heavyweight cotton. One word carried quietly.<br>
               Each piece carries a word meant to travel further than you do.
             </div>
           </div>
@@ -919,6 +924,8 @@
 
       </aside>
     </section>
+
+    <div class="divider" style="margin-top:10px;"></div>
 
     <!-- Single item reveal below the fold -->
     <section class="dropReveal" id="drop">
@@ -981,14 +988,15 @@
         </div>
       </div>
 
-      <p style="text-align:center; margin:20px 0 0; font-size:12px; color:var(--muted);">Members enter first through a reserved access window inside the 66-piece release.</p>
+      <p style="text-align:center; margin:20px 0 0; font-size:12px; color:var(--muted);">Worn quietly across ordinary moments.</p>
+      <p style="text-align:center; margin:10px 0 0; font-size:12px; color:var(--muted);">Members enter first through a reserved access window inside the 66-piece release.</p>
 
       <!-- Four Directions card (mobile only) -->
       <aside class="heroCard missionCard missionCardMobile fade-up" style="transition-delay:.85s">
         <div class="missionTop">
           <div>
             <div class="missionTitle">FOUR DIRECTIONS. ONE WORD.</div>
-            <div class="missionSub">Each piece carries a word meant to travel further than you do.</div>
+            <div class="missionSub">Precision embroidery. Heavyweight cotton. One word carried quietly.<br>Each piece carries a word meant to travel further than you do.</div>
           </div>
         </div>
         <div class="missionSteps" role="list">
@@ -1005,7 +1013,7 @@
           <div class="memberKicker">Reserved Membership</div>
           <p class="memberTitle">Never Miss a Drop</p>
           <p class="memberDesc">
-            A small, reserved circle limited to 12 members. Reserved inventory. Zero sell-outs. Each circle secures 12 consecutive releases delivered automatically as part of the series.
+            A quiet circle, limited to 12. Reserved inventory. Zero sell-outs. Each circle secures 12 consecutive releases delivered automatically as part of the series.
           </p>
           <ul class="memberFeatures">
             <li>Members enter before the public release</li>
@@ -1110,17 +1118,13 @@
     window.addEventListener("scroll", setActiveLink, { passive: true });
     setActiveLink();
 
-    // On mobile, show model image first
+    // On mobile, show model image first in drop preview
     const dropHeroImg = document.getElementById("dropHeroImg");
     const dropLabel = document.getElementById("dropColorLabel");
     if (window.innerWidth <= 980) {
-      const modelThumb = document.querySelector(".model-thumb");
-      if (modelThumb) {
-        dropHeroImg.src = modelThumb.dataset.src;
-        dropHeroImg.alt = "UNSHAKEN Tee - Model";
-        document.querySelectorAll(".dropThumb").forEach(t => t.classList.remove("active"));
-        modelThumb.classList.add("active");
-      }
+      dropHeroImg.src = "images/drops/unshaken/model.png";
+      dropHeroImg.alt = "UNSHAKEN Tee - Model";
+      document.querySelectorAll(".dropThumb").forEach(t => t.classList.remove("active"));
     }
 
     // drop thumbnail + swatch switching

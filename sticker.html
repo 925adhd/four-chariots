@@ -621,12 +621,19 @@
 
     /* ── Gallery thumbnails ── */
     const mainImg = document.getElementById("mainImg");
+    const canHover = window.matchMedia("(hover: hover)").matches;
+
+    function switchThumb(thumb) {
+      mainImg.src = thumb.dataset.src;
+      document.querySelectorAll(".thumb").forEach(t => t.classList.remove("active"));
+      thumb.classList.add("active");
+    }
+
     document.querySelectorAll(".thumb").forEach(thumb => {
-      thumb.addEventListener("click", () => {
-        mainImg.src = thumb.dataset.src;
-        document.querySelectorAll(".thumb").forEach(t => t.classList.remove("active"));
-        thumb.classList.add("active");
-      });
+      if (canHover) {
+        thumb.addEventListener("mouseenter", () => switchThumb(thumb));
+      }
+      thumb.addEventListener("click", () => switchThumb(thumb));
     });
 
     /* ── Quantity ── */
