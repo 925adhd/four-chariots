@@ -234,6 +234,8 @@
       opacity:1;
       transform:translateY(0);
     }
+    .heroSub1.visible{ opacity:.9; }
+    .heroSub2.visible{ opacity:.65; }
 
     .heroCard{
       border:1px solid rgba(11,26,42,.08);
@@ -865,7 +867,8 @@
         <p class="subhead fade-up" style="transition-delay:.6s">
           Minimal faithwear for everyday movement. Simple words that keep you steady and start conversations worth having.
         </p>
-        <p class="fade-up" style="transition-delay:.66s; margin:8px 0 0; font-size:14px; color:var(--muted); opacity:.9;">Worn daily. Not loud. Built to last.</p>
+        <p class="fade-up heroSub1" style="transition-delay:.66s; margin:8px 0 0; font-size:14px; color:var(--muted);">Worn daily. Not loud. Built to last.</p>
+        <p class="fade-up heroSub2" style="transition-delay:.7s; margin:6px 0 0; font-size:12px; color:var(--muted);">Core pieces are always available. Monthly drops are limited to 66.</p>
 
         <div class="fade-up" style="margin-top:16px; transition-delay:.72s">
           <a class="btn primary" href="drop.html">View The Drop</a>
@@ -972,8 +975,10 @@
 
         <div class="dropBody">
           <h3 class="dropWord">UNSHAKEN</h3>
-          <p class="dropPrice">$135.00</p>
-          <p style="margin:6px 0 10px 0; color:var(--muted); font-size:12px;">Limited to 66 pieces</p>
+          <div style="margin:4px 0 10px; padding:10px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+            <p class="dropPrice" style="font-size:22px;">$135.00</p>
+            <p style="margin:4px 0 0; color:var(--muted); font-size:12px;">Limited to 66 pieces <span style="margin:0 6px; opacity:.4;">&#8226;</span> Individually Numbered</p>
+          </div>
 
           <p class="dropDesc">Heavyweight premium cotton with precision embroidery.</p>
 
@@ -988,8 +993,7 @@
         </div>
       </div>
 
-      <p style="text-align:center; margin:20px 0 0; font-size:12px; color:var(--muted);">Worn quietly across ordinary moments.</p>
-      <p style="text-align:center; margin:10px 0 0; font-size:12px; color:var(--muted);">Members enter first through a reserved access window inside the 66-piece release.</p>
+      <p style="text-align:center; margin:20px 0 0; font-size:12px; color:var(--muted);">Members enter first through a reserved access window inside the 66-piece release.</p>
 
       <!-- Four Directions card (mobile only) -->
       <aside class="heroCard missionCard missionCardMobile fade-up" style="transition-delay:.85s">
@@ -1125,6 +1129,8 @@
       dropHeroImg.src = "images/drops/unshaken/model.png";
       dropHeroImg.alt = "UNSHAKEN Tee - Model";
       document.querySelectorAll(".dropThumb").forEach(t => t.classList.remove("active"));
+      const modelThumb = document.querySelector(".model-thumb");
+      if (modelThumb) modelThumb.classList.add("active");
     }
 
     // drop thumbnail + swatch switching
