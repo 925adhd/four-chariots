@@ -327,7 +327,7 @@
       letter-spacing:0;
       margin-left:6px;
     }
-    .sizeError{
+    .sizeError, .colorError{
       font-size:12px;
       color:#8b2020;
       margin-top:6px;
@@ -662,14 +662,14 @@
     <div class="showcase">
       <div class="scGallery">
         <div class="scMainImg" style="position:relative;">
-          <img id="scHeroImg" src="images/core/grateful/gratefullblk.png" alt="GRATEFUL Tee - Black" />
+          <img id="scHeroImg" src="images/core/grateful/model.png" alt="GRATEFUL Tee" />
           <span id="comingSoonBadge" style="display:none; position:absolute; top:50%; left:0; right:0; transform:translateY(-50%); font-size:11px; font-weight:900; letter-spacing:0.30em; text-transform:uppercase; color:var(--ink); background:rgba(255,255,255,.88); padding:14px 0; text-align:center; backdrop-filter:blur(2px); border-top:1px solid rgba(11,26,42,.08); border-bottom:1px solid rgba(11,26,42,.08);">COMING SOON</span>
         </div>
         <div class="scThumbs">
-          <div class="scThumb active" data-src="images/core/grateful/gratefullblk.png" data-color="Black" data-hex="#1a1a1a">
+          <div class="scThumb" data-src="images/core/grateful/gratefullblk.png" data-color="Black" data-hex="#1a1a1a">
             <img src="images/core/grateful/gratefullblk.png" alt="Black" />
           </div>
-          <div class="scThumb model-thumb" data-src="images/core/grateful/model.png" data-color="" data-hex="">
+          <div class="scThumb active model-thumb" data-src="images/core/grateful/model.png" data-color="" data-hex="">
             <img src="images/core/grateful/model.png" alt="Model" />
           </div>
           <div class="scThumb" data-src="images/core/grateful/gratefulwhite.png" data-color="White" data-hex="#f5f0e1">
@@ -700,9 +700,9 @@
         <p class="scripture-hint">1 Thessalonians 5:18 — connected scripture detail</p>
 
         <div>
-          <div class="scLabel">Color <span class="val" id="scColorLabel">Black</span></div>
+          <div class="scLabel">Color <span class="val" id="scColorLabel"></span></div>
           <div class="scColors" style="margin-top:8px;">
-            <button class="scSwatch active" data-color="Black" data-src="images/core/grateful/gratefullblk.png" title="Black">
+            <button class="scSwatch" data-color="Black" data-src="images/core/grateful/gratefullblk.png" title="Black">
               <span class="inner" style="background-image:url('images/blackswatch.png')"></span>
             </button>
             <button class="scSwatch" data-color="White" data-src="images/core/grateful/gratefulwhite.png" title="White">
@@ -715,6 +715,7 @@
               <span class="inner" style="background-image:url('images/dappleswatch.png')"></span>
             </button>
           </div>
+          <div class="colorError" id="colorError">Please select a color</div>
         </div>
 
         <div>
@@ -885,6 +886,7 @@
         scHero.alt = "GRATEFUL Tee - " + sw.dataset.color;
         if (scLabel) scLabel.textContent = sw.dataset.color;
         if (isDapple) return;
+        if (colorError) colorError.style.display = "none";
         document.querySelectorAll(".scSwatch").forEach(s => s.classList.remove("active"));
         sw.classList.add("active");
         document.querySelectorAll(".scThumb").forEach(t => {
@@ -917,6 +919,7 @@
     let selectedSize = "";
     const sizeLabel = document.getElementById("scSizeLabel");
     const sizeError = document.getElementById("sizeError");
+    const colorError = document.getElementById("colorError");
     document.querySelectorAll(".sizeBtn").forEach(btn => {
       btn.addEventListener("click", () => {
         selectedSize = btn.dataset.size;
@@ -931,12 +934,16 @@
     const addBtn = document.getElementById("addToCartBtn");
     addBtn.addEventListener("click", () => {
       const activeSwatch = document.querySelector(".scSwatch.active");
-      const color = activeSwatch ? activeSwatch.dataset.color : "Black";
+      if(!activeSwatch){
+        if(colorError) colorError.style.display = "block";
+        return;
+      }
+      const color = activeSwatch.dataset.color;
       if(!selectedSize){
         if(sizeError) sizeError.style.display = "block";
         return;
       }
-      const imgSrc = activeSwatch ? activeSwatch.dataset.src : "images/core/grateful/gratefullblk.png";
+      const imgSrc = activeSwatch.dataset.src;
       const cartItem = {
         productId: "grateful-core",
         variantId: color + "-" + selectedSize,
