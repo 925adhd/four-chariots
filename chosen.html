@@ -1,0 +1,1003 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CHOSEN | FOUR CHARIOTS</title>
+  <meta name="description" content="CHOSEN Tee — Core Collection. Always available. Built for everyday wear." />
+  <meta name="robots" content="noindex, nofollow" />
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='15' fill='%230b1a2a'/><text x='16' y='22' text-anchor='middle' font-size='18' font-weight='900' font-family='system-ui,sans-serif' fill='%23ffffff'>4C</text></svg>" />
+  <link rel="icon" type="image/png" sizes="192x192" href="images/logo.png" />
+  <link rel="apple-touch-icon" href="images/logo.png" />
+
+  <style>
+    :root{
+      --bg:#ffffff;
+      --text:#0a0a0a;
+      --muted:#5f6368;
+      --line:#e6e6e6;
+      --soft:#f6f6f6;
+      --ink:#0b1a2a;
+      --btn:var(--ink);
+      --btnText:#ffffff;
+      --btnHover:#142a43;
+      --max:1320px;
+      --radius:0px;
+      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+    *{ box-sizing:border-box; }
+    a, button{ cursor:pointer; }
+    html{ scroll-behavior:smooth; }
+    html,body{ height:100%; }
+    [id]{ scroll-margin-top:24px; }
+    body{
+      margin:0;
+      font-family:var(--font);
+      color:var(--text);
+      background:var(--bg);
+      line-height:1.35;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    a{ color:inherit; text-decoration:none; }
+    a, button{ -webkit-tap-highlight-color:transparent; transition: opacity .15s ease, transform .08s ease; }
+    a:active, button:active{ opacity:.7; transform:scale(0.98); }
+    img{ max-width:100%; display:block; }
+    .wrap{
+      max-width:var(--max);
+      margin:0 auto;
+      padding: 18px 18px 70px;
+    }
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding: 14px 0;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      text-transform:uppercase;
+      letter-spacing:-0.02em;
+      font-weight:900;
+    }
+    .brand .wordmark{
+      display:flex;
+      flex-direction:column;
+      line-height:1;
+    }
+    .brand .name{
+      font-size:14px;
+      letter-spacing:0.10em;
+    }
+    .brand .tag{
+      margin-top:4px;
+      font-size:11px;
+      letter-spacing:0.04em;
+      color:var(--muted);
+      font-weight:500;
+      font-style:normal;
+      text-transform:none;
+    }
+    .mark{
+      height:117px;
+      width:auto;
+      display:block;
+    }
+    .nav{
+      display:flex;
+      gap:18px;
+      align-items:center;
+      font-size:13px;
+      color:var(--muted);
+    }
+    .nav a{
+      padding:8px 0;
+      border-bottom:2px solid transparent;
+    }
+    .nav a:hover{
+      color:var(--text);
+      border-bottom-color:var(--text);
+    }
+    .ctaRow{
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 12px 16px;
+      font-size:13px;
+      font-weight:800;
+      letter-spacing:0.06em;
+      text-transform:uppercase;
+      border:1px solid var(--text);
+      border-radius:var(--radius);
+      background:transparent;
+      color:var(--text);
+      transition: background .2s ease, color .2s ease, border-color .2s ease, transform .2s ease;
+      white-space:nowrap;
+    }
+    @media (hover: hover){
+      .btn:hover{
+        background:var(--text);
+        color:var(--btnText);
+        transform:scale(1.04);
+      }
+      .btn.primary:hover{
+        background:var(--bg);
+        color:var(--ink);
+        border-color:var(--ink);
+        transform:scale(1.04);
+      }
+    }
+    .btn.primary{
+      background:var(--btn);
+      color:var(--btnText);
+      border-color:var(--btn);
+    }
+    .btn:disabled{
+      opacity:.6;
+      cursor:not-allowed;
+    }
+    .coming-soon{
+      position:relative;
+      opacity:.5;
+    }
+    .scSwatch.coming-soon{
+      pointer-events:none;
+      cursor:default;
+      margin-left:10px;
+    }
+    .scSwatch.coming-soon::after{
+      white-space:nowrap;
+    }
+    .coming-soon::after{
+      content:"COMING SOON";
+      position:absolute;
+      top:50%;left:50%;
+      transform:translate(-50%,-50%);
+      font-size:7px;
+      font-weight:900;
+      letter-spacing:0.08em;
+      text-transform:uppercase;
+      color:var(--ink);
+      background:rgba(255,255,255,.85);
+      padding:2px 4px;
+      text-align:center;
+      line-height:1.3;
+      width:max-content;
+      max-width:90%;
+      z-index:1;
+    }
+
+    .divider{ border-top:1px solid var(--line); }
+
+    .pageTitle{
+      text-align:center;
+      padding: 40px 0 20px;
+    }
+    .pageTitle h1{
+      margin:0;
+      font-size: clamp(28px, 3.5vw, 44px);
+      text-transform:uppercase;
+      letter-spacing:0.10em;
+      font-weight:950;
+      color:var(--ink);
+    }
+    .pageTitle p{
+      margin:8px 0 0;
+      font-size:14px;
+      color:var(--muted);
+    }
+
+    footer{
+      margin-top: 34px;
+      padding-top: 18px;
+      border-top:1px solid var(--line);
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      align-items:center;
+      justify-content:space-between;
+      color:var(--muted);
+      font-size:13px;
+    }
+    footer .links{ display:flex; gap:14px; flex-wrap:wrap; }
+    footer .links a:hover{ color:var(--text); }
+
+    .showcase{
+      display:grid;
+      grid-template-columns: 1.07fr 0.93fr;
+      gap:0;
+      border:1px solid var(--line);
+      background:var(--bg);
+      overflow:hidden;
+      max-width:900px;
+      margin:12px auto 0;
+    }
+    .scGallery{
+      background:#fafafa;
+      border-right:1px solid var(--line);
+      display:flex;
+      flex-direction:row;
+      align-items:center;
+      gap:8px;
+      padding:18px 10px 18px 18px;
+    }
+    .scMainImg{
+      flex:1;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      min-width:0;
+    }
+    .scMainImg img{
+      max-width:100%;
+      max-height:450px;
+      object-fit:contain;
+      transition: opacity .3s ease;
+    }
+    .scThumbs{
+      display:flex;
+      flex-direction:column;
+      order:-1;
+      flex-shrink:0;
+      max-height:450px;
+      overflow-y:auto;
+      gap:8px;
+      justify-content:flex-start;
+    }
+    .scThumb{
+      width:70px;
+      height:70px;
+      border:2px solid transparent;
+      background:var(--soft);
+      overflow:hidden;
+      cursor:pointer;
+      transition: border-color .2s ease;
+      padding:4px;
+    }
+    .scThumb.active{ border-color:var(--ink); }
+    .scThumb img{
+      width:100%;
+      height:100%;
+      object-fit:contain;
+    }
+    .scInfo{
+      padding:24px;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-start;
+      gap:12px;
+    }
+    .scTitle{
+      margin:0;
+      font-size: clamp(24px, 3vw, 36px);
+      line-height:1;
+      letter-spacing:-0.03em;
+      text-transform:uppercase;
+      font-weight:950;
+      color:var(--ink);
+    }
+    .scPrice{
+      font-size:20px;
+      font-weight:900;
+      color:var(--ink);
+      letter-spacing:-0.02em;
+    }
+    .scDesc{
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.6;
+      max-width:48ch;
+    }
+    .product-material-note {
+      font-size:0.9rem;
+      letter-spacing:0.14em;
+      text-transform:uppercase;
+      margin:6px 0 14px 0;
+      opacity:0.65;
+      color:var(--muted);
+      font-weight:500;
+    }
+    .product-divider {
+      border: none;
+      border-top: 1px solid rgba(0,0,0,0.08);
+      margin: 14px 0 18px 0;
+    }
+    .product-description { margin-top: 18px; }
+    .scripture-hint { font-size:12px; color:var(--muted); margin:8px 0; }
+    .scLabel{
+      font-size:12px;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:0.10em;
+      color:var(--ink);
+    }
+    .scLabel .val{
+      font-weight:500;
+      color:var(--muted);
+      text-transform:none;
+      letter-spacing:0;
+      margin-left:6px;
+    }
+    .sizeError, .colorError{
+      font-size:12px;
+      color:#8b2020;
+      margin-top:6px;
+      display:none;
+    }
+    .sizeBtns{
+      display:flex;
+      gap:6px;
+      flex-wrap:wrap;
+      margin-top:8px;
+    }
+    .sizeBtn{
+      padding:8px 14px;
+      font-size:12px;
+      font-weight:700;
+      font-family:var(--font);
+      letter-spacing:0.04em;
+      border:1px solid var(--line);
+      background:transparent;
+      color:var(--text);
+      cursor:pointer;
+      transition: border-color .2s ease, background .2s ease;
+    }
+    .sizeBtn:hover{ border-color:var(--ink); }
+    .sizeBtn.active{
+      background:var(--ink);
+      color:var(--bg);
+      border-color:var(--ink);
+    }
+    .scColors{
+      display:flex;
+      gap:8px;
+    }
+    .scSwatch{
+      width:34px;
+      height:34px;
+      border-radius:50%;
+      border:2px solid transparent;
+      cursor:pointer;
+      padding:0;
+      background:none;
+      transition: border-color .2s ease, transform .15s ease;
+    }
+    .scSwatch:hover{ transform:scale(1.1); }
+    .scSwatch.active{ border-color:var(--ink); }
+    .scSwatch .inner{
+      display:block;
+      width:100%;
+      height:100%;
+      border-radius:50%;
+      border:1px solid var(--line);
+      background-size:cover;
+      background-position:center;
+    }
+    .scMeta{
+      padding-top:14px;
+      border-top:1px solid var(--line);
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+    }
+    .scMetaItem{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      font-size:12px;
+      color:var(--muted);
+    }
+    .scMetaItem svg{
+      width:16px;
+      height:16px;
+      flex-shrink:0;
+      color:var(--ink);
+    }
+
+    .memberBanner{
+      background:var(--ink);
+      color:#fff;
+      text-align:center;
+      padding:10px 16px;
+      font-size:12px;
+      font-weight:700;
+      letter-spacing:0.06em;
+      text-transform:uppercase;
+    }
+    .memberBanner a{
+      color:#fff;
+      text-decoration:underline;
+      text-underline-offset:3px;
+      margin-left:6px;
+      font-weight:900;
+    }
+    .memberBanner a:hover{ opacity:.8; }
+
+    .menuBtn{
+      display:none;
+      background:none;
+      border:1px solid var(--line);
+      padding:8px 10px;
+      cursor:pointer;
+      font-size:18px;
+      line-height:1;
+      color:var(--text);
+    }
+
+    @media (max-width: 980px){
+      .wrap{ padding: 14px 14px 50px; }
+      .brand .tag{ display:none; }
+      .menuBtn{ display:block; }
+      .nav{
+        display:none;
+        position:absolute;
+        top:100%;
+        left:0;
+        right:0;
+        background:var(--bg);
+        border-bottom:none;
+        flex-direction:column;
+        padding:0;
+        gap:0;
+        z-index:100;
+        left:-18px;
+        right:-18px;
+      }
+      .nav.open{ display:flex; }
+      .nav a{
+        padding:12px 18px;
+        border-bottom:1px solid var(--line);
+        width:100%;
+      }
+      .nav a:last-child{ border-bottom:none; }
+      .nav a.navActive,
+      .nav a:hover{
+        border-bottom-color:var(--line);
+      }
+      .nav a.navActive{
+        color:var(--text);
+        font-weight:600;
+      }
+      .navOverlay{
+        display:none;
+        position:fixed;
+        top:0;left:0;right:0;bottom:0;
+        background:rgba(0,0,0,.35);
+        z-index:99;
+      }
+      .navOverlay.open{ display:block; }
+      .ctaRow{ display:none; }
+      .mobileCart{ display:flex !important; }
+      .topbar{ position:relative; }
+
+      .pageTitle{ padding: 28px 0 14px; }
+      .pageTitle h1{ font-size: clamp(24px, 7vw, 36px); }
+
+      .showcase{ grid-template-columns: 1fr; }
+      .scGallery{ flex-direction:column; border-right:none; border-bottom:1px solid var(--line); padding:14px; align-items:center; }
+      .scMainImg{ justify-content:center; }
+      .scMainImg img{ max-height:280px; }
+      .scThumbs{ flex-direction:row; order:0; max-height:none; overflow-y:visible; gap:6px; flex-wrap:wrap; justify-content:center; }
+      .scThumb{ width:48px; height:48px; }
+      .scThumb.model-thumb{ order:-1; }
+      .scInfo{ padding:18px; gap:10px; align-items:center; text-align:center; }
+      .sizeBtns{ justify-content:center; }
+      .scSwatches{ justify-content:center; }
+      .scMeta{ justify-content:center; }
+      .scMetaItem{ justify-content:center; }
+      .scTitle{ font-size: clamp(22px, 6vw, 32px); }
+      .scPrice{ font-size:18px; }
+      .scDesc{ font-size:13px; }
+      .scMeta{ gap:6px; }
+
+      footer{ flex-direction:column; align-items:flex-start; gap:6px; margin-top:24px; }
+    }
+    @media (max-width: 640px){
+      .mark{ height: 72px; }
+      .topbar{ padding: 10px 0; }
+      .nav{ left:-14px; right:-14px; }
+      .nav a{ padding:12px 14px; }
+      .brand .name{ font-size: 12px; }
+    }
+    .cartBtn{ position:relative; }
+    .mobileCart{
+      display:none;
+      position:relative;
+      background:none;
+      border:none;
+      padding:6px;
+      cursor:pointer;
+      color:var(--ink);
+      text-decoration:none;
+      align-items:center;
+    }
+    .cartBadge{
+      position:absolute; top:-6px; right:-8px;
+      background:var(--bg); color:var(--ink);
+      font-size:10px; font-weight:900;
+      min-width:18px; height:18px; border-radius:9px;
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:0 5px; border:2px solid var(--ink);
+    }
+
+    /* ───────── CRAFT SCROLL (core — understated) ───────── */
+
+    .craftScroll{
+      margin-top:32px;
+      border-top:1px solid var(--line);
+    }
+
+    .craftBlock{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      text-align:center;
+      gap:20px;
+      padding:37px 0;
+      border-bottom:1px solid var(--line);
+    }
+
+    .craftBlock img{
+      width:100%;
+      max-width:520px;
+      height:auto;
+      object-fit:cover;
+      border:1px solid rgba(0,0,0,0.05);
+    }
+
+    .craftText{
+      max-width:48ch;
+    }
+
+    .craftText h3{
+      margin:0 0 8px;
+      font-size:14px;
+      letter-spacing:0.10em;
+      text-transform:uppercase;
+      color:var(--ink);
+      font-weight:800;
+    }
+
+    .craftText p{
+      margin:0;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.7;
+      max-width:42ch;
+      margin-left:auto;
+      margin-right:auto;
+    }
+
+    .craftBlock:last-child img{
+      max-width:360px;
+    }
+
+    @media (max-width:980px){
+      .craftBlock{
+        gap:4px;
+        padding:20px 0;
+      }
+      .craftBlock:last-child img{
+        max-width:85%;
+      }
+    }
+
+    /* Subtle reveal */
+    .reveal.will-reveal{
+      opacity:0;
+      transform: translateY(12px);
+      transition: opacity .55s ease, transform .55s ease;
+      will-change: opacity, transform;
+    }
+    .reveal.is-visible{
+      opacity:1;
+      transform: translateY(0);
+    }
+    .craftBlock.reveal{
+      opacity:0;
+      transform:translateY(10px);
+      transition: opacity .5s ease, transform .5s ease;
+      will-change: opacity, transform;
+    }
+    .craftBlock.reveal.is-visible{
+      opacity:1;
+      transform:translateY(0);
+    }
+    @media (prefers-reduced-motion: reduce){
+      .reveal.will-reveal{ opacity:1; transform:none; transition:none; }
+      .craftBlock.reveal{ opacity:1; transform:none; transition:none; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <a class="brand" href="index.html">
+        <img class="mark" src="images/logo.png" alt="Four Chariots logo" />
+        <span class="wordmark">
+          <span class="name">FOUR CHARIOTS</span>
+        </span>
+      </a>
+
+      <nav class="nav" aria-label="Site navigation">
+        <a href="shop.html">Shop</a>
+        <a href="drop.html">The Drop</a>
+        <a href="membership.html">Membership</a>
+        <a href="about.html">About</a>
+        <a href="support.html">Support</a>
+      </nav>
+
+      <div class="navOverlay" id="navOverlay"></div>
+
+      <a class="mobileCart cartBtn" href="cart.html" aria-label="Cart"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg><span class="cartBadge" id="cartBadgeMobile" style="display:none;">0</span></a>
+      <button class="menuBtn" aria-label="Toggle menu" onclick="document.querySelector('.nav').classList.toggle('open');document.getElementById('navOverlay').classList.toggle('open')">&#9776;</button>
+
+      <div class="ctaRow">
+        <a class="btn" href="shop.html">Shop</a>
+        <a class="btn primary cartBtn" href="cart.html" id="cartBtn">Cart <span class="cartBadge" id="cartBadge" style="display:none;">0</span></a>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="memberBanner">
+      Free shipping on every drop &mdash; members only.<a href="membership.html">Join now</a>
+    </div>
+
+    <div class="pageTitle">
+      <h1>CHOSEN</h1>
+      <p>Core Collection. Always available. Built for everyday wear.</p>
+    </div>
+
+    <div class="showcase">
+      <div class="scGallery">
+        <div class="scMainImg" style="position:relative;">
+          <img id="scHeroImg" src="images/core/chosen/model.png" alt="CHOSEN Tee" />
+          <span id="comingSoonBadge" style="display:none; position:absolute; top:50%; left:0; right:0; transform:translateY(-50%); font-size:11px; font-weight:900; letter-spacing:0.30em; text-transform:uppercase; color:var(--ink); background:rgba(255,255,255,.88); padding:14px 0; text-align:center; backdrop-filter:blur(2px); border-top:1px solid rgba(11,26,42,.08); border-bottom:1px solid rgba(11,26,42,.08);">COMING SOON</span>
+        </div>
+        <div class="scThumbs">
+          <div class="scThumb" data-src="images/core/chosen/cosenblk.png" data-color="Black" data-hex="#1a1a1a">
+            <img src="images/core/chosen/cosenblk.png" alt="Black" />
+          </div>
+          <div class="scThumb active model-thumb" data-src="images/core/chosen/model.png" data-color="" data-hex="">
+            <img src="images/core/chosen/model.png" alt="Model" />
+          </div>
+          <div class="scThumb" data-src="images/core/chosen/chosenwhite.png" data-color="White" data-hex="#f5f0e1">
+            <img src="images/core/chosen/chosenwhite.png" alt="White" />
+          </div>
+          <div class="scThumb" data-src="images/core/chosen/chosenred.png" data-color="Red" data-hex="#8b2232">
+            <img src="images/core/chosen/chosenred.png" alt="Red" />
+          </div>
+          <div class="scThumb coming-soon" data-src="images/core/chosen/chosendap.png" data-color="Dapple" data-hex="#555555">
+            <img src="images/core/chosen/chosendap.png" alt="Dapple" />
+          </div>
+        </div>
+      </div>
+
+      <div class="scInfo">
+        <h2 class="scTitle">CHOSEN</h2>
+        <div class="scPrice">$45.00</div>
+
+        <p class="product-material-note">HEAVYWEIGHT 100 PERCENT PREMIUM USA COTTON</p>
+        <hr class="product-divider">
+
+        <p class="scDesc product-description">
+          A single word, carried into the everyday.<br>
+          Designed to be worn with intention.<br>
+          Precision embroidery. Everyday durability.
+        </p>
+
+        <p class="scripture-hint">John 15:16 — connected scripture detail</p>
+
+        <div>
+          <div class="scLabel">Color <span class="val" id="scColorLabel"></span></div>
+          <div class="scColors" style="margin-top:8px;">
+            <button class="scSwatch" data-color="Black" data-src="images/core/chosen/cosenblk.png" title="Black">
+              <span class="inner" style="background-image:url('images/blackswatch.png')"></span>
+            </button>
+            <button class="scSwatch" data-color="White" data-src="images/core/chosen/chosenwhite.png" title="White">
+              <span class="inner" style="background-image:url('images/whiteswatch.png')"></span>
+            </button>
+            <button class="scSwatch" data-color="Red" data-src="images/core/chosen/chosenred.png" title="Red">
+              <span class="inner" style="background-image:url('images/redswatch.png')"></span>
+            </button>
+            <button class="scSwatch coming-soon" data-color="Dapple" data-src="images/core/chosen/chosendap.png" title="Dapple">
+              <span class="inner" style="background-image:url('images/dappleswatch.png')"></span>
+            </button>
+          </div>
+          <div class="colorError" id="colorError">Please select a color</div>
+        </div>
+
+        <div>
+          <div class="scLabel">Size <span class="val" id="scSizeLabel"></span></div>
+          <div class="sizeBtns">
+            <button class="sizeBtn" data-size="S">S</button>
+            <button class="sizeBtn" data-size="M">M</button>
+            <button class="sizeBtn" data-size="L">L</button>
+            <button class="sizeBtn" data-size="XL">XL</button>
+            <button class="sizeBtn" data-size="2XL">2XL</button>
+            <button class="sizeBtn" data-size="3XL">3XL</button>
+          </div>
+          <div class="sizeError" id="sizeError">Please select a size</div>
+        </div>
+
+        <button class="btn primary" id="addToCartBtn" style="width:100%;margin-top:4px;">Add to cart</button>
+
+        <div class="scMeta">
+          <div class="scMetaItem">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+            <span>Made to order, just for you</span>
+          </div>
+          <div class="scMetaItem">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><path d="M1 10h22"/></svg>
+            <span>Secure checkout via Stripe</span>
+          </div>
+          <div class="scMetaItem">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 18H3a1 1 0 01-1-1V7a1 1 0 011-1h10v11m0-11h3l3 4v7a1 1 0 01-1 1h-2"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>
+            <span>Free shipping for <a href="membership.html" style="text-decoration:underline;text-underline-offset:3px;font-weight:700;">members</a></span>
+          </div>
+        </div>
+
+        <div style="padding-top:14px; border-top:1px solid var(--line);">
+          <div style="font-size:11px; font-weight:900; text-transform:uppercase; letter-spacing:0.16em; color:var(--muted); margin-bottom:8px;">Connected Verse</div>
+          <p style="margin:0; font-size:13px; color:var(--muted); line-height:1.55;">
+            Every piece carries a scripture reference chosen to reflect the word on the front.
+            "CHOSEN" connects to <strong style="color:var(--ink);">John 15:16</strong> &mdash; "You did not choose Me, but I chose you." &mdash; embroidered quietly along the right sleeve as a mark of intention.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div style="max-width:900px; margin:0 auto;"><hr style="border:none; border-top:1px solid rgba(0,0,0,0.08); margin:0;"></div>
+
+    <!-- CRAFT SCROLL (understated — core collection) -->
+    <section class="craftScroll">
+
+      <div class="craftBlock">
+        <img src="images/core/chosen/choesencloseup.png" alt="Embroidery close-up">
+        <div class="craftText">
+          <h3>CLEAN EMBROIDERY</h3>
+          <p>
+            Stitched with care, not excess. Dense enough to hold its shape through everyday wear and repeated washing.
+          </p>
+        </div>
+      </div>
+
+      <div class="craftBlock">
+        <img src="images/core/chosen/scripturecloseup.png" alt="Sleeve scripture detail" style="max-width:442px;">
+        <div class="craftText">
+          <h3>SCRIPTURE ON THE SLEEVE</h3>
+          <p>
+            John 15:16 rests along the right sleeve. A quiet detail that carries weight without needing to explain itself.
+          </p>
+        </div>
+      </div>
+
+      <div class="craftBlock">
+        <img src="images/closeupsleeve.png" alt="Embroidered patch detail">
+        <div class="craftText">
+          <h3>DETAILS THAT HOLD</h3>
+          <p>
+            Heavyweight cotton. Embroidered patch. Built for daily wear and made to last beyond the season.
+          </p>
+        </div>
+      </div>
+
+    </section>
+
+    <footer>
+      <div>&copy; <span id="year"></span> FOUR CHARIOTS</div>
+      <div class="links">
+        <a href="mailto:support@4chariots.com">Contact</a>
+        <a href="YOUR_INSTAGRAM_URL_HERE" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    document.querySelectorAll(".nav a").forEach(a => {
+      a.addEventListener("click", () => {
+        document.querySelector(".nav").classList.remove("open");
+        document.getElementById("navOverlay").classList.remove("open");
+      });
+    });
+    document.getElementById("navOverlay").addEventListener("click", () => {
+      document.querySelector(".nav").classList.remove("open");
+      document.getElementById("navOverlay").classList.remove("open");
+    });
+
+    // On mobile, show model image first
+    const scHero = document.getElementById("scHeroImg");
+    const scLabel = document.getElementById("scColorLabel");
+    if (window.innerWidth <= 980) {
+      const modelThumb = document.querySelector(".model-thumb");
+      if (modelThumb) {
+        scHero.src = modelThumb.dataset.src;
+        document.querySelectorAll(".scThumb").forEach(t => t.classList.remove("active"));
+        modelThumb.classList.add("active");
+      }
+    }
+
+    // Showcase thumbnail + swatch switching
+    const canHover = window.matchMedia("(hover: hover)").matches;
+    const comingSoonBadge = document.getElementById("comingSoonBadge");
+
+    function switchScThumb(thumb) {
+      scHero.src = thumb.dataset.src;
+      scHero.alt = "CHOSEN Tee - " + thumb.dataset.color;
+      if (scLabel) scLabel.textContent = thumb.dataset.color;
+      document.querySelectorAll(".scThumb").forEach(t => t.classList.remove("active"));
+      thumb.classList.add("active");
+      if (comingSoonBadge) comingSoonBadge.style.display = "none";
+      document.querySelectorAll(".scSwatch").forEach(s => {
+        s.classList.toggle("active", s.dataset.color === thumb.dataset.color);
+      });
+    }
+
+    document.querySelectorAll(".scThumb").forEach(thumb => {
+      const isDapple = thumb.classList.contains("coming-soon") || thumb.dataset.color === "Dapple";
+      if (canHover) {
+        thumb.addEventListener("mouseenter", () => {
+          scHero.src = thumb.dataset.src;
+          scHero.alt = "CHOSEN Tee - " + thumb.dataset.color;
+          if (scLabel) scLabel.textContent = thumb.dataset.color;
+          if (comingSoonBadge) comingSoonBadge.style.display = isDapple ? "block" : "none";
+          if (isDapple) {
+            document.querySelectorAll(".scSwatch").forEach(s => s.classList.remove("active"));
+            document.querySelectorAll(".scThumb").forEach(t => t.classList.remove("active"));
+            thumb.classList.add("active");
+          } else {
+            switchScThumb(thumb);
+          }
+        });
+      }
+      thumb.addEventListener("click", () => {
+        scHero.src = thumb.dataset.src;
+        scHero.alt = "CHOSEN Tee - " + thumb.dataset.color;
+        if (scLabel) scLabel.textContent = thumb.dataset.color;
+        if (comingSoonBadge) comingSoonBadge.style.display = isDapple ? "block" : "none";
+        if (isDapple) {
+          document.querySelectorAll(".scSwatch").forEach(s => s.classList.remove("active"));
+          document.querySelectorAll(".scThumb").forEach(t => t.classList.remove("active"));
+          thumb.classList.add("active");
+        } else {
+          switchScThumb(thumb);
+        }
+      });
+    });
+
+    document.querySelectorAll(".scSwatch").forEach(sw => {
+      const isDapple = sw.classList.contains("coming-soon") || sw.dataset.color === "Dapple";
+      sw.addEventListener("click", () => {
+        if (comingSoonBadge) comingSoonBadge.style.display = "none";
+        scHero.src = sw.dataset.src;
+        scHero.alt = "CHOSEN Tee - " + sw.dataset.color;
+        if (scLabel) scLabel.textContent = sw.dataset.color;
+        if (isDapple) return;
+        if (colorError) colorError.style.display = "none";
+        document.querySelectorAll(".scSwatch").forEach(s => s.classList.remove("active"));
+        sw.classList.add("active");
+        document.querySelectorAll(".scThumb").forEach(t => {
+          t.classList.toggle("active", t.dataset.color === sw.dataset.color);
+        });
+      });
+    });
+
+    /* Cart API */
+    function getCart(){try{const r=localStorage.getItem("fc_cart");return r?JSON.parse(r):[];}catch{return[];}}
+    function saveCart(items){try{localStorage.setItem("fc_cart",JSON.stringify(items));}catch{}}
+    function addToCart(item){
+      const cart=getCart();
+      const idx=cart.findIndex(i=>i.productId===item.productId&&i.variantId===item.variantId);
+      if(idx>=0){cart[idx].quantity=Math.min(cart[idx].quantity+item.quantity,10);}
+      else{cart.push(item);}
+      saveCart(cart);
+      return cart;
+    }
+    function getCartCount(){return getCart().reduce((s,i)=>s+i.quantity,0);}
+    function updateCartBadge(){
+      const c=getCartCount();
+      document.querySelectorAll("#cartBadge, #cartBadgeMobile").forEach(b => {
+        if(c>0){b.textContent=c;b.style.display="inline-flex";}else{b.style.display="none";}
+      });
+    }
+    updateCartBadge();
+
+    /* Size selector */
+    let selectedSize = "";
+    const sizeLabel = document.getElementById("scSizeLabel");
+    const sizeError = document.getElementById("sizeError");
+    const colorError = document.getElementById("colorError");
+    document.querySelectorAll(".sizeBtn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        selectedSize = btn.dataset.size;
+        if(sizeLabel) sizeLabel.textContent = selectedSize;
+        if(sizeError) sizeError.style.display = "none";
+        document.querySelectorAll(".sizeBtn").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+      });
+    });
+
+    /* Add to cart */
+    const addBtn = document.getElementById("addToCartBtn");
+    addBtn.addEventListener("click", () => {
+      const activeSwatch = document.querySelector(".scSwatch.active");
+      if(!activeSwatch){
+        if(colorError) colorError.style.display = "block";
+        return;
+      }
+      const color = activeSwatch.dataset.color;
+      if(!selectedSize){
+        if(sizeError) sizeError.style.display = "block";
+        return;
+      }
+      const imgSrc = activeSwatch.dataset.src;
+      const cartItem = {
+        productId: "chosen-core",
+        variantId: color + "-" + selectedSize,
+        title: "CHOSEN Tee",
+        color: color,
+        size: selectedSize,
+        price: 8000,
+        imageUrl: imgSrc,
+        quantity: 1
+      };
+      addBtn.disabled = true;
+      addBtn.textContent = "Added!";
+      addToCart(cartItem);
+      updateCartBadge();
+      setTimeout(() => { window.location.href = "cart.html"; }, 500);
+    });
+
+    /* Opt-in reveal — content visible by default, animation is progressive enhancement */
+    (function(){
+      var els = document.querySelectorAll(".reveal");
+      if (!("IntersectionObserver" in window)) {
+        els.forEach(function(el){ el.classList.add("is-visible"); });
+        return;
+      }
+      els.forEach(function(el){ el.classList.add("will-reveal"); });
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if(entry.isIntersecting){
+            entry.target.classList.add("is-visible");
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.18, rootMargin: "0px 0px -10% 0px" });
+      els.forEach(function(el){ io.observe(el); });
+    })();
+
+    // Reveal craft sections on scroll
+    (function(){
+      var craftEls = document.querySelectorAll('.craftBlock');
+      craftEls.forEach(function(el){ el.classList.add('reveal'); });
+      if (!("IntersectionObserver" in window)) {
+        craftEls.forEach(function(el){ el.classList.add('is-visible'); });
+        return;
+      }
+      var cio = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if(entry.isIntersecting){
+            entry.target.classList.add('is-visible');
+            cio.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15, rootMargin: "0px 0px -8% 0px" });
+      craftEls.forEach(function(el){ cio.observe(el); });
+    })();
+  </script>
+</body>
+</html>
