@@ -451,8 +451,7 @@
         z-index:99;
       }
       .navOverlay.open{ display:block; }
-      .ctaRow{ display:none; }
-      .mobileCart{ display:flex !important; }
+      .ctaRow .btn:not(.primary){ display:none; }
       .topbar{ position:relative; }
       .hero{ grid-template-columns: 1fr; }
       .grid{ grid-template-columns: 1fr; gap: 10px; }
@@ -521,7 +520,7 @@
 
       <div class="ctaRow">
         <a class="btn" href="shop.html">Shop</a>
-        <a class="btn primary cartBtn" href="cart.html" id="cartBtn">Cart <span class="cartBadge" id="cartBadge" style="display:none;">0</span></a>
+        <button class="btn primary" type="button" onclick="window.FCNotify&&FCNotify.open({productId:'general',productName:'the next drop'})">Notify Me</button>
       </div>
     </div>
 
