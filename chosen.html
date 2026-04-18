@@ -731,7 +731,7 @@
           <div class="sizeError" id="sizeError">Please select a size</div>
         </div>
 
-        <button class="btn primary" id="addToCartBtn" style="width:100%;margin-top:4px;">Add to cart</button>
+        <button class="btn primary" id="addToCartBtn" style="width:100%;margin-top:4px;">Notify me</button>
 
         <div class="scMeta">
           <div class="scMetaItem">
@@ -805,6 +805,7 @@
     </footer>
   </div>
 
+  <script src="notify.js"></script>
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
@@ -931,35 +932,19 @@
       });
     });
 
-    /* Add to cart */
+    /* Notify waitlist */
     const addBtn = document.getElementById("addToCartBtn");
     addBtn.addEventListener("click", () => {
       const activeSwatch = document.querySelector(".scSwatch.active");
-      if(!activeSwatch){
-        if(colorError) colorError.style.display = "block";
-        return;
-      }
-      const color = activeSwatch.dataset.color;
-      if(!selectedSize){
-        if(sizeError) sizeError.style.display = "block";
-        return;
-      }
-      const imgSrc = activeSwatch.dataset.src;
-      const cartItem = {
+      const color = activeSwatch ? activeSwatch.dataset.color : "";
+      const parts = [];
+      if (color) parts.push(color);
+      if (selectedSize) parts.push(selectedSize);
+      FCNotify.open({
         productId: "chosen-core",
-        variantId: color + "-" + selectedSize,
-        title: "CHOSEN Tee",
-        color: color,
-        size: selectedSize,
-        price: 2500,
-        imageUrl: imgSrc,
-        quantity: 1
-      };
-      addBtn.disabled = true;
-      addBtn.textContent = "Added!";
-      addToCart(cartItem);
-      updateCartBadge();
-      setTimeout(() => { window.location.href = "cart.html"; }, 500);
+        productName: "CHOSEN Tee",
+        variant: parts.join(" / ")
+      });
     });
 
     /* Opt-in reveal — content visible by default, animation is progressive enhancement */

@@ -918,7 +918,7 @@
 
         <div class="product-cta">
           <div class="releaseClosed" id="releaseClosed">Release Closed</div>
-          <button class="btn primary" id="addToCartBtn" style="width:100%;margin-top:4px;">Add to cart</button>
+          <button class="btn primary" id="addToCartBtn" style="width:100%;margin-top:4px;">Notify me</button>
 
           <div class="trust-strip">
             <div class="scMetaItem">
@@ -1041,6 +1041,7 @@
     </footer>
   </div>
 
+  <script src="notify.js"></script>
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
@@ -1181,31 +1182,19 @@
       });
     });
 
-    /* Add to cart */
+    /* Notify waitlist */
     const addBtn = document.getElementById("addToCartBtn");
     addBtn.addEventListener("click", () => {
       const activeSwatch = document.querySelector(".scSwatch.active");
-      const color = activeSwatch ? activeSwatch.dataset.color : "Black";
-      if(!selectedSize){
-        if(sizeError) sizeError.style.display = "block";
-        return;
-      }
-      const imgSrc = activeSwatch ? activeSwatch.dataset.src : "images/drops/unshaken/unshakenblk.png";
-      const cartItem = {
+      const color = activeSwatch ? activeSwatch.dataset.color : "";
+      const parts = [];
+      if (color) parts.push(color);
+      if (selectedSize) parts.push(selectedSize);
+      FCNotify.open({
         productId: "unshaken-drop-001",
-        variantId: color + "-" + selectedSize,
-        title: "UNSHAKEN Tee — DROP - 001",
-        color: color,
-        size: selectedSize,
-        price: 5000,
-        imageUrl: imgSrc,
-        quantity: 1
-      };
-      addBtn.disabled = true;
-      addBtn.textContent = "Added!";
-      addToCart(cartItem);
-      updateCartBadge();
-      setTimeout(() => { window.location.href = "cart.html"; }, 500);
+        productName: "UNSHAKEN Tee — DROP 001",
+        variant: parts.join(" / ")
+      });
     });
 
     /* ── Drop product state system ── */
@@ -1223,8 +1212,7 @@
         // ARCHIVED
         showcase.classList.add("archived");
         statusEl.style.display = "none";
-        addCartBtn.disabled = true;
-        addCartBtn.textContent = "Archived";
+        addCartBtn.textContent = "Notify me when restocked";
       } else if (remaining < 10) {
         // LOW REMAINING
         showcase.classList.remove("archived");

@@ -892,7 +892,10 @@
       document.getElementById("navOverlay").classList.remove("open");
     });
 
-    /* ── Init ── */
+    /* ── Init ──
+       Checkout is not live yet — waitlist mode. Clear any stale cart
+       from before the waitlist switch so no one lands on a broken flow. */
+    try { localStorage.removeItem("fc_cart"); } catch {}
     renderCart();
   </script>
 </body>

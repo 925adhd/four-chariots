@@ -550,7 +550,7 @@
           </div>
         </div>
 
-        <a class="btn primary" href="#" id="memberCheckoutBtn" style="margin-top:18px;">Enter the Circle</a>
+        <a class="btn primary" href="#" id="memberCheckoutBtn" style="margin-top:18px;">Notify me when seats open</a>
         <a class="btn" href="shop.html" style="margin-left:10px;">Shop single drop</a>
         <div id="memberError" style="font-size:12px;color:#8b2020;margin-top:8px;display:none;"></div>
 
@@ -651,6 +651,7 @@
     </footer>
   </div>
 
+  <script src="notify.js"></script>
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
@@ -663,11 +664,14 @@
     document.getElementById("navOverlay").addEventListener("click", () => {
       document.querySelector(".nav").classList.remove("open");
       document.getElementById("navOverlay").classList.remove("open");
-    }); // Wire this button to your Stripe flow later (same approach as your drop checkout).
+    });
     document.getElementById("memberCheckoutBtn").addEventListener("click", (e) => {
       e.preventDefault();
-      const errEl = document.getElementById("memberError");
-      if(errEl){ errEl.textContent = "Membership checkout is not wired yet."; errEl.style.display = "block"; }
+      FCNotify.open({
+        productId: "fc-membership",
+        productName: "Membership — The Circle",
+        variant: ""
+      });
     });
 
     /* Cart badge */

@@ -549,7 +549,7 @@
           <button class="qtyBtn" id="qtyPlus" aria-label="Increase quantity">+</button>
         </div>
 
-        <button class="btn primary addToCart" id="addToCartBtn">Add to cart</button>
+        <button class="btn primary addToCart" id="addToCartBtn">Notify me</button>
 
         <div class="pdpMeta">
           <div class="metaItem">
@@ -585,6 +585,7 @@
     </footer>
   </div>
 
+  <script src="notify.js"></script>
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
@@ -647,21 +648,13 @@
       if (quantity < 10) { quantity++; qtyVal.textContent = quantity; }
     });
 
-    /* ── Add to cart ── */
+    /* ── Notify waitlist ── */
     document.getElementById("addToCartBtn").addEventListener("click", function() {
-      addToCart({
+      FCNotify.open({
         productId: "fc-foundation-seal-sticker",
-        variantId: "sticker-default",
-        title: "Foundation Seal Sticker",
-        color: "",
-        size: "",
-        price: 400,
-        imageUrl: "images/gear/stickerdecal.jpg",
-        quantity: quantity
+        productName: "Foundation Seal Sticker",
+        variant: ""
       });
-      this.disabled = true;
-      this.textContent = "Added!";
-      setTimeout(() => { window.location.href = "cart.html"; }, 500);
     });
 
     /* ── Fade in ── */
