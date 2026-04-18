@@ -67,7 +67,7 @@
     :root{
       --bg:#ffffff;
       --text:#0a0a0a;
-      --muted:#5f6368;
+      --muted:#464b52;
       --line:#e6e6e6;
       --soft:#f6f6f6;
       --ink:#0b1a2a;
@@ -478,6 +478,14 @@
       outline:2px solid #0b1a2a;
       outline-offset:2px;
     }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
   </style>
 </head>
 
@@ -718,16 +726,25 @@
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    var fcCloseNav = function () {
+    var fcCloseNav = function (returnFocus) {
       document.querySelector(".nav").classList.remove("open");
       document.getElementById("navOverlay").classList.remove("open");
       var mb = document.querySelector(".menuBtn");
-      if (mb) mb.setAttribute("aria-expanded", "false");
+      if (mb) {
+        mb.setAttribute("aria-expanded", "false");
+        if (returnFocus === true) mb.focus();
+      }
     };
     document.querySelectorAll(".nav a").forEach(function (a) {
       a.addEventListener("click", fcCloseNav);
     });
-    document.getElementById("navOverlay").addEventListener("click", fcCloseNav);
+    document.getElementById("navOverlay").addEventListener("click", function(){ fcCloseNav(true); });
+    document.addEventListener("keydown", function(e){
+      if (e.key === "Escape") {
+        var n = document.querySelector(".nav");
+        if (n && n.classList.contains("open")) fcCloseNav(true);
+      }
+    });
 
     // staggered fade-in
     const observer = new IntersectionObserver((entries) => {
