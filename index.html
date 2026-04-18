@@ -5,16 +5,68 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>FOUR CHARIOTS</title>
 
-  <meta name="description" content="Timeless faith for daily life. Minimal pieces with meaning." />
-  <meta name="robots" content="noindex, nofollow" />
+  <meta name="description" content="FOUR CHARIOTS — faith-driven apparel and scripture tees made to order. Minimalist pieces with meaning, shipped nationwide from Leitchfield, KY." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://4chariots.com/" />
 
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='15' fill='%230b1a2a'/><text x='16' y='22' text-anchor='middle' font-size='18' font-weight='900' font-family='system-ui,sans-serif' fill='%23ffffff'>4C</text></svg>" />
   <link rel="icon" type="image/png" sizes="192x192" href="images/logo.png" />
   <link rel="apple-touch-icon" href="images/logo.png" />
 
-  <meta property="og:title" content="FOUR CHARIOTS" />
-  <meta property="og:description" content="Timeless faith for daily life. Minimal pieces with meaning." />
+  <meta property="og:site_name" content="FOUR CHARIOTS" />
   <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://4chariots.com/" />
+  <meta property="og:title" content="FOUR CHARIOTS — Faith-Driven Apparel" />
+  <meta property="og:description" content="Minimalist scripture tees and gear made with intention. Shipped nationwide from Leitchfield, KY." />
+  <meta property="og:image" content="https://4chariots.com/images/logo.png" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="FOUR CHARIOTS — Faith-Driven Apparel" />
+  <meta name="twitter:description" content="Minimalist scripture tees and gear made with intention. Shipped nationwide from Leitchfield, KY." />
+  <meta name="twitter:image" content="https://4chariots.com/images/logo.png" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "FOUR CHARIOTS",
+    "url": "https://4chariots.com",
+    "logo": "https://4chariots.com/images/logo.png",
+    "email": "support@4chariots.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Leitchfield",
+      "addressRegion": "KY",
+      "addressCountry": "US"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "OnlineStore",
+    "name": "FOUR CHARIOTS",
+    "url": "https://4chariots.com",
+    "logo": "https://4chariots.com/images/logo.png",
+    "image": "https://4chariots.com/images/logo.png",
+    "email": "support@4chariots.com",
+    "description": "FOUR CHARIOTS is a faith-driven apparel brand based in Leitchfield, KY. Minimalist scripture tees and gear made to order.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Leitchfield",
+      "addressRegion": "KY",
+      "addressCountry": "US"
+    },
+    "priceRange": "$$",
+    "knowsAbout": [
+      "faith-driven apparel",
+      "scripture tees",
+      "Christian streetwear",
+      "minimalist faith apparel",
+      "made-to-order clothing"
+    ]
+  }
+  </script>
 
   <style>
     :root{
@@ -881,17 +933,40 @@
       display:inline-flex; align-items:center; justify-content:center;
       padding:0 5px; border:2px solid var(--ink);
     }
+      .skip-to-content{
+      position:absolute;
+      top:-48px;
+      left:8px;
+      z-index:10000;
+      padding:10px 14px;
+      background:#0b1a2a;
+      color:#fff;
+      font-size:13px;
+      font-weight:700;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+      text-decoration:none;
+      border-radius:0;
+      transition:top .15s ease;
+    }
+    .skip-to-content:focus{ top:8px; outline:2px solid #fff; outline-offset:2px; }
+    a:focus-visible, button:focus-visible, input:focus-visible,
+    select:focus-visible, textarea:focus-visible, [tabindex]:focus-visible{
+      outline:2px solid #0b1a2a;
+      outline-offset:2px;
+    }
   </style>
 </head>
 
 <body>
+  <a class="skip-to-content" href="#main-content">Skip to main content</a>
   <div class="wrap" id="top">
     <div class="topbar">
       <button class="menuBtn" aria-label="Toggle menu" onclick="document.querySelector('.nav').classList.toggle('open');document.getElementById('navOverlay').classList.toggle('open')">&#9776;</button>
 
       <a class="brand" href="#top">
         <span class="brandSplit brandSplitLeft">FOUR</span>
-        <img class="mark" src="images/logo.png" alt="Four Chariots logo" />
+        <img class="mark" src="images/logo.png" alt="Four Chariots logo" width="1024" height="1024" loading="lazy" />
         <span class="wordmark">
           <span class="name">FOUR CHARIOTS</span>
         </span>
@@ -945,7 +1020,7 @@
       </div>
 
       <div class="heroImg fade-up" style="transition-delay:.85s;">
-        <img src="images/core/unashamed/model2.png" alt="UNSHAKEN Tee" style="width:100%; height:100%; object-fit:cover; object-position:30% top;" />
+        <img src="images/core/unashamed/model2.webp" alt="UNSHAKEN Tee" style="width:100%; height:100%; object-fit:cover; object-position:30% top;" width="1024" height="1536" loading="lazy" />
       </div>
 
       <aside class="heroCard missionCard fade-up" id="shipping" style="transition-delay:.85s; display:none;">
@@ -1004,36 +1079,36 @@
       <div class="dropCard fade-up" style="transition-delay:.05s">
         <div class="dropMedia">
           <div class="dropMainImg" style="position:relative;">
-            <img id="dropHeroImg" src="images/drops/unshaken/unshakenblk.png" alt="UNSHAKEN Tee - Black" />
+            <img id="dropHeroImg" src="images/drops/unshaken/unshakenblk.webp" alt="UNSHAKEN Tee - Black" width="1024" height="1024" loading="lazy" />
             <span id="comingSoonBadge" style="display:none; position:absolute; top:50%; left:0; right:0; transform:translateY(-50%); font-size:11px; font-weight:900; letter-spacing:0.30em; text-transform:uppercase; color:var(--ink); background:rgba(255,255,255,.88); padding:14px 0; text-align:center; backdrop-filter:blur(2px); border-top:1px solid rgba(11,26,42,.08); border-bottom:1px solid rgba(11,26,42,.08);">COMING SOON</span>
           </div>
           <div class="dropThumbs">
-            <div class="dropThumb active" data-src="images/drops/unshaken/unshakenblk.png" data-label="Black">
-              <img src="images/drops/unshaken/unshakenblk.png" alt="Black" />
+            <div class="dropThumb active" data-src="images/drops/unshaken/unshakenblk.webp" data-label="Black">
+              <img src="images/drops/unshaken/unshakenblk.webp" alt="Black" width="1024" height="1024" loading="lazy" />
             </div>
-            <div class="dropThumb" data-src="images/drops/unshaken/unshakencloseup1.png" data-label="Embroidery Detail">
-              <img src="images/drops/unshaken/unshakencloseup1.png" alt="Chest embroidery close-up" />
+            <div class="dropThumb" data-src="images/drops/unshaken/unshakencloseup1.webp" data-label="Embroidery Detail">
+              <img src="images/drops/unshaken/unshakencloseup1.webp" alt="Chest embroidery close-up" width="1024" height="1024" loading="lazy" />
             </div>
-            <div class="dropThumb" data-src="images/drops/unshaken/unshakenscript.png" data-label="Scripture Detail">
-              <img src="images/drops/unshaken/unshakenscript.png" alt="Scripture close-up" />
+            <div class="dropThumb" data-src="images/drops/unshaken/unshakenscript.webp" data-label="Scripture Detail">
+              <img src="images/drops/unshaken/unshakenscript.webp" alt="Scripture close-up" width="1024" height="1024" loading="lazy" />
             </div>
-            <div class="dropThumb" data-src="images/closeupsleeve.png" data-label="Sleeve Detail">
-              <img src="images/closeupsleeve.png" alt="Logo sleeve close-up" />
+            <div class="dropThumb" data-src="images/closeupsleeve.webp" data-label="Sleeve Detail">
+              <img src="images/closeupsleeve.webp" alt="Logo sleeve close-up" width="1024" height="1024" loading="lazy" />
             </div>
-            <div class="dropThumb" data-src="images/drops/unshaken/droptag.png" data-label="Drop Tag">
-              <img src="images/drops/unshaken/droptag.png" alt="Drop tag" />
+            <div class="dropThumb" data-src="images/drops/unshaken/droptag.webp" data-label="Drop Tag">
+              <img src="images/drops/unshaken/droptag.webp" alt="Drop tag" width="1024" height="1024" loading="lazy" />
             </div>
-            <div class="dropThumb model-thumb" data-src="images/drops/unshaken/model.png" data-label="Model">
-              <img src="images/drops/unshaken/model.png" alt="Model" />
+            <div class="dropThumb model-thumb" data-src="images/drops/unshaken/model.webp" data-label="Model">
+              <img src="images/drops/unshaken/model.webp" alt="Model" width="1024" height="1024" loading="lazy" />
             </div>
-            <div class="dropThumb" data-src="images/drops/unshaken/unshakenwhite.png" data-label="White">
-              <img src="images/drops/unshaken/unshakenwhite.png" alt="White" />
+            <div class="dropThumb" data-src="images/drops/unshaken/unshakenwhite.webp" data-label="White">
+              <img src="images/drops/unshaken/unshakenwhite.webp" alt="White" width="1024" height="1024" loading="lazy" />
             </div>
-            <div class="dropThumb" data-src="images/drops/unshaken/unshakenred.png" data-label="Red">
-              <img src="images/drops/unshaken/unshakenred.png" alt="Red" />
+            <div class="dropThumb" data-src="images/drops/unshaken/unshakenred.webp" data-label="Red">
+              <img src="images/drops/unshaken/unshakenred.webp" alt="Red" width="1024" height="1024" loading="lazy" />
             </div>
-            <div class="dropThumb coming-soon" data-src="images/drops/unshaken/unshakendap.png" data-label="Dapple">
-              <img src="images/drops/unshaken/unshakendap.png" alt="Dapple" />
+            <div class="dropThumb coming-soon" data-src="images/drops/unshaken/unshakendap.webp" data-label="Dapple">
+              <img src="images/drops/unshaken/unshakendap.webp" alt="Dapple" width="1024" height="1024" loading="lazy" />
             </div>
           </div>
         </div>
@@ -1192,7 +1267,7 @@
     const dropHeroImg = document.getElementById("dropHeroImg");
     const dropLabel = document.getElementById("dropColorLabel");
     if (window.innerWidth <= 980) {
-      dropHeroImg.src = "images/drops/unshaken/model.png";
+      dropHeroImg.src = "images/drops/unshaken/model.webp";
       dropHeroImg.alt = "UNSHAKEN Tee - Model";
       document.querySelectorAll(".dropThumb").forEach(t => t.classList.remove("active"));
       const modelThumb = document.querySelector(".model-thumb");
@@ -1205,10 +1280,10 @@
     const comingSoonBadge = document.getElementById("comingSoonBadge");
 
     const modelImages = {
-      "Black": "images/drops/unshaken/model.png",
-      "White": "images/drops/unshaken/modelwhite.png",
-      "Red": "images/drops/unshaken/modelred.png",
-      "Dapple": "images/drops/unshaken/modeldap.png"
+      "Black": "images/drops/unshaken/model.webp",
+      "White": "images/drops/unshaken/modelwhite.webp",
+      "Red": "images/drops/unshaken/modelred.webp",
+      "Dapple": "images/drops/unshaken/modeldap.webp"
     };
     const modelThumb = document.querySelector(".model-thumb");
 

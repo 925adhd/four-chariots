@@ -564,14 +564,37 @@
         font-size:12px;
       }
     }
+      .skip-to-content{
+      position:absolute;
+      top:-48px;
+      left:8px;
+      z-index:10000;
+      padding:10px 14px;
+      background:#0b1a2a;
+      color:#fff;
+      font-size:13px;
+      font-weight:700;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+      text-decoration:none;
+      border-radius:0;
+      transition:top .15s ease;
+    }
+    .skip-to-content:focus{ top:8px; outline:2px solid #fff; outline-offset:2px; }
+    a:focus-visible, button:focus-visible, input:focus-visible,
+    select:focus-visible, textarea:focus-visible, [tabindex]:focus-visible{
+      outline:2px solid #0b1a2a;
+      outline-offset:2px;
+    }
   </style>
 </head>
 
 <body>
+  <a class="skip-to-content" href="#main-content">Skip to main content</a>
   <div class="wrap" id="top">
     <div class="topbar">
       <a class="brand" href="index.html">
-        <img class="mark" src="images/logo.png" alt="Four Chariots logo" />
+        <img class="mark" src="images/logo.png" alt="Four Chariots logo" width="1024" height="1024" loading="lazy" />
         <span class="wordmark">
           <span class="name">FOUR CHARIOTS</span>
         </span>

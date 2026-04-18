@@ -4,8 +4,21 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>About | FOUR CHARIOTS</title>
-  <meta name="description" content="The story behind FOUR CHARIOTS. Faith-driven gear designed to move truth through daily life." />
-  <meta name="robots" content="noindex, nofollow" />
+  <meta name="description" content="The story behind FOUR CHARIOTS — a faith-driven apparel brand from Leitchfield, KY. Minimalist scripture tees and gear made with intention." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://4chariots.com/about.html" />
+
+  <meta property="og:site_name" content="FOUR CHARIOTS" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://4chariots.com/about.html" />
+  <meta property="og:title" content="About | FOUR CHARIOTS" />
+  <meta property="og:description" content="The story behind FOUR CHARIOTS — a faith-driven apparel brand from Leitchfield, KY." />
+  <meta property="og:image" content="https://4chariots.com/images/logo.png" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="About | FOUR CHARIOTS" />
+  <meta name="twitter:description" content="The story behind FOUR CHARIOTS — a faith-driven apparel brand from Leitchfield, KY." />
+  <meta name="twitter:image" content="https://4chariots.com/images/logo.png" />
 
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='15' fill='%230b1a2a'/><text x='16' y='22' text-anchor='middle' font-size='18' font-weight='900' font-family='system-ui,sans-serif' fill='%23ffffff'>4C</text></svg>" />
   <link rel="icon" type="image/png" sizes="192x192" href="images/logo.png" />
@@ -606,14 +619,37 @@
       .directionsCard .stepTitle{ font-size: 11px; }
       .directionsCard .stepDesc{ font-size: 11px; }
     }
+      .skip-to-content{
+      position:absolute;
+      top:-48px;
+      left:8px;
+      z-index:10000;
+      padding:10px 14px;
+      background:#0b1a2a;
+      color:#fff;
+      font-size:13px;
+      font-weight:700;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+      text-decoration:none;
+      border-radius:0;
+      transition:top .15s ease;
+    }
+    .skip-to-content:focus{ top:8px; outline:2px solid #fff; outline-offset:2px; }
+    a:focus-visible, button:focus-visible, input:focus-visible,
+    select:focus-visible, textarea:focus-visible, [tabindex]:focus-visible{
+      outline:2px solid #0b1a2a;
+      outline-offset:2px;
+    }
   </style>
 </head>
 
 <body>
+  <a class="skip-to-content" href="#main-content">Skip to main content</a>
   <div class="wrap" id="top">
     <div class="topbar">
       <a class="brand" href="index.html">
-        <img class="mark" src="images/logo.png" alt="Four Chariots logo" />
+        <img class="mark" src="images/logo.png" alt="Four Chariots logo" width="1024" height="1024" loading="lazy" />
         <span class="wordmark">
           <span class="name">FOUR CHARIOTS</span>
         </span>

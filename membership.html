@@ -5,16 +5,25 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Membership — FOUR CHARIOTS</title>
 
-  <meta name="description" content="Never miss a drop. Reserve your year of releases with Four Chariots membership." />
-  <meta name="robots" content="noindex, nofollow" />
+  <meta name="description" content="The Circle — FOUR CHARIOTS membership. Reserved access to 12 monthly drops, guaranteed inventory, free shipping. A year of faith-driven releases." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://4chariots.com/membership.html" />
 
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='15' fill='%230b1a2a'/><text x='16' y='22' text-anchor='middle' font-size='18' font-weight='900' font-family='system-ui,sans-serif' fill='%23ffffff'>4C</text></svg>" />
   <link rel="icon" type="image/png" sizes="192x192" href="images/logo.png" />
   <link rel="apple-touch-icon" href="images/logo.png" />
 
-  <meta property="og:title" content="Membership — FOUR CHARIOTS" />
-  <meta property="og:description" content="Never miss a drop. Reserve your year of releases." />
+  <meta property="og:site_name" content="FOUR CHARIOTS" />
   <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://4chariots.com/membership.html" />
+  <meta property="og:title" content="Membership — FOUR CHARIOTS" />
+  <meta property="og:description" content="Reserved access to 12 monthly drops, guaranteed inventory, free shipping." />
+  <meta property="og:image" content="https://4chariots.com/images/logo.png" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Membership — FOUR CHARIOTS" />
+  <meta name="twitter:description" content="Reserved access to 12 monthly drops, guaranteed inventory, free shipping." />
+  <meta name="twitter:image" content="https://4chariots.com/images/logo.png" />
 
   <style>
     :root{
@@ -461,14 +470,37 @@
       .topbar{ padding: 10px 0; }
       .brand .name{ font-size: 12px; }
     }
+      .skip-to-content{
+      position:absolute;
+      top:-48px;
+      left:8px;
+      z-index:10000;
+      padding:10px 14px;
+      background:#0b1a2a;
+      color:#fff;
+      font-size:13px;
+      font-weight:700;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+      text-decoration:none;
+      border-radius:0;
+      transition:top .15s ease;
+    }
+    .skip-to-content:focus{ top:8px; outline:2px solid #fff; outline-offset:2px; }
+    a:focus-visible, button:focus-visible, input:focus-visible,
+    select:focus-visible, textarea:focus-visible, [tabindex]:focus-visible{
+      outline:2px solid #0b1a2a;
+      outline-offset:2px;
+    }
   </style>
 </head>
 
 <body>
-  <div class="wrap">
+  <a class="skip-to-content" href="#main-content">Skip to main content</a>
+  <div class="wrap" id="main-content" tabindex="-1">
     <div class="topbar">
       <a class="brand" href="index.html">
-        <img class="mark" src="images/logo.png" alt="Four Chariots logo" />
+        <img class="mark" src="images/logo.png" alt="Four Chariots logo" width="1024" height="1024" loading="lazy" />
         <span class="wordmark">
           <span class="name">FOUR CHARIOTS</span>
         </span>
@@ -506,21 +538,21 @@
 
         <div class="grid">
           <div class="mini" style="background:#f5f4f0; border-color:rgba(11,26,42,.12);">
-            <img class="miniIcon" src="images/inventory.png" alt="" />
+            <img class="miniIcon" src="images/guaranteed-inventory-icon.webp" alt="" width="900" height="900" loading="lazy" />
             <div class="miniText">
               <h3>12 Guaranteed Drops</h3>
               <p>One release each month. Reserved inventory before public access.</p>
             </div>
           </div>
           <div class="mini">
-            <img class="miniIcon" src="images/shipping.png" alt="" />
+            <img class="miniIcon" src="images/automatic-delivery-icon.webp" alt="" width="900" height="900" loading="lazy" />
             <div class="miniText">
               <h3>Automatic Delivery</h3>
               <p>Ships automatically each month. No checkout required. Free delivery included.</p>
             </div>
           </div>
           <div class="mini">
-            <img class="miniIcon" src="images/vote.png" alt="" />
+            <img class="miniIcon" src="images/members-vote-icon.webp" alt="" width="900" height="900" loading="lazy" />
             <div class="miniText">
               <h3>Member Voting</h3>
               <p>Members vote on future word drops.</p>

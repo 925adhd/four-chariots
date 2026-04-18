@@ -1,0 +1,639 @@
+{
+  "images/blackswatch.png": {
+    "oldRel": "images/blackswatch.png",
+    "newRel": "images/blackswatch.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/closeuplogosleeve.png": {
+    "oldRel": "images/closeuplogosleeve.png",
+    "newRel": "images/closeuplogosleeve.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/closeupsleeve.png": {
+    "oldRel": "images/closeupsleeve.png",
+    "newRel": "images/closeupsleeve.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/closeupsleeve1.png": {
+    "oldRel": "images/closeupsleeve1.png",
+    "newRel": "images/closeupsleeve1.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/closeupsleevedap.png": {
+    "oldRel": "images/closeupsleevedap.png",
+    "newRel": "images/closeupsleevedap.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/core/chosen/choesencloseup.png": {
+    "oldRel": "images/core/chosen/choesencloseup.png",
+    "newRel": "images/core/chosen/choesencloseup.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/core/chosen/chosen.png": {
+    "oldRel": "images/core/chosen/chosen.png",
+    "newRel": "images/core/chosen/chosen.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/core/chosen/chosendap.png": {
+    "oldRel": "images/core/chosen/chosendap.png",
+    "newRel": "images/core/chosen/chosendap.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/core/chosen/chosenred.png": {
+    "oldRel": "images/core/chosen/chosenred.png",
+    "newRel": "images/core/chosen/chosenred.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/core/chosen/chosenwhite.png": {
+    "oldRel": "images/core/chosen/chosenwhite.png",
+    "newRel": "images/core/chosen/chosenwhite.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/core/chosen/cosenblk.png": {
+    "oldRel": "images/core/chosen/cosenblk.png",
+    "newRel": "images/core/chosen/cosenblk.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/core/chosen/model.png": {
+    "oldRel": "images/core/chosen/model.png",
+    "newRel": "images/core/chosen/model.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/core/chosen/scripture.png": {
+    "oldRel": "images/core/chosen/scripture.png",
+    "newRel": "images/core/chosen/scripture.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/core/chosen/scripturecloseup.png": {
+    "oldRel": "images/core/chosen/scripturecloseup.png",
+    "newRel": "images/core/chosen/scripturecloseup.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/core/chosen/scripturecloseup1.png": {
+    "oldRel": "images/core/chosen/scripturecloseup1.png",
+    "newRel": "images/core/chosen/scripturecloseup1.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/core/forgiven/forgiven.png": {
+    "oldRel": "images/core/forgiven/forgiven.png",
+    "newRel": "images/core/forgiven/forgiven.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/core/forgiven/forgivenblk.png": {
+    "oldRel": "images/core/forgiven/forgivenblk.png",
+    "newRel": "images/core/forgiven/forgivenblk.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/core/forgiven/forgivencloseup.png": {
+    "oldRel": "images/core/forgiven/forgivencloseup.png",
+    "newRel": "images/core/forgiven/forgivencloseup.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/core/forgiven/forgivendap.png": {
+    "oldRel": "images/core/forgiven/forgivendap.png",
+    "newRel": "images/core/forgiven/forgivendap.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/core/forgiven/forgivendap2.png": {
+    "oldRel": "images/core/forgiven/forgivendap2.png",
+    "newRel": "images/core/forgiven/forgivendap2.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/core/forgiven/forgivenred.png": {
+    "oldRel": "images/core/forgiven/forgivenred.png",
+    "newRel": "images/core/forgiven/forgivenred.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/core/forgiven/forgivenwhite.png": {
+    "oldRel": "images/core/forgiven/forgivenwhite.png",
+    "newRel": "images/core/forgiven/forgivenwhite.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/core/forgiven/model.png": {
+    "oldRel": "images/core/forgiven/model.png",
+    "newRel": "images/core/forgiven/model.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/core/forgiven/scripture.png": {
+    "oldRel": "images/core/forgiven/scripture.png",
+    "newRel": "images/core/forgiven/scripture.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/core/forgiven/scripturecloseup.png": {
+    "oldRel": "images/core/forgiven/scripturecloseup.png",
+    "newRel": "images/core/forgiven/scripturecloseup.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/core/forgiven/scripturecloseup1.png": {
+    "oldRel": "images/core/forgiven/scripturecloseup1.png",
+    "newRel": "images/core/forgiven/scripturecloseup1.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/core/grateful/blank.png": {
+    "oldRel": "images/core/grateful/blank.png",
+    "newRel": "images/core/grateful/blank.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/core/grateful/grateful.png": {
+    "oldRel": "images/core/grateful/grateful.png",
+    "newRel": "images/core/grateful/grateful.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/core/grateful/gratefuldap.png": {
+    "oldRel": "images/core/grateful/gratefuldap.png",
+    "newRel": "images/core/grateful/gratefuldap.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/core/grateful/gratefullblk.png": {
+    "oldRel": "images/core/grateful/gratefullblk.png",
+    "newRel": "images/core/grateful/gratefullblk.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/core/grateful/gratefulred.png": {
+    "oldRel": "images/core/grateful/gratefulred.png",
+    "newRel": "images/core/grateful/gratefulred.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/core/grateful/gratefulwhite.png": {
+    "oldRel": "images/core/grateful/gratefulwhite.png",
+    "newRel": "images/core/grateful/gratefulwhite.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/core/grateful/greatefulcloseup.png": {
+    "oldRel": "images/core/grateful/greatefulcloseup.png",
+    "newRel": "images/core/grateful/greatefulcloseup.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/core/grateful/model.png": {
+    "oldRel": "images/core/grateful/model.png",
+    "newRel": "images/core/grateful/model.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/core/grateful/scripture.png": {
+    "oldRel": "images/core/grateful/scripture.png",
+    "newRel": "images/core/grateful/scripture.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/core/grateful/scripturecloseup.png": {
+    "oldRel": "images/core/grateful/scripturecloseup.png",
+    "newRel": "images/core/grateful/scripturecloseup.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/core/grateful/scripturecloseup1.png": {
+    "oldRel": "images/core/grateful/scripturecloseup1.png",
+    "newRel": "images/core/grateful/scripturecloseup1.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/core/unashamed/model.png": {
+    "oldRel": "images/core/unashamed/model.png",
+    "newRel": "images/core/unashamed/model.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/core/unashamed/model2.png": {
+    "oldRel": "images/core/unashamed/model2.png",
+    "newRel": "images/core/unashamed/model2.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  "images/core/unashamed/scripture.png": {
+    "oldRel": "images/core/unashamed/scripture.png",
+    "newRel": "images/core/unashamed/scripture.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/core/unashamed/scripturecloseup.png": {
+    "oldRel": "images/core/unashamed/scripturecloseup.png",
+    "newRel": "images/core/unashamed/scripturecloseup.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/core/unashamed/scripturecloseup1.png": {
+    "oldRel": "images/core/unashamed/scripturecloseup1.png",
+    "newRel": "images/core/unashamed/scripturecloseup1.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/core/unashamed/umashamed.png": {
+    "oldRel": "images/core/unashamed/umashamed.png",
+    "newRel": "images/core/unashamed/umashamed.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/core/unashamed/unashamedblk.png": {
+    "oldRel": "images/core/unashamed/unashamedblk.png",
+    "newRel": "images/core/unashamed/unashamedblk.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/core/unashamed/unashamedcloseup.png": {
+    "oldRel": "images/core/unashamed/unashamedcloseup.png",
+    "newRel": "images/core/unashamed/unashamedcloseup.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/core/unashamed/unashameddap.png": {
+    "oldRel": "images/core/unashamed/unashameddap.png",
+    "newRel": "images/core/unashamed/unashameddap.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/core/unashamed/unashamedred.png": {
+    "oldRel": "images/core/unashamed/unashamedred.png",
+    "newRel": "images/core/unashamed/unashamedred.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/core/unashamed/unashamedwhite.png": {
+    "oldRel": "images/core/unashamed/unashamedwhite.png",
+    "newRel": "images/core/unashamed/unashamedwhite.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/dappleswatch.png": {
+    "oldRel": "images/dappleswatch.png",
+    "newRel": "images/dappleswatch.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/dapplewhite.png": {
+    "oldRel": "images/dapplewhite.png",
+    "newRel": "images/dapplewhite.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/drops/unshaken/ChatGPT Image Feb 19, 2026, 10_46_09 AM.png": {
+    "oldRel": "images/drops/unshaken/ChatGPT Image Feb 19, 2026, 10_46_09 AM.png",
+    "newRel": "images/drops/unshaken/unshaken-announcement.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/drops/unshaken/droptag.png": {
+    "oldRel": "images/drops/unshaken/droptag.png",
+    "newRel": "images/drops/unshaken/droptag.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/drops/unshaken/everydaymodel.png": {
+    "oldRel": "images/drops/unshaken/everydaymodel.png",
+    "newRel": "images/drops/unshaken/everydaymodel.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/drops/unshaken/model.png": {
+    "oldRel": "images/drops/unshaken/model.png",
+    "newRel": "images/drops/unshaken/model.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/drops/unshaken/model1.png": {
+    "oldRel": "images/drops/unshaken/model1.png",
+    "newRel": "images/drops/unshaken/model1.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/drops/unshaken/model10.png": {
+    "oldRel": "images/drops/unshaken/model10.png",
+    "newRel": "images/drops/unshaken/model10.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/drops/unshaken/model11.png": {
+    "oldRel": "images/drops/unshaken/model11.png",
+    "newRel": "images/drops/unshaken/model11.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/drops/unshaken/model12.png": {
+    "oldRel": "images/drops/unshaken/model12.png",
+    "newRel": "images/drops/unshaken/model12.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/drops/unshaken/model13.png": {
+    "oldRel": "images/drops/unshaken/model13.png",
+    "newRel": "images/drops/unshaken/model13.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/drops/unshaken/model14.png": {
+    "oldRel": "images/drops/unshaken/model14.png",
+    "newRel": "images/drops/unshaken/model14.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/drops/unshaken/model2.png": {
+    "oldRel": "images/drops/unshaken/model2.png",
+    "newRel": "images/drops/unshaken/model2.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/drops/unshaken/model3.png": {
+    "oldRel": "images/drops/unshaken/model3.png",
+    "newRel": "images/drops/unshaken/model3.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/drops/unshaken/model4.png": {
+    "oldRel": "images/drops/unshaken/model4.png",
+    "newRel": "images/drops/unshaken/model4.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/drops/unshaken/model5.png": {
+    "oldRel": "images/drops/unshaken/model5.png",
+    "newRel": "images/drops/unshaken/model5.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/drops/unshaken/model6.png": {
+    "oldRel": "images/drops/unshaken/model6.png",
+    "newRel": "images/drops/unshaken/model6.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/drops/unshaken/model7.png": {
+    "oldRel": "images/drops/unshaken/model7.png",
+    "newRel": "images/drops/unshaken/model7.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/drops/unshaken/model8.png": {
+    "oldRel": "images/drops/unshaken/model8.png",
+    "newRel": "images/drops/unshaken/model8.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/drops/unshaken/modelbackpack.png": {
+    "oldRel": "images/drops/unshaken/modelbackpack.png",
+    "newRel": "images/drops/unshaken/modelbackpack.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  "images/drops/unshaken/modeldap.png": {
+    "oldRel": "images/drops/unshaken/modeldap.png",
+    "newRel": "images/drops/unshaken/modeldap.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/drops/unshaken/modelred.png": {
+    "oldRel": "images/drops/unshaken/modelred.png",
+    "newRel": "images/drops/unshaken/modelred.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/drops/unshaken/modelwhite.png": {
+    "oldRel": "images/drops/unshaken/modelwhite.png",
+    "newRel": "images/drops/unshaken/modelwhite.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/drops/unshaken/scripture.png": {
+    "oldRel": "images/drops/unshaken/scripture.png",
+    "newRel": "images/drops/unshaken/scripture.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/drops/unshaken/spreadingtheword.png": {
+    "oldRel": "images/drops/unshaken/spreadingtheword.png",
+    "newRel": "images/drops/unshaken/spreadingtheword.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/drops/unshaken/tag.png": {
+    "oldRel": "images/drops/unshaken/tag.png",
+    "newRel": "images/drops/unshaken/tag.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/drops/unshaken/unshaken.png": {
+    "oldRel": "images/drops/unshaken/unshaken.png",
+    "newRel": "images/drops/unshaken/unshaken.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/drops/unshaken/unshakenblk.png": {
+    "oldRel": "images/drops/unshaken/unshakenblk.png",
+    "newRel": "images/drops/unshaken/unshakenblk.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/drops/unshaken/unshakenblk2.png": {
+    "oldRel": "images/drops/unshaken/unshakenblk2.png",
+    "newRel": "images/drops/unshaken/unshakenblk2.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/drops/unshaken/unshakenblk3.png": {
+    "oldRel": "images/drops/unshaken/unshakenblk3.png",
+    "newRel": "images/drops/unshaken/unshakenblk3.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/drops/unshaken/unshakencloseup.png": {
+    "oldRel": "images/drops/unshaken/unshakencloseup.png",
+    "newRel": "images/drops/unshaken/unshakencloseup.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/drops/unshaken/unshakencloseup1.png": {
+    "oldRel": "images/drops/unshaken/unshakencloseup1.png",
+    "newRel": "images/drops/unshaken/unshakencloseup1.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/drops/unshaken/unshakencloseup2.png": {
+    "oldRel": "images/drops/unshaken/unshakencloseup2.png",
+    "newRel": "images/drops/unshaken/unshakencloseup2.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/drops/unshaken/unshakendap.png": {
+    "oldRel": "images/drops/unshaken/unshakendap.png",
+    "newRel": "images/drops/unshaken/unshakendap.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/drops/unshaken/unshakenred.png": {
+    "oldRel": "images/drops/unshaken/unshakenred.png",
+    "newRel": "images/drops/unshaken/unshakenred.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/drops/unshaken/unshakenscript.png": {
+    "oldRel": "images/drops/unshaken/unshakenscript.png",
+    "newRel": "images/drops/unshaken/unshakenscript.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/drops/unshaken/unshakenscript1.png": {
+    "oldRel": "images/drops/unshaken/unshakenscript1.png",
+    "newRel": "images/drops/unshaken/unshakenscript1.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/drops/unshaken/unshakenwhite.png": {
+    "oldRel": "images/drops/unshaken/unshakenwhite.png",
+    "newRel": "images/drops/unshaken/unshakenwhite.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/FLYER.png": {
+    "oldRel": "images/FLYER.png",
+    "newRel": "images/four-chariots-flyer.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  "images/fourchariotstext.png": {
+    "oldRel": "images/fourchariotstext.png",
+    "newRel": "images/fourchariotstext.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/gear/four-chariots-horse-emblem-mug-glossy-ceramic-coffee-mug-11oz-15oz (1).jpg": {
+    "oldRel": "images/gear/four-chariots-horse-emblem-mug-glossy-ceramic-coffee-mug-11oz-15oz (1).jpg",
+    "newRel": "images/gear/four-chariots-horse-emblem-mug-glossy-ceramic-coffee-mug-11oz-15oz (1).webp",
+    "width": 1200,
+    "height": 1200
+  },
+  "images/gear/four-chariots-horse-emblem-mug-glossy-ceramic-coffee-mug-11oz-15oz (2).jpg": {
+    "oldRel": "images/gear/four-chariots-horse-emblem-mug-glossy-ceramic-coffee-mug-11oz-15oz (2).jpg",
+    "newRel": "images/gear/four-chariots-horse-emblem-mug-glossy-ceramic-coffee-mug-11oz-15oz (2).webp",
+    "width": 1200,
+    "height": 1200
+  },
+  "images/gear/four-chariots-horse-emblem-mug-glossy-ceramic-coffee-mug-11oz-15oz (3).jpg": {
+    "oldRel": "images/gear/four-chariots-horse-emblem-mug-glossy-ceramic-coffee-mug-11oz-15oz (3).jpg",
+    "newRel": "images/gear/four-chariots-horse-emblem-mug-glossy-ceramic-coffee-mug-11oz-15oz (3).webp",
+    "width": 1200,
+    "height": 1200
+  },
+  "images/gear/four-chariots-horse-emblem-mug-glossy-ceramic-coffee-mug-11oz-15oz.jpg": {
+    "oldRel": "images/gear/four-chariots-horse-emblem-mug-glossy-ceramic-coffee-mug-11oz-15oz.jpg",
+    "newRel": "images/gear/four-chariots-horse-emblem-mug-glossy-ceramic-coffee-mug-11oz-15oz.webp",
+    "width": 1200,
+    "height": 1200
+  },
+  "images/gear/laptopdecal.jpg": {
+    "oldRel": "images/gear/laptopdecal.jpg",
+    "newRel": "images/gear/laptopdecal.webp",
+    "width": 1200,
+    "height": 1200
+  },
+  "images/gear/mugpreview.png": {
+    "oldRel": "images/gear/mugpreview.png",
+    "newRel": "images/gear/mugpreview.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/gear/stickerdecal.jpg": {
+    "oldRel": "images/gear/stickerdecal.jpg",
+    "newRel": "images/gear/stickerdecal.webp",
+    "width": 1200,
+    "height": 1200
+  },
+  "images/gear/stickerpreview.png": {
+    "oldRel": "images/gear/stickerpreview.png",
+    "newRel": "images/gear/stickerpreview.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/inventory.png": {
+    "oldRel": "images/inventory.png",
+    "newRel": "images/guaranteed-inventory-icon.webp",
+    "width": 900,
+    "height": 900
+  },
+  "images/logo.png": {
+    "oldRel": "images/logo.png",
+    "newRel": "images/logo.png",
+    "width": 1024,
+    "height": 1024,
+    "kept": true
+  },
+  "images/logoembroidery.png": {
+    "oldRel": "images/logoembroidery.png",
+    "newRel": "images/logoembroidery.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/originallogo.png": {
+    "oldRel": "images/originallogo.png",
+    "newRel": "images/originallogo.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/redswatch.png": {
+    "oldRel": "images/redswatch.png",
+    "newRel": "images/redswatch.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  "images/scripture.png": {
+    "oldRel": "images/scripture.png",
+    "newRel": "images/scripture.webp",
+    "width": 576,
+    "height": 61
+  },
+  "images/shipping.png": {
+    "oldRel": "images/shipping.png",
+    "newRel": "images/automatic-delivery-icon.webp",
+    "width": 900,
+    "height": 900
+  },
+  "images/skip.png": {
+    "oldRel": "images/skip.png",
+    "newRel": "images/member-access-icon.webp",
+    "width": 900,
+    "height": 900
+  },
+  "images/vote.png": {
+    "oldRel": "images/vote.png",
+    "newRel": "images/members-vote-icon.webp",
+    "width": 900,
+    "height": 900
+  },
+  "images/whiteswatch.png": {
+    "oldRel": "images/whiteswatch.png",
+    "newRel": "images/whiteswatch.webp",
+    "width": 1024,
+    "height": 1024
+  }
+}
