@@ -40,6 +40,7 @@
     +       '<p class="fcNotify-body">Enter your email and we\'ll reach out the moment <strong id="fcNotifyProductName">this piece</strong> is available. No spam — only release notifications.</p>'
     +       '<form class="fcNotify-form" id="fcNotifyForm" novalidate>'
     +         '<input type="email" id="fcNotifyEmail" required placeholder="you@email.com" autocomplete="email">'
+    +         '<input type="text" name="botcheck" id="fcNotifyBotcheck" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;" aria-hidden="true">'
     +         '<div class="fcNotify-error" id="fcNotifyError"></div>'
     +         '<button type="submit" class="fcNotify-submit" id="fcNotifySubmit">Notify me</button>'
     +       '</form>'
@@ -90,6 +91,11 @@
         err.textContent = "Please enter a valid email.";
         return;
       }
+      if (document.getElementById("fcNotifyBotcheck").value) {
+        document.getElementById("fcNotifyFormView").hidden = true;
+        document.getElementById("fcNotifySuccessView").hidden = false;
+        return;
+      }
       btn.disabled = true;
       btn.textContent = "Sending...";
 
@@ -97,6 +103,7 @@
 
       const fd = new FormData();
       fd.append("access_key", WEB3FORMS_KEY);
+      fd.append("botcheck", "");
       fd.append("subject", "FOUR CHARIOTS Waitlist — " + productLabel);
       fd.append("from_name", "FOUR CHARIOTS Waitlist");
       fd.append("form_source", "fc_waitlist");
