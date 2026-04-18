@@ -41,7 +41,8 @@
     +     '<div id="fcNotifyFormView">'
     +       '<div class="fcNotify-eyebrow">Join the waitlist</div>'
     +       '<h2 class="fcNotify-title" id="fcNotifyTitle">Get notified</h2>'
-    +       '<p class="fcNotify-body">Enter your email and we\'ll reach out the moment <strong id="fcNotifyProductName">this piece</strong> is available. No spam — only release notifications.</p>'
+    +       '<p class="fcNotify-body" id="fcNotifyBodyProduct">Enter your email and we\'ll reach out the moment <strong id="fcNotifyProductName">this piece</strong> is available. No spam — only release notifications.</p>'
+    +       '<p class="fcNotify-body" id="fcNotifyBodyGeneral" hidden>Enter your email and we\'ll let you know when new pieces, drops, or restocks are ready. No spam — only release notifications.</p>'
     +       '<form class="fcNotify-form" id="fcNotifyForm" novalidate>'
     +         '<label class="fcNotify-label" for="fcNotifyEmail">Email address</label>'
     +         '<input type="email" id="fcNotifyEmail" required placeholder="you@email.com" autocomplete="email" aria-describedby="fcNotifyError">'
@@ -53,7 +54,7 @@
     +     '<div class="fcNotify-success" id="fcNotifySuccessView" role="status" aria-live="polite" aria-atomic="true" hidden>'
     +       '<div class="fcNotify-check" aria-hidden="true">&#10003;</div>'
     +       '<div class="fcNotify-successTitle">You\'re on the list</div>'
-    +       '<div class="fcNotify-successBody">We\'ll email you the moment this is available.</div>'
+    +       '<div class="fcNotify-successBody" id="fcNotifySuccessBody">We\'ll email you the moment this is available.</div>'
     +     '</div>'
     +   '</div>'
     + '</div>';
@@ -127,7 +128,10 @@
       btn.disabled = true;
       btn.textContent = "Sending...";
 
-      const productLabel = state.productName + (state.variant ? " (" + state.variant + ")" : "");
+      const isGeneral = (state.productId === "general" || !state.productName);
+      const productLabel = isGeneral
+        ? "General waitlist"
+        : state.productName + (state.variant ? " (" + state.variant + ")" : "");
 
       const fd = new FormData();
       fd.append("access_key", WEB3FORMS_KEY);
@@ -189,7 +193,15 @@
     state.productId   = (opts && opts.productId)   || "";
     state.productName = (opts && opts.productName) || "";
     state.variant     = (opts && opts.variant)     || "";
-    document.getElementById("fcNotifyProductName").textContent = state.productName || "this piece";
+    const isGeneral = (state.productId === "general" || !state.productName);
+    document.getElementById("fcNotifyBodyProduct").hidden = isGeneral;
+    document.getElementById("fcNotifyBodyGeneral").hidden = !isGeneral;
+    document.getElementById("fcNotifySuccessBody").textContent = isGeneral
+      ? "We'll email you when something new is ready."
+      : "We'll email you the moment this is available.";
+    if (!isGeneral) {
+      document.getElementById("fcNotifyProductName").textContent = state.productName;
+    }
     document.getElementById("fcNotifyFormView").hidden = false;
     document.getElementById("fcNotifySuccessView").hidden = true;
     const btn = document.getElementById("fcNotifySubmit");
