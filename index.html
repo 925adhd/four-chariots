@@ -962,11 +962,11 @@
   <a class="skip-to-content" href="#main-content">Skip to main content</a>
   <div class="wrap" id="top">
     <div class="topbar">
-      <button class="menuBtn" aria-label="Toggle menu" onclick="document.querySelector('.nav').classList.toggle('open');document.getElementById('navOverlay').classList.toggle('open')">&#9776;</button>
+      <button class="menuBtn" aria-label="Toggle menu" aria-expanded="false" onclick="var o=document.querySelector('.nav').classList.toggle('open');document.getElementById('navOverlay').classList.toggle('open');this.setAttribute('aria-expanded',o)">&#9776;</button>
 
       <a class="brand" href="#top">
         <span class="brandSplit brandSplitLeft">FOUR</span>
-        <img class="mark" src="images/logo.png" alt="Four Chariots logo" width="1024" height="1024" loading="lazy" />
+        <img class="mark" src="images/logo.png" alt="Four Chariots logo" width="512" height="512" />
         <span class="wordmark">
           <span class="name">FOUR CHARIOTS</span>
         </span>
@@ -1023,7 +1023,7 @@
       </div>
 
       <div class="heroImg fade-up" style="transition-delay:.85s;">
-        <img src="images/core/unashamed/model2.webp" alt="UNSHAKEN Tee" style="width:100%; height:100%; object-fit:cover; object-position:30% top;" width="1024" height="1536" loading="lazy" />
+        <img src="images/core/unashamed/model2.webp" alt="UNSHAKEN Tee" style="width:100%; height:100%; object-fit:cover; object-position:30% top;" width="1024" height="1536" fetchpriority="high" />
       </div>
 
       <aside class="heroCard missionCard fade-up" id="shipping" style="transition-delay:.85s; display:none;">
@@ -1184,7 +1184,8 @@
       <div>© <span id="year"></span> FOUR CHARIOTS</div>
       <div class="links">
         <a href="mailto:support@4chariots.com">Contact</a>
-        <span>Instagram</span>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
       </div>
       <div style="margin-top: 8px; font-size: 0.75rem; opacity: 0.6;"><a href="https://studio925.design" target="_blank" rel="noopener" style="color: inherit; text-decoration: underline;">Website by Studio 925</a></div>
     </footer>
@@ -1193,16 +1194,16 @@
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    document.querySelectorAll(".nav a").forEach(a => {
-      a.addEventListener("click", () => {
-        document.querySelector(".nav").classList.remove("open");
-        document.getElementById("navOverlay").classList.remove("open");
-      });
-    });
-    document.getElementById("navOverlay").addEventListener("click", () => {
+    var fcCloseNav = function () {
       document.querySelector(".nav").classList.remove("open");
       document.getElementById("navOverlay").classList.remove("open");
+      var mb = document.querySelector(".menuBtn");
+      if (mb) mb.setAttribute("aria-expanded", "false");
+    };
+    document.querySelectorAll(".nav a").forEach(function (a) {
+      a.addEventListener("click", fcCloseNav);
     });
+    document.getElementById("navOverlay").addEventListener("click", fcCloseNav);
 
     // staggered hero entrance
     requestAnimationFrame(() => {

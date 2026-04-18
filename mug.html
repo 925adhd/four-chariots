@@ -576,7 +576,7 @@
   <div class="wrap" id="top">
     <div class="topbar">
       <a class="brand" href="index.html">
-        <img class="mark" src="images/logo.png" alt="Four Chariots logo" width="1024" height="1024" loading="lazy" />
+        <img class="mark" src="images/logo.png" alt="Four Chariots logo" width="512" height="512" />
         <span class="wordmark">
           <span class="name">FOUR CHARIOTS</span>
         </span>
@@ -593,7 +593,7 @@
       <div class="navOverlay" id="navOverlay"></div>
 
       <a class="mobileCart cartBtn" href="cart.html" aria-label="Cart"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg><span class="cartBadge" id="cartBadgeMobile" style="display:none;">0</span></a>
-      <button class="menuBtn" aria-label="Toggle menu" onclick="document.querySelector('.nav').classList.toggle('open');document.getElementById('navOverlay').classList.toggle('open')">&#9776;</button>
+      <button class="menuBtn" aria-label="Toggle menu" aria-expanded="false" onclick="var o=document.querySelector('.nav').classList.toggle('open');document.getElementById('navOverlay').classList.toggle('open');this.setAttribute('aria-expanded',o)">&#9776;</button>
 
       <div class="ctaRow">
         <a class="btn" href="shop.html">Shop</a>
@@ -707,7 +707,8 @@
       <div>&copy; <span id="year"></span> FOUR CHARIOTS</div>
       <div class="links">
         <a href="mailto:support@4chariots.com">Contact</a>
-        <span>Instagram</span>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
       </div>
       <div style="margin-top: 8px; font-size: 0.75rem; opacity: 0.6;"><a href="https://studio925.design" target="_blank" rel="noopener" style="color: inherit; text-decoration: underline;">Website by Studio 925</a></div>
     </footer>
@@ -718,16 +719,16 @@
     document.getElementById("year").textContent = new Date().getFullYear();
 
     /* ── Nav ── */
-    document.querySelectorAll(".nav a").forEach(a => {
-      a.addEventListener("click", () => {
-        document.querySelector(".nav").classList.remove("open");
-        document.getElementById("navOverlay").classList.remove("open");
-      });
-    });
-    document.getElementById("navOverlay").addEventListener("click", () => {
+    var fcCloseNav = function () {
       document.querySelector(".nav").classList.remove("open");
       document.getElementById("navOverlay").classList.remove("open");
+      var mb = document.querySelector(".menuBtn");
+      if (mb) mb.setAttribute("aria-expanded", "false");
+    };
+    document.querySelectorAll(".nav a").forEach(function (a) {
+      a.addEventListener("click", fcCloseNav);
     });
+    document.getElementById("navOverlay").addEventListener("click", fcCloseNav);
 
     /* ── Cart helpers ── */
     function getCart(){try{return JSON.parse(localStorage.getItem("fc_cart"))||[];}catch{return[];}}
