@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Disallow: /privacy
+Disallow: /terms
+
+Sitemap: https://4chariots.com/sitemap.xml

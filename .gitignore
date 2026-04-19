@@ -26,12 +26,17 @@ Desktop.ini
 .DS_Store
 ._*
 
-# Unused templates
-product.html
 
 # Build output
 dist/
 .cache/
+.next/
+out/
+next-env.d.ts
+.vercel/
+
+# TypeScript
+*.tsbuildinfo
 
 # Logs
 *.log
