@@ -9,7 +9,7 @@ export function Footer() {
         <Link href="/privacy">Privacy</Link>
         <Link href="/terms">Terms</Link>
       </div>
-      <div style={{ marginTop: 8, fontSize: "0.75rem", opacity: 0.6 }}>
+      <div style={{ marginTop: 8, fontSize: "0.75rem", color: "#6c727a" }}>
         <a
           href="https://studio925.design"
           target="_blank"

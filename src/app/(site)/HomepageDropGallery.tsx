@@ -30,7 +30,7 @@ export function HomepageDropGallery() {
             alt={`UNSHAKEN Tee - ${active.label}`}
             width={1024}
             height={1024}
-            loading="lazy"
+            fetchPriority="high"
           />
         </div>
         <div className="dropThumbs">
@@ -90,9 +90,7 @@ export function HomepageDropGallery() {
           </Link>
         </div>
         <div className="dropMeta">
-          <span
-            style={{ color: "var(--muted)", fontSize: 11, opacity: 0.7 }}
-          >
+          <span style={{ color: "#6c727a", fontSize: 11 }}>
             Secure Stripe checkout
           </span>
         </div>

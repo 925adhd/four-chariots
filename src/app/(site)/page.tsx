@@ -301,8 +301,7 @@ export default function HomePage() {
           color:var(--muted);
           line-height:1.5;
         }
-        .heroSub1.visible{ opacity:.9; }
-        .heroSub2.visible{ opacity:.65; }
+        .heroSub2{ color: #6c727a; }
 
         .heroCard{ border:1px solid rgba(11,26,42,.08); padding: 18px; background: transparent; }
         .missionCard{
