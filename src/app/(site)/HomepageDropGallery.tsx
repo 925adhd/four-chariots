@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -25,12 +26,13 @@ export function HomepageDropGallery() {
     <div className="dropCard fade-up" style={{ transitionDelay: ".05s" }}>
       <div className="dropMedia">
         <div className="dropMainImg" style={{ position: "relative" }}>
-          <img
+          <Image
             src={active.src}
             alt={`UNSHAKEN Tee - ${active.label}`}
             width={1024}
             height={1024}
-            fetchPriority="high"
+            priority
+            sizes="(max-width: 980px) 100vw, 520px"
           />
         </div>
         <div className="dropThumbs">
@@ -47,11 +49,12 @@ export function HomepageDropGallery() {
               onClick={() => !t.comingSoon && setActiveIdx(i)}
               aria-label={t.label}
             >
-              <img
+              <Image
                 src={t.src}
                 alt={t.label}
-                width={1024}
-                height={1024}
+                width={120}
+                height={120}
+                sizes="60px"
                 loading="lazy"
               />
             </button>

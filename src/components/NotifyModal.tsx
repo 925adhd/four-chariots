@@ -9,7 +9,6 @@ import {
   useState,
   type ReactNode,
 } from "react";
-import { createClient } from "@/lib/supabase/client";
 
 type NotifyArgs = {
   productId?: string;
@@ -151,17 +150,17 @@ export function NotifyProvider({ children }: { children: ReactNode }) {
           .catch(() => ({ success: false }))
       : Promise.resolve({ success: false });
 
-    const supabase = createClient();
-    const supaPromise = Promise.resolve(
-      supabase.from("waitlist").insert({
-        email: addr,
-        product_id: productId,
-        product_name: productName,
-        variant,
-        source: "web",
-        page_url: pageUrl,
-      }),
-    )
+    const supaPromise = import("@/lib/supabase/client")
+      .then(({ createClient }) =>
+        createClient().from("waitlist").insert({
+          email: addr,
+          product_id: productId,
+          product_name: productName,
+          variant,
+          source: "web",
+          page_url: pageUrl,
+        }),
+      )
       .then(({ error }) => ({ ok: !error }))
       .catch(() => ({ ok: false }));
 

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { NotifyButton } from "@/components/NotifyButton";
 import { HomeAnimator } from "@/components/HomeAnimator";
@@ -87,7 +88,7 @@ export default function HomePage() {
         </div>
 
         <div className="heroImg fade-up" style={{ transitionDelay: ".85s" }}>
-          <img
+          <Image
             src="/images/core/unashamed/model2.webp"
             alt="UNSHAKEN Tee"
             style={{
@@ -98,7 +99,8 @@ export default function HomePage() {
             }}
             width={1024}
             height={1536}
-            fetchPriority="high"
+            priority
+            sizes="(max-width: 980px) 1px, 520px"
           />
         </div>
       </section>

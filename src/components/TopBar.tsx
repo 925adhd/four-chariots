@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
@@ -51,12 +52,14 @@ export function TopBar() {
 
       <Link className="brand" href="/" aria-label="Four Chariots home">
         <span className="brandSplit brandSplitLeft">FOUR</span>
-        <img
+        <Image
           className="mark"
           src="/images/logo.png"
           alt="Four Chariots logo"
-          width={512}
-          height={512}
+          width={234}
+          height={234}
+          sizes="(max-width: 420px) 48px, (max-width: 640px) 64px, (max-width: 980px) 72px, 117px"
+          priority
         />
         <span className="wordmark">
           <span className="name">FOUR CHARIOTS</span>
