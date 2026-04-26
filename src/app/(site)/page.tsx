@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { NotifyButton } from "@/components/NotifyButton";
-import { HomeAnimator } from "@/components/HomeAnimator";
 import { HomepageDropGallery } from "./HomepageDropGallery";
 
 export const metadata: Metadata = {
@@ -22,7 +21,6 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <>
-      <HomeAnimator />
       <div className="divider" />
 
       <section className="hero" id="heroSection">

@@ -39,7 +39,7 @@ checkout). Deploys to **Vercel**.
 │   │   ├── SkipLink.tsx
 │   │   ├── NotifyModal.tsx            → context provider + modal (Web3Forms + Supabase)
 │   │   ├── NotifyButton.tsx           → wrapper button that opens the modal
-│   │   └── HomeAnimator.tsx           → client-side entrance animations for homepage
+│   │   └── SiteAnimator.tsx           → mounts in (site) layout; reveals .fade-up + animates homepage hero/headline
 │   └── lib/supabase/
 │       ├── client.ts                  → browser client (anon)
 │       ├── server.ts                  → RSC/route handler client (cookies)

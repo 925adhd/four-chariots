@@ -1,8 +1,10 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 
-export function HomeAnimator() {
+export function SiteAnimator() {
+  const pathname = usePathname();
   useEffect(() => {
     const raf = requestAnimationFrame(() => {
       const hero = document.getElementById("heroSection");
@@ -26,6 +28,6 @@ export function HomeAnimator() {
       });
     });
     return () => cancelAnimationFrame(raf);
-  }, []);
+  }, [pathname]);
   return null;
 }

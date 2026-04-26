@@ -1,5 +1,6 @@
 import { TopBar } from "@/components/TopBar";
 import { Footer } from "@/components/Footer";
+import { SiteAnimator } from "@/components/SiteAnimator";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://4chariots.com";
 
@@ -66,6 +67,7 @@ export default function SiteLayout({
         </main>
         <Footer />
       </div>
+      <SiteAnimator />
     </>
   );
 }
